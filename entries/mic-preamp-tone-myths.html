@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
 <!-- pwa / 加到主畫面 -->
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
@@ -19,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="mic-preamp-tone-myths">
+<body data-entry="mic-preamp-tone-myths" data-video="K-vIeA7yy6Q" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -36,8 +37,19 @@
     <div class="src rise">Jim Lill · <a href="https://www.youtube.com/watch?v=K-vIeA7yy6Q" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
   </header>
 
+  <!-- 影片型 entry：影片在 .readable 外面（不進畫重點快照）。桌機「看影片」叫出置頂影片帶,手機走 YouTube 連結 -->
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=K-vIeA7yy6Q" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
   <article class="readable">
-    <p class="lede">「Neve 前級很暖」這句話，混音圈流傳了幾十年，沒什麼人真的量測過。Jim Lill 花了半年房租，買下一台傳說級的 1970s Neve 前級，接上示波器與頻譜分析儀，把這句話一項一項拆到底是真是假。</p>
+    <p class="lede">「Neve 前級很暖」這句話，混音圈流傳了幾十年，沒什麼人真的量測過。Jim Lill 花了半年房租，買下一台傳說級的 1970s Neve 前級，接上示波器與頻譜分析儀，把這句話一項一項拆到底是真是假。<a class="tc" href="https://www.youtube.com/watch?v=K-vIeA7yy6Q&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></p>
 
     <aside class="brief rise">
       <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
@@ -53,10 +65,10 @@
 
     <p class="first">Jim Lill 花了半年房租，買下 Ocean Way Nashville Studio A 那台 1970s 的 Neve 8078 前級，不是為了用它錄歌，是為了把它拆開來，用示波器、頻譜分析儀、100 輪盲測，把「Neve 前級有獨特音色」這個混音圈流傳最久的說法，一項一項量測到底是真是假。方法論本身，比結論更值得收。</p>
 
-    <h2 class="rise"><span class="hn">01</span>核心論點：前級只放大，不調味</h2>
+    <h2 class="rise" data-follow data-t="240" data-label="01 · 前級只放大"><span class="hn">01</span>核心論點：前級只放大，不調味<a class="tc" href="https://www.youtube.com/watch?v=K-vIeA7yy6Q&amp;t=240s" data-t="240"><span class="pl">▶</span> 4:00</a></h2>
     <p><b>前級沒有「音色」，它只是把麥克風訊號放大。</b>只要兩個前級的<span class="term" data-def="訊號在不同頻率被放大或衰減的程度，是判斷器材有沒有音色差異的第一道測試。">頻響（frequency response）</span>一樣，聽起來就一樣；所有「暖、punchy、vintage vibe」的差異，不是來自前級，而是來自麥克風選擇、麥位、空間、樂器、演奏這些訊源端決策，外加 EQ。判斷一個器材有沒有音色差異的前提，是頻響有沒有差，頻響量起來一致，其他玄學（壓縮、失真、slew rate、阻抗、相位）在正常使用下都是安慰劑效應。</p>
 
-    <h2 class="rise"><span class="hn">02</span>七個玄學，逐項被量測拆穿</h2>
+    <h2 class="rise" data-follow data-t="312" data-label="02 · 七個玄學被拆穿"><span class="hn">02</span>七個玄學，逐項被量測拆穿<a class="tc" href="https://www.youtube.com/watch?v=K-vIeA7yy6Q&amp;t=312s" data-t="312"><span class="pl">▶</span> 5:12</a></h2>
     <ul>
       <li><b>「很暖」（頻響）</b>：全頻掃描下，跟一顆便宜介面內建前級的差距小於 0.25dB；100 輪<span class="term" data-def="一種盲測法，給 A、B 兩個已知樣本，猜隱藏的 X 到底是 A 還是 B。">ABX</span> 盲測結果，還不如丟硬幣。</li>
       <li><b>很「punchy」（隱含壓縮）</b>：畫輸入對輸出曲線，完全 1:1 線性，到頂點才硬失真，沒有任何壓縮。</li>
@@ -70,7 +82,7 @@
 
     <div class="callout rise"><div class="cl">兩個可以直接記住的觀念</div><p><b>subtle 的定義</b>：subtle 字面意思就是「不大」。任何人說「差別很細微」，等於承認在所有不細微的因素，選麥、麥位、樂器本身的調音與悶音、pan、reverb send、fader，都顧到之前，這個東西不重要。所有不細微的因素，都比所有細微的因素優先。<b>可信的對照怎麼做</b>：同一段演奏、同一支麥、同一個位置，分軌進兩個待比器材，電平精確校準，極短段落無縫接，而且音檔要留存可隨時複查。達不到這些，任何「我聽到差別」的說法都無效，包括大師在訪談裡隨口講的。</p></div>
 
-    <h2 class="rise"><span class="hn">03</span>麥克風確實有音色差：從 capsule 看</h2>
+    <h2 class="rise" data-follow data-t="1812" data-label="03 · 麥克風的音色差"><span class="hn">03</span>麥克風確實有音色差：從 capsule 看<a class="tc" href="https://www.youtube.com/watch?v=K-vIeA7yy6Q&amp;t=1812s" data-t="1812"><span class="pl">▶</span> 30:12</a></h2>
     <p>跟前級相反，麥克風之間確實有音色差，而那個差幾乎全來自<span class="term" data-def="麥克風負責感應聲波震動、把它轉成電訊號的振膜組件。">capsule</span>的頻響（同一套自製精準測試架方法論，<a href="https://www.youtube.com/watch?v=4Bma2TE-x6M" target="_blank" rel="noopener">前級篇的前作在此 ↗</a>）。電平精確校準後，真空管與固態電路、有無變壓器、護網，只要沒實體擋住聲音進 capsule，幾乎無差，circuit 電路只負責把訊號乾淨送出去。</p>
     <p>兩個例外這時 circuit 才有影響：少數麥克風刻意設計進電路的 EQ，以及電路本身過載失真，動圈麥幾乎不失真，電容麥在大音壓下才會失真。capsule 為何不同，來自氣隙、膜厚、膜張力、鍍金量、背極板鑽孔，最後都歸到 capsule 的總電容：電容越高，低中頻的一個寬凹陷會變大、上中頻的一個窄峰會變大、高頻的凹陷也會變大。</p>
     <p>可署名的一個實務案例：同型號的 vintage 麥克風，差異可以很大。一組五支同型號、同年份的麥克風裡，作者最喜歡的那支，低頻明顯比其他四支少，買同型號不等於買到同音色，要知道真正音色，只能把那一支實測。乾淨訊源下，幾百美元等級的 capsule 套件，可以逼近數萬美元等級的高階麥克風，錢花在 capsule 頻響，不是品牌、年份或真空管。</p>
@@ -105,7 +117,7 @@
 
     <div class="pull rise">頻響一樣，聽起來就一樣；頻響不一樣，才有資格談音色。</div>
 
-    <h2 class="rise"><span class="hn">04</span>怎麼判斷「我聽到的差別」是不是真的</h2>
+    <h2 class="rise" data-follow data-t="2629" data-label="04 · 怎麼判斷真差別"><span class="hn">04</span>怎麼判斷「我聽到的差別」是不是真的<a class="tc" href="https://www.youtube.com/watch?v=K-vIeA7yy6Q&amp;t=2629s" data-t="2629"><span class="pl">▶</span> 43:49</a></h2>
     <p>人耳很容易把「音量比較大」誤判成「音色比較好」，前級篇跟 capsule 篇都各自踩到這個陷阱：只是把訊號加大的裝置，校準電平後音色其實沒變。比較任何器材前，一定要先把電平校準到一致，否則比較沒有意義。形容音色，誠實的詞只有四個：更亮、更暗、更厚、更薄，更細的差異沒有專屬的詞，得用數字。</p>
 
     <h2 class="rise"><span class="hn">—</span>怎麼把它用在你身上</h2>
@@ -115,6 +127,7 @@
       <li><b>訊號鏈除錯的思維</b>：先量測、隔離變因、找出唯一真正造成差異的環節，不套用聽來的玄學，這套方法不只用在混音，任何系統除錯都通用。</li>
     </ul>
   </article>
+  </div><!-- /.vlayout -->
 
   <nav class="artnav">
     <a href="../category-mixing.html">← 回 混音</a>
@@ -140,6 +153,7 @@
     <button data-nb="cancel">取消</button>
   </div>
 </div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
 <button id="panelBtn">重點 0</button>
 <aside id="panel">
   <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
@@ -151,5 +165,8 @@
 </aside>
 
 <script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
 </body>
 </html>

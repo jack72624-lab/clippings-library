@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
 <!-- pwa / 加到主畫面 -->
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
@@ -19,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="ai-era-career-mindset">
+<body data-entry="ai-era-career-mindset" data-video="3XIGcM7VICc" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -36,8 +37,19 @@
     <div class="src rise">Nate Herk · <a href="https://www.youtube.com/watch?v=3XIGcM7VICc" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
   </header>
 
+  <!-- 影片型 entry：影片在 .readable 外面（不進畫重點快照）。桌機「看影片」叫出置頂影片帶,手機走 YouTube 連結 -->
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=3XIGcM7VICc" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
   <article class="readable">
-    <p class="lede">AI 不會完全取代人，但會用 AI 的人會取代不會用的人。這篇不是介紹新職業，是把六個技能拆給你：怎麼把「你現有的專業」重寫成它的 AI 原生版本。</p>
+    <p class="lede">AI 不會完全取代人，但會用 AI 的人會取代不會用的人。這篇不是介紹新職業，是把六個技能拆給你：怎麼把「你現有的專業」重寫成它的 AI 原生版本。<a class="tc" href="https://www.youtube.com/watch?v=3XIGcM7VICc&amp;t=29s" data-t="29"><span class="pl">▶</span> 0:29</a></p>
 
     <aside class="brief rise">
       <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
@@ -53,11 +65,11 @@
 
     <p class="first">類比很直接：Excel 出現時還堅持紙筆計算的會計就被淘汰了。先學會的人，產出基準直接拉高（每週兩張報表變十張），而那個新基準很快變成新常態。AI 是同一回事，只是規模更大。IBM 2026 年的 CEO 研究支持這個判斷：85% 的 CEO 認為所有職能主管都得成為自己領域的技術專家，不只 IT 或工程部門，AI 會滲進每一個部門、每一個垂直領域。</p>
 
-    <h2 class="rise"><span class="hn">01</span>成為 AI 專家</h2>
+    <h2 class="rise" data-follow data-t="29" data-label="01 · 成為 AI 專家"><span class="hn">01</span>成為 AI 專家<a class="tc" href="https://www.youtube.com/watch?v=3XIGcM7VICc&amp;t=29s" data-t="29"><span class="pl">▶</span> 0:29</a></h2>
     <p>專業是相對的。不用是世界頂尖的 AI 工程師，只要在你的圈子裡比同事多懂一點工具、並能用在實際工作上，就有先發優勢。機會通常這樣打開：公司開始出現一堆「AI moment」（拿到新模型、要組內部 AI 小組），這時有人會說「我認識一個很懂這個的」，那個人就被拉進更好的專案，不用辭職從零開始。</p>
     <p>做法：挑一個主工具用到出 ROI（別只是玩玩），再挑一個你每週都在做的工作流程，用 AI 讓它更快更好，並記錄前後差異。注意別暴露公司資料、別違規；如果公司禁用某工具，那本身就是機會，去查規範、找出能用的部分，這也展現你在意。</p>
 
-    <h2 class="rise"><span class="hn">02</span>品味與判斷力</h2>
+    <h2 class="rise" data-follow data-t="287" data-label="02 · 品味與判斷力"><span class="hn">02</span>品味與判斷力<a class="tc" href="https://www.youtube.com/watch?v=3XIGcM7VICc&amp;t=287s" data-t="287"><span class="pl">▶</span> 4:47</a></h2>
     <p>AI 越強，越容易盲信第一個輸出就說「夠好了」。這是陷阱：剛開始用會逐字檢查，輸出變好後就鬆懈，而<b>你的名字署在上面</b>，好的你得功勞，壞的你揹鍋，AI 寫的也一樣。「品味就是決定什麼東西值得署上你的名字。」AI 能生成作品，但決定哪個出得了門的是你。</p>
 
     <div class="callout rise"><div class="cl">一句話帶走</div><p>品味就是決定什麼東西值得署上你的名字。工具負責執行，品味負責取捨。</p></div>
@@ -90,15 +102,15 @@
       <figcaption>品味不是天生的直覺，是可以被系統化累積的迴路</figcaption>
     </figure>
 
-    <h2 class="rise"><span class="hn">03</span>背景工程（Context Engineer）</h2>
+    <h2 class="rise" data-follow data-t="462" data-label="03 · 背景工程"><span class="hn">03</span>背景工程（Context Engineer）<a class="tc" href="https://www.youtube.com/watch?v=3XIGcM7VICc&amp;t=462s" data-t="462"><span class="pl">▶</span> 7:42</a></h2>
     <p>Prompt engineering 的重要性正在下降，因為模型自己越來越強。取而代之的是 context engineering，被稱為「把 context window 填入剛好資訊的精細藝術」。翻成白話：<b>prompt 是怎麼問，context 是 AI 實際知道什麼</b>。Context engineering 更耐久，因為模型再強也不知道你腦袋裡、你的行程裡、你的優先順序裡有什麼。</p>
     <p>一個好的類比是實習生：沒有 context 的 AI 只是個聰明但瞎猜的實習生；你給的私有資料（你的專業、你的第一手經驗）才讓輸出獨一無二。garbage in, garbage out。做法：別老是開空白對話，開一個長期專案空間，餵進真實 context，累積下來就是一個越用越懂你的個人系統。</p>
 
-    <h2 class="rise"><span class="hn">04</span>迭代速度</h2>
+    <h2 class="rise" data-follow data-t="613" data-label="04 · 迭代速度"><span class="hn">04</span>迭代速度<a class="tc" href="https://www.youtube.com/watch?v=3XIGcM7VICc&amp;t=613s" data-t="613"><span class="pl">▶</span> 10:13</a></h2>
     <p>如果上一個技能是「知道好長什麼樣」，這個是「用最快速度抵達」。AI 時代迭代最快的人贏，因為每次迭代都是更多數據、更多學習機會。做法：練快捷鍵、少用滑鼠、改用語音輸入；重點是 rapid prototyping，別坐著規劃完美版，先做醜版本快跑，看哪裡壞、修、迭代。</p>
     <p>另一半同樣重要：知道何時停。建 AI 工具會覺得永遠做不完，總有 nice-to-have 可以加。解法是給自己一顆北極星：<b>一個自動化綁一個具體業務指標</b>，並且<b>開工前就先定義「完工指標」長什麼樣</b>，到了指標就進維護模式，之後再慢慢優化。清楚的完工定義，是防止自己 scope creep（範圍不斷擴大）的唯一方法。</p>
 
-    <h2 class="rise"><span class="hn">05</span>打造 Jarvis</h2>
+    <h2 class="rise" data-follow data-t="793" data-label="05 · 打造 Jarvis"><span class="hn">05</span>打造 Jarvis<a class="tc" href="https://www.youtube.com/watch?v=3XIGcM7VICc&amp;t=793s" data-t="793"><span class="pl">▶</span> 13:13</a></h2>
     <p>只在你手動觸發時才跑的自動化已經很好，但你不在就沒事發生。會在你開會、散步、睡覺時自己跑的系統，才是真正的槓桿。做法：審計自己的一天，找出被「可預測的事件」觸發的固定工作，每一個都能交給系統。代價是：把自己抽離迴路，風險就上升（沒人在旁邊抓錯），所以系統要夠 air-tight、夠 battle-tested。</p>
     <p>真正的核心判準，是分清什麼需要 AI agent、什麼只需要連 AI 都不用的簡單流程：</p>
 
@@ -130,7 +142,7 @@
       <figcaption>每個想自動化的任務先問：這真的需要 AI，還是一段零成本的簡單腳本就夠了</figcaption>
     </figure>
 
-    <h2 class="rise"><span class="hn">06</span>失業保險</h2>
+    <h2 class="rise" data-follow data-t="1000" data-label="06 · 失業保險"><span class="hn">06</span>失業保險<a class="tc" href="https://www.youtube.com/watch?v=3XIGcM7VICc&amp;t=1000s" data-t="1000"><span class="pl">▶</span> 16:40</a></h2>
     <p>不是真的買保險，是用 AI 建立多元收入流，讓單一雇主或客戶無法一刀把你解決掉。舊模型是一份工作一份收入；新模型是<span class="term" data-def="同時疊加多份收入來源（正職+副業），不是找五個不相干的兼職，而是同一專長包裝成不同形式。">job stacking</span>，因為 AI 讓一個人能做過去五人團隊的活。關鍵不是疊五條完全不同領域的收入流（那會 burnout），而是<b>一個熱情、多個分支</b>：同一個專長、同一個北極星，包裝成不同形式。要成功必須真的有熱情，為了「聽說很賺」去追會被看穿。實作上預設動作是把過程公開分享、記錄成敗，圍繞正在做的事建個小品牌；不愛公開也行，找自己的版本，安靜地做也可以。</p>
 
     <div class="pull rise">能站出來說「這裡其實不需要 AI」的人，比到處硬塞 AI 的人更突出。</div>
@@ -143,6 +155,7 @@
       <li><b>販賣機 vs 老虎機</b>：拿來審視你已經有的背景自動化系統（定時推播的摘要、訊息自動記錄與轉發、對話啟動時自動檢查提醒），也當新增功能前的守門人，先問「這真的需要 AI，還是一段簡單腳本就能做」。</li>
     </ul>
   </article>
+  </div><!-- /.vlayout -->
 
   <nav class="artnav">
     <a href="../category-ai.html">← 回 AI × Coding</a>
@@ -169,6 +182,7 @@
     <button data-nb="cancel">取消</button>
   </div>
 </div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
 <button id="panelBtn">重點 0</button>
 <aside id="panel">
   <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
@@ -180,5 +194,8 @@
 </aside>
 
 <script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
 </body>
 </html>

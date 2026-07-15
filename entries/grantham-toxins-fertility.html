@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
 <!-- pwa / 加到主畫面 -->
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
@@ -19,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="grantham-toxins-fertility">
+<body data-entry="grantham-toxins-fertility" data-video="32u5T6lO8qk" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -36,8 +37,19 @@
     <div class="src rise">Jeremy Grantham（傳奇價值投資人、GMO 共同創辦人）× The Diary Of A CEO · <a href="https://www.youtube.com/watch?v=32u5T6lO8qk" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
   </header>
 
-  <article class="readable">
-    <p class="lede">一位管理數百億資產的投資人，花訪談後半段的篇幅談的不是市場，是精子數與環境毒素。他的論點很硬：環境中的內分泌干擾物與微塑膠，可能是近幾十年生育力減退的重要成因，而美國在這類化學物質的法規上比歐盟寬鬆，暴露量也更高。</p>
+  <!-- 影片型 entry：影片在 .readable 外面（不進畫重點快照）。桌機「看影片」叫出置頂影片帶,手機走 YouTube 連結 -->
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=32u5T6lO8qk" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+    <article class="readable">
+    <p class="lede">一位管理數百億資產的投資人，花訪談後半段的篇幅談的不是市場，是精子數與環境毒素。他的論點很硬：環境中的內分泌干擾物與微塑膠，可能是近幾十年生育力減退的重要成因，而美國在這類化學物質的法規上比歐盟寬鬆，暴露量也更高。<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=4047s" data-t="4047"><span class="pl">▶</span> 67:27</a></p>
 
     <aside class="brief rise">
       <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
@@ -55,10 +67,10 @@
 
     <div class="callout rise"><div class="cl">這段夾雜爭議科學，當警訊看</div><p>多數數字來自節目引述單一研究，或未完整同儕檢驗的來源，例如「精子數 2045 年歸零」這類推估，是外推預測，爭議很大。當<b>警訊與方向</b>看，照它操作前值得自己查證，別當定論。真正歷久不變、可以直接用的，是最後「怎麼減少暴露」那段。</p></div>
 
-    <h2 class="rise"><span class="hn">01</span>精子數字在說什麼</h2>
+    <h2 class="rise" data-follow data-t="4288" data-label="01 · 精子數字在說什麼"><span class="hn">01</span>精子數字在說什麼<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=4288s" data-t="4288"><span class="pl">▶</span> 71:28</a></h2>
     <p>精子濃度：狩獵採集時代估計每毫升約 1.18 億隻，1970 年學術首測約 1 億，現在約 35，可輕鬆受孕的門檻約 45，15 到 20 年前跌破。現在約<b>17%</b>年輕夫妻需要協助懷孕，20 年前這個比例近乎零，下降率據稱在加速，約每年 2.5%。背景數字同樣驚人：飛行昆蟲生物量在 60 到 70 年間掉了 50 到 75%。</p>
 
-    <h2 class="rise"><span class="hn">02</span>元凶是什麼：內分泌干擾物與微塑膠</h2>
+    <h2 class="rise" data-follow data-t="4464" data-label="02 · 元凶：內分泌干擾物"><span class="hn">02</span>元凶是什麼：內分泌干擾物與微塑膠<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=4464s" data-t="4464"><span class="pl">▶</span> 74:24</a></h2>
     <p><span class="term" data-def="擾亂荷爾蒙運作、進而壓低生育力的化學物質，常見於日用品與食品包裝。">內分泌干擾物</span>是這條線索的核心：</p>
     <ul>
       <li><b>鄰苯二甲酸酯（phthalates）</b>：化妝品、洗髮精、食品包裝常見，會降低男性胎兒第一孕期的睪固酮。</li>
@@ -67,11 +79,11 @@
     </ul>
     <p>微塑膠已在人類胎盤、母乳、睪丸驗出，2024 年一項研究稱受測睪丸組織全數都有檢出。其他常見暴露源還包括熱（車椅加熱、筆電放腿上）、肥胖與抽菸。</p>
 
-    <h2 class="rise"><span class="hn">03</span>飲食與農藥的證據</h2>
+    <h2 class="rise" data-follow data-t="4602" data-label="03 · 飲食與農藥"><span class="hn">03</span>飲食與農藥的證據<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=4602s" data-t="4602"><span class="pl">▶</span> 76:42</a></h2>
     <p>哈佛與麻省總醫院的研究值得記住：男性研究裡，自報吃最少「dirty dozen」農藥殘留農產品的一組，跟吃最多的一組相比，精子數差了兩倍；女性研究裡，飲食最乾淨的一組活產率 68%，最差的一組只有 38%，這是不孕門診族群的數據。農藥是長進莓果結構裡的，洗不掉，而胎兒比成人脆弱 100 到 1,000 倍，子宮內 270 天比出生後前 1,000 天更關鍵。</p>
     <p>被稱為「化學閹割劑」的<span class="term" data-def="美國第二大除草劑，在低於安全值的濃度就能讓部分雄性青蛙轉變為可產卵的雌性。">atrazine</span>是美國第二大除草劑，在低於安全值的濃度就把一成雄蛙變成可產卵的雌蛙，人類研究則連結它與精子活動力、睪固酮下降；歐盟 20 多年前就已禁用。</p>
 
-    <h2 class="rise"><span class="hn">04</span>為什麼美國產品更毒：法規落差</h2>
+    <h2 class="rise" data-follow data-t="4974" data-label="04 · 美國產品為何更毒"><span class="hn">04</span>為什麼美國產品更毒：法規落差<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=4974s" data-t="4974"><span class="pl">▶</span> 82:54</a></h2>
     <p>Grantham 的判斷很直接：毒性是地區性的，哪個國家管得嚴，人就活得久。</p>
 
     <figure class="figure rise">
@@ -104,7 +116,7 @@
 
     <div class="pull rise">哪國管得好，就活得久。</div>
 
-    <h2 class="rise"><span class="hn">05</span>怎麼減少暴露：可操作的部分</h2>
+    <h2 class="rise" data-follow data-t="5250" data-label="05 · 怎麼減少暴露"><span class="hn">05</span>怎麼減少暴露：可操作的部分<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=5250s" data-t="5250"><span class="pl">▶</span> 87:30</a></h2>
     <p>掃描 app 能查成分毒性：Yuka、EWG Healthy Living（環境工作組，科學金標準）、Think Dirty（美妝）、Clear Ya（線上購物瀏覽器外掛）。掃條碼給評分，也可以直接拍照問 AI。</p>
     <div class="callout rise"><div class="cl">最高槓桿：兩件事，麻煩少一半</div><p>孕婦九個月不用化妝品，加上優先買有機的「dirty dozen」農產品（莓果、蘋果、桃、菠菜等農藥殘留較高的品項）。接著可以再逐項換：瓦斯爐、黑色塑膠、不沾鍋（Teflon 塗層）。影響是跨代的，至少證實到兩代，可能更多，因為女性的卵子在子宮裡就已經全部形成了。</p></div>
 
@@ -114,7 +126,8 @@
       <li><b>耐力訓練</b>：夏天久坐悶熱加上補給用塑膠瓶，是訓練情境裡常被忽略的小暴露點；但訓練量夠大時，蛋白質與熱量攝取足夠遠比微塑膠焦慮重要，當作背景意識就好，別過度緊張。</li>
       <li><b>生活裡最高槓桿</b>：不是全面戒毒，是先做兩件最省力的事，備孕或孕期避免用化妝品、買「dirty dozen」類農產品的有機版本。</li>
     </ul>
-  </article>
+    </article>
+  </div><!-- /.vlayout -->
 
   <nav class="artnav">
     <a href="../category-bodymind.html">← 回 身心 · 關係</a>
@@ -140,6 +153,7 @@
     <button data-nb="cancel">取消</button>
   </div>
 </div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
 <button id="panelBtn">重點 0</button>
 <aside id="panel">
   <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
@@ -151,5 +165,8 @@
 </aside>
 
 <script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
 </body>
 </html>

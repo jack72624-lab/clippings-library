@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
 <!-- pwa / 加到主畫面 -->
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
@@ -19,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="simon-squibb-startup">
+<body data-entry="simon-squibb-startup" data-video="9VlvbpXwLJs" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -36,8 +37,18 @@
     <div class="src rise">Simon Squibb（連續創業者）· <a href="https://www.youtube.com/watch?v=9VlvbpXwLJs" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
   </header>
 
-  <article class="readable">
-    <p class="lede">Simon Squibb 把 30 年創業經驗濃縮成一套從 0 到 exit 的心法，中心主張反直覺：成功不是靠原創點子或市場缺口，而是把事業對齊你的熱情與使命，再用延遲享受、真誠品牌、把員工與客戶當人這幾件事撐起來。</p>
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=9VlvbpXwLJs" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+    <article class="readable">
+    <p class="lede">Simon Squibb 把 30 年創業經驗濃縮成一套從 0 到 exit 的心法，中心主張反直覺：成功不是靠原創點子或市場缺口，而是把事業對齊你的熱情與使命，再用延遲享受、真誠品牌、把員工與客戶當人這幾件事撐起來。<a class="tc" href="https://www.youtube.com/watch?v=9VlvbpXwLJs&amp;t=177s" data-t="177"><span class="pl">▶</span> 2:57</a></p>
 
     <aside class="brief rise">
       <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
@@ -53,10 +64,10 @@
 
     <p class="first">大多數人以為創業要先有一個原創點子、或找到一塊市場缺口。Simon Squibb 30 年的結論剛好相反：先寫下你愛的事跟討厭的事，事業圍著「愛」建，「恨」的外包掉。你要問的不是「我想當什麼」，是「我想解決什麼問題」，問題本身就會定義出事業的使命。使命清楚了，員工會自己驅動自己，不需要你去管人。</p>
 
-    <h2 class="rise"><span class="hn">01</span>起步：不要等完美，先用服務制生現金</h2>
+    <h2 class="rise" data-follow data-t="685" data-label="01 · 起步不等待"><span class="hn">01</span>起步：不要等完美，先用服務制生現金<a class="tc" href="https://www.youtube.com/watch?v=9VlvbpXwLJs&amp;t=685s" data-t="685"><span class="pl">▶</span> 11:25</a></h2>
     <p>先用服務制或預售（眾籌就是一種預售）生出現金，不要等投資人進來才開始執行。執行從小處開始就好：一個 podcast、一篇 blog、一個社群帳號，不必等到產品完美才動手。</p>
 
-    <h2 class="rise"><span class="hn">02</span>規劃：用 mind map，不用商業計畫書</h2>
+    <h2 class="rise" data-follow data-t="1244" data-label="02 · Mind Map取代計畫書"><span class="hn">02</span>規劃：用 mind map，不用商業計畫書<a class="tc" href="https://www.youtube.com/watch?v=9VlvbpXwLJs&amp;t=1244s" data-t="1244"><span class="pl">▶</span> 20:44</a></h2>
     <p>線性的 20 頁商業計畫書太僵，寫死了路線，反而會把公司逼上死路。他改畫 mind map：中心放你的興趣或嗜好，往外長出收入流、團隊結構、未來可能性（周邊商品、App）。好處是分支之間能隨時連點、隨市場轉向，不必推翻整份計畫。</p>
 
     <figure class="figure rise">
@@ -87,11 +98,11 @@
       <figcaption>他用 mind map 取代商業計畫書，中心永遠是你真正在乎的事</figcaption>
     </figure>
 
-    <h2 class="rise"><span class="hn">03</span>贏的策略：延遲享受 + 駭進運氣</h2>
+    <h2 class="rise" data-follow data-t="1695" data-label="03 · 贏的策略"><span class="hn">03</span>贏的策略：延遲享受 + 駭進運氣<a class="tc" href="https://www.youtube.com/watch?v=9VlvbpXwLJs&amp;t=1695s" data-t="1695"><span class="pl">▶</span> 28:15</a></h2>
     <p><b>「文化會把策略當早餐吃掉」</b>：延遲享受加上價值導向的文化，比任何策略文件都管用。他認為運氣是可以被「駭」進來的，靠三件事：持續力（熬過對手）、清楚知道「成功對你長什麼樣」（例如時間自由）、敢往恐懼裡靠冒險。</p>
     <p>他把這個叫做<b>D 學生優勢</b>：A 學生從小被訓練成怕失敗，D 學生習慣了輸，反而敢冒成長真正需要的險。擁抱失敗，說到底就是學會怎麼輸。</p>
 
-    <h2 class="rise"><span class="hn">04</span>團隊：股權要真給，該砍就砍</h2>
+    <h2 class="rise" data-follow data-t="2074" data-label="04 · 團隊與股權"><span class="hn">04</span>團隊：股權要真給，該砍就砍<a class="tc" href="https://www.youtube.com/watch?v=9VlvbpXwLJs&amp;t=2074s" data-t="2074"><span class="pl">▶</span> 34:34</a></h2>
     <ul>
       <li><b>共同創辦人</b>：找互補技能、同道德觀的人；用股東協議處理決策僵局，而不是靠不對等股權去解決。</li>
       <li><b>招募</b>：為使命對齊而招，用社群媒體驗證候選人平常的生活是否真的反映他宣稱的價值觀。</li>
@@ -99,7 +110,7 @@
       <li><b>開除：「7 和 8 法則」</b>，砍掉那些「差一點點好」的人，他們會擋住真正的 9 和 10 留下來。</li>
     </ul>
 
-    <h2 class="rise"><span class="hn">05</span>銷售：先建信任，成交只是自然結果</h2>
+    <h2 class="rise" data-follow data-t="2427" data-label="05 · 銷售三步"><span class="hn">05</span>銷售：先建信任，成交只是自然結果<a class="tc" href="https://www.youtube.com/watch?v=9VlvbpXwLJs&amp;t=2427s" data-t="2427"><span class="pl">▶</span> 40:27</a></h2>
     <p>他把銷售拆成三步：<span class="term" data-def="Need：先研究客戶，確認產品真的解決他的具體問題，不是先講你的產品多好。">Need（需求）</span> → <span class="term" data-def="Likability：跟對方建立真人連結，讓他信任你這個人，不只是信任產品。">Likability（好感）</span> → <span class="term" data-def="前兩步做足了，成交會是自然結果，不需要硬推銷。">Deal（成交）</span>。他也提醒：客戶跟媒體買的其實是<span class="term" data-def="Sizzle：產品帶來的情緒與體驗感受，不是規格本身。牛排煎的滋滋聲，不是牛排本身。">sizzle</span>，不是規格表，賣的是「game-changing 的感覺與情緒結果」，不是技術細節。</p>
 
     <figure class="figure rise">
@@ -131,7 +142,7 @@
 
     <p>行銷面，他喜歡找一個獨特的 hook 去<span class="term" data-def="Newsjack：蹭當下正在發生的新聞熱點，借勢換取媒體曝光。">newsjack</span> 當下的新聞熱點（他舉過買下倫敦一座樓梯的例子），換來大量免費 PR，再把這個 hook 演化成長期服務。長線經營則靠系統，每月給高價值潛在客戶帶著價值的接觸（研究、節日卡），而不是每次都要求成交；他也會主動幫記者把故事做完，高解析照片加上按對方興趣寫好的敘事，提高被報導的機率。</p>
 
-    <h2 class="rise"><span class="hn">06</span>財務與 Exit：ask for advice, get money</h2>
+    <h2 class="rise" data-follow data-t="4048" data-label="06 · 財務與 Exit"><span class="hn">06</span>財務與 Exit：ask for advice, get money<a class="tc" href="https://www.youtube.com/watch?v=9VlvbpXwLJs&amp;t=4048s" data-t="4048"><span class="pl">▶</span> 67:28</a></h2>
     <p>找投資的心法是<b>「求建議，拿到錢」</b>：不要問對方「你願意當我的 mentor 嗎」，改問具體問題、或先給對方價值，把邀請重新包裝成「加入顧問董事會」（附帶股權）。資金來源有層次：家人、朋友、天使、VC，眾籌本質上就是一種預售。</p>
     <p>Exit 的核心反直覺：<b>建的是品牌，不是生意。</b>最強的談判位置是「不想賣」，反而會招來最高出價。他的原話是：<span class="term" data-def="原話：Don't build a business to sell it... build a business you love, and selling it will accidentally happen.">「別為了賣掉而建事業，建一個你愛的事業，賣掉這件事會意外地發生。」</span></p>
 
@@ -144,6 +155,7 @@
       <li><b>興趣衍生的副業組合</b>：延續「一個熱情多分支」的思路，把喜歡的事情往外長出收入流，而不是硬找一個「全新的點子」。</li>
     </ul>
   </article>
+  </div><!-- /.vlayout -->
 
   <nav class="artnav">
     <a href="../category-business.html">← 回 商業創業</a>
@@ -169,6 +181,7 @@
     <button data-nb="cancel">取消</button>
   </div>
 </div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
 <button id="panelBtn">重點 0</button>
 <aside id="panel">
   <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
@@ -180,5 +193,8 @@
 </aside>
 
 <script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
 </body>
 </html>

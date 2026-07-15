@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
 <!-- pwa / 加到主畫面 -->
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
@@ -19,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="grantham-market-ai-bubble">
+<body data-entry="grantham-market-ai-bubble" data-video="32u5T6lO8qk" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -36,8 +37,19 @@
     <div class="src rise">The Diary Of A CEO × Jeremy Grantham（GMO 共同創辦人，準確預測過 dot-com 與 2007 房市崩盤，管理過峰值 $165B）· <a href="https://www.youtube.com/watch?v=32u5T6lO8qk" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
   </header>
 
-  <article class="readable">
-    <p class="lede">Jeremy Grantham 準確叫過 dot-com 崩盤與 2007 房市，管理過峰值 $165B 資產。這篇訪談他認為現在是美股史上最大泡沫，但比他的崩盤預測更值得記住的，是他解釋了「為什麼幾乎沒有人會在崩盤前提醒你」，那是一套誘因結構問題，不是陰謀論。</p>
+  <!-- 影片型 entry：影片在 .readable 外面（不進畫重點快照）。桌機「看影片」叫出置頂影片帶,手機走 YouTube 連結 -->
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=32u5T6lO8qk" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+    <article class="readable">
+    <p class="lede">Jeremy Grantham 準確叫過 dot-com 崩盤與 2007 房市，管理過峰值 $165B 資產。這篇訪談他認為現在是美股史上最大泡沫，但比他的崩盤預測更值得記住的，是他解釋了「為什麼幾乎沒有人會在崩盤前提醒你」，那是一套誘因結構問題，不是陰謀論。<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=174s" data-t="174"><span class="pl">▶</span> 2:54</a></p>
 
     <aside class="brief rise">
       <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
@@ -53,7 +65,7 @@
 
     <p class="first">1999 年 Amazon 的股價漲了六到七倍，隨後崩盤跌掉 92%。點子是真的，網路後來確實接收了整個零售業，但股價照樣先崩過一輪。Grantham 說，這就是泡沫的標準劇本：不是有人在騙你，是一個真正重要的點子，被所有人同時看見、同時衝進去，衝過了頭。</p>
 
-    <h2 class="rise"><span class="hn">01</span>泡沫怎麼吹起來的</h2>
+    <h2 class="rise" data-follow data-t="174" data-label="01 · 泡沫怎麼吹起來的"><span class="hn">01</span>泡沫怎麼吹起來的<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=174s" data-t="174"><span class="pl">▶</span> 2:54</a></h2>
     <p>他把泡沫拆成一套機制，不是單一事件。股價本質上是心理，是「你覺得下一個人願意付多少」；上漲會吸引買盤，錢好借的時候，這股動能就會被吹成泡沫。凱因斯的說法是：市場是一座 behavioral jungle，行為的叢林，理性只是其中一個角色。</p>
     <p>驅動泡沫的核心錯誤是<span class="term" data-def="extrapolation，把今天的市場條件直接延伸到未來的推論方式：景氣差就用低本益比乘壓縮的獲利，景氣好就用高本益比乘高峰獲利，兩頭都會放大誤差。">外推</span>：景氣差的時候，市場用低本益比乘上被壓縮的獲利，把未來看得比實際更慘；景氣好的時候，又用高本益比乘上高峰的獲利，把未來看得比實際更美。兩頭都在放大誤差，泡沫就是這套錯誤被推到極限的樣子。</p>
 
@@ -87,7 +99,7 @@
 
     <p>他認為現在正處於美股史上最大的泡沫（本益比約 35 到 40 倍；日本 1989 年到過 65 倍，崩盤後花了 20 到 35 年才回本）。AI 與高飛股可能跌 70%，Nasdaq 2000 年跌過 82%，1970 年代的 Nifty 50（美股 50 檔藍籌股泡沫）通膨調整後跌了 65%。他也提醒一般人的體感：高飛股公司裁員，大家覺得變窮，就少消費，財富效應反轉，經濟開始承壓，大崩盤後常跟著一段難熬期。</p>
 
-    <h2 class="rise"><span class="hn">02</span>為什麼沒人會告訴你該出場</h2>
+    <h2 class="rise" data-follow data-t="1213" data-label="02 · 沒人告訴你該出場"><span class="hn">02</span>為什麼沒人會告訴你該出場<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=1213s" data-t="1213"><span class="pl">▶</span> 20:13</a></h2>
     <p>這是整篇最實用的一段。從 1929 年起，大型投資機構幾乎沒有叫過客戶「出場、太貴了」，因為那是壞生意：對抗泡沫，會流失大量客戶。更關鍵的是，<b>擇時的不確定性永遠大於客戶的耐心</b>：你如果喊得早，市場還在漲，客戶就會把你開除。Grantham 自己在 1998 到 1999 年早了 2.25 年，因此丟掉一半客戶。</p>
     <p>他在一場 1200 人的分析師年會上做過一個現場實驗，把私下的判斷和對外的說法對照著問。</p>
 
@@ -121,13 +133,13 @@
 
     <div class="callout rise"><div class="cl">一句話帶走</div><p>凱因斯說「絕不獨自看錯」，這是機構喊不出轉折的原因：跟大家一起跳崖不會被開除，獨自做對但早了會被開除。所以大企業幾乎抓不到大轉折點，自己看數據，沒有救兵會來。</p></div>
 
-    <h2 class="rise"><span class="hn">03</span>AI 到底是不是下一個</h2>
+    <h2 class="rise" data-follow data-t="2181" data-label="03 · AI是不是下一個"><span class="hn">03</span>AI 到底是不是下一個<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=2181s" data-t="2181"><span class="pl">▶</span> 36:21</a></h2>
     <p>他對 AI 的態度是「完全沒共識」：連 Nobel 得主都激烈對立，AI 要嘛讓大家躺著爽，要嘛哪天意外或故意把人類清掉。支持樂觀那一派常舉的例子是「母親對嬰兒」，更高的智能對更低的智能保持善意，但 Grantham 存疑，有些父母也不友善，而且「善意」這個定義本身就很主觀，難以內建進系統裡。</p>
     <div class="pull rise">「更高的智能，何時對更低的智能持續友善過？」</div>
     <p>他舉了經典的<span class="term" data-def="AI 對齊思想實驗：一個過度字面化執行「盡量做迴紋針」指令的 AI，可能把所有能取得的金屬都拿去做迴紋針，代表善意但模糊的指令可能釀成意外災難。">paperclip 問題</span>：一句「盡量做迴紋針」的指令，若被過度字面化執行，AI 可能把所有能取得的金屬，包含建築物，都拿去做成迴紋針。善意但模糊的指令，拉長時間看，出事機率幾乎必然。</p>
     <p>另一個他點出的結構性風險是 Mag 7 之間的混戰：以前七家公司各據一方，Tesla 做電動車、Apple 做手機、Microsoft 做軟體、Meta 做社群、Google 做搜尋、Nvidia 做晶片，現在全部擠進同一個戰場 AI，資本支出互尬到 $200B 對 $105B，只會有一個贏家，獨占的好日子沒了。他也提到 SpaceX：90% 的價值是 AI 論述撐起來的，多半達不到招股書的承諾，要跌到現在五到十分之一才會考慮買。至於工作衝擊，人形機器人已經能在產線連做七到八天贏過真人，不用睡、不用上廁所，因為智能現在只要幾分錢，顯著的工作衝擊很可能發生。</p>
 
-    <h2 class="rise"><span class="hn">04</span>他給一般人的配置建議，是時效性 call</h2>
+    <h2 class="rise" data-follow data-t="2182" data-label="04 · 配置建議"><span class="hn">04</span>他給一般人的配置建議，是時效性 call<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=2182s" data-t="2182"><span class="pl">▶</span> 36:22</a></h2>
     <p>這一段是他 2026 年 6 月當下的個人判斷，不是永久真理，具體數字會過期，durable 的是上面兩段的框架：</p>
     <ul>
       <li><b>永遠分散</b>：債券、現金、少量貴金屬，別把身家壓在單一資產類別上。</li>
@@ -137,7 +149,7 @@
       <li><b>crypto 他直接不碰</b>：認為只利於隱匿金流，波動太大不是 store of value，也不好當交易媒介。</li>
     </ul>
 
-    <h2 class="rise"><span class="hn">05</span>社會契約與不平等，宏觀背景</h2>
+    <h2 class="rise" data-follow data-t="2183" data-label="05 · 社會契約與不平等"><span class="hn">05</span>社會契約與不平等，宏觀背景<a class="tc" href="https://www.youtube.com/watch?v=32u5T6lO8qk&amp;t=2183s" data-t="2183"><span class="pl">▶</span> 36:23</a></h2>
     <p>他也談到文明複雜度鬆脫的訊號，例如英國叫救護車的時間從 12.5 分鐘變成 90 分鐘。他用<span class="term" data-def="衡量所得分配不均的指標，0 代表完全平均，1 代表完全集中在一人手上。">Gini 係數</span>指出美國的不平等已經接近巴西與墨西哥，1975 年之後財富幾乎全部流向最頂端的一小群人；歷史上極端不平等很少靠溫和政策解決，多半靠戰爭或蕭條這類災難才被重置。他把「產婦死亡率」當成文明的單一最佳指標，美國在富裕國家裡表現最糟，讀成是社會契約與醫療體系不平等的證據。</p>
 
     <div class="pull rise">泡沫繞著最大的真點子形成；沒人會在崩盤前提醒你，你只能自己盯數據。</div>
@@ -148,7 +160,8 @@
       <li><b>別把今天的贏家外推到未來</b>：加碼漲多、資本支出燒最兇的那一類標的之前，先停一下，問自己是不是正在做「外推」這個動作。</li>
       <li><b>自己盯數據，別等有人提醒你</b>：機構的誘因結構決定它不會叫你出場，你的投資追蹤系統或儀表板該盯的是估值極端（市值對 GDP、本益比）、你自己的集中度、有沒有在外推，而不是等外部訊號或名嘴喊崩盤。</li>
     </ul>
-  </article>
+    </article>
+  </div><!-- /.vlayout -->
 
   <nav class="artnav">
     <a href="../category-investing.html">← 回 投資</a>
@@ -174,6 +187,7 @@
     <button data-nb="cancel">取消</button>
   </div>
 </div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
 <button id="panelBtn">重點 0</button>
 <aside id="panel">
   <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
@@ -185,5 +199,8 @@
 </aside>
 
 <script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
 </body>
 </html>

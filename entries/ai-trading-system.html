@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
 <!-- pwa / 加到主畫面 -->
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
@@ -19,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="ai-trading-system">
+<body data-entry="ai-trading-system" data-video="1SPxiko-NbU" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -36,8 +37,19 @@
     <div class="src rise">追日Gucci · <a href="https://www.youtube.com/watch?v=1SPxiko-NbU" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
   </header>
 
+  <!-- 影片型 entry：影片在 .readable 外面（不進畫重點快照）。桌機「看影片」叫出置頂影片帶,手機走 YouTube 連結 -->
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=1SPxiko-NbU" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
   <article class="readable">
-    <p class="lede">多數人以為自動化交易系統是機構專利，得會寫程式才碰得到。這篇示範反過來：用自然語言在 Claude Code 上，一路做出散戶版的監控與交易系統。真正值錢的不是抄到哪個訊號，是有能力把任何一個網路上看到的策略，自己拿去回測驗證。</p>
+    <p class="lede">多數人以為自動化交易系統是機構專利，得會寫程式才碰得到。這篇示範反過來：用自然語言在 Claude Code 上，一路做出散戶版的監控與交易系統。真正值錢的不是抄到哪個訊號，是有能力把任何一個網路上看到的策略，自己拿去回測驗證。<a class="tc" href="https://www.youtube.com/watch?v=1SPxiko-NbU&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></p>
 
     <aside class="brief rise">
       <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
@@ -53,7 +65,7 @@
 
     <p class="first">機構跟散戶的差距，很少是「誰比較聰明」，多半是「誰有量化團隊」「誰有紀律」「誰有時間盯盤」。這篇的示範是把這三道鴻溝，用自然語言在 Claude Code 上一項一項補起來，接上 Alpaca 這種提供模擬帳戶的自動化券商 API，全程不用寫一行程式。</p>
 
-    <h2 class="rise"><span class="hn">01</span>散戶輸機構的三道鴻溝，AI 怎麼補</h2>
+    <h2 class="rise" data-follow data-t="0" data-label="01 · 三道鴻溝"><span class="hn">01</span>散戶輸機構的三道鴻溝，AI 怎麼補<a class="tc" href="https://www.youtube.com/watch?v=1SPxiko-NbU&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></h2>
     <p>差距具體拆開是這三塊：機構有量化團隊跑資料管線；散戶容易情緒化，追高殺低；機構有人力專職盯盤，散戶沒有。</p>
 
     <figure class="figure rise">
@@ -97,7 +109,7 @@
       <figcaption>AI 沒有幫散戶開外掛，是把機構原本就有的三樣東西補回來</figcaption>
     </figure>
 
-    <h2 class="rise"><span class="hn">02</span>四層難度：從查報價到選擇權雷達</h2>
+    <h2 class="rise" data-follow data-t="190" data-label="02 · 四層難度"><span class="hn">02</span>四層難度：從查報價到選擇權雷達<a class="tc" href="https://www.youtube.com/watch?v=1SPxiko-NbU&amp;t=190s" data-t="190"><span class="pl">▶</span> 3:10</a></h2>
     <p>整套示範分四個層級，難度遞增，不必全上，各層可以獨立使用。</p>
 
     <figure class="figure rise">
@@ -136,15 +148,15 @@
 
     <p>Level 4 的選擇權雷達技術難度最高，牽涉<span class="term" data-def="部位對標的股價短期漲跌不敏感的組合方式，靠時間價值與波動率變化賺錢，不賭方向。">delta-neutral</span>（部位對股價短期漲跌不敏感）這類複雜金融工具，例如財報後用 Iron Condor（同時賣 Call、買 Call、賣 Put、買 Put）收權利金。即使不交易選擇權，光是意識到「財報是已知排程的波動」，這件事本身就有用，可以用來規劃財報前後要不要調整部位。</p>
 
-    <h2 class="rise"><span class="hn">03</span>技術棧：全部是拿現成工具接起來</h2>
+    <h2 class="rise" data-follow data-t="424" data-label="03 · 技術棧"><span class="hn">03</span>技術棧：全部是拿現成工具接起來<a class="tc" href="https://www.youtube.com/watch?v=1SPxiko-NbU&amp;t=424s" data-t="424"><span class="pl">▶</span> 7:04</a></h2>
     <p>整套系統沒有自己造輪子：Claude Code 負責邏輯與任務自動化，Alpaca 負責自動化券商 API（可先跑模擬帳戶），Telegram bot 負責即時推播，Yahoo Finance API 補上券商 API 沒有的資料（例如選擇權未平倉量），Claude Code 內建的排程負責每 15 到 30 分鐘掃一次。全程用自然語言下指令，不用自己寫程式串接。</p>
 
     <div class="callout rise"><div class="cl">不構成投資建議</div><p>影片本身不構成任何投資訊號，只當知識與工具記錄；涉及真實下單前務必先 paper trading，用虛擬資金模擬下單，不涉真錢。</p></div>
 
-    <h2 class="rise"><span class="hn">04</span>核心價值：不是訊號，是驗證能力</h2>
+    <h2 class="rise" data-follow data-t="1990" data-label="04 · 核心價值"><span class="hn">04</span>核心價值：不是訊號，是驗證能力<a class="tc" href="https://www.youtube.com/watch?v=1SPxiko-NbU&amp;t=1990s" data-t="1990"><span class="pl">▶</span> 33:10</a></h2>
     <p>這篇最值得記住的一句話是：任何網路上看到的策略，你都能自己回測驗證，人人是自己的分析師。多數人接觸投資資訊的方式是被動接收，看到一個名嘴喊多喊空就照做；這套做法反過來，把「這個策略到底有沒有用」變成一個可以自己動手檢驗的問題，而不是只能相信或不相信。</p>
 
-    <h2 class="rise"><span class="hn">05</span>接到你自己的場景</h2>
+    <h2 class="rise" data-follow data-t="3311" data-label="05 · 接回你的場景"><span class="hn">05</span>接到你自己的場景<a class="tc" href="https://www.youtube.com/watch?v=1SPxiko-NbU&amp;t=3311s" data-t="3311"><span class="pl">▶</span> 55:11</a></h2>
     <p>這篇「自然語言 → 資料源 → 排程掃描 → 推播到手機」的做法，很多人已經走到一半：如果你已經有一套會盯盤、抓觸價或財報時間、每天定時推播提醒的追蹤系統，那正是本文 Level 2 到 3「監控＋紀律＋便利」的非交易版實作，只是還沒接自動下單。這個差別可以是刻意的，追蹤與決策支援跟自動真實下單是不同風險等級的事，先做前者、晚一點再考慮後者是合理的順序。跟單訊號（Form 4、國會交易）如果你的系統還沒做，是個可選的下一步，但要注意這偏美股導向，台股覆蓋很少，得另外評估數據來源。</p>
 
     <h2 class="rise"><span class="hn">—</span>怎麼把它用在你身上</h2>
@@ -155,6 +167,7 @@
       <li><b>推播接你已經在用的管道</b>：不用重新架設，Telegram 或你既有的通知管道，只要能收到條件觸發的推播，就已經是本文 Level 2 到 3 的核心。</li>
     </ul>
   </article>
+  </div><!-- /.vlayout -->
 
   <nav class="artnav">
     <a href="../category-investing.html">← 回 投資</a>
@@ -180,6 +193,7 @@
     <button data-nb="cancel">取消</button>
   </div>
 </div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
 <button id="panelBtn">重點 0</button>
 <aside id="panel">
   <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
@@ -191,5 +205,8 @@
 </aside>
 
 <script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
 </body>
 </html>

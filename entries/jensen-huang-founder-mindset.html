@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
 <!-- pwa / 加到主畫面 -->
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
@@ -19,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="jensen-huang-founder-mindset">
+<body data-entry="jensen-huang-founder-mindset" data-video="lRz9h75kDqc" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -36,8 +37,18 @@
     <div class="src rise">黃仁勳（Nvidia 創辦人）· <a href="https://www.youtube.com/watch?v=lRz9h75kDqc" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
   </header>
 
-  <article class="readable">
-    <p class="lede">黃仁勳一場畢業演說，主軸不是策略，是心態：偉大不是智力的產物，是品格的產物，而品格是痛苦鍛造出來的。</p>
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=lRz9h75kDqc" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+    <article class="readable">
+    <p class="lede">黃仁勳一場畢業演說，主軸不是策略，是心態：偉大不是智力的產物，是品格的產物，而品格是痛苦鍛造出來的。<a class="tc" href="https://www.youtube.com/watch?v=lRz9h75kDqc&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></p>
 
     <aside class="brief rise">
       <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
@@ -53,10 +64,10 @@
 
     <p class="first">黃仁勳被問到自己最強的能力是什麼，智力不是他給的第一個答案。他說能承受痛苦與磨難才是他的超能力：<span class="term" data-def="原話：My ability to endure pain and suffering ... I consider to be my superpowers.">「我承受痛苦與磨難的能力，我認為那才是我的超能力」</span>。他吃過的苦，比大多數創業者想像的都多，而正是那些苦，把他磨成現在這個人。</p>
 
-    <h2 class="rise"><span class="hn">01</span>偉大不是智力的產物</h2>
+    <h2 class="rise"><span class="hn">01</span>偉大不是智力的產物<a class="tc" href="https://www.youtube.com/watch?v=lRz9h75kDqc&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></h2>
     <p>他對後輩的祝福不是「祝你順利」，是<span class="term" data-def="原話：I wish upon you plenty of plain suffering.">「祝你吃夠普通的苦」</span>。苦本身是養分，不是要避開的東西：<b>「偉大來自品格，而品格不是聰明人形成的，是吃過苦的人形成的。」</b>換句話說，他把「聰明」從創業成功的第一因去掉，換成了「你熬得過什麼」。</p>
 
-    <h2 class="rise"><span class="hn">02</span>韌性其實是一套反直覺算法</h2>
+    <h2 class="rise"><span class="hn">02</span>韌性其實是一套反直覺算法<a class="tc" href="https://www.youtube.com/watch?v=lRz9h75kDqc&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></h2>
     <p>他把「撐得住」拆解成一個反直覺的規律：<b>期望值愈高的人，韌性反而愈低</b>。撐得住不是天賦好，是一開始就不覺得理所當然。他形容建立一家事業，比預期難一百萬倍；能推得動，是因為不斷告訴自己「這沒那麼難」。</p>
     <p>這變成一個可以直接拿來用的反向操作：遇到新工具、新客戶要求、新難題，先問<b>「這能有多難？」</b>把它想小，而不是先估算它有多重。門檻降低了，人才會動起來。</p>
 
@@ -88,18 +99,18 @@
       <figcaption>期望值愈高，韌性愈低；他刻意把期望值調低，換取韌性</figcaption>
     </figure>
 
-    <h2 class="rise"><span class="hn">03</span>失敗是學習時刻，不是成功的對立面</h2>
+    <h2 class="rise"><span class="hn">03</span>失敗是學習時刻，不是成功的對立面<a class="tc" href="https://www.youtube.com/watch?v=lRz9h75kDqc&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></h2>
     <p><b>「永遠別把失敗看成成功的對立面，每一次失敗都只是一個學習的時刻、一個謙遜的時刻、一個品格增強的時刻。」</b>Nvidia 早年曾經走錯產品方向，一度差點破產。解法不是硬撐，而是謙卑求援：黃仁勳直接向對方公司的執行長坦白哪裡走錯、開口要幫助，對方因此出手保住了公司。求援不等於示弱。</p>
 
-    <h2 class="rise"><span class="hn">04</span>工作是一生的志業，不是餬口</h2>
+    <h2 class="rise"><span class="hn">04</span>工作是一生的志業，不是餬口<a class="tc" href="https://www.youtube.com/watch?v=lRz9h75kDqc&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></h2>
     <p><b>「不要把它想成是為了餬口而工作，把它想成是你這輩子要做的事。」</b>他當過洗碗工，所以說：沒有任何任務因此變得不重要。他也坦承自己不是每天都快樂，但深愛他的公司：今天不享受，不代表走錯了路。</p>
 
     <div class="pull rise">今天不享受，不代表走錯了路。</div>
 
-    <h2 class="rise"><span class="hn">05</span>AI 時代：用跑的</h2>
+    <h2 class="rise"><span class="hn">05</span>AI 時代：用跑的<a class="tc" href="https://www.youtube.com/watch?v=lRz9h75kDqc&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></h2>
     <p>他對 AI 時代的判斷很直接：<b>「你不會因為 AI 而丟掉工作，你會因為別人用了 AI 而丟掉工作。」</b>他的建議是「用跑的，不要用走的：你不是在為食物奔跑，就是在逃離變成食物，不管哪一種，都給我跑。」全力奔跑，不要觀望。</p>
 
-    <h2 class="rise"><span class="hn">06</span>谷底時怎麼辦：gut check 三步驟</h2>
+    <h2 class="rise"><span class="hn">06</span>谷底時怎麼辦：gut check 三步驟<a class="tc" href="https://www.youtube.com/watch?v=lRz9h75kDqc&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></h2>
     <p>2008 年公司股價暴跌八成時，他靠的不是現成的知識，而是一套自己摸出來的流程。他把它稱為<span class="term" data-def="直覺檢查：停下來問自己，支撐這件事的核心信念有沒有變，不是重新規劃或重新懷疑。">直覺檢查（gut check）</span>，谷底時不是逃、也不是重新決策，而是回去確認你原本相信的事還在不在；還在，就繼續做下去。</p>
 
     <figure class="figure rise">
@@ -140,6 +151,7 @@
       <li><b>訓練同理</b>：三鐵的痛苦不是要避開的副作用，是把韌性練出來的同一個機制。</li>
     </ul>
   </article>
+  </div><!-- /.vlayout -->
 
   <nav class="artnav">
     <a href="../category-business.html">← 回 商業創業</a>
@@ -165,6 +177,7 @@
     <button data-nb="cancel">取消</button>
   </div>
 </div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
 <button id="panelBtn">重點 0</button>
 <aside id="panel">
   <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
@@ -176,5 +189,8 @@
 </aside>
 
 <script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
 </body>
 </html>

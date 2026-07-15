@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
 <!-- pwa / 加到主畫面 -->
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
@@ -19,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="lennox-human-value-ai">
+<body data-entry="lennox-human-value-ai" data-video="dLrvJeSugkM" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -36,8 +37,18 @@
     <div class="src rise">John Lennox（牛津數學榮譽教授、護教學者）× The Diary Of A CEO · <a href="https://www.youtube.com/watch?v=dLrvJeSugkM" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
   </header>
 
-  <article class="readable">
-    <p class="lede">AI 能模擬 intelligence（辨識、生成、對答如流），卻沒人知道意識究竟是什麼，更遑論複製。當輸出一模一樣時，過程還重不重要？這場訪談把這題逼到牛津數學家 John Lennox 也閃避不了的角落。</p>
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=dLrvJeSugkM" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+    <article class="readable">
+      <p class="lede">AI 能模擬 intelligence（辨識、生成、對答如流），卻沒人知道意識究竟是什麼，更遑論複製。當輸出一模一樣時，過程還重不重要？這場訪談把這題逼到牛津數學家 John Lennox 也閃避不了的角落。<a class="tc" href="https://www.youtube.com/watch?v=dLrvJeSugkM&amp;t=269s" data-t="269"><span class="pl">▶</span> 4:29</a></p>
 
     <aside class="brief rise">
       <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
@@ -95,21 +106,21 @@
       <figcaption>三個層次現況不同，共同風險是倫理跟不上科技進步的速度</figcaption>
     </figure>
 
-    <h2 class="rise"><span class="hn">01</span>AI 被賦予神的屬性</h2>
+    <h2 class="rise" data-follow data-t="1081" data-label="01 · AI與神的相似"><span class="hn">01</span>AI 被賦予神的屬性<a class="tc" href="https://www.youtube.com/watch?v=dLrvJeSugkM&amp;t=1081s" data-t="1081"><span class="pl">▶</span> 18:01</a></h2>
     <p>已經出現敬拜 AI 的組織，因為 AI 具備一些通常歸給神的屬性：問什麼都答（近乎無所不知）、透過網路無所不在。Sam Altman 說過，最成功的創辦人不是要建公司，是要建接近宗教的東西；一位前 Google 工程師也說，造出來的東西實質上會是個 god。Lennox 的讀法是：transhumanism 是人往上「自我神化」，古巴比倫、羅馬皇帝都自稱過神；基督教剛好相反，是神成為人。把 AI 當神來拜，是在拜一個比神小的東西，本質上是偶像崇拜。</p>
 
-    <h2 class="rise"><span class="hn">02</span>模擬 ≠ 擁有：機器沒有意識</h2>
+    <h2 class="rise" data-follow data-t="4616" data-label="02 · AI有意識嗎"><span class="hn">02</span>模擬 ≠ 擁有：機器沒有意識<a class="tc" href="https://www.youtube.com/watch?v=dLrvJeSugkM&amp;t=4616s" data-t="4616"><span class="pl">▶</span> 76:56</a></h2>
     <p>機器<b>模擬</b> intelligence，不是<b>擁有</b>。它能認 pattern，能說「這是杯子」，但沒有<span class="term" data-def="qualia，主觀經驗的『感受本身』，例如『紅色看起來是什麼感覺』，不是能被單純資訊描述的東西。">qualia</span>，它不知道「紅色是紅色」，也沒有「意識到自己在做這件事」的 awareness。專家不是在造意識，因為沒人知道意識是什麼；這被稱為<span class="term" data-def="意識的難題（the hard problem of consciousness）：科學能解釋大腦怎麼處理資訊，卻解釋不了『為什麼會有主觀感受』這件事本身。">hard problem</span>，科學無解，也無法複製。AI 教科書作者 Norvig 說得直白：「我們不是要造有意識的機器，我們連那是什麼意思都不知道」，只是在玩模仿遊戲，夠用就好。危險在兩頭：把機器擬人化，當它是有意識的存在；同時把自己貶成機器或動物，人的價值就無處安放。</p>
 
-    <h2 class="rise"><span class="hn">03</span>輸出一樣時，過程為什麼重要</h2>
+    <h2 class="rise" data-follow data-t="4656" data-label="03 · AI能真正創造嗎"><span class="hn">03</span>輸出一樣時，過程為什麼重要<a class="tc" href="https://www.youtube.com/watch?v=dLrvJeSugkM&amp;t=4656s" data-t="4656"><span class="pl">▶</span> 77:36</a></h2>
     <p>主持人 Steven 連問四次：<b>輸出一模一樣時</b>（AI 說「杯子」、人也說「杯子」；AI 生的圖跟人畫的圖），過程有沒有意識，為什麼重要？Lennox 的答案是：回應別人寫的程式，跟意識到自己在做什麼，是「更高層次的存在」；意識連著對美、對自然、對他人、對神性的感受。AI 的「創造力」只是把沒組合過的東西組起來，它不知道自己畫的是一個小孩。</p>
 
     <div class="callout rise"><div class="cl">沒被正面接住的問題</div><p>Steven 的問題其實沒被正面回答。他問的是「結果沒差時，意識這個純內在的事實，憑什麼賦予價值」，Lennox 最後把話題帶往「你可以選擇活在化約、無意義的宇宙裡，但線索指向更大的世界」，這是訴諸後果，不是論證。這條線真正留下的，是一個<b>分界</b>，不是一個<b>證明</b>。</p></div>
 
-    <h2 class="rise"><span class="hn">04</span>具身、五感、孤獨</h2>
+    <h2 class="rise" data-follow data-t="4856" data-label="04 · AI時代人的特別"><span class="hn">04</span>具身、五感、孤獨<a class="tc" href="https://www.youtube.com/watch?v=dLrvJeSugkM&amp;t=4856s" data-t="4856"><span class="pl">▶</span> 80:56</a></h2>
     <p>科技一路承諾讓人更像人，多數卻讓人更孤立。AI 是機器，沒有五感，看不到、聽不到、嚐不到，而五感全都連著意識。一個反例是：把小孩的手機收走、帶去鄉下一週，回來被觸覺、味覺、自然徹底改變。Lennox 讀成：人被造來活在真實關係與具身經驗裡，不是坐在螢幕前敲按鍵。</p>
 
-    <h2 class="rise"><span class="hn">05</span>已經在發生的危害</h2>
+    <h2 class="rise" data-follow data-t="4857" data-label="05 · 正在發生的危害"><span class="hn">05</span>已經在發生的危害<a class="tc" href="https://www.youtube.com/watch?v=dLrvJeSugkM&amp;t=4857s" data-t="4857"><span class="pl">▶</span> 80:57</a></h2>
     <div class="callout rise"><div class="cl">不是科幻，是現在進行式</div>
       <p><b>謊言與深偽（deepfake）</b>：Lennox 本人被深偽過，整段影片是他的臉，講著他從沒說過、被政治化的話。他引用 Solzhenitsyn 的話：「不靠謊言而活。」</p>
       <p><b>極權</b>：social credit（社會信用）、監控普及；有觀察者警告西方，差別只在「你們有技術、還沒有中央政府硬套上去」，還沒而已。</p>
@@ -124,7 +135,8 @@
       <li><b>創作與生產類的工具</b>：設好意圖、耳朵或眼睛驗過才收，是主體；直接接受 AI 給的第一個結果，就是把選擇權讓出去了。</li>
       <li><b>最容易踩線的地方，是自動化程度最高的一格</b>：一次生出碰錢、碰客戶、會自動跑的邏輯，而它「跑起來對」的時候，最容易把「跑起來對」誤當成「我驗收過」。守則是生完要能自己讀懂它在做什麼才算收，不然邊界情況出包時，等於接手一段自己沒讀過的東西。</li>
     </ul>
-  </article>
+    </article>
+  </div><!-- /.vlayout -->
 
   <nav class="artnav">
     <a href="../category-philosophy.html">← 回 哲學 · 意義</a>
@@ -151,6 +163,7 @@
     <button data-nb="cancel">取消</button>
   </div>
 </div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
 <button id="panelBtn">重點 0</button>
 <aside id="panel">
   <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
@@ -162,5 +175,8 @@
 </aside>
 
 <script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
 </body>
 </html>
