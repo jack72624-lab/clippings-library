@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本期整理 · 2026-06-28 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../timeline.html">← 時間軸</a>
+  <span class="c">本期整理</span>
+  <span class="r grot">2026 · 06 · 28</span>
+</div>
+
+<div class="wrap">
+  <header class="hub-hero">
+    <div class="kick caps rise">本期整理 · Digest</div>
+    <h1><span class="mask"><span>2026 · 06 · 28</span></span></h1>
+    <p class="sub rise">這批整理了 2 則剪報：1 則 Type A（梳理成可讀文章）＋ 1 則 Type B（抽成能力 pattern）。每則的核心重點與去向都在下面，可直接跳完整文章。</p>
+    <div class="stat rise caps">
+      <span><b>2</b> 則</span>
+      <span><b>1</b> 可讀文章</span>
+      <span><b>1</b> 能力 pattern</span>
+    </div>
+  </header>
+
+  <div class="dbatch">
+
+    <!-- 01 · 情感化設計（Type A，有完整文章）-->
+    <section class="dclip rise">
+      <div class="dn grot">01</div>
+      <div class="dk"><span class="flag">Type A</span><span class="caps">AI × Coding · 產品設計</span></div>
+      <h2>情感化設計：讓 App 有生命感</h2>
+      <div class="src">Tim Gabe · YouTube《The Secret Behind Weirdly Addictive Apps》· Duolingo / Phantom / Revolut 案例</div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>有用，已經不是護城河</b>：功能已被拉平，長期差異化落在「打開 app 的感覺」。</p></li>
+          <li><span class="bn">02</span><p><b>微互動即時回饋</b>：重複行為每完成一次，別只給綠勾，給 bounce／glow／sparkle，讓人覺得被鼓勵、被回應。</p></li>
+          <li><span class="bn">03</span><p><b>慶祝小勝 + 進度感</b>：用動畫呈現 streak、等級、完成數，給「正在累積、正在建造」的感覺，強化回訪。</p></li>
+          <li><span class="bn">04</span><p><b>拋光＝信任</b>：金融／crypto／健康這類高風險領域，把 motion、transition、視覺細節當核心功能不是裝飾，每個微互動都是信任訊號。</p></li>
+          <li><span class="bn">05</span><p><b>設計換算成數字</b>：Duolingo、Phantom、Revolut 三個案例，設計改動都直接對應到 DAU、排名、營收的變化。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>有用已經不夠，情感回饋迴路才是留住使用者的長期護城河，三個真實案例證明設計能直接換算成商業數字。</p></div>
+      </aside>
+
+      <div class="dact">
+        <a class="rd" href="../entries/emotional-design-apps.html">讀完整版 →</a>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>已寫入正本 <b>主題知識／網站製作／情感化設計.md</b>，與既有 <b>UI 批評 rubric</b> 互補（rubric 審 6 維「對不對」，這篇補第 7 維「有沒有生命感」，已在 rubric 補一行 backlink）。</div>
+    </section>
+
+    <!-- 02 · MLX 本機模型服務（Type B，能力 pattern，非閱讀文章）-->
+    <section class="dclip rise">
+      <div class="dn grot">02</div>
+      <div class="dk"><span class="flag hollow">Type B</span><span class="caps">AI × Coding · 餵我能力</span></div>
+      <h2>MLX 本機模型服務：Mac 上跑 agentic AI</h2>
+      <div class="src">Apple WWDC26 Session 232 · MLX team · 不上雲、無 API key、零用量成本</div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">能力 · Pattern</span><span class="rd grot">四層拼法</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>四層 stack</b>：MLX（Apple Silicon 陣列框架）→ MLX-LM（載入／量化／微調）→ MLX-LM Server（OpenAI 相容 HTTP，支援 tool calling）→ Agent 層；Ollama／LM Studio／vLLM 都已建在 MLX 上。</p></li>
+          <li><span class="bn">02</span><p><b>三步上線</b>：<code>pip install mlx-lm</code> → <code>mlx_lm.server --model ...</code> → 把 agent 的 baseURL 指到 <code>http://127.0.0.1:8080/v1</code>，agent 不知道也不在乎模型在本機還是雲端。</p></li>
+          <li><span class="bn">03</span><p><b>M5 加速</b>：Neural Accelerators 讓矩陣乘法比 M4 快 4 倍，agentic loop 大多 token 是讀進來的 context，這塊 prompt processing 加速很有感。</p></li>
+          <li><span class="bn">04</span><p><b>Continuous batching ＋分散式推論</b>：多 subagent 同時打 server 時動態併批；模型太大塞不下單機時，用 <code>mlx.launch</code> + hostfile shard 到多台 Mac。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>可複用的是「把 agent 指到本機 OpenAI 相容 endpoint」這招，跟現有的 GLM 路由是同一套機制的本機免費版，換來隱私與零成本，但能力遠不如 Opus、不取代現在的工作流。</p></div>
+      </aside>
+
+      <div class="dact">
+        <span class="note-in">能力 · 已納入工具箱（Type B，非閱讀文章）</span>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>已寫入正本 <b>主題知識／AI／MLX 本機模型服務.md</b>，與 <b>GLM 5.2 與替代模型路由</b> 互補（本機免費版 vs 便宜雲端版，兩檔互相 backlink），並在正本補上串接 <b>MCP 直連 POC</b> 的操作指引。</div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="foot">本期整理 · 2026-06-28 · 2 則剪報 · 文章為正本、本頁為當期 rollup · Clippings 閱讀庫</footer>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>

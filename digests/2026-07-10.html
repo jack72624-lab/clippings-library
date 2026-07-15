@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本期整理 · 2026-07-10 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../timeline.html">← 時間軸</a>
+  <span class="c">本期整理</span>
+  <span class="r grot">2026 · 07 · 10</span>
+</div>
+
+<div class="wrap">
+  <header class="hub-hero">
+    <div class="kick caps rise">本期整理 · Digest</div>
+    <h1><span class="mask"><span>2026 · 07 · 10</span></span></h1>
+    <p class="sub rise">這批只收了 1 篇來源：Boris Cherny（Claude Code 之父）的官方使用技巧演講，一篇大來源含多主題，整合成一篇多節長文（Type A）。核心是拿官方七項技巧逐一核對你現有的 setup，外加三個還沒用滿的操作切片與兩張心法圖。</p>
+    <div class="stat rise caps">
+      <span><b>1</b> 則</span>
+      <span><b>1</b> 可讀文章</span>
+    </div>
+  </header>
+
+  <div class="dbatch">
+
+    <!-- 01 · Boris Cherny 官方技巧（Type A，一篇多節長文）-->
+    <section class="dclip rise">
+      <div class="dn grot">01</div>
+      <div class="dk"><span class="flag">Type A</span><span class="caps">AI × Coding · Claude Code 心法</span></div>
+      <h2>Boris Cherny 的七個技巧：核對你的 Claude Code 現況</h2>
+      <div class="src">Boris Cherny（Claude Code 之父，Anthropic）× 電腦王阿達 中文整理 · <a href="https://www.youtube.com/watch?v=WpewI22B-2I" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>定位是核對，不是學新東西</b>：七項技巧裡六項你已經做到或做得更深，只剩「CLI 快捷鍵」還算大致熟。</p></li>
+          <li><span class="bn">02</span><p><b>三根支柱被官方印證</b>：先規劃、CLAUDE.md 階層、給回饋自動迭代，正是你花最多力氣建的三個機制，官方剛好也最強調這三個。</p></li>
+          <li><span class="bn">03</span><p><b>真正的淨增益是三個切片</b>：<code>claude -p</code> 當 unix 管線、git worktree 做平行隔離、macOS 聽寫口述 prompt。</p></li>
+          <li><span class="bn">04</span><p><b><code>claude -p</code> 最實用</b>：串進你那排 launchd job（morning briefing、週摘要、知識庫 Lint、clippings 提醒），比完整互動式或土法 script 更穩、更好接下游。</p></li>
+          <li><span class="bn">05</span><p><b>bash 安全靠多層權限</b>：靜態分析先判斷哪些指令唯讀，再疊一套 allow/block 權限系統，呼應你常遇到的「被分類器擋」。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>這篇不是知識增量，是官方幫你核對現有做法方向對不對；真正能再拿走的，只有那三個操作切片。</p></div>
+      </aside>
+
+      <div class="dact">
+        <a class="rd" href="../entries/boris-official-tips.html">讀完整版 →</a>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>當時尚未拍板：報告建議寫入正本 <b>主題知識／AI／Claude Code 官方使用心法.md</b>（含兩張 Mermaid 圖），並優先動手切片 1（<code>claude -p</code> 管線化）；是否寫入、是否跑反思、是否把 clipping 移進「已整理」補 frontmatter，當時都待你確認。</div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="foot">本期整理 · 2026-07-10 · 1 則剪報 · 文章為正本、本頁為當期 rollup · Clippings 閱讀庫</footer>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Design 2.0：設計與寫碼合流 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="claude-design-2" data-video="tFT8rmzLNO0">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-ai.html">← AI × Coding</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 06 · 26</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">02</div>
+    <div class="kick caps rise">AI × Coding · Design × Code</div>
+    <h1 class="rise">Claude Design 2.0：設計與寫碼合流</h1>
+    <div class="src rise">商業本質（中文）</div>
+  </header>
+
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=tFT8rmzLNO0" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+  <article class="readable">
+    <p class="lede">這次更新真正的關鍵不是「它更會生圖了」，而是把 Design 和 Code 的帳單、算力打通，塞進頁內編輯器，再用 Design Sync 鎖住品牌規範，一路接到 Supabase 變成活的數據面板，設計和開發之間那條線，被直接打掉了。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>帳單打通</b>：Claude Design 與 Claude Code 額度全面整合，共用 5 小時會話＋週額度池；企業設計部與開發部不用各買一套，一套帳單就能算出投報率。</p></li>
+        <li><span class="bn">02</span><p><b>一鍵匯出 PowerPoint</b>：內建幻燈片工作流，產出帶講者備註、可全螢幕、多層級的檔案，一鍵匯出原生 PPT，直接對標微軟 Office；也能生 app 原型、線框圖、文件、動畫。</p></li>
+        <li><span class="bn">03</span><p><b>頁內全功能編輯器</b>：點畫布上任何元素就能改文字、字級、字體、粗斜；還有像 Figma 一樣的圖層視圖。</p></li>
+        <li><span class="bn">04</span><p><b>新交互鐵律</b>：模型負責 0→1 的框架構建，人類滑鼠負責 1→100 的微調，不用再為了一個像素的偏差反覆燒 token。</p></li>
+        <li><span class="bn">05</span><p><b>Design Sync</b>：在寫碼端設好品牌規範（字體／主色／風格），一個指令把整套「視覺基因」傳到設計端，之後每個按鈕、每個儀表板都忠實遵循品牌手冊。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>關鍵不是它更會生圖，是把設計→代碼→活資料串成一個閉環，設計與開發的邊界被打掉了。</p></div>
+    </aside>
+
+    <p class="first">先講清楚這次更新在解決什麼問題。過去的 AI 生圖／生介面工具，產出常常是「看起來很像、但碰不了」的半成品：設計師要嘛自己重畫一次，要嘛丟給工程師重新刻。Claude Design 2.0 想解決的不是「畫得更漂亮」，是把設計這件事，變成一個工程師和設計師都能真的接手、算得出投報率的生產工具。</p>
+
+    <h2 class="rise" data-follow data-t="466" data-label="01 · 帳單打通"><span class="hn">01</span>帳單打通，才算得出 ROI<a class="tc" href="https://www.youtube.com/watch?v=tFT8rmzLNO0&amp;t=466s" data-t="466"><span class="pl">▶</span> 7:46</a></h2>
+    <p>第一件事最不起眼，卻最關鍵：Claude Design 與 Claude Code 的額度全面整合，共用同一個 5 小時會話與週額度池。對企業來說，這代表設計部門和開發部門不用各買一套 AI 訂閱，一套帳單就能算出這件事到底值不值得：從一個「好玩的玩具」，變成一個可以被財務部門正常評估的生產工具。</p>
+
+    <h2 class="rise" data-follow data-t="466" data-label="02 · 一鍵PowerPoint"><span class="hn">02</span>一鍵到 PowerPoint，也生原型與線框圖<a class="tc" href="https://www.youtube.com/watch?v=tFT8rmzLNO0&amp;t=466s" data-t="466"><span class="pl">▶</span> 7:46</a></h2>
+    <p>內建的幻燈片工作流，可以直接產出帶講者備註、可全螢幕播放、有多層級結構的簡報，一鍵匯出成原生 PowerPoint 格式：這一步，是直接對標微軟 Office 的位置。同一套引擎也能生 app 原型、線框圖、文件跟動畫。</p>
+
+    <h2 class="rise" data-follow data-t="660" data-label="03 · 頁內編輯器"><span class="hn">03</span>頁內編輯器：滑鼠做完最後那一哩路<a class="tc" href="https://www.youtube.com/watch?v=tFT8rmzLNO0&amp;t=660s" data-t="660"><span class="pl">▶</span> 11:00</a></h2>
+    <p>畫面出來之後，不用重新開一套設計軟體去微調。點畫布上任何一個元素，就能像用傳統設計軟體一樣改文字、改字級、改字體、改粗斜體；還有一個像 Figma 的圖層視圖，看得到整個畫面的結構。</p>
+    <div class="pull rise">模型做 0→1 的框架構建，人類滑鼠做 1→100 的微調，不用再為了一個像素的偏差，反覆燒一輪一輪的 token。</div>
+
+    <h2 class="rise"><span class="hn">04</span>Design Sync：品牌規範，一個指令傳過去</h2>
+    <p>在寫碼端先設好品牌規範：字體、主色、整體風格，用<span class="term" data-def="Claude Design 2.0 的品牌同步機制。在開發端設定好一套視覺規範後，用一個指令把整套規範打包傳到設計端，之後每一個新產出都自動遵循同一套品牌手冊。">Design Sync</span> 一個指令，把整套「視覺基因」打包傳到設計端。之後不管是新畫的按鈕還是新拼的儀表板，都會忠實遵循同一本品牌手冊，不再出現產出跟品牌調性脫節的狀況。</p>
+    <p>還有一個標記工具：直接在圖上圈出不滿意的地方留言，左側就會自動拉出一張修改清單，逐項去改，不用重新描述整個需求。</p>
+
+    <h2 class="rise"><span class="hn">05</span>設計→代碼→活資料，閉環怎麼接起來</h2>
+    <p>最後一步，是把畫面直接接上真實資料。畫板上調好的視覺佈局，可以直接變成前端資料包傳回代碼環境，再接上 Supabase 這類真實雲端資料庫，設定每日自動抓資料的定時任務，變成一個活的、即時更新的數據面板：設計即開發，中間沒有交接。<span class="term" data-def="Model Context Protocol。讓 Claude 掛接第三方工具的標準介面，例如生商業簡報時說一句「叫某圖像模型生一張封面配圖」，系統就能跨平台調用資源貼進頁面。">MCP 連接器</span>讓這條路徑上還能再掛第三方工具進來。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 設計→代碼→活資料閉環</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">畫板</div>
+          <div class="dg-sub">調好視覺佈局</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">前端資料包</div>
+          <div class="dg-sub">傳回代碼環境</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">接 Supabase</div>
+          <div class="dg-sub">真實雲端資料庫</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">04</div>
+          <div class="dg-st">定時任務</div>
+          <div class="dg-sub">每日自動抓資料</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">05</div>
+          <div class="dg-st">數據面板</div>
+          <div class="dg-sub">活的、即時更新</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">設計即開發，無交接，迴圈接回畫板。</div>
+        </div>
+      </div>
+      <figcaption>從畫板到活資料，中間沒有切圖標註交接這一段（商業本質 歸納）</figcaption>
+    </figure>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>帳單打通＋一鍵 PPT</b>：對簡報系統（open-slide 工作區）和對外提案是直接的生產力，少掉「套殼網站生大綱 → 抓圖 → 回本地排版」那一整條路。</li>
+      <li><b>Design Sync ≈ DESIGN.md 品牌庫機制</b>：本來就在用 awesome-design-md／ckm-design；要做品牌一致的報價單、官網時，「規範→一致輸出」就是這個機制的官方版。</li>
+      <li><b>0→1 模型、1→100 人類</b>：等於「線框圖優先」工作流的官方背書，可以拿來定義接案／自用的標準分工。</li>
+      <li><b>設計→Supabase 閉環</b>：像庫存系統（Next+Supabase）、排程 Routine 這類專案都是這套疊，值得參考它怎麼把畫面直接接上活資料，省掉切圖標註交接。</li>
+    </ul>
+  </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-ai.html">← 回 AI × Coding</a>
+    <a href="../digests/2026-06-26.html" style="text-align:right">回本期整理<b>2026 · 06 · 26 →</b></a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>

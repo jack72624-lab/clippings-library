@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>圖解元件參考 · Clippings 閱讀庫</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!--
+  ========================================================================
+  圖解元件參考（給內頁產生器用）
+  規則：每張圖先看「內容的形狀」，挑最貼的元件，照抄下面對應的 <figure> 區塊、
+       只換文字內容。四種都不貼合的複雜圖，才 fallback 用 styled mermaid。
+  1. 分支  .dg           一個起點 → N 個「原因 → 解法 / 選項 → 結果」   (最多做 3 欄)
+  2. 步驟  .dg-flow      線性流程 step1 → step2 → step3 → 結果
+  3. 對比  .dg-compare   A vs B 兩欄對照 + 一句結論
+  4. 匯流  .dg-fan       輸入 → 編排 → 並行 fan-out → 匯總 → 產出（垂直管線）
+  外層一律包 <figure class="figure rise"><div class="fl caps">圖解 · 標題</div> ... <figcaption>說明</figcaption></figure>
+  ========================================================================
+-->
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<div class="wrap" style="padding-top:6vh">
+<article class="readable">
+
+<!-- ============ 1. 分支 .dg（原因→解法 / 選項→結果，最多 3 欄）============ -->
+<figure class="figure rise">
+  <div class="fl caps">圖解 · 分支範例</div>
+  <div class="dg">
+    <div class="dg-top">
+      <span class="k caps">起點</span>
+      <span class="t">根節點 · 主題</span>
+      <span class="a">分成 N 條，各有對應</span>
+    </div>
+    <div class="dg-cols">
+      <div class="dg-col">
+        <div class="dg-n">01</div>
+        <div class="dg-k caps">原因</div>
+        <div class="dg-cause">第一個原因</div>
+        <div class="dg-sub">一句補充說明</div>
+        <div class="dg-mid"><span>↓</span></div>
+        <div class="dg-k caps">解法</div>
+        <div class="dg-sol">對應的<b>解法</b></div>
+      </div>
+      <div class="dg-col">
+        <div class="dg-n">02</div>
+        <div class="dg-k caps">原因</div>
+        <div class="dg-cause">第二個原因</div>
+        <div class="dg-sub">一句補充說明</div>
+        <div class="dg-mid"><span>↓</span></div>
+        <div class="dg-k caps">解法</div>
+        <div class="dg-sol">對應的<b>解法</b></div>
+      </div>
+      <div class="dg-col">
+        <div class="dg-n">03</div>
+        <div class="dg-k caps">原因</div>
+        <div class="dg-cause">第三個原因</div>
+        <div class="dg-sub">一句補充說明</div>
+        <div class="dg-mid"><span>↓</span></div>
+        <div class="dg-k caps">解法</div>
+        <div class="dg-sol">對應的<b>解法</b></div>
+      </div>
+    </div>
+  </div>
+  <figcaption>分支圖說明文字（不用 em-dash，用逗號或 ·）</figcaption>
+</figure>
+
+<!-- ============ 2. 步驟 .dg-flow（線性流程 + 結果）============ -->
+<figure class="figure rise">
+  <div class="fl caps">圖解 · 步驟範例</div>
+  <div class="dg dg-flow">
+    <div class="dg-step">
+      <div class="dg-n">01</div>
+      <div class="dg-st">第一步標題</div>
+      <div class="dg-sub">可省略的補充</div>
+    </div>
+    <div class="dg-join">→</div>
+    <div class="dg-step">
+      <div class="dg-n">02</div>
+      <div class="dg-st">第二步標題</div>
+    </div>
+    <div class="dg-join">→</div>
+    <div class="dg-step">
+      <div class="dg-n">03</div>
+      <div class="dg-st">第三步標題</div>
+    </div>
+    <div class="dg-out">
+      <div class="dg-k caps">結果</div>
+      <div class="dg-ot">走完這套會得到的結果，一句話收束。</div>
+    </div>
+  </div>
+  <figcaption>步驟圖說明文字</figcaption>
+</figure>
+
+<!-- ============ 3. 對比 .dg-compare（A vs B + 結論）============ -->
+<figure class="figure rise">
+  <div class="fl caps">圖解 · 對比範例</div>
+  <div class="dg dg-compare">
+    <div class="dg-vs">
+      <div class="dg-side">
+        <div class="dg-vk caps">A 面</div>
+        <div class="dg-vt">選項 A 的標題</div>
+        <ul class="dg-vl">
+          <li>A 的特點一</li>
+          <li>A 的特點二</li>
+          <li>A 的取捨</li>
+        </ul>
+      </div>
+      <div class="dg-side">
+        <div class="dg-vk caps">B 面</div>
+        <div class="dg-vt">選項 B 的標題</div>
+        <ul class="dg-vl">
+          <li>B 的特點一</li>
+          <li>B 的特點二</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dg-verdict"><span class="dg-k caps">結論</span><span class="dg-vv">兩者怎麼選的一句話收束。</span></div>
+  </div>
+  <figcaption>對比圖說明文字</figcaption>
+</figure>
+
+<!-- ============ 4. 匯流 .dg-fan（輸入→編排→fan-out→匯總→產出）============ -->
+<figure class="figure rise">
+  <div class="fl caps">圖解 · 匯流範例</div>
+  <div class="dg dg-fan">
+    <div class="dg-stage">
+      <div class="dg-sk caps">輸入</div>
+      <div class="dg-sbox">起點：一句話需求 / 原料</div>
+    </div>
+    <div class="dg-down">↓</div>
+    <div class="dg-stage">
+      <div class="dg-sk caps">編排層</div>
+      <div class="dg-sbox">中控如何處理</div>
+    </div>
+    <div class="dg-down">↓</div>
+    <div class="dg-stage">
+      <div class="dg-sk caps">並行 fan-out</div>
+      <div class="dg-prow">
+        <span class="dg-pbox">分支一</span>
+        <span class="dg-pbox">分支二</span>
+        <span class="dg-pbox">分支三…</span>
+      </div>
+    </div>
+    <div class="dg-down">↓</div>
+    <div class="dg-stage">
+      <div class="dg-sk caps">匯總</div>
+      <div class="dg-sbox">去重 · 驗收 · 收斂</div>
+    </div>
+    <div class="dg-down">↓</div>
+    <div class="dg-stage">
+      <div class="dg-sk caps">產出</div>
+      <div class="dg-sbox">滿足條件才交</div>
+    </div>
+  </div>
+  <figcaption>匯流圖說明文字</figcaption>
+</figure>
+
+</article>
+</div>
+</body>
+</html>

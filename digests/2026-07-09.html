@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本期整理 · 2026-07-09 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../timeline.html">← 時間軸</a>
+  <span class="c">本期整理</span>
+  <span class="r grot">2026 · 07 · 09</span>
+</div>
+
+<div class="wrap">
+  <header class="hub-hero">
+    <div class="kick caps rise">本期整理 · Digest</div>
+    <h1><span class="mask"><span>2026 · 07 · 09</span></span></h1>
+    <p class="sub rise">這批整理了 2 則剪報，都是混音的低頻寬度：iZotope 從觀念與研究講清楚「低頻該不該 mono」的老規矩哪裡出了問題；BassLane Pro 則是一顆專門做這件事的 plugin，把低頻做寬做立體，卻不破壞 mono 相容。兩篇是同一件事的兩面，先讀觀念、再讀落地工具，都已梳理成完整文章。</p>
+    <div class="stat rise caps">
+      <span><b>2</b> 則</span>
+      <span><b>2</b> 可讀文章</span>
+    </div>
+  </header>
+
+  <div class="dbatch">
+
+    <!-- 01 · 低頻 mono vs 立體聲（Type A，有完整文章）-->
+    <section class="dclip rise">
+      <div class="dn grot">01</div>
+      <div class="dk"><span class="flag">Type A</span><span class="caps">混音 · 低頻寬度</span></div>
+      <h2>低頻到底該 mono 還是保留立體聲？</h2>
+      <div class="src">iZotope · <a href="https://www.youtube.com/watch?v=L5_59o7Kl7Q" target="_blank" rel="noopener">YouTube 原片（約 16 分）↗</a></div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>老規矩來自黑膠與 PA</b>：低頻的立體聲差異（side）能量太大，會讓黑膠唱針跳針、刻不進溝槽；現場 PA 的超低音喇叭又通常接成 mono，兩個物理限制疊起來變成「低頻要 mono」的通則。</p></li>
+          <li><span class="bn">02</span><p><b>硬 mono 的代價比想像大</b>：把 side 一刀切掉，峰值反而升高、相位被抹糊、音量流失、砍掉只存在於 side 的音色細節，還會失去低頻特有的包覆感。</p></li>
+          <li><span class="bn">03</span><p><b>研究已經翻案</b>：人耳其實聽得出低頻的方向與寬度，AES 的聽感測試證實聽眾明顯偏好有寬度的低頻，勝過完全沒處理的版本。</p></li>
+          <li><span class="bn">04</span><p><b>頂尖母帶根本沒在硬 mono</b>：把 Skrillex、Chase &amp; Status 這些歌拿 Mid/Side 頻譜一照，低頻的 side 內容都很豐富，一路延伸到 30 Hz。</p></li>
+          <li><span class="bn">05</span><p><b>現代做法是調到剛好，不是砍光</b>：用 low shelf 緩緩壓低 side 的低頻，或用 Ozone Imager 分頻段調寬，再用 Recover Sides 把流失的細節找回來。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>低頻不是不能有寬度，是你要先量，再決定留多少；別再無腦一刀切成 mono。</p></div>
+      </aside>
+
+      <div class="dact">
+        <a class="rd" href="../entries/mono-vs-stereo-bass.html">讀完整版 →</a>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>當時建議寫入正本 <b>主題知識／混音／低頻寬度：mono vs 立體聲低音.md</b>，與 Clip 2（BassLane Pro）併入同一份筆記，交叉連結 <b>混音在小喇叭與手機上的 translation</b>。</div>
+    </section>
+
+    <!-- 02 · BassLane Pro（Type A，有完整文章）-->
+    <section class="dclip rise">
+      <div class="dn grot">02</div>
+      <div class="dk"><span class="flag">Type A</span><span class="caps">混音 · 低頻工具</span></div>
+      <h2>BassLane Pro：把低頻做成 3D、又不破壞 mono</h2>
+      <div class="src">Dom Sigalas（Tone Projects 出品）· <a href="https://www.youtube.com/watch?v=-D7PLh3THZ4" target="_blank" rel="noopener">YouTube 原片（約 18 分）↗</a></div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>核心原理反直覺</b>：把某個訊號的諧波生出來，丟到 side 聲道，即使原始低頻是純 mono，也能做寬做厚；原始的 sub 低頻本身仍是 mono，mono 相容完全不受影響。</p></li>
+          <li><span class="bn">02</span><p><b>Mono-below 鎖地基</b>：先設一個頻率界線（如 90 Hz），以下全部強制 mono，地基先鎖死，上層才開始加工。</p></li>
+          <li><span class="bn">03</span><p><b>諧波來源＋種類</b>：來源可選 mid / stereo / side；種類分二次、三次諧波，音色再分 even（較柔）、odd（較亮）、crunchy（較粗）。</p></li>
+          <li><span class="bn">04</span><p><b>Mid–Side 旋鈕暗藏警告</b>：轉到底時，這些諧波是純反相內容，加總成 mono 時會直接消失，plugin 會用紅色警告你。</p></li>
+          <li><span class="bn">05</span><p><b>母帶情境的嚴謹流程</b>：先鎖完全 mono 的低頻界線（如 170 Hz）、寬度轉到底，再從想要的來源開始注入諧波做寬。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>iZotope 教你別亂砍 side，BassLane Pro 直接幫你生出可控、可回收的低頻寬度，還鎖住 mono 相容。</p></div>
+      </aside>
+
+      <div class="dact">
+        <a class="rd" href="../entries/basslane-pro-3d-bass.html">讀完整版 →</a>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>當時建議併入同一份 <b>主題知識／混音／低頻寬度：mono vs 立體聲低音.md</b>，交叉連結已建檔的 <b>Uni-L</b>（同廠牌 Tone Projects）。</div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="foot">本期整理 · 2026-07-09 · 2 則剪報 · 文章為正本、本頁為當期 rollup · Clippings 閱讀庫</footer>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "Clippings 閱讀庫",
+  "short_name": "閱讀庫",
+  "description": "把讀過的再讀一遍 · 剪報梳理成好讀長文，可畫重點。",
+  "lang": "zh-Hant",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

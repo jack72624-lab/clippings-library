@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>低頻到底該 mono 還是保留立體聲？ · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="mono-vs-stereo-bass" data-video="L5_59o7Kl7Q">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-mixing.html">← 混音</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 09</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">01</div>
+    <div class="kick caps rise">混音 · 低頻寬度</div>
+    <h1 class="rise">低頻到底該 mono 還是保留立體聲？</h1>
+    <div class="src rise">iZotope · <a href="https://www.youtube.com/watch?v=L5_59o7Kl7Q" target="_blank" rel="noopener">YouTube 原片（約 16 分）↗</a></div>
+  </header>
+
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=L5_59o7Kl7Q" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+  <article class="readable">
+    <p class="lede">「低頻一律 mono」是混音圈最根深柢固的規矩之一，根深柢固到很少人問過它哪來的。iZotope 這支影片把它連根挖出來：規矩的源頭是黑膠刻片機的物理限制，不是什麼美學判斷。現在，連 Skrillex、Chase &amp; Status 這種等級的母帶，低頻的立體聲寬度都一路留到 30 Hz。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>老規矩來自黑膠與 PA</b>：低頻的立體聲差異（side）能量太大，會讓黑膠唱針跳針、刻不進溝槽；現場 PA 的超低音喇叭又通常接成 mono，兩個物理限制疊起來變成「低頻要 mono」的通則。</p></li>
+        <li><span class="bn">02</span><p><b>硬 mono 的代價比想像大</b>：把 side 一刀切掉，峰值反而升高、相位被抹糊、音量流失、砍掉只存在於 side 的音色細節，還會失去低頻特有的包覆感。</p></li>
+        <li><span class="bn">03</span><p><b>研究已經翻案</b>：人耳其實聽得出低頻的方向與寬度，AES 的聽感測試證實聽眾明顯偏好有寬度的低頻，勝過完全沒處理的版本。</p></li>
+        <li><span class="bn">04</span><p><b>頂尖母帶根本沒在硬 mono</b>：把 Skrillex、Chase &amp; Status 這些歌拿 Mid/Side 頻譜一照，低頻的 side 內容都很豐富，一路延伸到 30 Hz。</p></li>
+        <li><span class="bn">05</span><p><b>現代做法是調到剛好，不是砍光</b>：用 low shelf 緩緩壓低 side 的低頻，或用 Ozone Imager 分頻段調寬，再用 Recover Sides 把流失的細節找回來。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>低頻不是不能有寬度，是你要先量，再決定留多少；別再無腦一刀切成 mono。</p></div>
+    </aside>
+
+    <p class="first">先講一個大家都直覺相信、卻幾乎沒人查過來源的規矩：<b>低頻一律 mono。</b>它不是哪個工程師拍腦袋定的美學標準，是兩個物理限制疊出來的產物。</p>
+
+    <h2 class="rise" data-follow data-t="28" data-label="01 · 老規矩哪來的"><span class="hn">01</span>「低頻要 mono」這規矩哪來的<a class="tc" href="https://www.youtube.com/watch?v=L5_59o7Kl7Q&amp;t=28s" data-t="28"><span class="pl">▶</span> 0:28</a></h2>
+    <p>第一個推力是<b>黑膠母帶</b>。黑膠靠唱針在溝槽裡左右擺動來記錄立體聲訊號，如果低頻的<span class="term" data-def="把左右聲道拆成『中間共通的』（mid）和『左右差異的』（side）之後，side 就是立體聲寬度的來源，side 越多，聲音越寬。">side（側聲道）</span>能量太大，唱針的擺動幅度會超出溝槽能承受的範圍，直接跳針、刻不進去。第二個推力是<b>PA 音響</b>：現場演出的超低音喇叭（sub）通常只接一顆、接成 mono，於是「低頻 mono 聽起來更緊、更有力、更一致」慢慢變成整個產業的通則。</p>
+    <p>做法很粗暴：在 side 聲道掛一個<span class="term" data-def="只留某個頻率以上的訊號通過、把該頻率以下全部濾掉的濾波器。">high-pass filter</span>（黑膠刻片機上有時叫<span class="term" data-def="橢圓濾波器，黑膠刻片機內建、專門切除側聲道低頻的濾波器，避免唱針因低頻寬度過大而跳針。">elliptical filter</span>），把低頻的 side 內容整個切乾淨。影片把這種一刀切的做法，叫做<b>hard mono（硬 mono）</b>。</p>
+
+    <h2 class="rise" data-follow data-t="66" data-label="02 · 砍掉 side 的代價"><span class="hn">02</span>砍掉 side，代價比你想的大<a class="tc" href="https://www.youtube.com/watch?v=L5_59o7Kl7Q&amp;t=66s" data-t="66"><span class="pl">▶</span> 1:06</a></h2>
+    <p>硬 mono 聽起來像穩妥的安全牌，但影片列出五個代價，第一個就反直覺：</p>
+    <ul>
+      <li><b>峰值反而變高。</b>把 side 內容濾掉，波形的峰值不會變低，反而會升高。影片示範一首餘裕只剩 0.2 dB 的母帶，一掛上 side 高通，立刻爆出 1.2 dB 和 1 dB 兩處超過 0 dBFS 的 over。</li>
+      <li><b>相位被抹糊。</b>刻片機用的多半是<span class="term" data-def="不同頻率的訊號被延遲的時間不一致，會扭曲原本應該對齊的波形疊加關係，聽感上變糊、定位變差。">非線性相位</span>的濾波器，會在低頻這個相位一致最重要的區域，把 mid 和 side 的相位關係搞亂。</li>
+      <li><b>音量流失。</b>side 本身也帶著能量，砍掉它，整體低頻的音量會跟著掉一截。</li>
+      <li><b>音色被改變。</b>只存在於 side、跟 mid 反相的那部分內容，叫<span class="term" data-def="反相內容：左右聲道相反、只在 side 存在的細節，會讓聲音帶有質感與空間感。">antiphase content</span>；砍掉它不只是砍音量，是連細節一起砍掉，音色會整個變。</li>
+      <li><b>失去包覆感。</b>低頻其實有一種可以被感知的空間感，Harman 的聲學家 Todd Welti 給它取了個名字，叫<span class="term" data-def="低頻特有的包覆、沉浸、空間、維度感，不是方向感，是『被低頻環抱』的那種聽感。">basiousness</span>。硬 mono 會把這種感覺整個抽掉，低頻聽起來乾扁無趣。</li>
+    </ul>
+
+    <h2 class="rise" data-follow data-t="385" data-label="03 · 研究翻案"><span class="hn">03</span>研究翻案：低頻真的有寬度，聽眾也更愛<a class="tc" href="https://www.youtube.com/watch?v=L5_59o7Kl7Q&amp;t=385s" data-t="385"><span class="pl">▶</span> 6:25</a></h2>
+    <p>過去業界普遍相信低頻沒有方向感、聽不出寬度，這個假設已經被證明是錯的。人耳其實能定位低頻，也能感知它的寬度。研究者 David Griesinger 的論文描述了低頻空間感背後的生理機制，重點是：立體聲低頻不只是聽得出方向，更是一種空間、維度、沉浸的整體感受，也就是前面說的 basiousness。</p>
+    <p>更直接的證據來自一篇 AES（音訊工程學會）的聽感偏好測試：聽眾明顯偏好有寬度、有空間感的低頻，勝過完全沒處理的版本，也勝過其他不含低頻空間效果的處理方式。</p>
+
+    <h2 class="rise" data-follow data-t="517" data-label="04 · 頂尖歌曲的證據"><span class="hn">04</span>頂尖歌曲的證據：沒人在硬 mono<a class="tc" href="https://www.youtube.com/watch?v=L5_59o7Kl7Q&amp;t=517s" data-t="517"><span class="pl">▶</span> 8:37</a></h2>
+    <p>影片用 iZotope 自家的 <b>RX 音訊編輯器</b>，把幾首大歌拆成<span class="term" data-def="把一首歌拆成 mid（中間）與 side（兩側）兩軌來看各頻率能量分布的顯示方式。">Mid/Side 頻譜</span>逐一檢查，結論很一致：這些歌的低頻 side 內容都很豐富，一路延伸到 30 Hz，完全不是硬 mono：</p>
+    <ul>
+      <li><b>Skrillex &amp; Fred again.. 〈Rumble〉</b>，2024 葛萊美最佳電子舞曲、Luca Pretolesi 操刀母帶。</li>
+      <li><b>Chase &amp; Status 〈Baddadan〉</b>，近年最具代表性的 drum &amp; bass 神曲之一。</li>
+      <li><b>Mefjus / Camo &amp; Krooked 〈You〉</b>。</li>
+    </ul>
+
+    <div class="pull rise">「目標不是把立體聲場壓平，而是控制它。寬度該來自好的編曲與音色設計，不是只靠後製。」</div>
+    <p>這句話出自 David Guetta 的工程師 Tim Rescinski，他接著補了一句更直接的原則：除非有明確的技術問題，他會避免在母帶上做硬性的立體聲切除。</p>
+
+    <h2 class="rise" data-follow data-t="716" data-label="05 · 現代做法"><span class="hn">05</span>現代做法：調到剛好，不是砍光<a class="tc" href="https://www.youtube.com/watch?v=L5_59o7Kl7Q&amp;t=716s" data-t="716"><span class="pl">▶</span> 11:56</a></h2>
+    <p>iZotope 給的解法叫 <b>right-sizing</b>：把寬度調到剛好，而不是砍到零。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 老規矩 vs 現代做法</div>
+      <div class="dg dg-compare">
+        <div class="dg-vs">
+          <div class="dg-side">
+            <div class="dg-vk caps">A 面</div>
+            <div class="dg-vt">老規矩 · hard mono</div>
+            <ul class="dg-vl">
+              <li>side 聲道掛 high-pass，一刀切掉低頻寬度</li>
+              <li>源頭是黑膠刻片機物理限制，加上 PA sub 接 mono</li>
+              <li>代價：峰值反而變高、相位抹糊、失去包覆感</li>
+            </ul>
+          </div>
+          <div class="dg-side">
+            <div class="dg-vk caps">B 面</div>
+            <div class="dg-vt">現代做法 · right-sizing</div>
+            <ul class="dg-vl">
+              <li>side 改用 low shelf 緩壓，控制量而非消滅它</li>
+              <li>或用 Ozone Imager 分頻段調寬，搭配 Recover Sides 找回細節</li>
+              <li>聽感測試證實，聽眾更偏好有寬度的低頻</li>
+            </ul>
+          </div>
+        </div>
+        <div class="dg-verdict"><span class="dg-k caps">結論</span><span class="dg-vv">不是「要不要 mono」，是「留多少寬度」；量了再動，動完回頭盯 true peak。</span></div>
+      </div>
+      <figcaption>硬 mono 的老規矩，跟現代 right-sizing 做法的對照</figcaption>
+    </figure>
+
+    <p>簡單版做法：別再用 high-pass 一刀切，改用<span class="term" data-def="低頻擱架 EQ，把某個頻率以下的整段訊號緩緩壓低，而不是整段濾掉。">low shelf</span>，把 side 的低頻整段緩緩壓低，控制量而不是消滅它。進階版做法（用 Ozone Imager）：分成 80 / 150 / 2k Hz 三個頻段，逐段調整寬度，再搭配 Ozone 的 <b>Recover Sides</b> 功能，把縮窄寬度時損失的反相細節找回來、加回中央，這樣既控制了寬度，又不流失細節。</p>
+
+    <div class="callout rise">
+      <div class="cl">自己動手：用 RX 檢查你歌裡的低頻 side</div>
+      <p>開 RX 音訊編輯器，進 Mixing 模組，選 <code>MS encoder/decoder</code> preset，Render，再把 View 選單的 channel mode 改成 Mid/Side，打開 spectrum。mid 是淺灰、side 是藍色，看到的是整首歌的平均分布，一眼就知道自己各頻段的 side 有多少。</p>
+    </div>
+
+    <h2 class="rise" data-follow data-t="906" data-label="06 · 監聽陷阱"><span class="hn">06</span>監聽陷阱：你可能根本聽不到自己失去了什麼<a class="tc" href="https://www.youtube.com/watch?v=L5_59o7Kl7Q&amp;t=906s" data-t="906"><span class="pl">▶</span> 15:06</a></h2>
+    <p>如果你的監聽系統只有一顆 sub，低頻在監聽端早就被強制 mono 了，你聽不出自己的低頻有沒有寬度，也聽不出砍掉 side 之後失去了什麼。要判斷低頻寬度，需要全頻段的立體聲監聽，或是耳機。</p>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>停掉反射動作</b>：別再無腦把 120 Hz 以下一律硬 mono，除非目標是壓黑膠；現在多數人用耳機或全立體聲系統聽，硬 mono 對現代作品太重手。</li>
+      <li><b>先量再改</b>：混音或母帶前，先用 RX 的 Mid/Side 頻譜看看自己歌裡低頻 side 有多少，再決定要不要動、動多少。</li>
+      <li><b>動完回頭看 true peak</b>：記得那個反直覺的結論，砍 side 反而會讓峰值升高，處理完低頻寬度之後一定要回頭確認沒有破表。</li>
+    </ul>
+  </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-mixing.html">← 回 混音</a>
+    <a href="basslane-pro-3d-bass.html" style="text-align:right">下一篇<b>BassLane Pro：把低頻做成 3D →</b></a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>

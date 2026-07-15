@@ -1,0 +1,70 @@
+/* ============================================================
+   Clippings 閱讀庫 · 影片型 entry 疊加樣式（video-sync）
+   只有「有影片來源」的 entry 才 <link> 這支；不影響其他文章。
+   搭配 video-sync.js。設計原則（對齊 reader.js 畫重點雷區）：
+    · 影片＋控制列在 .readable「外面」→ 不進畫重點快照
+    · 時間碼 chip 在 .readable 內,但點擊用事件委派 → 還原 innerHTML 後照樣有效
+    · 跟讀高亮只用 Web Animations 閃一下 + 控制列讀出,不改 innerHTML
+   ============================================================ */
+
+/* 影片型 entry：容器放寬到 1200（標題/導覽更大器、跟滿版影片協調），
+   但文字欄控在 840（中文思源宋體好讀上限,再寬一行會太長傷讀感）*/
+.reader{max-width:1200px}
+.readable{max-width:840px;margin:0 auto}
+.vlayout{display:block}
+.mob-vlink{display:none}
+
+/* 影片預設隱藏（純文章）；按「看影片」→ body.vmode → 顯示成置頂滿版黑底影片帶。
+   用 100vw + 負 margin 破出 900px 閱讀欄,吃滿整個螢幕寬。*/
+.vpanel{display:none;position:sticky;top:56px;z-index:50;background:var(--paper);
+  border-bottom:1px solid var(--ink);padding:0 0 11px;margin-bottom:10px;
+  width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+body.vmode .vpanel{display:block}
+.vpk{display:none}
+/* 影片帶：整條滿版黑底（100vw 由 .vpanel 帶）；中間影片鎖 16:9、置中、不拉寬
+   → 預覽圖不被撐變形（先前撐成 ~3.8:1 才會馬賽克）。兩側黑邊＝電影感橫幅。*/
+.vwrap{width:100%;height:52vh;margin:0;background:#000;overflow:hidden;border:none;
+  display:flex;align-items:center;justify-content:center}
+.vwrap iframe,.vwrap .ytmount{height:100%;width:auto;aspect-ratio:16/9;max-width:100%;display:block;border:0}
+.vbar{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:13px;flex-wrap:wrap}
+.vfollow{font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.14em;
+  font-size:11px;font-weight:600;border:1px solid var(--ink);background:var(--paper);color:var(--ink);
+  padding:9px 15px;cursor:pointer;transition:background .2s,color .2s;white-space:nowrap}
+.vfollow.on{background:var(--ink);color:var(--paper)}
+.vnow{color:var(--dim);font-size:13px;line-height:1.5;
+  font-family:"Helvetica Neue",Arial,sans-serif;letter-spacing:.01em}
+.vnow b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* 浮動按鈕：看影片 / 收起影片（左下,對稱右下的「重點」）*/
+.vtoggle{position:fixed;left:26px;bottom:26px;z-index:120;background:var(--ink);color:var(--paper);
+  font-family:"Helvetica Neue",Arial,sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  padding:13px 18px;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:8px}
+.vtoggle .pl{font-size:9px}
+
+/* 時間碼 chip：點了跳影片那一段（桌機頁內 seek / 手機開 YouTube 原片）*/
+.tc{font-family:"Helvetica Neue",Arial,sans-serif;font-variant-numeric:tabular-nums;
+  font-size:12px;letter-spacing:.03em;color:var(--ink);background:var(--paper);
+  border:1px solid var(--line);padding:3px 9px;cursor:pointer;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:5px;vertical-align:middle;
+  transition:background .18s,color .18s,border-color .18s}
+.tc:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tc .pl{font-size:8px;line-height:1}
+.readable h2 .tc{margin-left:auto;align-self:center}
+.readable p .tc{margin-left:8px}
+.figure .fl{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.figure .fl .tc{flex:none}
+
+/* 手機：不嵌播放器,跟原版一樣以文章為主；只放一條「看 YouTube 原片」連結,
+   段落的時間碼 chip 直接變成「開 YouTube 到那個秒數」的連結（見 video-sync.js）。*/
+@media(max-width:880px){
+  .reader{max-width:760px}
+  .readable{max-width:none}
+  .vpanel,body.vmode .vpanel{display:none}
+  .vtoggle{display:none}
+  .mob-vlink{display:flex;align-items:center;gap:8px;justify-content:center;
+    border:1px solid var(--ink);padding:13px 16px;margin:6px 0 2px;
+    font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.12em;
+    font-size:11px;font-weight:600;color:var(--ink)}
+  .mob-vlink .pl{font-size:9px}
+  .mob-vlink:active{background:var(--ink);color:var(--paper)}
+}

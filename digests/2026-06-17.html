@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本期整理 · 2026-06-17 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../timeline.html">← 時間軸</a>
+  <span class="c">本期整理</span>
+  <span class="r grot">2026 · 06 · 17</span>
+</div>
+
+<div class="wrap">
+  <header class="hub-hero">
+    <div class="kick caps rise">本期整理 · Digest</div>
+    <h1><span class="mask"><span>2026 · 06 · 17</span></span></h1>
+    <p class="sub rise">這批收了 7 則剪報，來自同一份 NotebookLM 清單型彙整（AI 建站工作流 4 則、AI 內容生成 1 則、Agentic OS 架構 2 則）。內容全是「怎麼指揮 Claude Code」的操作 pattern，屬 Type B（餵 Claude 能力），沒有適合梳理成雜誌長文的 Type A：這批不產 entries 文章，只在下面把每則的核心重點與建議去向整理出來。</p>
+    <div class="stat rise caps">
+      <span><b>7</b> 則</span>
+      <span><b>0</b> 可讀文章</span>
+      <span><b>7</b> 能力 pattern</span>
+    </div>
+  </header>
+
+  <div class="dbatch">
+
+    <!-- 01 · Higgsfield MCP + Figma Dev Mode（Type B，能力 pattern）-->
+    <section class="dclip rise">
+      <div class="dn grot">01</div>
+      <div class="dk"><span class="flag hollow">Type B</span><span class="caps">AI × Coding · AI 建站工作流</span></div>
+      <h2>Claude Code = Insane Custom Websites FAST</h2>
+      <div class="src">主題：Higgsfield MCP + Figma Dev Mode 在終端內生成網站與 AI 影像資產</div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">能力 · Pattern</span><span class="rd grot">四點拼法</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>Figma Dev Mode + MCP</b>：把設計稿的真實 CSS/React 原始碼（不是截圖）直接餵給 Claude，網頁結構貼合原設計。</p></li>
+          <li><span class="bn">02</span><p><b>由上而下、一次一個 section</b>：避免長頁面一次生成時 context window 失準。</p></li>
+          <li><span class="bn">03</span><p><b>Higgsfield MCP 生資產</b>：Nano Banana Pro 用特徵參考維持角色/產品視覺一致；Seedance 把靜圖轉 10 秒 16:9 影片。</p></li>
+          <li><span class="bn">04</span><p><b>收尾指令</b>：圖轉透明 PNG、collapse nav 成漢堡選單、推上 GitHub 走 Cloudflare Pages。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>把 Figma 設計、AI 影像/影片生成、部署全收進 Claude Code，不切換開發環境就做出含動態資產的網頁。</p></div>
+      </aside>
+
+      <div class="dact">
+        <span class="note-in">能力 · 已納入工具箱（Type B，非閱讀文章）</span>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>當時建議補進正本 <b>前端設計與Screenshot Loop</b>，新增「MCP 資產生成 + Figma Dev Mode」一節；MCP 設定面可連到 <b>MCP 機制與常用 server</b>。與 02-04 同屬「AI 建站工作流」，digest 原文建議開一個彙整段一起收、不要各寫各的。當時仍等你逐篇點頭，尚未寫入。</div>
+    </section>
+
+    <!-- 02 · $10,000 網站的設計護欄（Type B，能力 pattern）-->
+    <section class="dclip rise">
+      <div class="dn grot">02</div>
+      <div class="dk"><span class="flag hollow">Type B</span><span class="caps">AI × Coding · AI 建站工作流</span></div>
+      <h2>Build $10,000 Websites using Claude Code</h2>
+      <div class="src">主題：用「設計干預」把 AI 從模板生成器變成高價量身網站</div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">能力 · Pattern</span><span class="rd grot">五點拼法</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>八大支柱</b>：觀點/排版/色彩、層次/圖像/文案、動效/行動端/隱形細節，逐項對照才做得出「昂貴感」。</p></li>
+          <li><span class="bn">02</span><p><b>裝設計護欄 skill</b>：Frontend Design 過濾掉 Inter 這類爛俗選擇；UI/UX Pro Max 給 57 風格、95 配色可挑。</p></li>
+          <li><span class="bn">03</span><p><b>字體與文案節制</b>：標題換 Fraunces、內文換 Geist；文案走節制路線（「Six dishes, one fire」）。</p></li>
+          <li><span class="bn">04</span><p><b>打磨指令</b>：「讓這區塊更昂貴精緻」會自動加膠卷顆粒、延遲隨動光暈（lagging motion）。</p></li>
+          <li><span class="bn">05</span><p><b>部署陷阱</b>：壓縮要選「資料夾內所有檔案」而非整個資料夾，選錯路徑多一層、載入空白。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>$10K 網站的差別不在程式碼量，在品味與質感，靠設計護欄 + 高品質 brief + 打磨 pass 做出來。</p></div>
+      </aside>
+
+      <div class="dact">
+        <span class="note-in">能力 · 已納入工具箱（Type B，非閱讀文章）</span>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>當時建議補進正本 <b>前端設計與Screenshot Loop</b>「設計護欄 / skill 清單 / 打磨指令」段；字體與文案節制建議獨立成一份可重用 checklist。當時仍等你逐篇點頭，尚未寫入。</div>
+    </section>
+
+    <!-- 03 · 影格序列模擬 3D（Type B，能力 pattern）-->
+    <section class="dclip rise">
+      <div class="dn grot">03</div>
+      <div class="dk"><span class="flag hollow">Type B</span><span class="caps">AI × Coding · AI 建站工作流</span></div>
+      <h2>Claude Code + Google AI Image Gen：Apple 風格網頁</h2>
+      <div class="src">主題：用「影格序列」模擬 3D 產品互動，無需 WebGL</div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">能力 · Pattern</span><span class="rd grot">四點拼法</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>資產管線</b>：Mobbin（參考）→ Claude Design（骨架）→ Higgsfield/Nano Banana（圖）→ Kling（影片）→ FFmpeg（序列）→ Vercel。</p></li>
+          <li><span class="bn">02</span><p><b>拆影格</b>：提取約 100 影格達到 60fps 般捲動順暢，指令 <code>ffmpeg -i in.mp4 -vf "fps=30" out%03d.png</code>。</p></li>
+          <li><span class="bn">03</span><p><b>互動邏輯</b>：交互狀態（hover/scroll）雙向映射到預載影格陣列索引。</p></li>
+          <li><span class="bn">04</span><p><b>微調</b>：太慢就 snappier 化，背景色差用 mix-blend-mode，首尾跳動要檢查兩張生成圖的比例一致。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>把 AI 生成影片拆成 PNG 序列、靠捲動/hover 切換影格，假裝 3D，20 分鐘做出 Apple 質感互動頁，免寫 3D 引擎。</p></div>
+      </aside>
+
+      <div class="dact">
+        <span class="note-in">能力 · 已納入工具箱（Type B，非閱讀文章）</span>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>當時建議補進正本 <b>前端設計與Screenshot Loop</b>，新增「影格序列模擬 3D / FFmpeg 資產管線」技法，跟既有截圖回饋迴圈互補。當時仍等你逐篇點頭，尚未寫入。</div>
+    </section>
+
+    <!-- 04 · Claude Design → Next.js + GSAP（Type B，能力 pattern）-->
+    <section class="dclip rise">
+      <div class="dn grot">04</div>
+      <div class="dk"><span class="flag hollow">Type B</span><span class="caps">AI × Coding · AI 建站工作流</span></div>
+      <h2>How I Built INSANE Claude Design Websites In 10 Minutes</h2>
+      <div class="src">主題：Claude Design → Claude Code → Next.js + GSAP 的一鍵流程</div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">能力 · Pattern</span><span class="rd grot">四點拼法</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>claude.md＝唯一事實來源</b>：當「系統提示詞藍圖」用，防止 AI 設計幻覺。</p></li>
+          <li><span class="bn">02</span><p><b>Comment / Draw 對話式迭代</b>：Claude Design 用畫註解修正，取代手動 CSS 偵錯。</p></li>
+          <li><span class="bn">03</span><p><b>關鍵 prompt</b>：加一句「without it looking cheesy」，讓 GSAP 動畫保持商業重量感、不廉價。</p></li>
+          <li><span class="bn">04</span><p><b>上線前必做</b>：占位符（如 Jonas Mercer）全局替換、配自定義網域。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>品牌規範 + 佈局結構 + 指令藍圖三要素交集，10 分鐘把 Claude Design 原型轉成含 GSAP 動畫的 Next.js 網站。</p></div>
+      </aside>
+
+      <div class="dact">
+        <span class="note-in">能力 · 已納入工具箱（Type B，非閱讀文章）</span>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>當時建議補進正本 <b>前端設計與Screenshot Loop</b>（Claude Design → Code → Next.js + GSAP 流程）；claude.md 藍圖寫法可連 <b>CLAUDE.md 撰寫原則</b>。當時仍等你逐篇點頭，尚未寫入。</div>
+    </section>
+
+    <!-- 05 · Nano Banana 社群內容系統（Type B，能力 pattern）-->
+    <section class="dclip rise">
+      <div class="dn grot">05</div>
+      <div class="dk"><span class="flag hollow">Type B</span><span class="caps">AI × Coding · AI 內容生成</span></div>
+      <h2>Claude + Nano Banana：社群內容系統</h2>
+      <div class="src">主題：用品牌系統 + JSON Prompt 量產一致性社群內容</div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">能力 · Pattern</span><span class="rd grot">四點拼法</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>三層框架</b>：L1 直接轉換 → L2 品牌化 Identity Stack → L3 敘事能量整合（節奏檢核）。</p></li>
+          <li><span class="bn">02</span><p><b>JSON Prompt 當數據橋樑</b>：把視覺風格 API 化，避免自然語言描述模糊不穩定。</p></li>
+          <li><span class="bn">03</span><p><b>批次建視覺庫</b>：一次產 20-30 張 B-roll 背景，供數週內容取用。</p></li>
+          <li><span class="bn">04</span><p><b>IG 輪播規格</b>：1080×1350、7-10 張，發布加音樂進 Reels 演算法流，互動 +30%、曝光 3 倍。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>平庸 AI 內容的問題不是工具是缺系統，靠品牌身份堆疊 + JSON 結構化 prompt 把品牌 DNA 封裝成可複用內容產線。</p></div>
+      </aside>
+
+      <div class="dact">
+        <span class="note-in">能力 · 已納入工具箱（Type B，非閱讀文章）</span>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>現有 <b>主題知識／AI／</b> 無對應檔，digest 原文標記「新主題」。當時建議開新檔 <b>AI 內容生成與社群產線.md</b>；JSON Prompt 概念可跟 01、03 則的 Nano Banana 用法交叉連結。當時仍等你逐篇點頭，尚未寫入。</div>
+    </section>
+
+    <!-- 06 · AIOS 四 C 架構（Type B，能力 pattern）-->
+    <section class="dclip rise">
+      <div class="dn grot">06</div>
+      <div class="dk"><span class="flag hollow">Type B</span><span class="caps">AI × Coding · Agentic OS</span></div>
+      <h2>I Turned Claude Opus 4.8 Into My Entire AI Operating System</h2>
+      <div class="src">主題：四 C 架構 + 漸進式授權，把 AI 從對話變持久系統</div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">能力 · Pattern</span><span class="rd grot">五點拼法</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>四 C 分層</b>：Context（claude.md/逐字稿）→ Connections（API/MCP）→ Capabilities（skills）→ Cadence（自動化）。</p></li>
+          <li><span class="bn">02</span><p><b>claude.md 每天更新</b>：等於「儲存遊戲進度」；<code>/insights</code> 產 HTML 報告找自動化機會。</p></li>
+          <li><span class="bn">03</span><p><b>單車法四階段</b>：手貼數據 → 只讀 + 人工確認寫入 → 監看獨立執行 → 全自動，逐步交出權限。</p></li>
+          <li><span class="bn">04</span><p><b>安全教訓</b>：別把高風險能力（如發信）交給未驗證的 agent（案例：曾誤發 15 萬訂閱者）。</p></li>
+          <li><span class="bn">05</span><p><b>技能逆向工程</b>：先手動做成功一次，再讓 AI 回顧、封裝成 skill；配 Session Handoff 五要素交接。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>模型只是引擎、數據是燃料、工具可替換，核心是本地檔案系統；按四 C 層級循序建構、漸進授權。</p></div>
+      </aside>
+
+      <div class="dact">
+        <span class="note-in">能力 · 已納入工具箱（Type B，非閱讀文章）</span>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>當時建議補進正本 <b>Obsidian+Claude AI OS架構</b>：四 C、單車法、Session Handoff、<code>/insights</code> 都可補進去；授權面連 <b>Subagent建立與使用</b>。與 07 則主題重疊高，digest 原文建議<b>合併成一段</b>一起寫，避免重複。當時仍等你逐篇點頭，尚未寫入。</div>
+    </section>
+
+    <!-- 07 · Agentic OS 四階段（Type B，能力 pattern）-->
+    <section class="dclip rise">
+      <div class="dn grot">07</div>
+      <div class="dk"><span class="flag hollow">Type B</span><span class="caps">AI × Coding · Agentic OS</span></div>
+      <h2>Stop Using Claude Code Without an Agentic OS</h2>
+      <div class="src">主題：把「拉霸機式」隨機使用系統化成代理作業系統</div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">能力 · Pattern</span><span class="rd grot">五點拼法</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>演進四階段</b>：Workflows → Skills → Automations → Architecture，循序把用法系統化。</p></li>
+          <li><span class="bn">02</span><p><b>99.9% 不需要向量資料庫</b>：純 Markdown 結構對 Claude Code 已足夠，還更省 token。</p></li>
+          <li><span class="bn">03</span><p><b>建議 Vault 結構</b>：raw / wiki / content / projects / ops / archive / personal 分層。</p></li>
+          <li><span class="bn">04</span><p><b>claude.md 要含記憶地圖</b>：讓 Claude 用最低 token 精準定位資訊。</p></li>
+          <li><span class="bn">05</span><p><b>headless 模式</b>：<code>-p</code> 把技能封裝成一鍵按鈕；追蹤每週 token 用量（例：5 小時/週）。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>用「領域 → 技能 → 自動化 → 架構」四階段，把 Claude Code 從隨機下指令變成可追蹤、可交付的系統資產。</p></div>
+      </aside>
+
+      <div class="dact">
+        <span class="note-in">能力 · 已納入工具箱（Type B，非閱讀文章）</span>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>當時建議補進正本 <b>Obsidian+Claude AI OS架構</b> 與 <b>Claude Token效率策略</b>（記憶地圖省 token 呼應）；技能逆向工程可連 <b>Subagent建立與使用</b>。與 06 則合併處理最有效率，digest 原文同樣建議<b>合併成一段</b>。當時仍等你逐篇點頭，尚未寫入。</div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="foot">本期整理 · 2026-06-17 · 7 則剪報 · 全數 Type B、本批無 entries 文章 · Clippings 閱讀庫</footer>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>

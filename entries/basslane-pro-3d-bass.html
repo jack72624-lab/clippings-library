@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BassLane Pro：把低頻做成 3D、又不破壞 mono · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="basslane-pro-3d-bass" data-video="-D7PLh3THZ4">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-mixing.html">← 混音</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 09</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">02</div>
+    <div class="kick caps rise">混音 · 低頻工具</div>
+    <h1 class="rise">BassLane Pro：把低頻做成 3D、又不破壞 mono</h1>
+    <div class="src rise">Dom Sigalas（Tone Projects 出品）· <a href="https://www.youtube.com/watch?v=-D7PLh3THZ4" target="_blank" rel="noopener">YouTube 原片（約 18 分）↗</a></div>
+  </header>
+
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=-D7PLh3THZ4" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+  <article class="readable">
+    <p class="lede">上一篇 iZotope 教的是節制：別亂砍低頻的 side。這顆 plugin 做的是反過來的事，主動生出你要的低頻寬度，而且連夜店喇叭、壓黑膠這種對 mono 相容最嚴苛的場合都能放心用。Dom Sigalas 形容它的效果是「低頻像在環抱你的耳朵」。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>核心原理反直覺</b>：把某個訊號的諧波生出來，丟到 side 聲道，即使原始低頻是純 mono，也能做寬做厚；原始的 sub 低頻本身仍是 mono，mono 相容完全不受影響。</p></li>
+        <li><span class="bn">02</span><p><b>Mono-below 鎖地基</b>：先設一個頻率界線（如 90 Hz），以下全部強制 mono，地基先鎖死，上層才開始加工。</p></li>
+        <li><span class="bn">03</span><p><b>諧波來源＋種類</b>：來源可選 mid / stereo / side；種類分二次、三次諧波，音色再分 even（較柔）、odd（較亮）、crunchy（較粗）。</p></li>
+        <li><span class="bn">04</span><p><b>Mid–Side 旋鈕暗藏警告</b>：轉到底時，這些諧波是純反相內容，加總成 mono 時會直接消失，plugin 會用紅色警告你。</p></li>
+        <li><span class="bn">05</span><p><b>母帶情境的嚴謹流程</b>：先鎖完全 mono 的低頻界線（如 170 Hz）、寬度轉到底，再從想要的來源開始注入諧波做寬。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>iZotope 教你別亂砍 side，BassLane Pro 直接幫你生出可控、可回收的低頻寬度，還鎖住 mono 相容。</p></div>
+    </aside>
+
+    <p class="first">上一篇 iZotope 那支影片講完「別亂砍」的道理，自然會問下一句：那要怎麼主動做出低頻的寬度？<b>BassLane Pro</b>（Tone Projects 出品，操刀示範的是 Dom Sigalas）就是專門回答這題的 plugin。</p>
+
+    <h2 class="rise" data-follow data-t="164" data-label="01 · 它接的是上一篇留下的洞"><span class="hn">01</span>它接的是上一篇留下的洞<a class="tc" href="https://www.youtube.com/watch?v=-D7PLh3THZ4&amp;t=164s" data-t="164"><span class="pl">▶</span> 2:44</a></h2>
+    <p>iZotope 是「馴服你原本就有的 side」，BassLane Pro 是<b>主動生出新的寬度</b>。它解的正是上一篇的痛點：怎麼把低頻做得又寬又厚（3D），卻不損失 mono 相容，在夜店、壓黑膠這種場合，mono 相容是硬指標。</p>
+
+    <h2 class="rise" data-follow data-t="181" data-label="02 · 核心原理:諧波丟到 side"><span class="hn">02</span>核心原理：把諧波丟到 side<a class="tc" href="https://www.youtube.com/watch?v=-D7PLh3THZ4&amp;t=181s" data-t="181"><span class="pl">▶</span> 3:01</a></h2>
+    <p>拿一個訊號（可選 mid / stereo / side），生成<span class="term" data-def="基頻的整數倍頻率成分，疊加在原始訊號上會讓聲音更飽滿、多層次，也是音色厚度的來源之一。">諧波（harmonics）</span>，再把這些諧波丟到 side 聲道。所以就算你的低頻本來是純 mono，它也能做兩件事：<b>(1)</b> 加諧波讓 bass 更厚更豐富，<b>(2)</b> 把這些諧波鋪在立體聲場裡讓 bass 變寬。而且因為原始的 sub 低頻仍然是 mono，mono 相容完全不會被破壞。</p>
+
+    <div class="pull rise">「低頻，像在環抱你的耳朵。」</div>
+
+    <h2 class="rise" data-follow data-t="192" data-label="03 · 打開介面:控制項怎麼用"><span class="hn">03</span>打開介面：控制項怎麼用<a class="tc" href="https://www.youtube.com/watch?v=-D7PLh3THZ4&amp;t=192s" data-t="192"><span class="pl">▶</span> 3:12</a></h2>
+    <p>用 <b>Mono-below 頻率</b>設一個界線（如 90 Hz），以下全部保持 mono，地基先鎖死。諧波可以從 mid / stereo / side 生成，種類分二次、三次諧波，音色再分 even（較柔）、odd（較亮）、crunchy（較粗），各不同調性。<b>Mid–Side 旋鈕</b>把諧波從 mid 往 side 鋪；但全轉到 side 時，這些諧波在<span class="term" data-def="把左右兩聲道加總成單一聲道時的狀態，用來檢查母帶在 mono 播放裝置上聽起來會不會有內容消失。">加總成 mono</span>時會直接消失，因為它們是純反相內容，plugin 會用紅色警告你。旁邊有內建<span class="term" data-def="又稱相位計，顯示左右聲道相位關係是否同相的儀表，數值越接近 +1 越安全，接近 -1 代表反相，加總會互相抵銷。">相關性表</span>可以看寬度與相位，Dom 還用 Cubase 的 multi-correlation meter 交叉驗證：bass 很寬，但低頻仍然同相，沒問題。</p>
+    <ul>
+      <li><b>Sub filter / Boost</b>：對 side 做過濾去掉低頻髒東西；Boost 是共振濾波器，可以調到跟大鼓（kick）同頻，讓低頻更貼。</li>
+      <li><b>Dynamics 段</b>：對選定頻段做壓縮或擴張，諧波太動態就壓平，或反過來擴張出更多活力。</li>
+      <li><b>Mono recovery 段</b>：把處理過程中因反相被抵銷而流失的訊號救回來，例如只在左聲道的 tom；最進階、多數時候用不到，對應上一篇 Ozone 的 Recover Sides。</li>
+      <li><b>Band-pass 濾波</b>：不只低頻，切成帶通就能對中頻做寬，讓鼓組更立體。</li>
+    </ul>
+
+    <h2 class="rise" data-follow data-t="535" data-label="04 · 母帶情境:Dom 的嚴謹流程"><span class="hn">04</span>母帶情境：Dom 的嚴謹流程<a class="tc" href="https://www.youtube.com/watch?v=-D7PLh3THZ4&amp;t=535s" data-t="535"><span class="pl">▶</span> 8:55</a></h2>
+    <p>母帶很嚴謹、不能出錯，Dom 的做法是先把完全 mono 的界線鎖死，再從上面開始加工：</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 母帶情境的低頻寬度流程</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">設完全 mono 的低頻界線</div>
+          <div class="dg-sub">12 或 18 dB 斜率 low-pass，如 170 Hz</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">寬度轉到底</div>
+          <div class="dg-sub">這條線以下就完全鎖 mono</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">從想要的來源注入諧波做寬</div>
+          <div class="dg-sub">mid / stereo / side 三選一</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">低頻地基維持嚴謹 mono 相容，上層疊出主動生成、可控、可回收的寬度。</div>
+        </div>
+      </div>
+      <figcaption>Dom 建議的母帶流程，先鎖地基再往上加工</figcaption>
+    </figure>
+
+    <p>他反覆強調：這 plugin 很深，一定要讀說明書。也會有功能較少的免費版，邏輯相通。</p>
+
+    <div class="callout rise">
+      <div class="cl">跟你已建檔的 Uni-L 同廠牌</div>
+      <p>Tone Projects 這家廠牌，你已經建檔過一顆同系列的 Uni-L。兩者的共通調性都是「把黑箱拆到你能理解，每個動作都有表可看」，如果 Uni-L 用得順手，BassLane Pro 的介面邏輯不會太陌生。</p>
+    </div>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>可複用流程</b>：設 mono-below 界線，從 mid 生諧波，盯相關性表確認同相，用 Dynamics 壓平過動態的諧波，需要的話再用 Boost 調到 kick 同頻。</li>
+      <li><b>先量再加</b>：跟上一篇一致，別為了 3D 而 3D，先看自己缺不缺寬度；overuse 會讓低頻糊掉。</li>
+      <li><b>母帶情境優先鎖地基</b>：完全 mono 的低頻界線先設好、寬度轉到底，再開始注入諧波，順序別顛倒。</li>
+    </ul>
+  </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-mixing.html">← 回 混音</a>
+    <a href="mono-vs-stereo-bass.html" style="text-align:right">上一篇<b>← 低頻到底該 mono 還是保留立體聲？</b></a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>

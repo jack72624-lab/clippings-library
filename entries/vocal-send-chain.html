@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>人聲空間感 send chain：reverb 與 delay 鏈 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="vocal-send-chain" data-video="nxKQHwIw58I">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-mixing.html">← 混音</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 14</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">02</div>
+    <div class="kick caps rise">混音 · 空間效果</div>
+    <h1 class="rise">人聲空間感 send chain：reverb 與 delay 鏈</h1>
+    <div class="src rise">2probeats · <a href="https://www.youtube.com/watch?v=nxKQHwIw58I" target="_blank" rel="noopener">YouTube（Studio One 示範，約 11 分鐘）↗</a></div>
+  </header>
+
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=nxKQHwIw58I" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+  <article class="readable">
+    <p class="lede">同樣是加 reverb 跟 delay，為什麼有些人聲聽起來立體、有空氣，有些卻只是糊成一團？差別通常不在你用哪顆外掛，而在你怎麼把外掛串起來，又怎麼在最後一步收尾。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>effects into effects，不用 raw</b>：沒有一條 send 是單獨一顆 delay 或 reverb，一律串起來；單獨一顆效果聽感是平的、貼臉，串一層調變才有深度。</p></li>
+        <li><span class="bn">02</span><p><b>讓 FX 圍著主唱、不疊在主唱上</b>：最後在 FX bus 用動態工具把 FX 佔到人聲頻段的部分讓出來，這一步才是「不糊」的關鍵。</p></li>
+        <li><span class="bn">03</span><p><b>兩招非直覺</b>：slap 降 pitch 做出前後距離；doubler 放在 reverb 之前，尾巴才會寬，順序反過來就沒這個寬度。</p></li>
+        <li><span class="bn">04</span><p><b>ducking 保咬字</b>：delay throw 上掛 Trackspacer，人聲一出聲就把 delay 讓一點。</p></li>
+        <li><span class="bn">05</span><p><b>FX bus 收尾</b>：所有 send 匯到單一 bus，掛 150Hz low cut＋soothe3 溫和讓位。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>空間感靠「效果串效果」做出深度，靠「bus 上讓位」保持乾淨，兩件事缺一不可。</p></div>
+    </aside>
+
+    <p class="first">很多人做人聲空間效果的方法很簡單：開一顆 reverb bus、一顆 delay bus，把乾聲送過去，調一下 wet/dry 就收工。2probeats 這支 Studio One 示範反著來，同一句乾聲，拉出六條各司其職的 send，每一條都經過至少兩層處理，最後才匯進一個 bus 收尾。整套東西看似複雜，但撐起它的其實只有兩條心法。</p>
+
+    <h2 class="rise" data-follow data-t="57" data-label="01 · 兩條總心法"><span class="hn">01</span>兩條總心法：串起來、讓出來<a class="tc" href="https://www.youtube.com/watch?v=nxKQHwIw58I&amp;t=57s" data-t="57"><span class="pl">▶</span> 0:57</a></h2>
+    <p>第一條，<b>effects into effects，不用 raw</b>。沒有一條 send 是單獨一顆 delay 或一顆 reverb，一律串起來：delay 後面接一層調變，reverb 放在 doubler 之後。單獨一顆效果（raw）聽感是平的、貼在臉上；多串一層調變，才聽得出深度。</p>
+    <p>第二條，<b>讓 FX 圍著主唱、不疊在主唱上</b>。做完前面那些 send 之後，最後要在 <span class="term" data-def="所有空間效果 send 最終匯流的一條總軌，在這裡做整體處理，而不是逐條分開處理。">FX bus</span> 上用動態工具，把 FX 佔到人聲頻段的部分讓出來。很多人的空間效果做到又寬又有空氣，卻犧牲了人聲清晰度，差別就在有沒有做這一步。</p>
+
+    <div class="pull rise">「不糊，就是靠這一步。」</div>
+
+    <h2 class="rise" data-follow data-t="210" data-label="02 · 兩招非直覺"><span class="hn">02</span>兩招非直覺，可以直接搬走<a class="tc" href="https://www.youtube.com/watch?v=nxKQHwIw58I&amp;t=210s" data-t="210"><span class="pl">▶</span> 3:30</a></h2>
+    <p>第一招，<span class="term" data-def="slap delay，一種很短的延遲，模擬近牆反射的聲音。">slap</span> 降 pitch。把 slap 的音高稍微往下調，聽感上會跟乾聲分出前後距離，聽起來立體、有 3D 感。這招整個用一顆 FabFilter Timeless 3 全包：drive、lo-fi diffuse、dynamics、降 pitch 都在同一顆裡完成，後面不用再疊別的 plugin。</p>
+    <p>第二招，<b>doubler 放在 reverb 之前</b>。順序決定結果：先讓 doubler 把訊源加寬、加調變，reverb 吃到的訊號已經是「立體、會動」的，尾巴自然更寬。順序反過來，reverb 先吃到還沒加寬的乾訊號，就做不出這個寬度。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · doubler 放在 reverb 前</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">訊源（送到 main reverb 這條 aux）</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">Vocal Doubler</div>
+          <div class="dg-sub">先加寬、加調變</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">reverb（BX Aura）</div>
+          <div class="dg-sub">吃到的是已經立體、會動的訊號</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">尾巴自然更寬；順序反過來（reverb 先吃到乾訊號）就沒有這個寬度。</div>
+        </div>
+      </div>
+      <figcaption>同樣兩顆效果，順序換一下，寬度差很多</figcaption>
+    </figure>
+
+    <h2 class="rise" data-follow data-t="314" data-label="03 · 讓位從單一 send 開始"><span class="hn">03</span>讓位，從單一 send 就開始<a class="tc" href="https://www.youtube.com/watch?v=nxKQHwIw58I&amp;t=314s" data-t="314"><span class="pl">▶</span> 5:14</a></h2>
+    <p>在 delay throw 這條 send 上掛 <span class="term" data-def="一種 side-chain 動態工具，可以讓一個訊號依照另一個訊號的音量自動讓出頻段或音量空間。">Trackspacer</span>，人聲一出聲，就自動把 delay 讓開一點，人聲的咬字才不會被蓋掉。這是「讓位」這套心法在單一 send 上的實作，跟後面在 FX bus 上的整體讓位是同一個邏輯，差別只在範圍：一條送軌 vs 全部送軌加總之後。</p>
+
+    <h2 class="rise" data-follow data-t="535" data-label="04 · FX bus 收尾"><span class="hn">04</span>FX bus 收尾<a class="tc" href="https://www.youtube.com/watch?v=nxKQHwIw58I&amp;t=535s" data-t="535"><span class="pl">▶</span> 8:55</a></h2>
+    <p>所有 send 最後匯到單一 FX bus 做總處理：先掛 150Hz low cut，把低頻的濁清掉；再掛 <span class="term" data-def="一種動態 EQ，專門抓出訊號裡突出的共振頻率並自動壓下去。">soothe3</span> 溫和讓位。之所以「溫和」，是因為每一條 send 都是刻意刻出來的，不是隨手加的，不需要在收尾這步下重手。</p>
+
+    <h2 class="rise" data-follow data-t="637" data-label="05 · 完整送軌配方"><span class="hn">05</span>完整送軌配方，可以直接搬到 Pro Tools<a class="tc" href="https://www.youtube.com/watch?v=nxKQHwIw58I&amp;t=637s" data-t="637"><span class="pl">▶</span> 10:37</a></h2>
+    <p>整套架構是 send/return：主唱先過一個 lead bus，再從 track 跟 bus 上各拉出幾條 aux send。</p>
+    <ul>
+      <li><b>ping-pong</b>：EchoBoy → Brauer Motion</li>
+      <li><b>delay throw</b>：→ MetaFlanger，上面掛 Trackspacer 做 ducking</li>
+      <li><b>airy reverb</b>：Raum，只在特定句子自動化開，不是全程開</li>
+      <li><b>slap</b>：Timeless 3（drive＋lo-fi diffuse＋dynamics＋降 pitch）</li>
+      <li><b>main reverb</b>：Vocal Doubler → BX Aura（doubler 在 reverb 前）</li>
+      <li><b>width</b>：MicroShift → Valhalla Future Verb（加寬枕頭）</li>
+    </ul>
+    <p>最後這六條全部匯進一個 FX bus 收乾淨。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 送軌鏈路（效果串效果 → bus 讓位）</div>
+      <div class="dg dg-fan">
+        <div class="dg-stage">
+          <div class="dg-sk caps">輸入</div>
+          <div class="dg-sbox">乾聲 lead vocal（平衡地基已打好）</div>
+        </div>
+        <div class="dg-down">↓</div>
+        <div class="dg-stage">
+          <div class="dg-sk caps">拉出六條 send</div>
+          <div class="dg-sbox">track 上的即興 throw ＋ lead bus 上的空間底，每條都效果串效果</div>
+        </div>
+        <div class="dg-down">↓</div>
+        <div class="dg-stage">
+          <div class="dg-sk caps">並行 fan-out</div>
+          <div class="dg-prow">
+            <span class="dg-pbox">ping-pong：EchoBoy → Brauer Motion</span>
+            <span class="dg-pbox">delay throw → MetaFlanger（Trackspacer ducking）</span>
+            <span class="dg-pbox">airy reverb：Raum（自動化開）</span>
+            <span class="dg-pbox">slap：Timeless 3（降 pitch）</span>
+            <span class="dg-pbox">main reverb：doubler → BX Aura</span>
+            <span class="dg-pbox">width：MicroShift → Valhalla</span>
+          </div>
+        </div>
+        <div class="dg-down">↓</div>
+        <div class="dg-stage">
+          <div class="dg-sk caps">匯總</div>
+          <div class="dg-sbox">FX bus：150Hz low cut＋soothe3，溫和讓位保咬字</div>
+        </div>
+        <div class="dg-down">↓</div>
+        <div class="dg-stage">
+          <div class="dg-sk caps">產出</div>
+          <div class="dg-sbox">3D、寬、有空氣，但主唱在最前、不糊</div>
+        </div>
+      </div>
+      <figcaption>每條 send 都「效果串效果」，最後靠 FX bus 讓位，空間感與清晰度同時成立</figcaption>
+    </figure>
+
+    <h2 class="rise"><span class="hn">06</span>順序紀律：別拿它救混音</h2>
+    <p>這整套是錦上添花，前提是<b>乾聲平衡的地基已經打好</b>。如果乾聲跟其他樂器之間的平衡本身沒做好，別指望靠這套空間 send 去救，先把平衡顧好，才輪得到它上場。</p>
+
+    <div class="callout rise">
+      <div class="cl">心法比 preset 值錢</div>
+      <p>真正可以重用的，不是他用哪一顆 plugin，而是「效果串效果」加「最後在 bus 上讓位」這兩條心法。手上任何一顆 delay、reverb、動態 EQ，都能套進這個框架裡用。</p>
+    </div>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>先自我檢查</b>：你現有的送軌，每條 send 是「效果串效果」，還是單獨一顆 raw plugin？</li>
+      <li><b>收尾這步別漏</b>：空間效果做完之後，有沒有在最後用動態工具讓 FX 讓開人聲頻段？沒有，通常就是「寬但糊」的原因。</li>
+      <li><b>順序先檢查</b>：想加寬人聲，先看 doubler 跟 reverb 誰在前面，doubler 要在前。</li>
+    </ul>
+  </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-mixing.html">← 回 混音</a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>

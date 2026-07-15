@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boris Cherny 的七個技巧：核對你的 Claude Code 現況 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="boris-official-tips" data-video="WpewI22B-2I">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-ai.html">← AI × Coding</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 10</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">01</div>
+    <div class="kick caps rise">AI × Coding · Claude Code 心法</div>
+    <h1 class="rise">Boris Cherny 的七個技巧：核對你的 Claude Code 現況</h1>
+    <div class="src rise">Boris Cherny（Claude Code 之父，Anthropic）× 電腦王阿達 中文整理 · <a href="https://www.youtube.com/watch?v=WpewI22B-2I" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
+  </header>
+
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=WpewI22B-2I" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+  <article class="readable">
+    <p class="lede">這支影片教的是新手怎麼上手 Claude Code，但對你來說，更像一次官方核對：七項技巧一項項比下來，六項你已經做到、甚至做得更深，只剩一項還算大致熟。真正剩下能帶走的，只有三個具體的操作切片。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>定位是核對，不是學新東西</b>：七項技巧裡六項你已經做到或做得更深，只剩「CLI 快捷鍵」還算大致熟。</p></li>
+        <li><span class="bn">02</span><p><b>三根支柱被官方印證</b>：先規劃、CLAUDE.md 階層、給回饋自動迭代，正是你花最多力氣建的三個機制，官方剛好也最強調這三個。</p></li>
+        <li><span class="bn">03</span><p><b>真正的淨增益是三個切片</b>：<code>claude -p</code> 當 unix 管線、git worktree 做平行隔離、macOS 聽寫口述 prompt。</p></li>
+        <li><span class="bn">04</span><p><b><code>claude -p</code> 最實用</b>：串進你那排 launchd job（morning briefing、週摘要、知識庫 Lint、clippings 提醒），比完整互動式或土法 script 更穩、更好接下游。</p></li>
+        <li><span class="bn">05</span><p><b>bash 安全靠多層權限</b>：靜態分析先判斷哪些指令唯讀，再疊一套 allow/block 權限系統，呼應你常遇到的「被分類器擋」。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>這篇不是知識增量，是官方幫你核對現有做法方向對不對；真正能再拿走的，只有那三個操作切片。</p></div>
+    </aside>
+
+    <p class="first">Boris Cherny 是 Claude Code 的創建者，這場官方演講把「新手第一天到熟練用戶」的一整條路徑講了一遍：從問 codebase 問題上手，到寫 code 前先規劃，到串接團隊的 CLI／MCP 工具，到給它一個回饋管道讓它自動迭代，到用 CLAUDE.md 階層灌上下文，再到一排 CLI 快捷鍵。電腦王阿達做了中文搬運（逐字稿裡有幾處語音辨識把專有名詞聽錯，例如 Claude 被聽成 quad、slash command 被聽成 splash command，這裡引用時都已經校正過）。</p>
+    <p>但對你這種已經把 Claude Code 用到這個深度的人，這篇的意義不是學新東西，而是<b>拿官方基準線對照自己的 setup</b>：七項技巧，你落在哪一格。</p>
+
+    <h2 class="rise" data-follow data-t="246" data-label="01 · 七大技巧總覽"><span class="hn">01</span>七大技巧，你落在哪<a class="tc" href="https://www.youtube.com/watch?v=WpewI22B-2I&amp;t=246s" data-t="246"><span class="pl">▶</span> 4:06</a></h2>
+    <p>七項裡，六項你已經做到甚至做得更深，只剩一項還算大致熟，沒有一項是真的缺口。<b>已做到</b>的兩項最基本：Boris 說新人第一天先問 codebase 問題（不索引、code 留本機、不上傳）能把 onboarding 從兩三週縮到兩三天，你雖然是 solo、沒有「帶新人」的情境，但接手各專案時本來就是靠讀 CLAUDE.md 加探索上手；一句「commit push」讓它自己看 git log 推敲格式、開 PR，你的 <code>git push</code>／<code>gcloud builds</code>／<code>firebase hosting</code> 也早就設放行、日常在用。</p>
+    <p><b>已超越</b>的四項，才是這篇真正的印證：官方說「寫 code 前先 brainstorm、plan」，你的 <code>CLAUDE.md</code> 第一條規則更嚴，要等明確確認才動手，未確認不得寫檔、跑 shell；官方說把團隊 CLI 和 MCP 工具都給它用，你接的是一整排 firecrawl、playwright、notebooklm、context7、twinkle-hub、Gmail、Calendar、Drive，還有一堆自建 skills；官方說「給它一個能檢查自己成果的管道，它就會自動迭代」，你走的是 Playwright CDP 截圖驗證加 wireframe-first（假資料真邏輯的互動線框先讓你試用定案，再翻正式版對帳），比影片講的更成熟；官方講 CLAUDE.md 五層階層，你除了這五層，還多了 auto-memory 加 CHANGELOG 三檔分工，外加多視窗同步的護欄機制。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 七項技巧，你落在哪</div>
+      <div class="dg">
+        <div class="dg-top">
+          <span class="k caps">起點</span>
+          <span class="t">Boris 的七項官方技巧</span>
+          <span class="a">逐項比對你的現況，分三類</span>
+        </div>
+        <div class="dg-cols">
+          <div class="dg-col">
+            <div class="dg-n">01</div>
+            <div class="dg-k caps">判定</div>
+            <div class="dg-cause">已超越（4 項）：先規劃、串接 CLI/MCP、給回饋自動迭代、CLAUDE.md 階層</div>
+            <div class="dg-sub">官方講的做法，你做得更深一層</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">代表案例</div>
+            <div class="dg-sol">CLAUDE.md 分五層還不夠，你多加了 <b>auto-memory ＋ CHANGELOG 三檔分工</b></div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">02</div>
+            <div class="dg-k caps">判定</div>
+            <div class="dg-cause">已做到（2 項）：Code Q&amp;A 上手、一句咒語 commit+push+PR</div>
+            <div class="dg-sub">官方講的做法，你日常就在用</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">代表案例</div>
+            <div class="dg-sol"><code>git push</code>／<code>gcloud builds</code>／<code>firebase hosting</code> 早就設放行</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">03</div>
+            <div class="dg-k caps">判定</div>
+            <div class="dg-cause">大致熟（1 項）：CLI 快捷鍵</div>
+            <div class="dg-sub"><code>Esc Esc</code> 跳歷史、<code>Ctrl+R</code> 看完整輸出這兩個較冷</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">代表案例</div>
+            <div class="dg-sol">值得留意，但不影響大局</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>七項裡六項已經做到甚至做得更深，只剩一項還算大致熟：這篇對你不是知識增量，是官方核對你現有方向對不對</figcaption>
+    </figure>
+
+    <div class="pull rise">官方公開技巧兜了一輪，你花最多力氣建的三根支柱全被印證：先規劃、CLAUDE.md 階層、給回饋自動迭代。</div>
+
+    <h2 class="rise" data-follow data-t="1244" data-label="02 · 三個操作切片"><span class="hn">02</span>真正的淨增益：三個操作切片<a class="tc" href="https://www.youtube.com/watch?v=WpewI22B-2I&amp;t=1244s" data-t="1244"><span class="pl">▶</span> 20:44</a></h2>
+    <p>對照表之外，還有三個 Boris 帶到、但你 setup 裡「還沒有／可以再拉一階」的操作。按增益大小排：</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 三個還沒用滿的技巧</div>
+      <div class="dg">
+        <div class="dg-top">
+          <span class="k caps">起點</span>
+          <span class="t">Boris 提到、你 setup 裡還沒補的 3 個操作</span>
+          <span class="a">增益排序：高到低</span>
+        </div>
+        <div class="dg-cols">
+          <div class="dg-col">
+            <div class="dg-n">01</div>
+            <div class="dg-k caps">現況</div>
+            <div class="dg-cause"><code>claude -p</code> 只用在訊息 bridge 的唯讀模式</div>
+            <div class="dg-sub">增益：中高</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">可補</div>
+            <div class="dg-sol">把 launchd job 全改用 <code>claude -p + --output-format json + jq</code> 管線</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">02</div>
+            <div class="dg-k caps">現況</div>
+            <div class="dg-cause">分視窗平行工作法靠手動開視窗、共用同一份工作目錄</div>
+            <div class="dg-sub">增益：中</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">可補</div>
+            <div class="dg-sol">改用 <span class="term" data-def="Git 的功能：讓同一個 repo 能同時簽出多個獨立工作目錄，彼此共用同一份 .git 歷史紀錄，但改檔互不覆蓋。">git worktree</span>，每個平行 Claude 各自獨立工作目錄、共用同一 .git</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">03</div>
+            <div class="dg-k caps">現況</div>
+            <div class="dg-cause">語音輸入只走訊息 bridge（手機端）</div>
+            <div class="dg-sub">增益：低，看習慣</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">可補</div>
+            <div class="dg-sol">電腦前口述長 prompt 時，開 macOS 聽寫直接對 Claude Code 說</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>三個 Boris 帶到、但你 setup 裡還沒補的操作，按增益大小排序</figcaption>
+    </figure>
+
+    <p>第一個切片最值得動手。Boris 把 <code>claude -p</code> 形容成「一個超智慧的 unix utility」：給它 prompt、回你 JSON，可以任意串接，Anthropic 內部用它跑 CI、事件回應、各種 pipeline。用法很直接，<code>claude -p "prompt" --allowed-tools ... --output-format json</code>（或 <code>stream-json</code> 邊跑邊處理），可以 pipe in／pipe out，例如 <code>git status | claude -p "..."</code>，或讀一整個 GCP bucket 的巨大 log 導進去叫它「找出這裡有趣的地方」，輸出再用 <code>jq</code> 篩。你的訊息 bridge 已經在用它的唯讀模式回覆非 <code>{}</code> 格式訊息，但 Boris 講的是把它當管線元件串進<b>更多自動化</b>，剛好對得上你那一排 launchd job：如果那些 job 現在還在用完整互動式 Claude 或土法 script，改成 <code>claude -p</code> 管線會更穩、更好接。</p>
+
+    <p>第二個切片是 git worktree。Boris 說重度用戶常同時開多個 Claude，同一 repo 開多個 checkout 或用 worktree 隔離，讓多個 Claude 平行跑同一 repo 不互相打架。你的分視窗平行工作法是手動開多個視窗、主框當控制塔，靠 sync-guard hook 擋「同一份檔被兩個視窗同時改」的風險；git worktree 是它的升級版：每個平行 Claude 在自己的工作目錄，共用同一個 <code>.git</code>，改檔天生不會互相覆蓋。順帶一提，這個 harness 的 subagent <code>isolation: "worktree"</code> 就是同一個概念的內建版。</p>
+
+    <p>第三個切片增益最小：macOS 系統設定裡開啟聽寫，連按兩下聽寫鍵就能直接對 Claude Code 口說 prompt。純習慣問題，跟訊息 bridge 不衝突，想在電腦前口述長指令時可以試試。</p>
+
+    <h2 class="rise" data-follow data-t="1431" data-label="03 · 番外觀點"><span class="hn">03</span>番外：兩個順口透露的觀點<a class="tc" href="https://www.youtube.com/watch?v=WpewI22B-2I&amp;t=1431s" data-t="1431"><span class="pl">▶</span> 23:51</a></h2>
+    <p>技巧之外，Boris 在演講裡順口講了兩件事，比技巧本身更值得記一筆。</p>
+    <div class="pull rise">「今年底大家可能就不用 IDE 了。」</div>
+    <p>他解釋為什麼做 CLI 而不做 IDE 外掛：一是 Anthropic 內部 IDE 太雜，VS Code、Zed、Xcode、Vim、Emacs 都有人用，終端機是最大公約數；二是他們近距離看到模型進步速度太快，刻意不過度投資 UI 上層，因為很快可能就用不上。（影片是 2026 年 4 月錄的，這是他當時的預測，當一個時間戳看就好。）另一個數字：Anthropic 約 <b>80% 技術人員每天用 Claude Code</b>，含研究員（用它編輯、執行 notebook），這是<span class="term" data-def="公司自己的員工把自家產品當日常工具使用，用來驗證好不好用。">dogfooding</span>做到什麼程度的一個具體數字。</p>
+    <div class="callout rise"><div class="cl">呼應你的踩坑</div><p>Q&amp;A 環節有人問最難做的部分是什麼，Boris 說是<b>讓 bash 指令安全</b>：先用靜態分析判斷哪些指令是唯讀、能安全組合，再疊一套多層級權限系統，各層各自設 allow／block 清單。這正是你常遇到「某些指令被分類器擋」背後的機制，不是 bug，是設計。</p></div>
+
+    <h2 class="rise" data-follow data-t="728" data-label="04 · 兩張心法圖"><span class="hn">04</span>兩張心法圖，把邏輯串起來<a class="tc" href="https://www.youtube.com/watch?v=WpewI22B-2I&amp;t=728s" data-t="728"><span class="pl">▶</span> 12:08</a></h2>
+    <p>對照表和切片之外，Boris 講的兩個機制本身值得單獨畫出來看。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · CLAUDE.md 上下文注入的五層階層</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">Enterprise Policy</div>
+          <div class="dg-sub">企業層，代管全員，可強制封鎖 URL／自動核准</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">Global Config</div>
+          <div class="dg-sub">你個人，跨所有專案</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">Project CLAUDE.md</div>
+          <div class="dg-sub">進版控，開 session 自動載入</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">04</div>
+          <div class="dg-st">Nested CLAUDE.md</div>
+          <div class="dg-sub">巢狀子目錄，進到該目錄才按需載入</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">05</div>
+          <div class="dg-st">Local CLAUDE.md</div>
+          <div class="dg-sub">不進版控，只給你自己</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">同層並行</div>
+          <div class="dg-ot">Project 層還同時掛 slash commands、權限 allow/block、MCP servers 設定；互動中用 <code>#</code> 即時寫進某個 CLAUDE.md，<code>/memory</code> 看目前載入了哪些。</div>
+        </div>
+      </div>
+      <figcaption>階層化不只 CLAUDE.md，slash command／權限／MCP 都能分層；越上層越共用，越下層越個人</figcaption>
+    </figure>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 給回饋工具，讓它自動迭代</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">一句需求</div>
+          <div class="dg-sub">給設計稿／給規格，先 brainstorm、plan，核可後才寫 code</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">用小工具集動手做</div>
+          <div class="dg-sub">編輯檔案、bash、搜尋</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">有回饋管道就檢查成果</div>
+          <div class="dg-sub">跑單元測試、Puppeteer 截圖、截模擬器畫面</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">04</div>
+          <div class="dg-st">看到不對，自己迭代</div>
+          <div class="dg-sub">重複第二、三步</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">2 到 3 輪後接近完美；沒有回饋管道時，只能一次到位，品質靠運氣。</div>
+        </div>
+      </div>
+      <figcaption>核心訣竅：給它一個「能看到自己成果」的回饋管道，它就會自我迭代，你的 Playwright CDP 截圖就是這個</figcaption>
+    </figure>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>launchd job 改走管線</b>：morning briefing、週摘要、知識庫 Lint、clippings 提醒這排排程，逐個檢查是不是還在用完整互動式 Claude，能改就改成 <code>claude -p + --output-format json + jq</code>。</li>
+      <li><b>下次多視窗平行改同一個 repo</b>：改用 <code>git worktree add</code> 開隔離分身，比多視窗共用工作目錄乾淨，也少一層 sync-guard 要擋的風險。</li>
+      <li><b>被分類器擋的時候別煩躁</b>：那是「唯讀判斷 + 多層權限」的設計結果，不是系統壞了，換一條唯讀 API 互補路徑或用 <code>!</code> 自跑指令繞過就好。</li>
+    </ul>
+  </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-ai.html">← 回 AI × Coding</a>
+    <a href="../digests/2026-07-10.html" style="text-align:right">回本期整理<b>2026 · 07 · 10 →</b></a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>

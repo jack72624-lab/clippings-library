@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>靜態混音：先分清 fader 的兩種用途 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="static-mix-fader-purpose" data-video="o8PREXFZEgw">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-mixing.html">← 混音</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 04</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">01</div>
+    <div class="kick caps rise">混音 · 靜態混音</div>
+    <h1 class="rise">靜態混音：先分清 fader 的兩種用途</h1>
+    <div class="src rise">Mixing Breakdown Room · Every Great Mix Starts With This（YouTube）</div>
+  </header>
+
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=o8PREXFZEgw" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+  <article class="readable">
+    <p class="lede">開任何 plugin 之前，先只用推桿跟 pan 把歌排出相對位置，這叫靜態混音。但這篇真正的刀不是「要不要做靜態混音」，是分清 fader 的兩種用途：決定位置，跟拿它去修聲音，是完全不同的兩件事。混在一起用，你會先用音量製造出一堆幻覺問題，再用錯的 EQ、壓縮去修那些根本不存在的問題。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>混音的一切都是平衡</b>：音量是 fader 平衡、EQ 是頻率平衡、壓縮是音量在時間上的平衡。靜態混音是唯一還沒被任何處理污染的平衡狀態，這裡聽到的問題才是真的。</p></li>
+        <li><span class="bn">02</span><p><b>fader 有兩種用途，別搞混</b>：用途 A 決定位置（該做），用途 B 拿它去修聲音（陷阱）。相對位置對了就停手；聽起來不夠好，是診斷訊號，不是缺陷。</p></li>
+        <li><span class="bn">03</span><p><b>三個陷阱案例都是同一件事</b>：人聲太小、鼓不夠 punch、貝斯聽不到，推大音量以為解決了，其實是壓縮、EQ、遮蔽在作怪，你自己先製造問題，再去修一個假問題。</p></li>
+        <li><span class="bn">04</span><p><b>樹幹法（tree trunk）</b>：先決定核心元素（鼓、貝斯、主唱），從最吵的段落（通常是副歌）鋪地基，其餘元素才圍著它平衡；鼓的內部先合成「一件樂器」。</p></li>
+        <li><span class="bn">05</span><p><b>增益分級去玄學</b>：唯一目標是全程不要 clip、留 headroom 給後面的壓縮跟飽和，不是「每軌要打到某個電平」那套。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>聽起來不夠好，是要交給處理的診斷訊號，不是要推大的缺陷；靜態混音只負責給你一個乾淨的起點，讓真問題現形。</p></div>
+    </aside>
+
+    <p class="first">混音講到底，做的都是同一件事：平衡。音量是 fader 之間的平衡，EQ 是頻率之間的平衡，壓縮是同一軌音量在時間上的平衡，讓它前後一致。靜態混音之所以值得先做，是因為它是唯一還沒被任何處理污染的平衡狀態，你在這裡聽到的問題，才是真問題，不是某個 plugin 順手製造出來的。</p>
+
+    <p>先講一個常被講成玄學的環節：<span class="term" data-def="gain staging，訊號在整條混音鏈裡的音量管理，確保每個階段都不爆頭，又留有餘裕給後面的處理。">增益分級</span>。它唯一的目標，是全程（單軌、bus、master）都不要 clip，留住<span class="term" data-def="headroom，訊號峰值到爆頭（clip）之間留的緩衝空間，給後面的壓縮、飽和留餘地。">headroom</span> 給之後的壓縮跟飽和用。不是每軌都要推到某個特定電平那套規矩。實際做法很簡單：全選成組，把 fader 一起拉到 master 不爆，才開始真正動手。</p>
+
+    <h2 class="rise" data-follow data-t="135" data-label="01 · fader 的兩種用途"><span class="hn">01</span>fader 的兩種用途，這篇的核心<a class="tc" href="https://www.youtube.com/watch?v=o8PREXFZEgw&amp;t=135s" data-t="135"><span class="pl">▶</span> 2:15</a></h2>
+    <p>整支影片真正想講的，是一件常被混在一起的事：同一根推桿，其實在做兩種完全不同的工作。</p>
+    <p><b>用途 A</b> 是決定「位置」，設定每個元素在歌裡的相對音量跟 pan，它該坐在哪、比誰前面、比誰後面。這是靜態混音在做的事，停手的時機也很明確：相對位置在音樂上聽起來對了，就停。</p>
+    <p><b>用途 B</b> 是拿它去修「聲音」。某軌明明已經在對的位置上，卻覺得聽不清楚、不夠 punch、出不來，於是繼續推大它想解決。問題是這些多半是壓縮、EQ 或遮蔽在搞鬼，用錯了工具，還把用途 A 好不容易建好的位置給推壞了。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · fader 的兩種用途</div>
+      <div class="dg dg-compare">
+        <div class="dg-vs">
+          <div class="dg-side">
+            <div class="dg-vk caps">用途 A</div>
+            <div class="dg-vt">決定「位置」（該做）</div>
+            <ul class="dg-vl">
+              <li>設定每個元素的相對音量與 pan</li>
+              <li>它該坐在哪、比誰前面</li>
+              <li>相對位置對了，就停手</li>
+            </ul>
+          </div>
+          <div class="dg-side">
+            <div class="dg-vk caps">用途 B</div>
+            <div class="dg-vt">修「聲音」（陷阱）</div>
+            <ul class="dg-vl">
+              <li>聽不清、不夠 punch、出不來，繼續推大想解決</li>
+              <li>其實是壓縮、EQ 或遮蔽的問題</li>
+              <li>用錯工具，還推過頭破壞了 A 建好的位置</li>
+            </ul>
+          </div>
+        </div>
+        <div class="dg-verdict"><span class="dg-k caps">結論</span><span class="dg-vv">位置對了就停手；聽起來不夠好是診斷訊號，交給壓縮、EQ、清遮蔽處理，別再推 fader。</span></div>
+      </div>
+      <figcaption>同一根推桿，兩種完全不同的用途，混在一起用就會製造幻覺問題</figcaption>
+    </figure>
+
+    <div class="pull rise">在正確位置上聽起來不夠好，是診斷訊號，不是要用音量修的缺陷。</div>
+
+    <h2 class="rise" data-follow data-t="282" data-label="02 · 三個陷阱案例"><span class="hn">02</span>三個陷阱案例：你自己先製造問題，再去修它<a class="tc" href="https://www.youtube.com/watch?v=o8PREXFZEgw&amp;t=282s" data-t="282"><span class="pl">▶</span> 4:42</a></h2>
+    <p>影片舉了三個最常見的情境，全部都是同一個錯：用音量藏住真問題，再用錯的工具去修那個被你自己製造出來的假問題。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 三個陷阱案例</div>
+      <div class="dg">
+        <div class="dg-top">
+          <span class="k caps">起點</span>
+          <span class="t">某軌聽起來不對，伸手想推大</span>
+          <span class="a">三個常見案例，各自的真正解法</span>
+        </div>
+        <div class="dg-cols">
+          <div class="dg-col">
+            <div class="dg-n">01</div>
+            <div class="dg-k caps">你聽到</div>
+            <div class="dg-cause">人聲太小</div>
+            <div class="dg-sub">推大後感覺「清楚」了，但那個清楚就是推過頭的版本</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">真正的處理</div>
+            <div class="dg-sol"><b>壓縮</b>（忽進忽出）＋<b>EQ</b>（不夠亮切不出來）＋<b>清遮蔽</b>（被和聲、吉他蓋住）</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">02</div>
+            <div class="dg-k caps">你聽到</div>
+            <div class="dg-cause">鼓不夠 punch</div>
+            <div class="dg-sub">推大後以為解決了，其實推太大之後上 limiter 反而會砍掉 transient</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">真正的處理</div>
+            <div class="dg-sol"><b>壓縮</b>（讓它活起來）＋<b>EQ</b>（補重量、補小鼓 smack）</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">03</div>
+            <div class="dg-k caps">你聽到</div>
+            <div class="dg-cause">貝斯聽不到</div>
+            <div class="dg-sub">推大擋到人聲，於是再回頭去切「boomy」</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">真正的處理</div>
+            <div class="dg-sol">它只是<b>有點太大聲</b>，不是頻率有問題，別把它修虛</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>三個案例都是同一個錯：用音量藏住真問題，再用錯的工具去修那個假問題</figcaption>
+    </figure>
+
+    <div class="callout rise"><div class="cl">一句話帶走</div><p>推桿是用來「藏」問題最方便的工具，也因此最容易變成陷阱。伸手動它之前，先問一句：我在決定它的位置，還是在修它的聲音。</p></div>
+
+    <h2 class="rise" data-follow data-t="389" data-label="03 · 樹幹法"><span class="hn">03</span>樹幹法：先蓋地基，其餘元素才進來<a class="tc" href="https://www.youtube.com/watch?v=o8PREXFZEgw&amp;t=389s" data-t="389"><span class="pl">▶</span> 6:29</a></h2>
+    <p>怎麼決定「相對位置」，影片給的做法叫<b>樹幹法（tree trunk）</b>：先決定歌裡最重要的核心元素，通常是鼓、貝斯、主唱，其次是旋律吉他，把它們當成一棵樹的主幹。從歌裡最吵的段落開始鋪地基，通常是副歌，其餘元素再繞著這根主幹去平衡，不是從第一小節從頭堆上去。</p>
+    <p>鼓組要先在內部合成「一件樂器」：overhead、kick、snare 為主先平衡好彼此的關係，pan 對齊 overhead，這件事做完，鼓才算是一個完整的單位，再把其餘元素一個個帶進來跟它對位。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 樹幹法的順序</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">決定核心元素</div>
+          <div class="dg-sub">鼓、貝斯、主唱，其次旋律吉他</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">從最吵的段落鋪地基</div>
+          <div class="dg-sub">通常是副歌</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">鼓組內部先合成「一件樂器」</div>
+          <div class="dg-sub">overhead／kick／snare 為主，pan 對齊 overhead</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">其餘元素才一個個繞著這根主幹進來平衡，不是從頭堆上去。</div>
+        </div>
+      </div>
+      <figcaption>樹幹法：先立好主幹，其餘元素才有依附的對象</figcaption>
+    </figure>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <p>你原本就是在做用途 A 的那個人，聽到問題不會直覺推大去追清晰，這篇對你不是學新招，是把你已經在做的事講清楚了。要留在意識裡的一句話：<b>「在正確位置上聽起來不夠好，是診斷訊號，不是要用音量修的缺陷。」</b>可以立刻養成的操作習慣是，每次伸手動推桿，先問一句「我在決定它的位置，還是在修它的聲音」，答案是後者就停手，把它記下來留給 EQ、壓縮去處理。</p>
+  </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-mixing.html">← 回 混音</a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>

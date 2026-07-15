@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Tag：Slack 裡的常駐 AI 同事 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="claude-tag-teammate" data-video="EpxZEvvOTL8">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-ai.html">← AI × Coding</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 06 · 26</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">01</div>
+    <div class="kick caps rise">AI × Coding · Agent 產品化</div>
+    <h1 class="rise">Claude Tag：Slack 裡的常駐 AI 同事</h1>
+    <div class="src rise">AI Daily Brief（英文新聞／影片 23 分鐘）</div>
+  </header>
+
+  <!-- 影片型 entry：影片在 .readable 外面（不進畫重點快照）。桌機「看影片」叫出置頂影片帶,手機走 YouTube 連結 -->
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=EpxZEvvOTL8" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片 · 23 分鐘</a>
+
+    <article class="readable">
+    <p class="lede">這不是在 Slack 多裝一個問答機器人，而是讓 Claude 變成一個有帳號、有權限、跟著頻道一起累積脈絡的隊友，會自己拆任務、動手做完、把結果回貼到討論串。Anthropic 內部產品團隊，現在 65% 的代碼已經出自它自己的內部版本。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>定義（官方）</b>：Claude Tag 是「Claude Code 的進化，更主動、為整個團隊設計」。@ 一下，它把任務拆階段、用手上的工具做完、在 thread 回覆成果。</p></li>
+        <li><span class="bn">02</span><p><b>一頻道一個共享 Claude</b>：跟著頻道累積脈絡，隊友能接手你的進度；開 ambient 模式，它會主動跟進冷掉的討論串、跨頻道標出相關的事。</p></li>
+        <li><span class="bn">03</span><p><b>它真的會動手</b>：寫／合 PR、跑資料分析、處理 incident、bug triage、盯 metrics，不是聊天機器人。</p></li>
+        <li><span class="bn">04</span><p><b>65% 數據</b>：Anthropic 產品團隊現在 65% 的代碼來自內部版 Claude Tag（兩篇不同來源的報導一致）。</p></li>
+        <li><span class="bn">05</span><p><b>權限按頻道隔離</b>：法務群的分身看得到合約看不到研發代碼，越權直接拒絕；所有操作都記在它自己的帳號日誌。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>這不是私人聊天機器人的進化，是把 Claude 變成組織級、有身分、有工具、能被信任動手的團隊成員。</p></div>
+    </aside>
+
+    <p class="first">Andrej Karpathy 把這件事放進一個更大的框架裡：LLM 介面正在經歷第三次重新設計。第一次是你會主動去的「網站」，第二次是你下載到手機裡的「App」，這一次，是一個自帶脈絡、常駐、非同步、擁有組織級工具、跟人類團隊並肩工作的實體。Claude Tag，就是這個說法目前最具體的實證。<a class="tc" href="https://www.youtube.com/watch?v=EpxZEvvOTL8&amp;t=775s" data-t="775"><span class="pl">▶</span> 12:55</a></p>
+
+    <h2 class="rise" data-follow data-t="591" data-label="01 · 從問答框到有帳號的隊友"><span class="hn">01</span>從「問答框」到「有帳號的隊友」<a class="tc" href="https://www.youtube.com/watch?v=EpxZEvvOTL8&amp;t=591s" data-t="591"><span class="pl">▶</span> 9:51</a></h2>
+    <p>官方的定義很直白：Claude Tag 是「Claude Code 的進化，更主動、為整個團隊設計」。你在 Slack 裡 @ 它一下，它就把任務拆成幾個階段，動用手上被授權的工具把事情做完，再回到討論串貼出成果，不用你逐步交代怎麼做。</p>
+    <p>更關鍵的是脈絡的歸屬變了。過去每個人開自己的對話框，脈絡只留在那個視窗裡；現在是<b>一個頻道對應一個共享的 Claude</b>，它跟著頻道一起累積脈絡，隊友能直接接手你昨天交辦到一半的事，不用每次都從頭交代。開啟<span class="term" data-def="非同步、主動運作的模式，不必你每次主動呼叫，它會自己盯著冷掉的討論串、在多個頻道之間標出彼此相關的事。">ambient 模式</span>之後，它甚至會主動跟進那些冷掉沒人回的討論串，跨頻道標出彼此相關的事。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · Claude Tag 代表的五個轉變<a class="tc" href="https://www.youtube.com/watch?v=EpxZEvvOTL8&amp;t=1067s" data-t="1067"><span class="pl">▶</span> 17:47</a></div>
+      <div class="dg dg-compare">
+        <div class="dg-vs">
+          <div class="dg-side">
+            <div class="dg-vk caps">舊模式</div>
+            <div class="dg-vt">個人化、單向使用</div>
+            <ul class="dg-vl">
+              <li>App 原生介面</li>
+              <li>私人聊天機器人</li>
+              <li>單一使用者脈絡</li>
+              <li>下提示 prompting</li>
+              <li>對個人不可或缺</li>
+            </ul>
+          </div>
+          <div class="dg-side">
+            <div class="dg-vk caps">新模式</div>
+            <div class="dg-vt">團隊化、常駐協作</div>
+            <ul class="dg-vl">
+              <li>既有工作場所（Slack）</li>
+              <li>共享隊友</li>
+              <li>全團隊脈絡</li>
+              <li>委派 delegation</li>
+              <li>組織級依賴</li>
+            </ul>
+          </div>
+        </div>
+        <div class="dg-verdict"><span class="dg-k caps">結論</span><span class="dg-vv">從「你自己開的工具」到「團隊共用的隊友」，五個面向同時在轉變。</span></div>
+      </div>
+      <figcaption>從「你自己開的工具」到「團隊共用的隊友」，五個面向同時在轉變（AI Daily Brief 歸納）</figcaption>
+    </figure>
+
+    <h2 class="rise" data-follow data-t="824" data-label="02 · 它真的會動手"><span class="hn">02</span>它真的會動手，不只是回答<a class="tc" href="https://www.youtube.com/watch?v=EpxZEvvOTL8&amp;t=824s" data-t="824"><span class="pl">▶</span> 13:44</a></h2>
+    <p>一個實測者的說法很具體：「丟一個 codebase 給它，它讀完列出 10 個最該修的問題、排序、改好、開 review，全程都在 Slack 裡完成。」寫 PR、合併 PR、跑資料分析、處理 incident、做 bug triage、盯 metrics：這些原本要人手動切換好幾個工具才能做的事，現在是 @ 一下、等它回報。</p>
+    <div class="callout rise"><div class="cl">一句話帶走</div><p>Anthropic 產品團隊現在<b>65% 的代碼</b>來自內部版的 Claude Tag，兩篇不同來源的報導都給了同一個數字。</p></div>
+
+    <h2 class="rise" data-follow data-t="896" data-label="03 · 權限怎麼切"><span class="hn">03</span>權限怎麼切，才敢讓它真的動手<a class="tc" href="https://www.youtube.com/watch?v=EpxZEvvOTL8&amp;t=896s" data-t="896"><span class="pl">▶</span> 14:56</a></h2>
+    <p>能放心讓一個 AI 隊友動手的前提，是權限要切乾淨。做法是<b>按頻道隔離</b>：法務群裡的那個分身看得到合約細節，但碰不到研發頻道的代碼；反過來也一樣，越權會直接被拒絕：不是靠它「自律」，是它手上的那把鑰匙本來就開不了另一扇門。所有操作也都記在它自己的帳號日誌裡，可回溯、可追責。</p>
+    <p>Tariq 的設定撇步值得記下來：把 pin message 加指令，當作那個頻道的「CLAUDE.md」（會被它記住）；另外開一個像 <code>你的名字-Claude</code> 的個人頻道，放自己的工作，把訊息轉進去交辦。</p>
+
+    <h2 class="rise" data-follow data-t="1199" data-label="04 · 別只看炒作：挑戰"><span class="hn">04</span>別只看炒作：它的挑戰<a class="tc" href="https://www.youtube.com/watch?v=EpxZEvvOTL8&amp;t=1199s" data-t="1199"><span class="pl">▶</span> 19:59</a></h2>
+    <div class="callout rise">
+      <div class="cl">完整面：不只是好處</div>
+      <p><b>「many Claudes 很混亂」</b>：Slack 裡沒有單一一個「我的 Claude」，每個頻道各一個、由 admin 設定，都不真正屬於你。</p>
+      <p><b>人的層面摩擦</b>：你一 tag 它，它就讀了所有人的訊息，容易變成「你帶進團隊工作區的監控裝置」，做得好被酸「外包思考」，做不好被酸「早說了會這樣」，兩面都不討好。</p>
+      <p><b>設定比看起來複雜</b>：access／工具設定一堆眉角，Anthropic 得另外出一份 agent identity 與 permissions 的最佳實踐文件。</p>
+      <p><b>鎖定疑慮</b>：尤其在 Fable 事件之後，有團隊寧可自建 Slack agent，也不想把團隊的協作核心綁在單一封閉供應商上。</p>
+    </div>
+
+    <div class="pull rise">從 prompting 到 delegation：不再是每一步都要交代，而是給一個目標，讓它自己拆解、動手、回報。</div>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>你早就手刻過個人版</b>：你的訊息 bridge 本質上就是「把 Claude 放進日常通訊軟體、常駐、用大白話交辦」，Claude Tag 是這套的官方產品化＋多人版，可以回頭拿官方怎麼解 resume／記憶／身分，對照自己 bridge 的設計。</li>
+      <li><b>prompting → delegation</b>，正是 plan-pipeline 和分視窗平行工作法的核心：給目標，不給逐步指令。</li>
+      <li><b>「pin message 當頻道 CLAUDE.md」</b>：這套機制可以直接遷移到任何要接的 agent 上，用一則置頂訊息當作那個場域的「守則」。</li>
+    </ul>
+    </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-ai.html">← 回 AI × Coding</a>
+    <a href="claude-design-2.html" style="text-align:right">下一篇<b>Claude Design 2.0：設計與寫碼合流 →</b></a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>

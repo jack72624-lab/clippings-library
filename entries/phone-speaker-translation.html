@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>讓混音在手機喇叭與耳機上更好聽 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="phone-speaker-translation" data-video="BpPsbM2PPKI">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-mixing.html">← 混音</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 07</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">01</div>
+    <div class="kick caps rise">混音 · Translation</div>
+    <h1 class="rise">讓混音在手機喇叭與耳機上更好聽</h1>
+    <div class="src rise">Reid Stefan · <a href="https://www.youtube.com/watch?v=BpPsbM2PPKI" target="_blank" rel="noopener">YouTube 原片（約 16 分）↗</a></div>
+  </header>
+
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=BpPsbM2PPKI" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+  <article class="readable">
+    <p class="lede">你在大監聽上調到滿意的混音，換到聽眾實際在用的手機喇叭或耳機，很可能瞬間變了個樣：低頻不見了、中頻糊成一團、聲音也不夠大聲。這篇整理的是一整套<span class="term" data-def="translation：同一份混音搬到不同播放裝置上，仍然保持該有的平衡與聽感。">translation</span>處理，讓同一份混音在小裝置上也站得住。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 4 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>先選對調性與音域</b>：小喇叭對不同音高的發聲效率差很多，bass 要落在手機發得出來的八度，可用暫時掛的 pitch shifter 一鍵上下移半音測試。</p></li>
+        <li><span class="bn">02</span><p><b>Master EQ 三招</b>：減低頻用 low shelf 不用 high-pass（避免 phase 問題還留 headroom）；~1kHz 寬 boost 催手機響度；掛中頻-only EQ 當手機參考尺，檢查中頻擁不擁擠。</p></li>
+        <li><span class="bn">03</span><p><b>Saturation 加諧波但保住 transient</b>：讓聲音在小喇叭裡更容易被聽見，關鍵是別把 transient 一起削掉。</p></li>
+        <li><span class="bn">04</span><p><b>立體聲寬度收窄</b>：手機喇叭離太近、又常被直握，中央只留一定要在中間的東西，其餘全部 pan 出去。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>這是混音成品在小喇叭與手機上的補課，接在你既有的平衡優先流程之後，四招都能直接套。</p></div>
+    </aside>
+
+    <p class="first">先講清楚問題出在哪。現在的聽眾多半用手機喇叭、耳機這種又小又近的裝置聽音樂，混音在錄音室大監聽上調得再漂亮，丟到手機常常變成「低頻不見、中頻糊、不夠大聲」。這篇給的不是重混的建議，是成品最後一步的補課：怎麼把它 translation 到小喇叭上，同時不破壞在大監聽上原本的樣子。</p>
+
+    <h2 class="rise" data-follow data-t="50" data-label="01 · 先選對調性"><span class="hn">01</span>先選對調性，小喇叭才發得出聲音<a class="tc" href="https://www.youtube.com/watch?v=BpPsbM2PPKI&amp;t=50s" data-t="50"><span class="pl">▶</span> 0:50</a></h2>
+    <p>小喇叭對不同音高的<b>發聲效率差很多</b>，同一顆 808 bass，往上移幾個半音，在手機上可能大聲很多。所以選歌曲調性、或決定 bass 要落在哪個八度時，要挑「手機喇叭傳得出來」的那個音，不是理論上最好聽的那個。</p>
+    <div class="callout rise">
+      <div class="cl">測試法</div>
+      <p>在 master 暫時掛一個 pitch shifter，一鍵把整首上下移半音，聽哪個調在小喇叭上發聲最好。這只是參考用，聽完就拿掉，別留在最終母帶裡。</p>
+    </div>
+
+    <h2 class="rise" data-follow data-t="201" data-label="02 · Master EQ"><span class="hn">02</span>Master EQ：減低頻、催中頻、拿手機當尺<a class="tc" href="https://www.youtube.com/watch?v=BpPsbM2PPKI&amp;t=201s" data-t="201"><span class="pl">▶</span> 3:21</a></h2>
+    <p>調性選對之後，下一關是 EQ。這一段的三個動作，目的都是同一件事：把手機聽得到的頻段撐起來，把手機聽不太到的頻段讓開。</p>
+    <ul>
+      <li><b>減低頻用 low shelf，不要用 high-pass filter。</b>Filter 陡峭切除容易帶進<span class="term" data-def="phase shift：不同頻率被延遲不同時間，疊起來會互相抵銷或加強，聽感會變怪。">phase shift</span>和 artifact，讓 master 聽起來「過度處理」。改用<span class="term" data-def="low shelf：把某個頻率以下整體緩緩抬高或壓低的 EQ 曲線，比陡峭的 filter 溫和。">low shelf</span>緩緩壓一點低頻，還能騰出 <b>headroom</b> 讓後面推得更大聲。</li>
+      <li><b>用手機當參考尺。</b>手機大概 <span class="num">400Hz</span> 以下發不太出來、<span class="num">10kHz</span> 以上也聽不太出差別。可以掛一段「只留中頻」的 EQ 當作假的手機喇叭，預覽你的中頻到底有多擠。</li>
+      <li><b>中頻 ~1kHz 做寬 boost 增響度。</b>手機最能傳達的就是中頻，想讓它「聽起來大聲」，就在 <span class="num">1kHz</span> 附近做一個又寬又緩的抬升，配合前面 low shelf 的大幅度壓低，一起把重心往中頻挪。</li>
+    </ul>
+    <div class="callout rise">
+      <div class="cl">社群小技巧</div>
+      <p>Intro 可以做成「只留濾波過的 hooky 段落」，讓手機一開場就毫不吃力，反而更抓耳。</p>
+    </div>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · Master EQ 三招</div>
+      <div class="dg">
+        <div class="dg-top">
+          <span class="k caps">起點</span>
+          <span class="t">Master EQ · 三個動作</span>
+          <span class="a">目的都是把手機聽得到的頻段撐起來</span>
+        </div>
+        <div class="dg-cols">
+          <div class="dg-col">
+            <div class="dg-n">01</div>
+            <div class="dg-k caps">動作</div>
+            <div class="dg-cause">減低頻</div>
+            <div class="dg-sub">用 low shelf，不用 high-pass</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">效果</div>
+            <div class="dg-sol">避開 <b>phase shift</b>，還騰出 headroom</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">02</div>
+            <div class="dg-k caps">動作</div>
+            <div class="dg-cause">中頻 ~1kHz 寬 boost</div>
+            <div class="dg-sub">配合 low shelf 的大幅壓低</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">效果</div>
+            <div class="dg-sol">手機最能傳達的頻段，<b>增響度</b></div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">03</div>
+            <div class="dg-k caps">動作</div>
+            <div class="dg-cause">掛中頻-only EQ</div>
+            <div class="dg-sub">400Hz 以下、10kHz 以上先切掉</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">效果</div>
+            <div class="dg-sol">當<b>假手機喇叭</b>，檢查中頻擁擠</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>三個動作各自獨立，一起用才把 master 撐向手機聽得到的頻段</figcaption>
+    </figure>
+
+    <h2 class="rise" data-follow data-t="437" data-label="03 · Saturation"><span class="hn">03</span>Saturation：加諧波讓聲音被聽見，但保住 transient<a class="tc" href="https://www.youtube.com/watch?v=BpPsbM2PPKI&amp;t=437s" data-t="437"><span class="pl">▶</span> 7:17</a></h2>
+    <p><span class="term" data-def="saturation：飽和，模擬類比器材輕微失真、增加諧波，讓聲音更厚、更容易被小喇叭聽到。">Saturation</span> 增加諧波，能讓聲音在小喇叭裡「更被聽見」。作者愛用一顆叫 Alkane 的 plugin，一顆裡面就含 tube、tape、transformer、synth 多種 flavor。關鍵是<b>保留 <span class="term" data-def="transient：瞬態，聲音開頭最尖銳短暫的衝擊，決定聲音的『打擊感』。">transient</span></b>：一般失真會把 transient 削掉，因為 transient 正是被 clip 的那個尖峰，但到母帶階段，你反而要保住它。可以疊多種 flavor：鼓用 transformer、vocal 用 tube、master 用 tape。</p>
+    <p>Distortion 還能當「抓注意力」的工具。Rap、直播麥克風常刻意 distorted，因為在滑手機的情境下，這種帶點髒的聲音反而更搶耳。</p>
+
+    <h2 class="rise" data-follow data-t="803" data-label="04 · 立體聲寬度"><span class="hn">04</span>立體聲寬度：中央淨空給最重要的東西<a class="tc" href="https://www.youtube.com/watch?v=BpPsbM2PPKI&amp;t=803s" data-t="803"><span class="pl">▶</span> 13:23</a></h2>
+    <p>手機左右喇叭很近，又常被直握，也就是上下排列，不是左右排列，所以<b>立體聲效果幾乎傳不出來</b>。策略是：中央只留「一定要在中間的」，也就是 kick、snare、vocal、bass、808、drop 的 lead；其餘全部 pan 出去，把中央車道讓給最重要的樂器。技巧是用 sampler 的 <b>pan randomization</b>，讓打擊樂每次播放的位置都不固定、自然變寬，而不是永久釘死在左或右。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 小喇叭 translation 全流程</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">選對調性 / 音域</div>
+          <div class="dg-sub">bass 要在小喇叭發得出來</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">Master EQ</div>
+          <div class="dg-sub">low shelf + 1kHz boost + 中頻尺</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">Saturation</div>
+          <div class="dg-sub">加諧波，保留 transient</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">04</div>
+          <div class="dg-st">Panning</div>
+          <div class="dg-sub">中央淨空，其餘 pan 出去</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">同一份混音，在手機喇叭與耳機上也保持該有的平衡與存在感。</div>
+        </div>
+      </div>
+      <figcaption>四招依序處理，順序不能打亂：調性決定音域、EQ 決定頻段分配、saturation 決定被聽見的程度、panning 決定手機聽不到的立體聲怎麼收</figcaption>
+    </figure>
+
+    <div class="pull rise">大監聽聽起來爽，不代表手機聽起來也爽。</div>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>接在你既有流程之後</b>：這是「成品 translation」層，正好接在你既有的靜態混音與平衡優先流程（先用 fader 加 pan 打好平衡地基）之後，地基打好了，這篇處理的是成品在手機、小喇叭上的可攜性。</li>
+      <li><b>四招可以直接套</b>：master 用 low shelf 減低頻留 headroom、~1kHz 寬 boost 催手機響度、掛中頻-only EQ 當手機參考尺檢查中頻擁擠、中央淨空 panning。</li>
+      <li><b>作品走社群或串流分發時特別有用</b>：這套是「大監聽聽起來爽，不等於手機聽起來爽」的補課。</li>
+    </ul>
+  </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-mixing.html">← 回 混音</a>
+    <a href="uni-l-limiter-system.html" style="text-align:right">下一篇<b>Uni-L：把限制變成可塑形的系統 →</b></a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>

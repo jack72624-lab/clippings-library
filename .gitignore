@@ -1,0 +1,18 @@
+# 原始高解析 png（33MB，網站用壓縮後的 .jpg，不需上傳）
+assets/img/_original/
+
+# macOS / 編輯器雜物
+.DS_Store
+*.log
+.snapshots/
+
+# 健檢備份（本機還原用，不上傳）
+.checkup-backup/
+
+# 健檢報告（含敏感位置，只留本機）
+健檢報告-*.md
+
+# 內部專案管理檔（含敏感詞的去識別化雷區/踩坑，網站不需要、只留本機；2026-07-15）
+CLAUDE.md
+_pipeline-spec.md
+CHANGELOG.md

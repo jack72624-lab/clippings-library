@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <span>Clippings 閱讀庫</span>
+  <span class="c">剪報 · 梳理 · 回顧</span>
+  <span class="r grot"></span>
+</div>
+
+<div class="wrap">
+  <header class="hub-hero">
+    <div class="kick caps rise">Reading Library · 剪報消化庫</div>
+    <h1><span class="mask"><span>把讀過的</span></span><span class="mask"><span>再讀一遍</span></span></h1>
+    <p class="sub rise">每一篇網路剪報都被梳理成一篇好讀的短文，專業術語就地補充，可以在上面畫重點、寫筆記。點一個領域進去，看裡面的文章。</p>
+    <div class="stat rise caps">
+      <span><b>5</b> 領域</span>
+      <span><b>21</b> 篇可讀</span>
+      <span><b>13</b> 批整理</span>
+      <span><b>2026.06 起</b> 累積</span>
+    </div>
+  </header>
+  <div class="hub-nav">
+    <a href="index.html" class="on">領域</a>
+    <a href="timeline.html">時間軸 · 本期整理</a>
+  </div>
+</div>
+
+<!-- 封面牆：5 張滿版封面一張接一張，點進去看該領域文章 -->
+<div class="cover-stack">
+  <a class="gcover empty rise" href="category-selfgrowth.html">
+    <img class="cimg" src="assets/img/topic-selfgrowth.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
+    <div class="grain"></div>
+    <div class="gc-no grot">01</div>
+    <div class="gc-title">自我成長</div>
+    <div class="gc-ct">2 篇 →</div>
+  </a>
+  <a class="gcover empty rise" href="category-mixing.html">
+    <img class="cimg" src="assets/img/topic-mixing.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
+    <div class="grain"></div>
+    <div class="gc-no grot">02</div>
+    <div class="gc-title">混音</div>
+    <div class="gc-ct">6 篇 →</div>
+  </a>
+  <a class="gcover empty rise" href="category-ai.html">
+    <img class="cimg" src="assets/img/topic-ai.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
+    <div class="grain"></div>
+    <div class="gc-no grot">03</div>
+    <div class="gc-title">AI × Coding</div>
+    <div class="gc-ct">5 篇 · 能力 →</div>
+  </a>
+  <a class="gcover empty rise" href="category-bodymind.html">
+    <img class="cimg" src="assets/img/topic-bodymind.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
+    <div class="grain"></div>
+    <div class="gc-no grot">04</div>
+    <div class="gc-title">身心 · 關係</div>
+    <div class="gc-ct">4 篇 →</div>
+  </a>
+  <a class="gcover empty rise" href="category-investing.html">
+    <img class="cimg" src="assets/img/topic-investing.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
+    <div class="grain"></div>
+    <div class="gc-no grot">05</div>
+    <div class="gc-title">投資</div>
+    <div class="gc-ct">4 篇 →</div>
+  </a>
+</div>
+
+<footer class="foot">Clippings 閱讀庫 · 設計語言 Morris B&amp;W Editorial · 首頁＝封面牆，點領域看文章</footer>
+
+<script src="assets/reader.js"></script>
+</body>
+</html>
