@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>麥克風前級沒有音色，只是放大器 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="mic-preamp-tone-myths">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-mixing.html">← 混音</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 16</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">07</div>
+    <div class="kick caps rise">混音 · 器材迷思</div>
+    <h1 class="rise">麥克風前級沒有音色，只是放大器</h1>
+    <div class="src rise">Jim Lill · <a href="https://www.youtube.com/watch?v=K-vIeA7yy6Q" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
+  </header>
+
+  <article class="readable">
+    <p class="lede">「Neve 前級很暖」這句話，混音圈流傳了幾十年，沒什麼人真的量測過。Jim Lill 花了半年房租，買下一台傳說級的 1970s Neve 前級，接上示波器與頻譜分析儀，把這句話一項一項拆到底是真是假。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>前級沒有音色，只是把訊號放大</b>：只要兩個前級的頻響一樣，聽起來就一樣；所有「暖、punchy、vintage」的差異，來自麥克風、麥位、空間、EQ，不是前級。</p></li>
+        <li><span class="bn">02</span><p><b>七個玄學逐項被量測拆穿</b>：頻響差小於 0.25dB、100 輪盲測結果不如丟硬幣；沒有壓縮、沒有 vintage 失真、slew rate 超規 4 倍不可聞、阻抗差最大 0.9dB、相位差純屬虛構。</p></li>
+        <li><span class="bn">03</span><p><b>唯一真的會改變聲音的是 EQ</b>：但 EQ 曲線數位可以複製，不是任何鐵盒子的專利。</p></li>
+        <li><span class="bn">04</span><p><b>麥克風本身確實有音色差</b>：幾乎全部來自 capsule（振膜組件）的頻響，circuit 電路本身多半只負責把訊號乾淨送出去。</p></li>
+        <li><span class="bn">05</span><p><b>可信對照的判準</b>：subtle 等於「不重要」，任何「差別很細微」的說法，代表在所有不細微的因素顧到之前，這個因素根本不重要。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>想花錢買音色，錢該花在真的改頻響的地方，麥克風的 capsule、麥位、空間、EQ，不是前級的品牌與年份。</p></div>
+    </aside>
+
+    <p class="first">Jim Lill 花了半年房租，買下 Ocean Way Nashville Studio A 那台 1970s 的 Neve 8078 前級，不是為了用它錄歌，是為了把它拆開來，用示波器、頻譜分析儀、100 輪盲測，把「Neve 前級有獨特音色」這個混音圈流傳最久的說法，一項一項量測到底是真是假。方法論本身，比結論更值得收。</p>
+
+    <h2 class="rise"><span class="hn">01</span>核心論點：前級只放大，不調味</h2>
+    <p><b>前級沒有「音色」，它只是把麥克風訊號放大。</b>只要兩個前級的<span class="term" data-def="訊號在不同頻率被放大或衰減的程度，是判斷器材有沒有音色差異的第一道測試。">頻響（frequency response）</span>一樣，聽起來就一樣；所有「暖、punchy、vintage vibe」的差異，不是來自前級，而是來自麥克風選擇、麥位、空間、樂器、演奏這些訊源端決策，外加 EQ。判斷一個器材有沒有音色差異的前提，是頻響有沒有差，頻響量起來一致，其他玄學（壓縮、失真、slew rate、阻抗、相位）在正常使用下都是安慰劑效應。</p>
+
+    <h2 class="rise"><span class="hn">02</span>七個玄學，逐項被量測拆穿</h2>
+    <ul>
+      <li><b>「很暖」（頻響）</b>：全頻掃描下，跟一顆便宜介面內建前級的差距小於 0.25dB；100 輪<span class="term" data-def="一種盲測法，給 A、B 兩個已知樣本，猜隱藏的 X 到底是 A 還是 B。">ABX</span> 盲測結果，還不如丟硬幣。</li>
+      <li><b>很「punchy」（隱含壓縮）</b>：畫輸入對輸出曲線，完全 1:1 線性，到頂點才硬失真，沒有任何壓縮。</li>
+      <li><b>有 vintage 失真</b>：錄音時麥克風訊號最大只到接近 1V，遠不及推出失真所需的電壓；就算硬推，輸出電壓會先把類比轉數位的轉換器夾爆。全諧波失真比訊號低 45dB，遠低於人耳的聽感門檻，聽不到。</li>
+      <li><b>slew rate 會塑形鼓的瞬態</b>：實測前級的反應速度超過重現高頻所需規格 4 倍，要真的影響聲音，得再慢 3,000 倍。</li>
+      <li><b>阻抗交互作用讓同支麥變色</b>：分別接進不同前級做掃描，最大差距 0.9dB，其餘更小。</li>
+      <li><b>analog 電感式 EQ 比較「musical」</b>：每條曲線數位都能對上，唯一真差別是 Neve 的 EQ 曲線隨增益變窄，數位 EQ 預設等寬；幾十美元的 plugin 就能複製這個行為。</li>
+      <li><b>20kHz 以上的相位差會影響可聞頻段</b>：純屬虛構，基於零事實。</li>
+    </ul>
+    <p>唯一真的會改變聲音的是 EQ，因為它真的改頻響，但 EQ 曲線數位可複製，所以仍不是任何鐵盒子的專利。</p>
+
+    <div class="callout rise"><div class="cl">兩個可以直接記住的觀念</div><p><b>subtle 的定義</b>：subtle 字面意思就是「不大」。任何人說「差別很細微」，等於承認在所有不細微的因素，選麥、麥位、樂器本身的調音與悶音、pan、reverb send、fader，都顧到之前，這個東西不重要。所有不細微的因素，都比所有細微的因素優先。<b>可信的對照怎麼做</b>：同一段演奏、同一支麥、同一個位置，分軌進兩個待比器材，電平精確校準，極短段落無縫接，而且音檔要留存可隨時複查。達不到這些，任何「我聽到差別」的說法都無效，包括大師在訪談裡隨口講的。</p></div>
+
+    <h2 class="rise"><span class="hn">03</span>麥克風確實有音色差：從 capsule 看</h2>
+    <p>跟前級相反，麥克風之間確實有音色差，而那個差幾乎全來自<span class="term" data-def="麥克風負責感應聲波震動、把它轉成電訊號的振膜組件。">capsule</span>的頻響（同一套自製精準測試架方法論，<a href="https://www.youtube.com/watch?v=4Bma2TE-x6M" target="_blank" rel="noopener">前級篇的前作在此 ↗</a>）。電平精確校準後，真空管與固態電路、有無變壓器、護網，只要沒實體擋住聲音進 capsule，幾乎無差，circuit 電路只負責把訊號乾淨送出去。</p>
+    <p>兩個例外這時 circuit 才有影響：少數麥克風刻意設計進電路的 EQ，以及電路本身過載失真，動圈麥幾乎不失真，電容麥在大音壓下才會失真。capsule 為何不同，來自氣隙、膜厚、膜張力、鍍金量、背極板鑽孔，最後都歸到 capsule 的總電容：電容越高，低中頻的一個寬凹陷會變大、上中頻的一個窄峰會變大、高頻的凹陷也會變大。</p>
+    <p>可署名的一個實務案例：同型號的 vintage 麥克風，差異可以很大。一組五支同型號、同年份的麥克風裡，作者最喜歡的那支，低頻明顯比其他四支少，買同型號不等於買到同音色，要知道真正音色，只能把那一支實測。乾淨訊源下，幾百美元等級的 capsule 套件，可以逼近數萬美元等級的高階麥克風，錢花在 capsule 頻響，不是品牌、年份或真空管。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 有音色 vs 沒音色</div>
+      <div class="dg dg-compare">
+        <div class="dg-vs">
+          <div class="dg-side">
+            <div class="dg-vk caps">前級 · circuit</div>
+            <div class="dg-vt">沒有音色差</div>
+            <ul class="dg-vl">
+              <li>只要頻響一樣，聽起來就一樣</li>
+              <li>100 輪 ABX 盲測不如丟硬幣</li>
+              <li>唯一真差別是 EQ，但可用 plugin 複製</li>
+            </ul>
+          </div>
+          <div class="dg-side">
+            <div class="dg-vk caps">麥克風 · capsule</div>
+            <div class="dg-vt">確實有音色差</div>
+            <ul class="dg-vl">
+              <li>差異幾乎全來自 capsule 的頻響</li>
+              <li>同型號 vintage 麥音色也可能差很大</li>
+              <li>circuit 只負責把訊號乾淨送出去</li>
+            </ul>
+          </div>
+        </div>
+        <div class="dg-verdict"><span class="dg-k caps">結論</span><span class="dg-vv">想花錢買音色，錢該花在 capsule、麥克風、麥位、EQ，不是前級的品牌與年份。</span></div>
+      </div>
+      <figcaption>同一套測試方法論，前級與麥克風得到完全相反的結論</figcaption>
+    </figure>
+
+    <div class="pull rise">頻響一樣，聽起來就一樣；頻響不一樣，才有資格談音色。</div>
+
+    <h2 class="rise"><span class="hn">04</span>怎麼判斷「我聽到的差別」是不是真的</h2>
+    <p>人耳很容易把「音量比較大」誤判成「音色比較好」，前級篇跟 capsule 篇都各自踩到這個陷阱：只是把訊號加大的裝置，校準電平後音色其實沒變。比較任何器材前，一定要先把電平校準到一致，否則比較沒有意義。形容音色，誠實的詞只有四個：更亮、更暗、更厚、更薄，更細的差異沒有專屬的詞，得用數字。</p>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼把它用在你身上</h2>
+    <ul>
+      <li><b>買器材前先問「頻響有沒有差」</b>：麥克風、麥位、空間處理、EQ 才是真的會改聲音的地方，前級只要頻響夠平直就夠用，錢別花在追前級的品牌與年代。</li>
+      <li><b>判斷一個 plugin 值不值得買</b>：用同一套電平校準的對照法自己做 ABX，先驗證「我真的聽得出差別」是不是錯覺，再決定要不要花錢。</li>
+      <li><b>訊號鏈除錯的思維</b>：先量測、隔離變因、找出唯一真正造成差異的環節，不套用聽來的玄學，這套方法不只用在混音，任何系統除錯都通用。</li>
+    </ul>
+  </article>
+
+  <nav class="artnav">
+    <a href="../category-mixing.html">← 回 混音</a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>

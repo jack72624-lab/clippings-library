@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>不是給你訊號，是讓你自己驗證訊號 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="ai-trading-system">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-investing.html">← 投資</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 16</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">06</div>
+    <div class="kick caps rise">投資 · AI 交易</div>
+    <h1 class="rise">不是給你訊號，是讓你自己驗證訊號</h1>
+    <div class="src rise">追日Gucci · <a href="https://www.youtube.com/watch?v=1SPxiko-NbU" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
+  </header>
+
+  <article class="readable">
+    <p class="lede">多數人以為自動化交易系統是機構專利，得會寫程式才碰得到。這篇示範反過來：用自然語言在 Claude Code 上，一路做出散戶版的監控與交易系統。真正值錢的不是抄到哪個訊號，是有能力把任何一個網路上看到的策略，自己拿去回測驗證。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>散戶輸機構三道鴻溝</b>：資訊、紀律、便利，AI 剛好一一補上，不用量化團隊也能做到一部分。</p></li>
+        <li><span class="bn">02</span><p><b>四個實作層級</b>：從查報價、抄底 bot，到跟單監控與選擇權雷達，難度遞增，各自可獨立使用。</p></li>
+        <li><span class="bn">03</span><p><b>核心價值不是訊號</b>：是「人人都能自己驗證任何策略」，不用照單全收別人喊的訊號。</p></li>
+        <li><span class="bn">04</span><p><b>一定先 paper trading</b>：涉及真實下單前，先用虛擬資金模擬，不涉真錢。</p></li>
+        <li><span class="bn">05</span><p><b>一句話</b>：AI 讓散戶第一次有能力自己動手驗證策略，而不是被動接收別人的分析。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>不構成投資建議，這篇只當知識與工具記錄；核心是讓自己有能力驗證，不是照抄訊號。</p></div>
+    </aside>
+
+    <p class="first">機構跟散戶的差距，很少是「誰比較聰明」，多半是「誰有量化團隊」「誰有紀律」「誰有時間盯盤」。這篇的示範是把這三道鴻溝，用自然語言在 Claude Code 上一項一項補起來，接上 Alpaca 這種提供模擬帳戶的自動化券商 API，全程不用寫一行程式。</p>
+
+    <h2 class="rise"><span class="hn">01</span>散戶輸機構的三道鴻溝，AI 怎麼補</h2>
+    <p>差距具體拆開是這三塊：機構有量化團隊跑資料管線；散戶容易情緒化，追高殺低；機構有人力專職盯盤，散戶沒有。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 三道鴻溝，AI 怎麼補</div>
+      <div class="dg">
+        <div class="dg-top">
+          <span class="k caps">起點</span>
+          <span class="t">散戶 vs 機構</span>
+          <span class="a">三道鴻溝，各有對應補法</span>
+        </div>
+        <div class="dg-cols">
+          <div class="dg-col">
+            <div class="dg-n">01</div>
+            <div class="dg-k caps">鴻溝</div>
+            <div class="dg-cause">資訊</div>
+            <div class="dg-sub">機構有量化團隊跑資料管線</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">AI 補法</div>
+            <div class="dg-sol">爬 SEC Form 4、國會交易，把原始申報變可用訊號</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">02</div>
+            <div class="dg-k caps">鴻溝</div>
+            <div class="dg-cause">紀律</div>
+            <div class="dg-sub">情緒（追高殺低）是散戶虧損主因</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">AI 補法</div>
+            <div class="dg-sol">把邏輯寫成演算法，<b>去掉情緒</b>決策</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">03</div>
+            <div class="dg-k caps">鴻溝</div>
+            <div class="dg-cause">便利</div>
+            <div class="dg-sub">機構有人力專職盯盤，散戶沒有</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">AI 補法</div>
+            <div class="dg-sol">agent <b>24/7</b> 監控，條件達成就推播到手機</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>AI 沒有幫散戶開外掛，是把機構原本就有的三樣東西補回來</figcaption>
+    </figure>
+
+    <h2 class="rise"><span class="hn">02</span>四層難度：從查報價到選擇權雷達</h2>
+    <p>整套示範分四個層級，難度遞增，不必全上，各層可以獨立使用。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 四層難度，各自可獨立使用</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">連線執行</div>
+          <div class="dg-sub">接 Alpaca 模擬帳戶，查餘額、查報價、手動下單</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">抄底 bot</div>
+          <div class="dg-sub">跌 1% 買 1 股、2% 買 2 股，超過 5% 封頂，每天限一次；<span class="term" data-def="移動停損：停損點跟著最高價往上移動，價格從高點回落超過設定距離才自動賣出，讓你在上漲時抱得住、下跌時不用自己盯著賣。">Trailing Stop</span> 出場</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">跟單監控</div>
+          <div class="dg-sub">追蹤<span class="term" data-def="美股規定公司內部人（CEO/CFO 等）買賣自家股票要在 2 個交易日內申報的表格，是抓「內部人怎麼看自己公司」的公開資料。">SEC Form 4</span>（內部人）與國會交易（依 STOCK Act，須 45 天內申報）</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">04</div>
+          <div class="dg-st">選擇權雷達</div>
+          <div class="dg-sub">掃 Credit/Debit Spread，財報前後抓 <span class="term" data-def="隱含波動率（implied volatility）在財報公布後骤降的現象：財報前不確定性高，選擇權貴；結果一出不確定性消失，賣方賺權利金，前提是股價留在計算區間內。">IV Crush</span></div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">四層各自能單獨使用，重點不是追到最頂層，是每一層都替你補回一部分散戶原本沒有的紀律、資訊或時間。</div>
+        </div>
+      </div>
+      <figcaption>從連線查報價到選擇權雷達，四層難度遞增，各自可獨立使用</figcaption>
+    </figure>
+
+    <p>Level 4 的選擇權雷達技術難度最高，牽涉<span class="term" data-def="部位對標的股價短期漲跌不敏感的組合方式，靠時間價值與波動率變化賺錢，不賭方向。">delta-neutral</span>（部位對股價短期漲跌不敏感）這類複雜金融工具，例如財報後用 Iron Condor（同時賣 Call、買 Call、賣 Put、買 Put）收權利金。即使不交易選擇權，光是意識到「財報是已知排程的波動」，這件事本身就有用，可以用來規劃財報前後要不要調整部位。</p>
+
+    <h2 class="rise"><span class="hn">03</span>技術棧：全部是拿現成工具接起來</h2>
+    <p>整套系統沒有自己造輪子：Claude Code 負責邏輯與任務自動化，Alpaca 負責自動化券商 API（可先跑模擬帳戶），Telegram bot 負責即時推播，Yahoo Finance API 補上券商 API 沒有的資料（例如選擇權未平倉量），Claude Code 內建的排程負責每 15 到 30 分鐘掃一次。全程用自然語言下指令，不用自己寫程式串接。</p>
+
+    <div class="callout rise"><div class="cl">不構成投資建議</div><p>影片本身不構成任何投資訊號，只當知識與工具記錄；涉及真實下單前務必先 paper trading，用虛擬資金模擬下單，不涉真錢。</p></div>
+
+    <h2 class="rise"><span class="hn">04</span>核心價值：不是訊號，是驗證能力</h2>
+    <p>這篇最值得記住的一句話是：任何網路上看到的策略，你都能自己回測驗證，人人是自己的分析師。多數人接觸投資資訊的方式是被動接收，看到一個名嘴喊多喊空就照做；這套做法反過來，把「這個策略到底有沒有用」變成一個可以自己動手檢驗的問題，而不是只能相信或不相信。</p>
+
+    <h2 class="rise"><span class="hn">05</span>接到你自己的場景</h2>
+    <p>這篇「自然語言 → 資料源 → 排程掃描 → 推播到手機」的做法，很多人已經走到一半：如果你已經有一套會盯盤、抓觸價或財報時間、每天定時推播提醒的追蹤系統，那正是本文 Level 2 到 3「監控＋紀律＋便利」的非交易版實作，只是還沒接自動下單。這個差別可以是刻意的，追蹤與決策支援跟自動真實下單是不同風險等級的事，先做前者、晚一點再考慮後者是合理的順序。跟單訊號（Form 4、國會交易）如果你的系統還沒做，是個可選的下一步，但要注意這偏美股導向，台股覆蓋很少，得另外評估數據來源。</p>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼把它用在你身上</h2>
+    <ul>
+      <li><b>先從 Level 1 開始</b>：接上模擬帳戶的 API，查報價、查餘額，不涉及真錢，先確認你能用自然語言指令拿到想要的資料，再往下一層加。</li>
+      <li><b>把你的交易情緒寫成規則</b>：拖延、追高、殺低都是可以演算法化的行為，先挑一個你最常犯的情緒錯誤，寫成「跌多少買多少、漲多少就設移動停損」這類機械規則。</li>
+      <li><b>先 paper trading，再談真錢</b>：涉及真實下單前先用虛擬資金跑過一輪，這條紀律比技術本身更重要，也是這篇唯一明講的警語。</li>
+      <li><b>推播接你已經在用的管道</b>：不用重新架設，Telegram 或你既有的通知管道，只要能收到條件觸發的推播，就已經是本文 Level 2 到 3 的核心。</li>
+    </ul>
+  </article>
+
+  <nav class="artnav">
+    <a href="../category-investing.html">← 回 投資</a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>

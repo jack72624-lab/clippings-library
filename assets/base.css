@@ -306,7 +306,7 @@ a.gcover:hover .cimg{transform:scale(1.045)}
 
 /* 首頁「領域 / 時間軸」切換導覽 */
 .hub-nav{display:flex;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
-.hub-nav a{flex:1;text-align:center;padding:16px 12px;font-family:"Helvetica Neue",Arial,sans-serif;
+.hub-nav a{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px 12px;font-family:"Helvetica Neue",Arial,sans-serif;
   text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:600;color:var(--dim);transition:background .25s,color .25s}
 .hub-nav a + a{border-left:1px solid var(--ink)}
 .hub-nav a.on{background:var(--ink);color:var(--paper)}
