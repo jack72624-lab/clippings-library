@@ -293,6 +293,17 @@ a.gcover:hover .cimg{transform:scale(1.045)}
 .cover-stack .gcover{margin-bottom:0}
 .cover-stack .gcover + .gcover{border-top:1px solid var(--ink)}
 
+/* 我的藏書：書頁 hero 兩欄（左文字、右書封）。book 專用修飾，只在 .art-hero.book-hero 生效、不動全域 .art-hero，其他 21 篇文章不受影響 */
+.art-hero.book-hero{display:grid;grid-template-columns:1fr auto;gap:clamp(22px,5vw,60px);align-items:center}
+.book-hero .bh-cover{justify-self:end}
+.book-hero .bh-cover img{display:block;width:clamp(160px,19vw,232px);height:auto;
+  border:1px solid var(--line);box-shadow:0 14px 36px rgba(10,10,10,.16)}
+@media(max-width:720px){
+  .art-hero.book-hero{grid-template-columns:1fr;gap:20px;align-items:start}
+  .book-hero .bh-cover{justify-self:start;order:-1}        /* 手機：書封移到標題上方、縮小 */
+  .book-hero .bh-cover img{width:clamp(128px,36vw,168px)}
+}
+
 /* 首頁「領域 / 時間軸」切換導覽 */
 .hub-nav{display:flex;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
 .hub-nav a{flex:1;text-align:center;padding:16px 12px;font-family:"Helvetica Neue",Arial,sans-serif;
