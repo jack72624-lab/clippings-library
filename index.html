@@ -18,6 +18,63 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
+<style>
+  /* ============================================================
+     首頁領域＝捲動幕簾 clip-path 揭露（骨架取自 morris-idea-demo，
+     文字/圖/游標貼齊 base.css 語言）。介紹在上、幕簾在下。
+     手機/reduced-motion 退回直向 16:9 堆疊。只影響首頁、其他頁不載這段。
+     ============================================================ */
+  .topbar{position:static}               /* 讓幕簾能真正滿版釘住，不被 sticky 頂欄卡住 */
+
+  /* 幕簾：外層拉高 → .pin sticky 釘一屏 → 每張 .cpanel 滿版疊放，
+     捲動時上層由右向左 clip 收掉、露出下一個領域。圖與標籤固定不位移、只被裁切揭露。*/
+  .gallery{position:relative}
+  .pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--ink)}
+  .stack{position:relative;height:100vh}
+  .cpanel{position:absolute;inset:0;width:100vw;height:100vh;overflow:hidden;display:block;
+    color:#fff;background:#0a0a0a;will-change:clip-path}
+  .cpanel .cmedia{position:absolute;inset:0}
+  .cpanel .cmedia img{width:100%;height:100%;object-fit:cover;object-position:center;
+    filter:grayscale(1) contrast(1.05);display:block}
+  /* 上下漸層：白字在任何圖上都讀得到 */
+  .cpanel .gtop{position:absolute;left:0;right:0;top:0;height:38%;pointer-events:none;z-index:1;
+    background:linear-gradient(to bottom,rgba(10,10,10,.55),rgba(10,10,10,0))}
+  .cpanel .gbot{position:absolute;left:0;right:0;bottom:0;height:56%;pointer-events:none;z-index:1;
+    background:linear-gradient(to top,rgba(10,10,10,.74),rgba(10,10,10,0))}
+  .cpanel .cno{position:absolute;top:clamp(20px,4vw,44px);left:clamp(22px,4.5vw,64px);z-index:2;
+    font-family:"Helvetica Neue",Arial,sans-serif;font-weight:200;font-size:clamp(30px,5vw,68px);
+    line-height:1;letter-spacing:.02em;opacity:.92}
+  .cpanel .ctitle{position:absolute;left:clamp(22px,4.5vw,64px);bottom:clamp(72px,11vw,124px);z-index:2;
+    max-width:min(88vw,900px);font-weight:300;line-height:.96;letter-spacing:.005em;
+    font-size:clamp(46px,10vw,132px)}
+  .cpanel .cct{position:absolute;left:clamp(22px,4.5vw,64px);bottom:clamp(34px,5vw,60px);z-index:2;
+    font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.2em;
+    font-size:12px;opacity:.9}
+  .cpanel .cct .en{color:rgba(255,255,255,.5);margin-left:14px}
+  .chint{position:absolute;top:clamp(20px,4vw,42px);right:clamp(22px,4.5vw,64px);z-index:2;
+    font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.2em;
+    font-size:11px;opacity:.62}
+
+  /* 圓形「View」游標，只在幕簾內出現 */
+  #view{position:fixed;top:0;left:0;width:66px;height:66px;margin:-33px 0 0 -33px;border-radius:50%;
+    background:#fff;color:#0a0a0a;display:flex;align-items:center;justify-content:center;
+    font-family:"Helvetica Neue",Arial,sans-serif;font-size:11px;letter-spacing:.1em;font-weight:600;
+    text-transform:uppercase;pointer-events:none;z-index:200;opacity:0;transform:scale(.5);
+    transition:opacity .3s,transform .45s cubic-bezier(.16,1,.3,1)}
+  #view.on{opacity:1;transform:scale(1)}
+  @media(hover:hover) and (pointer:fine){.cpanel{cursor:none}}
+  @media(hover:none),(pointer:coarse){#view{display:none}}
+
+  /* 手機 / reduced-motion：退回直向堆疊（貼齊原本封面牆 16:9）*/
+  .gallery.stack{height:auto!important}
+  .gallery.stack .pin{position:static;height:auto;overflow:visible;background:none}
+  .gallery.stack .stack{height:auto}
+  .gallery.stack .cpanel{position:relative;inset:auto;left:50%;margin-left:-50vw;width:100vw;
+    height:auto;aspect-ratio:16/9;clip-path:none!important;z-index:auto!important}
+  .gallery.stack .cpanel + .cpanel{border-top:1px solid var(--ink)}
+  .gallery.stack .cpanel .ctitle{bottom:clamp(44px,10vw,64px);font-size:clamp(38px,9vw,66px)}
+  .gallery.stack .chint{display:none}
+</style>
 </head>
 <body>
 <div class="progress"><div class="bar"></div></div>
@@ -32,7 +89,7 @@
   <header class="hub-hero">
     <div class="kick caps rise">Reading Library · 剪報消化庫</div>
     <h1><span class="mask"><span>把讀過的</span></span><span class="mask"><span>再讀一遍</span></span></h1>
-    <p class="sub rise">每一篇網路剪報都被梳理成一篇好讀的短文，專業術語就地補充，可以在上面畫重點、寫筆記。點一個領域進去，看裡面的文章。</p>
+    <p class="sub rise">每一篇網路剪報都被梳理成一篇好讀的短文，專業術語就地補充，可以在上面畫重點、寫筆記。往下捲，一個領域接一個領域揭露，點它進去看文章。</p>
     <div class="stat rise caps">
       <span><b>5</b> 領域</span>
       <span><b>21</b> 篇可讀</span>
@@ -47,47 +104,95 @@
   </div>
 </div>
 
-<!-- 封面牆：5 張滿版封面一張接一張，點進去看該領域文章 -->
-<div class="cover-stack">
-  <a class="gcover empty rise" href="category-selfgrowth.html">
-    <img class="cimg" src="assets/img/topic-selfgrowth.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
-    <div class="grain"></div>
-    <div class="gc-no grot">01</div>
-    <div class="gc-title">自我成長</div>
-    <div class="gc-ct">2 篇 →</div>
-  </a>
-  <a class="gcover empty rise" href="category-mixing.html">
-    <img class="cimg" src="assets/img/topic-mixing.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
-    <div class="grain"></div>
-    <div class="gc-no grot">02</div>
-    <div class="gc-title">混音</div>
-    <div class="gc-ct">6 篇 →</div>
-  </a>
-  <a class="gcover empty rise" href="category-ai.html">
-    <img class="cimg" src="assets/img/topic-ai.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
-    <div class="grain"></div>
-    <div class="gc-no grot">03</div>
-    <div class="gc-title">AI × Coding</div>
-    <div class="gc-ct">5 篇 · 能力 →</div>
-  </a>
-  <a class="gcover empty rise" href="category-bodymind.html">
-    <img class="cimg" src="assets/img/topic-bodymind.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
-    <div class="grain"></div>
-    <div class="gc-no grot">04</div>
-    <div class="gc-title">身心 · 關係</div>
-    <div class="gc-ct">4 篇 →</div>
-  </a>
-  <a class="gcover empty rise" href="category-investing.html">
-    <img class="cimg" src="assets/img/topic-investing.jpg" alt="" onload="this.closest('.gcover').classList.remove('empty')" onerror="this.remove()">
-    <div class="grain"></div>
-    <div class="gc-no grot">05</div>
-    <div class="gc-title">投資</div>
-    <div class="gc-ct">4 篇 →</div>
-  </a>
-</div>
+<!-- 領域幕簾：5 領域滿版疊放，捲動右→左裁掉露出下一個，點領域進 category -->
+<section class="gallery" id="gallery">
+  <div class="pin"><div class="stack">
+    <a class="cpanel" href="category-selfgrowth.html">
+      <span class="cmedia"><img src="assets/img/topic-selfgrowth.jpg" alt=""></span>
+      <span class="gtop"></span><span class="gbot"></span>
+      <span class="cno grot">01</span>
+      <span class="chint">↓ 捲動揭露五個領域</span>
+      <span class="ctitle">自我成長</span>
+      <span class="cct">2 篇文章 <span class="en">Self-Growth</span></span>
+    </a>
+    <a class="cpanel" href="category-mixing.html">
+      <span class="cmedia"><img src="assets/img/topic-mixing.jpg" alt=""></span>
+      <span class="gtop"></span><span class="gbot"></span>
+      <span class="cno grot">02</span>
+      <span class="ctitle">混音</span>
+      <span class="cct">6 篇文章 <span class="en">Mixing</span></span>
+    </a>
+    <a class="cpanel" href="category-ai.html">
+      <span class="cmedia"><img src="assets/img/topic-ai.jpg" alt=""></span>
+      <span class="gtop"></span><span class="gbot"></span>
+      <span class="cno grot">03</span>
+      <span class="ctitle">AI × Coding</span>
+      <span class="cct">5 篇 · 能力 <span class="en">AI × Coding</span></span>
+    </a>
+    <a class="cpanel" href="category-bodymind.html">
+      <span class="cmedia"><img src="assets/img/topic-bodymind.jpg" alt=""></span>
+      <span class="gtop"></span><span class="gbot"></span>
+      <span class="cno grot">04</span>
+      <span class="ctitle">身心 · 關係</span>
+      <span class="cct">4 篇文章 <span class="en">Body · Mind</span></span>
+    </a>
+    <a class="cpanel" href="category-investing.html">
+      <span class="cmedia"><img src="assets/img/topic-investing.jpg" alt=""></span>
+      <span class="gtop"></span><span class="gbot"></span>
+      <span class="cno grot">05</span>
+      <span class="ctitle">投資</span>
+      <span class="cct">4 篇文章 <span class="en">Investing</span></span>
+    </a>
+  </div></div>
+</section>
 
-<footer class="foot">Clippings 閱讀庫 · 設計語言 Morris B&amp;W Editorial · 首頁＝封面牆，點領域看文章</footer>
+<footer class="foot">Clippings 閱讀庫 · 設計語言 Morris B&amp;W Editorial · 首頁＝捲動幕簾，點領域看文章</footer>
+
+<div id="view">View</div>
 
 <script src="assets/reader.js"></script>
+<script>
+  (function(){
+    const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarse=matchMedia('(hover: none),(pointer: coarse)').matches;
+    const gallery=document.getElementById('gallery');
+    if(!gallery) return;
+    const pin=gallery.querySelector('.pin');
+    const panels=[...gallery.querySelectorAll('.cpanel')];
+    const N=panels.length;
+
+    if(reduce||coarse){ gallery.classList.add('stack'); return; }
+
+    // 疊放層級：先出現的在最上層（先被裁掉），最後一張墊底
+    panels.forEach((p,i)=>p.style.zIndex=N-i);
+    const smooth=t=>t*t*(3-2*t);                 // smoothstep：每段揭露頭尾放緩
+    function measure(){ gallery.style.height=(N*pin.clientHeight)+'px'; onScroll(); }
+    function onScroll(){
+      const top=gallery.getBoundingClientRect().top;
+      const range=gallery.offsetHeight-pin.clientHeight;
+      const p=clamp(-top/(range||1),0,1);
+      const f=p*(N-1);                           // 目前揭露到第幾張
+      panels.forEach((panel,i)=>{
+        const local=clamp(f-i,0,1);              // 這張被裁掉的比例（0 滿版→1 收光）
+        const r=(smooth(local)*100).toFixed(2);
+        panel.style.clipPath='inset(0 '+r+'% 0 0)';   // 由右向左收
+      });
+    }
+    addEventListener('scroll',onScroll,{passive:true});
+    addEventListener('resize',measure,{passive:true});
+    measure(); addEventListener('load',measure);
+
+    // 圓形「View」游標
+    const view=document.getElementById('view');
+    if(view){
+      let vx=innerWidth/2,vy=innerHeight/2,cx=vx,cy=vy;
+      addEventListener('mousemove',e=>{vx=e.clientX;vy=e.clientY;},{passive:true});
+      (function vl(){cx+=(vx-cx)*.2;cy+=(vy-cy)*.2;view.style.left=cx+'px';view.style.top=cy+'px';requestAnimationFrame(vl);})();
+      gallery.addEventListener('mouseenter',()=>view.classList.add('on'));
+      gallery.addEventListener('mouseleave',()=>view.classList.remove('on'));
+    }
+  })();
+</script>
 </body>
 </html>
