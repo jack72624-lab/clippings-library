@@ -61,10 +61,5 @@ body.vmode .vpanel{display:block}
   .readable{max-width:none}
   .vpanel,body.vmode .vpanel{display:none}
   .vtoggle{display:none}
-  .mob-vlink{display:flex;align-items:center;gap:8px;justify-content:center;
-    border:1px solid var(--ink);padding:13px 16px;margin:6px 0 2px;
-    font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.12em;
-    font-size:11px;font-weight:600;color:var(--ink)}
-  .mob-vlink .pl{font-size:9px}
-  .mob-vlink:active{background:var(--ink);color:var(--paper)}
+  /* mob-vlink 大框移除：原片連結改統一走 .art-hero .src 那行的「YouTube 原片 ↗」,不再重複一個框 */
 }
