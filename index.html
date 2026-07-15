@@ -22,16 +22,17 @@
   /* ============================================================
      首頁領域＝捲動幕簾 clip-path 揭露（骨架取自 morris-idea-demo，
      文字/圖/游標貼齊 base.css 語言）。介紹在上、幕簾在下。
-     手機/reduced-motion 退回直向 16:9 堆疊。只影響首頁、其他頁不載這段。
+     手機也跑同一個垂直捲動揭露（用 svh 對齊可視高度）；只有 reduced-motion 退回直向堆疊。
+     只影響首頁、其他頁不載這段。
      ============================================================ */
   .topbar{position:static}               /* 讓幕簾能真正滿版釘住，不被 sticky 頂欄卡住 */
 
   /* 幕簾：外層拉高 → .pin sticky 釘一屏 → 每張 .cpanel 滿版疊放，
      捲動時上層由右向左 clip 收掉、露出下一個領域。圖與標籤固定不位移、只被裁切揭露。*/
   .gallery{position:relative}
-  .pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--ink)}
-  .stack{position:relative;height:100vh}
-  .cpanel{position:absolute;inset:0;width:100vw;height:100vh;overflow:hidden;display:block;
+  .pin{position:sticky;top:0;height:100svh;overflow:hidden;background:var(--ink)}
+  .stack{position:relative;height:100svh}
+  .cpanel{position:absolute;inset:0;width:100vw;height:100svh;overflow:hidden;display:block;
     color:#fff;background:#0a0a0a;will-change:clip-path}
   .cpanel .cmedia{position:absolute;inset:0}
   .cpanel .cmedia img{width:100%;height:100%;object-fit:cover;object-position:center;
@@ -65,7 +66,7 @@
   @media(hover:hover) and (pointer:fine){.cpanel{cursor:none}}
   @media(hover:none),(pointer:coarse){#view{display:none}}
 
-  /* 手機 / reduced-motion：退回直向堆疊（貼齊原本封面牆 16:9）*/
+  /* reduced-motion：退回直向堆疊（貼齊原本封面牆 16:9）；手機改跑上面的垂直揭露 */
   .gallery.stack{height:auto!important}
   .gallery.stack .pin{position:static;height:auto;overflow:visible;background:none}
   .gallery.stack .stack{height:auto}
@@ -162,7 +163,9 @@
     const panels=[...gallery.querySelectorAll('.cpanel')];
     const N=panels.length;
 
-    if(reduce||coarse){ gallery.classList.add('stack'); return; }
+    // 觸控裝置照跑揭露（對齊參考 demo：手機保留同一個垂直捲動揭露、不退化）。
+    // 只有 reduced-motion 才退成直向堆疊（無障礙）。
+    if(reduce){ gallery.classList.add('stack'); return; }
 
     // 疊放層級：先出現的在最上層（先被裁掉），最後一張墊底
     panels.forEach((p,i)=>p.style.zIndex=N-i);
