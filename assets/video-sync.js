@@ -156,22 +156,27 @@
   }
 
   /* 看影片 / 收起影片 */
+  function stopPlayback(){
+    /* 趁 iframe 還可見先停（display:none 後 postMessage 有時送不進去 → 背景還有聲音）。
+       pauseVideo 主停、stopVideo 保險；不看 ytReady，用 try/catch 硬打。*/
+    if(player){
+      try{ if(player.pauseVideo) player.pauseVideo(); }catch(e){}
+      try{ if(player.stopVideo)  player.stopVideo();  }catch(e){}
+    }
+    if(followOn){
+      followOn=false;
+      if(fbtn){ fbtn.classList.remove('on'); fbtn.textContent='跟讀：關'; }
+      clipEnd=null;
+      setNow('點段落旁的 ▶ 時間碼跳到影片那一段');
+    }
+  }
   if(vtoggle){
     vtoggle.addEventListener('click',function(){
-      var on=body.classList.toggle('vmode');
-      vtoggle.innerHTML=on?'<span class="pl">✕</span> 收起影片':'<span class="pl">▶</span> 看影片';
-      if(on){ buildPlayer(); }
-      else {
-        /* 收起＝把影片停掉，別在背景繼續播聲音 */
-        if(player && ytReady && player.pauseVideo) player.pauseVideo();
-        /* 也關掉跟讀，否則往下滑又會把影片叫回來 */
-        if(followOn){
-          followOn=false;
-          if(fbtn){ fbtn.classList.remove('on'); fbtn.textContent='跟讀：關'; }
-          clipEnd=null;
-          setNow('點段落旁的 ▶ 時間碼跳到影片那一段');
-        }
-      }
+      var willShow = !body.classList.contains('vmode');
+      if(!willShow) stopPlayback();          // 收起＝先把影片停掉（趁還可見）
+      body.classList.toggle('vmode');
+      vtoggle.innerHTML = willShow ? '<span class="pl">✕</span> 收起影片' : '<span class="pl">▶</span> 看影片';
+      if(willShow) buildPlayer();
     });
   }
 })();
