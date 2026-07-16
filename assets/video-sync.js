@@ -160,7 +160,18 @@
     vtoggle.addEventListener('click',function(){
       var on=body.classList.toggle('vmode');
       vtoggle.innerHTML=on?'<span class="pl">✕</span> 收起影片':'<span class="pl">▶</span> 看影片';
-      if(on) buildPlayer();
+      if(on){ buildPlayer(); }
+      else {
+        /* 收起＝把影片停掉，別在背景繼續播聲音 */
+        if(player && ytReady && player.pauseVideo) player.pauseVideo();
+        /* 也關掉跟讀，否則往下滑又會把影片叫回來 */
+        if(followOn){
+          followOn=false;
+          if(fbtn){ fbtn.classList.remove('on'); fbtn.textContent='跟讀：關'; }
+          clipEnd=null;
+          setNow('點段落旁的 ▶ 時間碼跳到影片那一段');
+        }
+      }
     });
   }
 })();
