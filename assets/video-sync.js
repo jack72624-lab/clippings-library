@@ -108,16 +108,13 @@
     for(var i=0;i<arr.length;i++){ if(arr[i].getBoundingClientRect().top<=line) found=arr[i]; else break; }
     return found || (arr.length?arr[0]:null);
   }
-  function markPlaying(el){
-    [].forEach.call(A.querySelectorAll('[data-follow].vplaying'),function(e){ e.classList.remove('vplaying'); });
-    if(el) el.classList.add('vplaying');
-  }
-
-  /* 啟用某段：換片段（debounce 180ms，快速滑過不抽搐）*/
+  /* 啟用某段：換片段（debounce 180ms，快速滑過不抽搐）
+     只用 Web Animations 閃一下 ＋ #vnow 讀出「正在讀哪段」，不加 class 到 .readable
+     → 不會漏進 reader.js 的畫重點快照（對齊 video-sync 雷區）。*/
   function activate(el){
     if(!el || el===activeEl) return;
     var arr=follows(), i=arr.indexOf(el); if(i<0) return;
-    activeEl=el; markPlaying(el);
+    activeEl=el;
     var v=+el.dataset.v||0, start=parseInt(el.dataset.t,10)||0, end=endOf(el,arr,i), label=el.dataset.label||'';
     setNow('▶ <b>'+fmt(start)+(end!=null?('–'+fmt(end)):'')+'</b> · '+label+(MULTI?('（'+shortLabel(VIDEOS[v].label)+'）'):''));
     if(el.animate) el.animate([{backgroundColor:'#f4e5a1'},{backgroundColor:'transparent'}],{duration:850,easing:'ease-out'});
@@ -154,7 +151,7 @@
       fbtn.classList.toggle('on',followOn);
       fbtn.textContent=followOn?'跟讀：開':'跟讀：關';
       if(followOn){ openVideo(); activeEl=null; setNow('跟讀開 · 影片只播你正在讀那段，往下滑換下一段'); activate(currentEl()); }
-      else { clipEnd=null; markPlaying(null); setNow('跟讀關 · 影片自由播放'+(MULTI?'；上方可切換影片':'')+'，點段落 ▶ 手動跳'); }
+      else { clipEnd=null; setNow('跟讀關 · 影片自由播放'+(MULTI?'；上方可切換影片':'')+'，點段落 ▶ 手動跳'); }
     });
   }
 

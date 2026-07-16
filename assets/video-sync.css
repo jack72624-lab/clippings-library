@@ -54,9 +54,6 @@ body.vmode .vpanel{display:block}
 .figure .fl{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .figure .fl .tc{flex:none}
 
-/* 跟讀「正在讀」那段的左邊界標記（Web Animations 閃 + 這條常駐黑邊，讓當前片段一眼可辨）*/
-.readable [data-follow].vplaying{box-shadow:-14px 0 0 -11px var(--ink)}
-
 /* ===== 多影片（v2）：切換列 / 段落出處徽章 / 影片分組帶 =====
    單影片 entry 用不到這幾個 class（JS 會把 .vswitch 藏起）；只有多片文章才出現。*/
 .vswitch{display:flex;border:1px solid var(--ink);flex-wrap:wrap}
