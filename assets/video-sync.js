@@ -1,69 +1,151 @@
 /* ============================================================
-   Clippings 閱讀庫 · 影片同步（video-sync）
-   影片型 entry 專用。搭配 video-sync.css。純 vanilla。
-   用法：<body data-video="YT_ID"> ＋ 段落掛 <a class="tc" data-t="秒"> ＋
-        跟讀段落掛 <h2 data-follow data-t="秒" data-label="標題">。
-   兩種同步：① 點 chip → 影片跳（桌機頁內 seek / 手機開 YouTube 原片）
-            ② 跟讀 → 影片播到哪,對應段落閃一下＋捲到面前（Web Animations,不動 innerHTML）
+   Clippings 閱讀庫 · 影片同步（video-sync）v2 — 段落帶影片
+   單／多影片共用一套。純 vanilla。搭配 video-sync.css。
+
+   啟用（擇一）：
+     <body data-video="YT_ID">                          單影片
+     <body data-videos='[{"id":"…","label":"…"},…]'>    多影片（不限數量）
+
+   跟讀段：<h2 data-follow data-t="起秒" [data-v="影片索引0起"] [data-end="訖秒"] data-label="…">
+   時間碼：<a class="tc" data-t="秒" [data-v] href="…v=ID&t=Ns">
+
+   行為：
+     · 跟讀「開」＝段落帶影片（捲動驅動）：你讀到哪段 → 影片跳到它的
+       data-v / data-t，播到 data-end 就停；往下滑到下一段 → 換播它的片段（跨影片自動換）。
+       data-end 省略時，自動取「同一影片的下一段 data-t」為訖（＝該章節長度）——
+       所以舊單片 entry（只有 data-follow data-t）零改檔就自動 retrofit。
+     · 跟讀「關」＝自由播放：不限片段、不隨捲動跳；多片可用切換列、段落 ▶ 手動跳。
+     · 手機（無嵌入播放器）：段落 ▶ 直接開 YouTube 到該秒。
+
+   對齊 reader.js 畫重點雷區：影片與控制列都在 .readable 外；跟讀只用 class ＋
+   Web Animations（不動 .readable innerHTML → 不會漏進畫重點快照）。
    ============================================================ */
 (function(){
-  var VID=(document.body.dataset.video||'').trim();
-  if(!VID) return;                                   // 沒有影片來源 → 不啟用
-  var player=null, ytReady=false, followOn=false, curIdx=-1, userLock=0;
-  var playerBuilt=false, apiReady=false, pendingBuild=false, pendingSeek=null;
-  var A=document.querySelector('.readable');
-  var vnow=document.getElementById('vnow');
-  var fbtn=document.getElementById('followBtn');
-  var vtoggle=document.getElementById('vtoggle');
+  var body=document.body, VIDEOS=[];
+  try{ if(body.dataset.videos) VIDEOS=JSON.parse(body.dataset.videos); }catch(e){ VIDEOS=[]; }
+  if((!VIDEOS||!VIDEOS.length) && body.dataset.video){ VIDEOS=[{id:body.dataset.video.trim(), label:'影片'}]; }
+  if(!VIDEOS.length) return;                          // 沒有影片來源 → 不啟用
+  var MULTI = VIDEOS.length>1;
+
+  var A       = document.querySelector('.readable');
+  var vnow    = document.getElementById('vnow');
+  var fbtn    = document.getElementById('followBtn');
+  var vtoggle = document.getElementById('vtoggle');
+  var vswitch = document.getElementById('vswitch');
+
+  var player=null, apiReady=false, playerBuilt=false, pendingBuild=false, ytReady=false;
+  var curV=0, curVLoaded=0, followOn=false, activeEl=null, pendingSeek=null, clipEnd=null, seekTimer=null, raf=0;
 
   function fmt(s){ s=Math.max(0,Math.round(s)); var m=Math.floor(s/60), ss=s%60; return m+':'+(ss<10?'0':'')+ss; }
-  function setNow(html){ if(vnow) vnow.innerHTML=html; }
-  // 延後建立 player：等使用者第一次「看影片」、容器已全尺寸顯示才建
-  // → YouTube 才會給對應大尺寸的清晰預覽圖（先前在 display:none 時建,只拿到超低解析縮圖被撐大→模糊）
+  function setNow(h){ if(vnow) vnow.innerHTML=h; }
+  function shortLabel(l){ return (l||'').split('·')[0].trim() || l; }
+
+  /* 切換列：只有多影片才需要（單片藏起）*/
+  if(vswitch && MULTI){
+    vswitch.innerHTML = VIDEOS.map(function(v,i){
+      return '<button type="button" data-v="'+i+'" aria-current="'+(i===0)+'">'+shortLabel(v.label)+'</button>';
+    }).join('');
+    vswitch.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      playClip(+b.dataset.v,0,null);
+      setNow('▶ <b>'+shortLabel(VIDEOS[+b.dataset.v].label)+'</b> · 自由播');
+    });
+  } else if(vswitch){ vswitch.style.display='none'; }
+  function markTabs(){ if(!vswitch||!MULTI) return; [].forEach.call(vswitch.children,function(b,i){ b.setAttribute('aria-current', String(i===curV)); }); }
+
+  /* 延後建立 player：等影片帶顯示、容器全尺寸才建（→ 清晰預覽圖，同 v1）*/
   function buildPlayer(){
     if(playerBuilt) return;
-    if(!apiReady){ pendingBuild=true; return; }     // API 還沒載好 → 等 onYouTubeIframeAPIReady 回來再建
+    if(!apiReady){ pendingBuild=true; return; }
     playerBuilt=true;
     player=new YT.Player('ytPlayer',{
-      videoId:VID,
+      videoId:VIDEOS[curV].id,
       playerVars:{playsinline:1,rel:0,modestbranding:1},
-      events:{ 'onReady':function(){
-        ytReady=true;
-        if(pendingSeek!=null){ player.seekTo(pendingSeek,true); player.playVideo(); pendingSeek=null; }
-      } }
+      events:{ 'onReady':function(){ ytReady=true; curVLoaded=curV; if(pendingSeek!=null){ player.seekTo(pendingSeek,true); player.playVideo(); pendingSeek=null; } } }
     });
   }
-  function seekTo(t){
-    if(ytReady&&player){ player.seekTo(t,true); player.playVideo(); }
-    else { pendingSeek=t; buildPlayer(); }           // 還沒建好 → 記住秒數,建好即跳
-  }
-  function openVideo(){                               // 開影片模式（純文章 → 顯示置頂影片帶）
-    if(!document.body.classList.contains('vmode')){
-      document.body.classList.add('vmode');
+  window.onYouTubeIframeAPIReady=function(){ apiReady=true; if(pendingBuild) buildPlayer(); };
+
+  function openVideo(){
+    if(!body.classList.contains('vmode')){
+      body.classList.add('vmode');
       if(vtoggle) vtoggle.innerHTML='<span class="pl">✕</span> 收起影片';
     }
-    buildPlayer();                                     // 首次顯示才建 player → 全尺寸容器 → 清晰預覽圖
+    buildPlayer();
   }
 
-  /* 前向：點時間碼 chip → 影片跳過去。事件委派掛在 .readable 容器上，
-     所以就算之後畫重點還原 innerHTML，chip 的點擊照樣有效（同 reader.js 對 .term 的處理精神）。*/
+  /* 播某片段：換片＋跳起點；end 非空 → 記錄訖點供 tick 暫停 */
+  function playClip(v, start, end){
+    v=+v||0; start=start||0;
+    openVideo();
+    clipEnd=(end!=null && end!=='') ? +end : null;
+    curV=v; markTabs();
+    if(!playerBuilt || !ytReady){ pendingSeek=start; buildPlayer(); return; }
+    if(v!==curVLoaded){ curVLoaded=v; player.loadVideoById({videoId:VIDEOS[v].id, startSeconds:start}); }
+    else { player.seekTo(start,true); player.playVideo(); }
+  }
+
+  /* 跟讀段（有 data-t 的 [data-follow]，文件順序）*/
+  function follows(){ return [].slice.call(A.querySelectorAll('[data-follow]')).filter(function(el){ return el.dataset.t!=null && el.dataset.t!==''; }); }
+  /* 某段訖點：data-end 優先；否則同影片「下一段 data-t」（需 ＞起點）；否則 null（播到影片尾、不硬停）*/
+  function endOf(el, list, i){
+    if(el.dataset.end) return +el.dataset.end;
+    var v=+el.dataset.v||0, start=parseInt(el.dataset.t,10)||0;
+    for(var j=i+1;j<list.length;j++){
+      if((+list[j].dataset.v||0)===v){ var nt=parseInt(list[j].dataset.t,10)||0; return nt>start?nt:null; }
+    }
+    return null;
+  }
+
+  function stickyOffset(){
+    var tb=document.querySelector('.topbar'), vp=document.querySelector('.vpanel');
+    var vh=(vp&&vp.offsetParent!==null)?vp.offsetHeight:0;   // 手機 vpanel display:none → 0
+    return (tb?tb.offsetHeight:0)+vh+16;
+  }
+  /* scroll-spy：目前「正在讀」那段＝閱讀線以上最後一段 */
+  function currentEl(){
+    var line=stickyOffset()+48, arr=follows(), found=null;
+    for(var i=0;i<arr.length;i++){ if(arr[i].getBoundingClientRect().top<=line) found=arr[i]; else break; }
+    return found || (arr.length?arr[0]:null);
+  }
+  function markPlaying(el){
+    [].forEach.call(A.querySelectorAll('[data-follow].vplaying'),function(e){ e.classList.remove('vplaying'); });
+    if(el) el.classList.add('vplaying');
+  }
+
+  /* 啟用某段：換片段（debounce 180ms，快速滑過不抽搐）*/
+  function activate(el){
+    if(!el || el===activeEl) return;
+    var arr=follows(), i=arr.indexOf(el); if(i<0) return;
+    activeEl=el; markPlaying(el);
+    var v=+el.dataset.v||0, start=parseInt(el.dataset.t,10)||0, end=endOf(el,arr,i), label=el.dataset.label||'';
+    setNow('▶ <b>'+fmt(start)+(end!=null?('–'+fmt(end)):'')+'</b> · '+label+(MULTI?('（'+shortLabel(VIDEOS[v].label)+'）'):''));
+    if(el.animate) el.animate([{backgroundColor:'#f4e5a1'},{backgroundColor:'transparent'}],{duration:850,easing:'ease-out'});
+    clearTimeout(seekTimer); seekTimer=setTimeout(function(){ playClip(v,start,end); },180);
+  }
+
+  /* 捲動驅動（只跟讀開時）*/
+  window.addEventListener('scroll',function(){
+    if(!followOn||raf) return;
+    raf=requestAnimationFrame(function(){ raf=0; activate(currentEl()); });
+  },{passive:true});
+
+  /* 片段播到訖點 → 暫停（靜靜停住，不 loop）*/
+  setInterval(function(){
+    if(!followOn||!ytReady||!player||!player.getCurrentTime||clipEnd==null) return;
+    if(player.getCurrentTime()>=clipEnd-0.15) player.pauseVideo();
+  },250);
+
+  /* 點段落 ▶：手動跳到該段起點自由播（不鎖訖點）；手機讓 <a> 原生開 YouTube */
   if(A){
     A.addEventListener('click',function(e){
       var c=e.target.closest('.tc'); if(!c||!A.contains(c)) return;
-      // 手機（無嵌入播放器）：不攔截,讓 <a> 直接開 YouTube 原片到該秒數
       if(window.matchMedia('(max-width:880px)').matches) return;
-      // 桌機：攔截,改成頁內 seek；影片還沒開就順手幫你開起來
       e.preventDefault();
-      openVideo();
-      var t=parseInt(c.dataset.t,10)||0;
-      userLock=performance.now()+1600;                // 剛手動跳 → 短暫不讓跟讀搶著捲
-      seekTo(t);
-      setNow('已跳到 <b>'+fmt(t)+'</b> · 播放中');
+      playClip(+c.dataset.v||0, parseInt(c.dataset.t,10)||0, null);
+      setNow('▶ 已跳到 <b>'+fmt(parseInt(c.dataset.t,10)||0)+'</b>（自由播）');
     });
   }
-
-  /* YouTube IFrame API 載好 → 只記旗標,不馬上建 player（延後到影片帶顯示時才建,避免模糊預覽圖）*/
-  window.onYouTubeIframeAPIReady=function(){ apiReady=true; if(pendingBuild) buildPlayer(); };
 
   /* 跟讀開關 */
   if(fbtn){
@@ -71,50 +153,17 @@
       followOn=!followOn;
       fbtn.classList.toggle('on',followOn);
       fbtn.textContent=followOn?'跟讀：開':'跟讀：關';
-      if(followOn){ openVideo(); setNow('跟讀開啟 · 播放影片，段落會自動亮＋捲到你面前'); curIdx=-1; tick(); }
-      else{ curIdx=-1; setNow('跟讀關閉 · 點段落旁的 ▶ 時間碼自己跳'); }
+      if(followOn){ openVideo(); activeEl=null; setNow('跟讀開 · 影片只播你正在讀那段，往下滑換下一段'); activate(currentEl()); }
+      else { clipEnd=null; markPlaying(null); setNow('跟讀關 · 影片自由播放'+(MULTI?'；上方可切換影片':'')+'，點段落 ▶ 手動跳'); }
     });
   }
 
-  /* 看影片 / 收起影片：預設純文章,按了才顯示置頂影片帶 */
+  /* 看影片 / 收起影片 */
   if(vtoggle){
     vtoggle.addEventListener('click',function(){
-      var on=document.body.classList.toggle('vmode');
+      var on=body.classList.toggle('vmode');
       vtoggle.innerHTML=on?'<span class="pl">✕</span> 收起影片':'<span class="pl">▶</span> 看影片';
       if(on) buildPlayer();
     });
   }
-
-  function anchors(){
-    return [].slice.call(A.querySelectorAll('[data-follow]')).map(function(el){
-      return { el:el, t:parseInt(el.dataset.t,10)||0, label:el.dataset.label||'' };
-    }).sort(function(a,b){ return a.t-b.t; });
-  }
-  function stickyOffset(){
-    var tb=document.querySelector('.topbar'), vp=document.querySelector('.vpanel');
-    // 桌機：影片置頂 sticky,要扣掉它的高度；手機 vpanel 是 display:none（offsetParent=null）→ 0
-    var vh=(vp&&vp.offsetParent!==null)?vp.offsetHeight:0;
-    return (tb?tb.offsetHeight:0)+vh+16;
-  }
-  /* 反向：影片播到哪 → 對應段落閃一下＋捲過去。
-     高亮只用 Web Animations（不動 innerHTML → 不會漏進畫重點快照）。*/
-  function tick(){
-    if(!ytReady||!followOn||!player||!player.getCurrentTime) return;
-    var t=player.getCurrentTime(), arr=anchors(), idx=-1;
-    for(var i=0;i<arr.length;i++){ if(arr[i].t<=t+0.3) idx=i; else break; }
-    if(idx<0) idx=0;
-    if(idx!==curIdx){
-      curIdx=idx; var a=arr[idx];
-      setNow('▶ <b>'+fmt(a.t)+'</b> · '+a.label);
-      if(a.el.animate) a.el.animate([{backgroundColor:'#f4e5a1'},{backgroundColor:'transparent'}],{duration:850,easing:'ease-out'});
-      if(performance.now()>userLock){
-        var y=a.el.getBoundingClientRect().top+window.scrollY-stickyOffset();
-        window.scrollTo({top:y,behavior:'smooth'});
-      }
-    }
-  }
-  setInterval(tick,300);
-
-  /* 使用者自己捲 → 暫時鎖住自動捲，避免打架 */
-  window.addEventListener('scroll',function(){ userLock=performance.now()+1100; },{passive:true});
 })();

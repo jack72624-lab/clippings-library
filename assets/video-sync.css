@@ -54,6 +54,28 @@ body.vmode .vpanel{display:block}
 .figure .fl{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .figure .fl .tc{flex:none}
 
+/* 跟讀「正在讀」那段的左邊界標記（Web Animations 閃 + 這條常駐黑邊，讓當前片段一眼可辨）*/
+.readable [data-follow].vplaying{box-shadow:-14px 0 0 -11px var(--ink)}
+
+/* ===== 多影片（v2）：切換列 / 段落出處徽章 / 影片分組帶 =====
+   單影片 entry 用不到這幾個 class（JS 會把 .vswitch 藏起）；只有多片文章才出現。*/
+.vswitch{display:flex;border:1px solid var(--ink);flex-wrap:wrap}
+.vswitch button{font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;
+  font-size:10.5px;font-weight:600;padding:8px 13px;background:var(--paper);color:var(--dim);border:0;cursor:pointer;
+  transition:background .2s,color .2s;white-space:nowrap}
+.vswitch button + button{border-left:1px solid var(--line)}
+.vswitch button[aria-current="true"]{background:var(--ink);color:var(--paper)}
+/* 段落出處徽章（多片文章手動標在 h2）*/
+.vsrc{font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.1em;
+  font-size:9px;font-weight:700;color:var(--dim);border:1px solid var(--line);padding:2px 7px;
+  margin-right:10px;white-space:nowrap;vertical-align:middle}
+/* 影片分組帶（同一部影片的段落群起點，標「換片邊界」）*/
+.vgroup{display:flex;align-items:center;gap:14px;margin:46px 0 4px;color:var(--dim)}
+.vgroup .gl{font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.16em;
+  font-size:10.5px;font-weight:600;white-space:nowrap}
+.vgroup .ln{flex:1;height:1px;background:var(--line)}
+.vgroup .gn{font-family:"Helvetica Neue",Arial,sans-serif;font-size:11px;color:var(--ghost)}
+
 /* 手機：不嵌播放器,跟原版一樣以文章為主；只放一條「看 YouTube 原片」連結,
    段落的時間碼 chip 直接變成「開 YouTube 到那個秒數」的連結（見 video-sync.js）。*/
 @media(max-width:880px){
@@ -61,5 +83,6 @@ body.vmode .vpanel{display:block}
   .readable{max-width:none}
   .vpanel,body.vmode .vpanel{display:none}
   .vtoggle{display:none}
+  .vgroup{margin:34px 0 4px}
   /* mob-vlink 大框移除：原片連結改統一走 .art-hero .src 那行的「YouTube 原片 ↗」,不再重複一個框 */
 }

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【範本】段落帶影片 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  /* .vswitch/.vsrc/.vgroup/.vplaying 已正式化進 video-sync.css（此範本改用正式版驗證）；
+     這裡只留範本專屬的頂部橫幅 .tplbar。*/
+  .tplbar{max-width:1200px;margin:0 auto;padding:10px 34px;border-bottom:1px solid var(--line);
+    font-family:"Helvetica Neue",Arial,sans-serif;font-size:11.5px;letter-spacing:.04em;color:var(--dim);background:var(--fill)}
+  .tplbar b{color:var(--ink)}
+</style>
+</head>
+<!-- data-videos：影片清單（不限數量）。每個跟讀段落用 data-v 指第幾部（0 起算）＋ data-t 起 ＋ data-end 訖。 -->
+<body data-entry="_video-sync-multi" data-hlver="1"
+      data-videos='[{"id":"3NYgcQFhZCI","label":"影片一 · 多巴胺排毒"},{"id":"RH1Z0WJ_tXc","label":"影片二 · 蛋白質解析"},{"id":"M7lc1UVf-VE","label":"影片三 · 示範短片"}]'>
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../index.html">← 閱讀庫</a>
+  <span class="c">範本 · 段落帶影片</span>
+  <span class="r grot">TEMPLATE</span>
+</div>
+
+<div class="tplbar">
+  <b>機制範本（示意內容）</b> · 一篇文章由多部<b>同主題</b>影片組成，跟讀＝影片只播你正在讀那段標的「起訖」片段，往下滑換下一段。此處三部只為示範，段落文字為佔位。
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">T</div>
+    <div class="kick caps rise">Template · 段落帶影片</div>
+    <h1 class="rise">段落帶影片 · 跟讀範本</h1>
+    <div class="src rise">機制示範 · 三部影片（數量不限）· 每段標起訖片段</div>
+  </header>
+
+  <!-- 影片面板在 .readable 外面（不進畫重點快照）；多影片：面板加「影片切換列」。 -->
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <div class="vswitch" id="vswitch" aria-label="切換影片"></div>
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">跟讀關 → 影片自由播放；跟讀開 → 影片只播你正在讀那段的片段，往下滑換下一段</span>
+      </div>
+    </div>
+
+  <article class="readable">
+    <p class="lede">這篇示範「<b>段落帶影片</b>」：<b>跟讀開</b>時，影片只播你<b>正在讀那一段</b>標的起訖片段（例如影片一 0:56–1:50），播到訖點就停；你<b>往下滑到下一段</b>，就換播下一段的片段（跨影片自動換）——讓你精準掃到想學的重點、不用看完整片。<b>跟讀關</b>時，影片自由播放，上方切換列與段落 ▶ 都能手動跳。手機不嵌播放器，點 ▶ 直接開該部 YouTube。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">四個重點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>跟讀＝段落帶影片</b>：影片只播你正在讀那段標的「起訖」片段（`data-t` 起 ／ `data-end` 訖）。</p></li>
+        <li><span class="bn">02</span><p><b>往下滑＝換片段</b>：滑到下一段，換播它的起訖；若換了影片（`data-v`）自動切片。</p></li>
+        <li><span class="bn">03</span><p><b>播到訖點就停</b>：不看整片，精準掃你要的重點；要重看按播放。</p></li>
+        <li><span class="bn">04</span><p><b>跟讀關＝自由播放</b>：一般 YouTube，上方切換列＋點段落 ▶ 手動跳。影片數量不限。</p></li>
+      </ol>
+    </aside>
+
+    <!-- ================= 影片一 ================= -->
+    <div class="vgroup"><span class="gl">影片一 · 多巴胺排毒</span><span class="ln"></span><span class="gn grot">01–02</span></div>
+
+    <h2 class="rise" data-follow data-v="0" data-t="56" data-end="110" data-label="01 · 30 秒重置"><span class="vsrc">影片一</span><span class="hn">01</span>30 秒重置<a class="tc" href="https://www.youtube.com/watch?v=3NYgcQFhZCI&amp;t=56s" data-v="0" data-t="56"><span class="pl">▶</span> 0:56–1:50</a></h2>
+    <p class="first">【範本示意】這一段標的是影片一 <b>0:56–1:50</b>。跟讀開啟時，你讀到這段，上面影片就跳到影片一、從 0:56 播到 1:50 停；徽章標「影片一」讓你知道出處。你往下滑到下一段，它才換播下一段的片段。</p>
+    <p>多一段佔位文字，模擬真實文章長度，讓你捲動時感覺「滑到哪、影片播哪段」。實際做時這裡放你從影片一那個片段整理出的重點。</p>
+
+    <h2 class="rise" data-follow data-v="0" data-t="180" data-end="240" data-label="02 · novelty 成癮"><span class="vsrc">影片一</span><span class="hn">02</span>novelty 成癮<a class="tc" href="https://www.youtube.com/watch?v=3NYgcQFhZCI&amp;t=180s" data-v="0" data-t="180"><span class="pl">▶</span> 3:00–4:00</a></h2>
+    <p>【範本示意】影片一的第二個片段 <b>3:00–4:00</b>。同一部影片、不同片段——滑到這裡，影片跳到 3:00 續播到 4:00 停。到影片二的段落才會換片。</p>
+
+    <!-- ================= 影片二 ================= -->
+    <div class="vgroup"><span class="gl">影片二 · 蛋白質解析</span><span class="ln"></span><span class="gn grot">03–04</span></div>
+
+    <h2 class="rise" data-follow data-v="1" data-t="98" data-end="170" data-label="03 · 增加飽足感"><span class="vsrc">影片二</span><span class="hn">03</span>增加飽足感<a class="tc" href="https://www.youtube.com/watch?v=RH1Z0WJ_tXc&amp;t=98s" data-v="1" data-t="98"><span class="pl">▶</span> 1:38–2:50</a></h2>
+    <p>【範本示意】這一段跳到<b>影片二 1:38–2:50</b>。你滑進來，面板自動換成影片二、從 1:38 播到 2:50 停。<b>換片是跟著段落出處自動發生</b>，你不用自己找是哪部影片、哪個時間。</p>
+    <p>佔位文字。實際做時這裡放你從影片二那個片段整理的重點。</p>
+
+    <h2 class="rise" data-follow data-v="1" data-t="262" data-end="330" data-label="04 · 刺激肌肉合成"><span class="vsrc">影片二</span><span class="hn">04</span>刺激肌肉合成<a class="tc" href="https://www.youtube.com/watch?v=RH1Z0WJ_tXc&amp;t=262s" data-v="1" data-t="262"><span class="pl">▶</span> 4:22–5:30</a></h2>
+    <p>【範本示意】影片二第二片段 <b>4:22–5:30</b>。同片不同段，滑到就換播。下一段是影片三 → 自動換片。</p>
+
+    <!-- ================= 影片三 ================= -->
+    <div class="vgroup"><span class="gl">影片三 · 示範短片</span><span class="ln"></span><span class="gn grot">05</span></div>
+
+    <h2 class="rise" data-follow data-v="2" data-t="0" data-end="18" data-label="05 · 第三部片段"><span class="vsrc">影片三</span><span class="hn">05</span>第三部片段<a class="tc" href="https://www.youtube.com/watch?v=M7lc1UVf-VE&amp;t=0s" data-v="2" data-t="0"><span class="pl">▶</span> 0:00–0:18</a></h2>
+    <p>【範本示意】第三部影片 <b>0:00–0:18</b>，證明「數量不限」——切換列有三顆。跟讀關掉時，這三部可以用切換列自由挑、自由播；跟讀開時，就照你滑到的段落餵對應片段。</p>
+
+    <p class="lede" style="margin-top:40px">以上就是「段落帶影片」的機制。要不要正式接進 video-sync（單／多影片共用一套、`data-v` 可省略、舊文章補 `data-end` 就能升級）、片段停住要不要改自動 loop，跟我說。</p>
+
+    <div class="artnav">
+      <a href="../index.html">← 回閱讀庫</a>
+    </div>
+  </article>
+  </div><!-- /.vlayout -->
+</div><!-- /.reader -->
+
+<button class="vtoggle" id="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+
+<footer class="foot">範本 · 段落帶影片機制示範 · 非正式文章、不列入導覽計數</footer>
+
+<script src="../assets/reader.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<!-- 改用正式 video-sync.js（此範本＝多影片驗證；契約：body data-videos + 段落 data-v/data-t/data-end）-->
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>

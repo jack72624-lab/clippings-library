@@ -59,11 +59,6 @@
   .vcrop span:nth-child(3){bottom:-1px;left:-1px;border-bottom:1px solid var(--ink);border-left:1px solid var(--ink)}
   .vcrop span:nth-child(4){bottom:-1px;right:-1px;border-bottom:1px solid var(--ink);border-right:1px solid var(--ink)}
 
-  /* 大標＝當前書名（思源宋體，Morris 皮膚；置於取景框正上方）*/
-  #vbig{position:fixed;z-index:25;left:50%;top:calc(50% - var(--vband)/2 - 22px);
-    transform:translate(-50%,-100%);pointer-events:none;text-align:center;white-space:nowrap;
-    font-family:-apple-system,"Noto Serif TC","Songti TC",serif;font-weight:300;
-    font-size:clamp(24px,4.2vw,50px);line-height:1.05;letter-spacing:.01em;color:var(--ink)}
 
   /* 左欄：藏書清單（active 黑、其餘灰）*/
   .vlist{position:fixed;left:26px;top:50%;transform:translateY(-50%);z-index:30;
@@ -93,7 +88,6 @@
   @media(max-width:900px){ .vlist,.vmeta{display:none} }
   @media(max-width:640px){
     .vitem{width:74vw} .vcrop{width:74vw}
-    #vbig{font-size:clamp(22px,7vw,34px);top:calc(50% - var(--vband)/2 - 14px)}
     .vhint{display:none}   /* 手機：切換鈕已置中，捲動＋點按不需提示 */
   }
   /* reduced-motion：保留灰階→顯色狀態，去掉位移轉場 */
@@ -104,7 +98,7 @@
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
-  <span>Clippings 閱讀庫</span>
+  <a class="back" href="index.html">← 閱讀庫</a>
   <span class="c">我的藏書 · 讀書筆記</span>
   <span class="r grot"></span>
 </div>
@@ -295,7 +289,6 @@
 <div class="vstage" aria-hidden="true">
   <nav class="vlist" id="vlist" aria-label="藏書清單"></nav>
   <div class="vfinder"><div class="vcrop"><span></span><span></span><span></span><span></span></div></div>
-  <div id="vbig"></div>
   <aside class="vmeta" id="vmeta">
     <p class="a caps" id="vmA"></p>
     <p class="k" id="vmK"></p>
@@ -335,7 +328,6 @@
   if(!BOOKS.length) return;
   const pad2 = n => String(n).padStart(2,'0');
   const total = pad2(BOOKS.length);
-  const RM = matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   // ---- render 封面堆疊 + 左欄清單 ----
   const vstack = document.getElementById('vstack');
@@ -349,20 +341,15 @@
 
   const vitems = [...vstack.querySelectorAll('.vitem')];
   const vrows  = [...vlist.querySelectorAll('button')];
-  const vbig = document.getElementById('vbig');
   const vmA = document.getElementById('vmA'), vmK = document.getElementById('vmK'), vmN = document.getElementById('vmN');
 
-  // ---- 設定 active（顯色 + 左欄黑 + 右欄 meta + 大標）----
+  // ---- 設定 active（顯色 + 左欄黑 + 右欄 meta）----
   let cur = -1;
   function setActive(i){
     if(i===cur || i<0) return; cur = i;
     vitems.forEach((el,k)=>el.classList.toggle('active',k===i));
     vrows.forEach((el,k)=>el.classList.toggle('active',k===i));
     const b = BOOKS[i];
-    vbig.textContent = b.title;
-    if(!RM) vbig.animate(
-      [{opacity:0,transform:'translate(-50%,-100%) translateY(7px)'},{opacity:1,transform:'translate(-50%,-100%)'}],
-      {duration:420, easing:'cubic-bezier(.16,1,.3,1)'});
     vmA.textContent = b.kicker;
     vmK.textContent = b.keys;
     vmN.textContent = pad2(i+1)+' / '+total;
