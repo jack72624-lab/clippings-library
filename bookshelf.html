@@ -23,6 +23,12 @@
      只作用在本頁；不動 base.css、不影響其他頁。格狀為預設，加 body.vmode 才進直向。 */
   :root{ --vease:cubic-bezier(.16,1,.3,1); --vband:60vh; }
 
+  /* topbar 左上：格狀＝原本 wordmark「Clippings 閱讀庫」；直向＝「← 閱讀庫」back link
+     （直向時 hub-nav 隱藏、靠這個回庫；格狀時 hub-nav 在、不需要）*/
+  .topbar .tb-vert{display:none}
+  body.vmode .topbar .tb-grid{display:none}
+  body.vmode .topbar .tb-vert{display:inline}
+
   /* 檢視切換鈕：固定左下（Obys 底列模式位置），兩模式常駐 */
   .viewtoggle{position:fixed;left:26px;bottom:22px;z-index:70;display:flex;
     background:var(--paper);border:1px solid var(--ink)}
@@ -98,7 +104,8 @@
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
-  <a class="back" href="index.html">← 閱讀庫</a>
+  <span class="tb-grid">Clippings 閱讀庫</span>
+  <a class="back tb-vert" href="index.html">← 閱讀庫</a>
   <span class="c">我的藏書 · 讀書筆記</span>
   <span class="r grot"></span>
 </div>
