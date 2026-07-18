@@ -38,6 +38,31 @@ b{font-weight:600}
 .topbar a.back{border-bottom:1px solid var(--line);padding-bottom:1px}
 @media(max-width:680px){.topbar .c{display:none}}
 
+/* 雲端同步：右上角登入鈕（沿用 .caps 字體，加底線像 .back）＋ 登入框 */
+.authbtn{background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);
+  padding:0 0 1px;margin-left:14px;cursor:pointer;line-height:1}
+.authbtn:hover{border-bottom-color:var(--ink)}
+.authbtn-float{position:fixed;top:12px;right:16px;z-index:120;margin:0;background:var(--paper);padding:5px 9px;border:1px solid var(--line)}
+.authmodal{position:fixed;inset:0;z-index:400;display:none;align-items:center;justify-content:center;
+  background:rgba(10,10,10,.32);padding:24px}
+.authmodal.open{display:flex}
+.authmodal .am-card{background:var(--paper);border:1px solid var(--ink);width:min(400px,100%);padding:30px 30px 26px}
+.authmodal .am-t{font-size:11px;margin-bottom:12px}
+.authmodal .am-s{font-size:14px;color:var(--dim);line-height:1.7;margin-bottom:22px}
+.authmodal .am-l{display:block;font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;
+  letter-spacing:.14em;font-size:10px;color:var(--dim);margin-bottom:16px}
+.authmodal .am-i{display:block;width:100%;margin-top:6px;padding:9px 10px;border:1px solid var(--line);
+  background:var(--paper);color:var(--ink);font-family:-apple-system,"Noto Serif TC","Songti TC",serif;
+  font-size:15px;letter-spacing:0;text-transform:none}
+.authmodal .am-i:focus{outline:none;border-color:var(--ink)}
+.authmodal .am-err{min-height:18px;color:#b23636;font-size:13px;margin:2px 0 14px}
+.authmodal .am-row{display:flex;justify-content:flex-end;gap:10px}
+.authmodal .am-cancel,.authmodal .am-go{font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;
+  letter-spacing:.18em;font-size:11px;font-weight:600;cursor:pointer;padding:9px 16px;border:1px solid var(--ink)}
+.authmodal .am-cancel{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.authmodal .am-go{background:var(--ink);color:var(--paper)}
+.authmodal .am-go:disabled{opacity:.5;cursor:default}
+
 .wrap{max-width:1040px;margin:0 auto;padding:0 34px}
 @media(max-width:640px){.wrap{padding:0 20px}}
 

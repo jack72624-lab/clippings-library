@@ -4,6 +4,11 @@
    純 vanilla，無框架。畫重點以「快照 .readable innerHTML」持久化（線框夠用）。
    ============================================================ */
 (function(){
+  /* 雲端同步：注入 auth.js（右上角登入鈕 + Firestore 劃線同步）。同資料夾、沿用本檔相對路徑，全站零改檔。*/
+  try{ var _rs=document.currentScript&&document.currentScript.src;
+    if(_rs&&!window.__authInjected){ window.__authInjected=1;
+      var _as=document.createElement('script'); _as.src=_rs.replace(/reader\.js(\?.*)?$/,'auth.js'); document.head.appendChild(_as); } }catch(_e){}
+
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
 
@@ -192,7 +197,8 @@
   const plist=panel&&panel.querySelector('.plist');
   const panelBtn=document.getElementById('panelBtn');
 
-  function save(){ localStorage.setItem(KEY, A.innerHTML); renderPanel(); }
+  function save(){ localStorage.setItem(KEY, A.innerHTML); localStorage.setItem(KEY+':ts', String(Date.now())); renderPanel();
+    if(window.CloudSync&&window.CloudSync.push) window.CloudSync.push(A.innerHTML); }
 
   function collect(){
     return [...A.querySelectorAll('mark.hl')].map(m=>({el:m,text:m.textContent.trim(),note:m.dataset.note||''}));
@@ -225,4 +231,17 @@
     };
   }
   renderPanel();
+
+  /* ---------- 雲端同步：把這篇註冊給 auth.js（登入後拉/推 Firestore）---------- */
+  const _entryId=(document.body.dataset.entry||location.pathname).replace(/[\/#?]+/g,'_');
+  const _readerSync={
+    entryId:_entryId,
+    hlver:(_hv&&_hv!=='1'?_hv:'1'),
+    localTs:()=>+localStorage.getItem(KEY+':ts')||0,
+    getHTML:()=>A.innerHTML,
+    applyRemote:(html,ts)=>{ A.innerHTML=html; localStorage.setItem(KEY,html);
+      if(ts) localStorage.setItem(KEY+':ts',String(ts)); rebindTerms(); bindMarks(); renderPanel(); }
+  };
+  window.__cliplibReader=_readerSync;
+  if(window.CloudSync&&window.CloudSync.onEntryReady) window.CloudSync.onEntryReady(_readerSync);
 })();
