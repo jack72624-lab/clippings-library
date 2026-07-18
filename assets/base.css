@@ -214,8 +214,10 @@ mark.hl.hl-g{background:var(--hl-g)}
 mark.hl.hl-b{background:var(--hl-b)}
 mark.hl.hl-r{background:var(--hl-r)}
 mark.hl.hl-under{background:transparent;border-bottom:2px solid var(--mark-line);padding-bottom:1px}
+mark.hl.hl-note{background:transparent;border-radius:0}   /* 純備註：不上螢光、只靠旁邊小圖示標示 */
 mark.hl[data-note]::after{content:"✎";font-family:"Helvetica Neue",Arial,sans-serif;font-size:.62em;
   vertical-align:super;margin-left:1px;color:var(--dim)}
+mark.hl.hl-note[data-note]::after{font-size:.72em;margin-left:2px;color:var(--ink)}  /* 無底色時圖示加深放大、好辨識 */
 
 /* 選字工具列：色票 + 底線 + 加註 +（編輯時）移除 */
 #hlbar{position:fixed;z-index:260;display:none;align-items:center;gap:7px;background:var(--ink);

@@ -70,6 +70,7 @@
   const noteBox=document.getElementById('noteBox');
   const DEF='y';                              // 預設螢光色
   let curRange=null, curMark=null, mode='new'; // mode: new=新選取 / edit=點既有標記
+  let pendingNoteRange=null;                  // 純備註：新選取先存 range，按「存筆記」才建標記（不上螢光）
 
   function hideBar(){ if(hlbar){ hlbar.style.display='none'; hlbar.classList.remove('edit'); } mode='new'; curMark=null; curRange=null; }
   function posFloat(el,rect){
@@ -108,7 +109,7 @@
     if(A.normalize) A.normalize();
     return m;
   }
-  function markKind(m){ const x=m.className.match(/\bhl-(y|g|b|r|under)\b/); return x?x[1]:'y'; }
+  function markKind(m){ const x=m.className.match(/\bhl-(y|g|b|r|under|note)\b/); return x?x[1]:'y'; }
 
   // 套一種標記（4 色之一或底線）：新選取→新建；點既有標記→同種再點=移除、不同種=換
   function applyKind(kind){
@@ -121,16 +122,20 @@
       getSelection().removeAllRanges(); save(); bindMarks(); hideBar();
     }
   }
-  function removeMark(m){
+  function unwrap(m){                          // 拆掉標記外殼、保留內文（不含存檔/重綁副作用）
     if(!m) return;
     while(m.firstChild) m.parentNode.insertBefore(m.firstChild,m); m.remove();
     if(A.normalize) A.normalize();
+  }
+  function removeMark(m){
+    if(!m) return;
+    unwrap(m);
     getSelection().removeAllRanges(); save(); bindMarks(); hideBar();
   }
-  // 備注：新選取→建預設標記並開編輯框；點既有標記→開編輯（清空後存檔即刪除備注）
+  // 備註：新選取→開輸入框、按「存筆記」才建「純備註」標記（不上螢光、只留小圖示）；點既有標記→編輯（清空即刪備註）
   function noteFlow(){
     if(mode==='edit'&&curMark){ openNote(curMark); return; }
-    if(curRange){ try{ curMark=makeMark(DEF); }catch(err){ curMark=null; } getSelection().removeAllRanges(); save(); bindMarks(); if(curMark) openNote(curMark); }
+    if(curRange){ pendingNoteRange=curRange.cloneRange(); openNoteAt(curRange.getBoundingClientRect()); }
   }
 
   if(hlbar){
@@ -150,24 +155,37 @@
   }
   bindMarks();
 
-  function openNote(m){
-    curMark=m;
+  function openNote(m){                        // 編輯既有標記的備註
+    curMark=m; pendingNoteRange=null;
     if(hlbar) hlbar.style.display='none';
     const ta=noteBox.querySelector('textarea'); ta.value=m.dataset.note||'';
     noteBox.style.display='block'; posFloat(noteBox, m.getBoundingClientRect()); ta.focus();
   }
+  function openNoteAt(rect){                   // 新的純備註：還沒有標記，依選取位置開框
+    curMark=null;
+    if(hlbar) hlbar.style.display='none';
+    const ta=noteBox.querySelector('textarea'); ta.value='';
+    noteBox.style.display='block'; posFloat(noteBox, rect); ta.focus();
+  }
   if(noteBox){
     noteBox.querySelector('[data-nb="save"]').onclick=()=>{
       const v=noteBox.querySelector('textarea').value.trim();
-      if(v) curMark.dataset.note=v; else curMark.removeAttribute('data-note');
+      if(pendingNoteRange){                    // 新的純備註：有內容才建標記，空的就不建（不留孤兒）
+        if(v){ curRange=pendingNoteRange; let m=null; try{ m=makeMark('note'); }catch(err){ m=null; } if(m) m.dataset.note=v; getSelection().removeAllRanges(); }
+        pendingNoteRange=null;
+        noteBox.style.display='none'; save(); bindMarks(); return;
+      }
+      // 編輯既有標記：清空即刪備註；若是純備註標記（無底色）清空就整個移除
+      if(v) curMark.dataset.note=v;
+      else { curMark.removeAttribute('data-note'); if(curMark.classList.contains('hl-note')) unwrap(curMark); }
       noteBox.style.display='none'; save(); bindMarks();
     };
-    noteBox.querySelector('[data-nb="cancel"]').onclick=()=>{ noteBox.style.display='none'; };
+    noteBox.querySelector('[data-nb="cancel"]').onclick=()=>{ pendingNoteRange=null; noteBox.style.display='none'; };
   }
 
-  // 點空白處 / 捲動 → 收起工具列與註記框
-  document.addEventListener('mousedown',e=>{ if(e.target.closest('#hlbar,#noteBox,mark.hl')) return; hideBar(); if(noteBox) noteBox.style.display='none'; });
-  addEventListener('scroll',()=>{ hideBar(); if(noteBox) noteBox.style.display='none'; },{passive:true});
+  // 點空白處 / 捲動 → 收起工具列與註記框（並丟棄未存的純備註選取）
+  document.addEventListener('mousedown',e=>{ if(e.target.closest('#hlbar,#noteBox,mark.hl')) return; hideBar(); if(noteBox) noteBox.style.display='none'; pendingNoteRange=null; });
+  addEventListener('scroll',()=>{ hideBar(); if(noteBox) noteBox.style.display='none'; pendingNoteRange=null; },{passive:true});
 
   /* ---------- 存 + 重點面板 ---------- */
   const panel=document.getElementById('panel');
