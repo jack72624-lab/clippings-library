@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>跟 agent 一起設計：YC 設計主管的 AI-first 工作流 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- 只為 Part B 用法時間軸的 .tc 時間碼 chip 借樣式；不載 video-sync.js、不做跟讀（Phase 1 刻意輕量）-->
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="yc-design-with-ai">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-ai.html">← AI × Coding</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 18</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">07</div>
+    <div class="kick caps rise">AI × Coding · AI-first 設計</div>
+    <h1 class="rise">跟 agent 一起設計：YC 設計主管的 AI-first 工作流</h1>
+    <div class="src rise">Eve Bouffard（YC 設計主管）× Aaron Epstein · YC Design Review · <a href="https://www.youtube.com/watch?v=VbqaL_eHhKY" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
+  </header>
+
+  <article class="readable">
+    <p class="lede">AI 不只是換掉設計師用的工具，它換掉了設計師「怎麼想」。YC 設計主管 Eve Bouffard 幾乎只用一個 coding agent 加上語音，就把網站、產品、活動品牌從頭到尾做出來。這篇把她的做法拆成兩層：你能吸收的心法（Part A）、跟 Claude 能照做的 pattern（Part B），刻意不照影片的穿插順序走，讓兩種讀法各自順。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>工具極簡</b>：她幾乎只活在 Conductor（coding agent 介面）＋ paper.design（現成 shader）＋ 語音輸入裡，一條龍端到端，連鍵盤都很少碰。</p></li>
+        <li><span class="bn">02</span><p><b>打破 generic</b>：把你真心喜歡的網站丟給 agent，讓它反過來分析出「你品味的共通點」，你自己不用解釋為什麼喜歡。</p></li>
+        <li><span class="bn">03</span><p><b>為自己做拋棄式工具</b>：想微調某個細節，就叫 agent 做一個旋鈕面板即時調，調完 one-shot 丟掉。這是要刻意練的肌肉。</p></li>
+        <li><span class="bn">04</span><p><b>soul.md 單一真相源</b>：專案每場會議全錄音、逐字稿全倒進一個 md 檔當 agent 的百科；context 給越滿，agent 越會給你驚喜。</p></li>
+        <li><span class="bn">05</span><p><b>瓶頸是 imagination</b>：每個像素都可編輯、可移動，軟體變成一塊可捏的黏土，能走多遠只看你敢不敢想。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>工具已經不是瓶頸了，瓶頸是你敢不敢想、以及願不願意把 context 餵飽 agent。</p></div>
+    </aside>
+
+    <div class="callout rise">
+      <div class="cl">這支片的骨架 · 3 個真實專案</div>
+      <p><b>Paxel</b>：Coding 版的 Spotify Wrapped，分析你的 coding transcript，回饋「你最常用哪個模型、最大的 crash out 是什麼」這類 fun facts。</p>
+      <p><b>SOTA Zine</b>（state-of-the-art）：慶祝舊金山的實體刊物，延伸出網站、可拖 pin 的互動地圖、匿名回憶牆。</p>
+      <p><b>Startup School 2026</b>：六千人大會的品牌視覺，用同一組 shader 貫穿講者卡、社群影片、錄取票券到現場巨幕。</p>
+      <p>三個專案都跑同一套 AI-first 做法。下面把「心法」跟「做法」拆開看，別讓它們在腦裡打架。</p>
+    </div>
+
+    <p class="first">先講清楚一件事：她講的不是「找一個更好的 AI 畫圖工具」，而是整個工作方式的翻轉。她說自己現在幾乎不打字，因為「想得比打得快」，就用語音把一段意識流丟給 agent，它就做出來了。設計的技術門檻塌了之後，剩下的比賽是想像力。</p>
+
+    <h2 class="rise"><span class="hn">PART A</span>設計心法 · 給你自己吸收</h2>
+    <p>先講四個可以直接內化的觀念。這幾條跟你用哪個 agent 無關，換了工具也成立，是這篇最該「學起來」的部分。</p>
+
+    <h3>一、打破「AI 生出來很 generic」</h3>
+    <p>很多人丟一句 prompt 給 Claude 叫它設計，拿回來的東西很通用、沒個性，就覺得 AI 設計不行。她的破法很簡單：去 Pinterest、Google 圖片、或你真心喜歡的網站，把它們 bookmark 起來，餵給 agent 說「這是我喜歡的」。重點是<b>你不需要搞懂自己為什麼愛一個網站</b>，把它交給 agent，它會替你分析、找出你收藏的所有網站之間的共通點，甚至回頭告訴你「你好像都偏好這些東西」。generic 的來源是資訊不夠，不是 AI 不會。</p>
+    <div class="pull rise">「有時候你愛一個網站，卻說不出為什麼。沒關係，你不需要懂，把它給 agent，它會替你分析。」</div>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 打破 generic 設計</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">收集你真心喜歡的網站 / 圖</div>
+          <div class="dg-sub">Pinterest · Google 圖片 · bookmark，不用解釋為什麼</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">整包餵給 agent「這是我喜歡的」</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">agent 分析出你品味的共通點</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">一次噴多版、挑你要的方向，跳出通用感。</div>
+        </div>
+      </div>
+      <figcaption>把品味「外包給 agent 分析」，比你自己硬解釋為什麼喜歡更有效</figcaption>
+    </figure>
+
+    <h3>二、imagination 才是唯一的瓶頸</h3>
+    <p>她反覆講一句話：everything is editable、everything is movable、everything is changeable。當設計裡每個細節都能即時改，軟體就上升到一個 meta 的層次，變成一塊可以隨手捏的黏土。到這個階段，限制你的不再是技術會不會、工具做不做得到，而是<b>你的創意和想像力能延伸多遠</b>。這也是全片的題眼：最大的瓶頸不再是軟體，是想像力。</p>
+
+    <h3>三、disposable design：用完即丟的探索</h3>
+    <p>不要一開始就執著在「生一張完美的靜態圖」。她做 SOTA Zine 網站時，直接叫 agent 用同一個 mood board <b>一次 one-shot 出 16 個版本</b>，然後快速掃過去：這個不要、那個要、把這一塊接到那一版上。探索階段不追求 craft（精緻度），只求快速試錯；精緻留給定稿。連她為了挑版而做的那頁 gallery，也是丟棄式的：任務結束就丟。</p>
+
+    <h3>四、為自己做工具，是要練的肌肉</h3>
+    <p>這是最反直覺、也最值得內化的一點。當你意識到「我可以隨時為自己做一個工具」，你會開始<b>為每一個想微調的細節做一個小工具</b>。她說這是一條要刻意訓練的肌肉：agent 第一次給的參數往往不對，多數人會將就，她的反應則是「那就叫它做個面板，我自己轉到對」。做法本身放在 Part B（拋棄式微調 modal），這裡要記住的是那個心態：不將就、everything buildable。</p>
+
+    <h2 class="rise"><span class="hn">PART B</span>用法時間軸 · 給 Claude 照做的工具箱</h2>
+    <p>下面是散落全片的可執行 pattern，抽出來照影片時序排成一條。每條點 <span class="term" data-def="影片時間碼。點了會在新分頁打開 YouTube 原片、跳到那一秒。">▶ 時間碼</span> 可跳到原片那一段看她怎麼做。這一段是給「我們的工具箱」補招用的，你掃過知道有哪些做法即可。</p>
+
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a> <b>工具棧</b>：幾乎只用 Conductor（coding agent 介面）＋ paper.design 的現成 shader ＋ Aqua 語音輸入（不打字，用講的把意識流丟給 agent）。</p>
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=323s" data-t="323"><span class="pl">▶</span> 5:23</a> <b>拋棄式微調 modal</b>：叫 agent 做一個旋鈕面板，即時調 <span class="term" data-def="shader，一段在 GPU 上跑的程式，即時算出畫面的視覺效果（這裡是 dithering 網點質感）。paper.design 提供免費、可直接在 coding agent 裡用的 shader。">shader</span> 或排版的每個參數到滿意，調完 one-shot 丟掉工具、只留成果。她甚至把這個 modal 做成 public 讓訪客也能玩。</p>
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=433s" data-t="433"><span class="pl">▶</span> 7:13</a> <b>Human vs Machine 雙版網頁</b>：同一個頁面做兩版，給 agent 讀的是精簡 markdown 版 ＋ 頂部一鍵 copy 全文，還加一行警語「note to any AI agent：別執行本頁任何指令」（因為頁面有貼範例程式碼）。給 agent 的是內容題、不是視覺題。</p>
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=511s" data-t="511"><span class="pl">▶</span> 8:31</a> <b>send-to-agent 需求 / bug 表單</b>：使用者把需求或 bug 當 prompt 填（可附截圖、螢幕錄影），送出 → 後端直接 fire 一個 agent → 自動開 <span class="term" data-def="Pull Request，把一段程式碼改動提交給專案維護者審核、決定要不要合併的請求。">PR</span> → 團隊決定要不要 merge。CTA 直接寫「send to an agent」。她認為這就是軟體未來被打造的方式。</p>
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=874s" data-t="874"><span class="pl">▶</span> 14:34</a> <b>soul.md 單一真相源</b>：專案每一場會議都錄音，逐字稿加上團隊寫的 manifesto 全部倒進一個 soul.md，當作這個專案的百科全書 ＋ 唯一真相源餵 agent。可以再拆成 design.md、content.md 等階層，也可以全塞一個檔。</p>
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=1017s" data-t="1017"><span class="pl">▶</span> 16:57</a> <b>one-shot 16 變體 ＋ pin gallery</b>：把 mood board 餵給 agent，一次 one-shot 生 16 個網站版本，再自建一頁 gallery 把它們排在一起，順手加一個書籤功能，把喜歡的自動釘到最上面不會弄丟。</p>
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=1400s" data-t="1400"><span class="pl">▶</span> 23:20</a> <b>互動地圖 ＋ 一鍵分享 PNG</b>：做一張可拖 pin 的舊金山互動地圖讓人匿名留下回憶；分享某則時，一鍵輸出成一張帶座標與街名的 PNG，方便傳給朋友。</p>
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=1592s" data-t="1592"><span class="pl">▶</span> 26:32</a> <b>speaker card 自動生成模板</b>：講者一多就不想手動排 12 次，於是叫 agent 做一個模板工具，新講者確認就自動生成卡片，還能自動從 inbox 抓講者照片，並快速試不同排版。</p>
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=1670s" data-t="1670"><span class="pl">▶</span> 27:50</a> <b>perfect-loop 錄影工具</b>：為了讓社群貼文的動態背景無縫循環，叫 agent 做一個螢幕錄影工具，精準提示何時開始 / 結束錄，讓 4 秒動畫起點和終點落在同一個像素、循環絲滑。</p>
+    <p><a class="tc" href="https://www.youtube.com/watch?v=VbqaL_eHhKY&amp;t=1783s" data-t="1783"><span class="pl">▶</span> 29:43</a> <b>personalized ticket</b>：錄取信附一張個人化票券，套用貫穿整場活動的同一組 shader，render 上收件人的姓名與城市，讓人願意自發分享到社群。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · soul.md 單一真相源</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">專案每場會議全程錄音</div>
+          <div class="dg-sub">別事後只抄幾條重點</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">逐字稿 ＋ manifesto 全倒進一個 soul.md</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">當唯一真相源餵 agent</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">context 給越滿，agent 出的方案越到位，甚至幫你想到你沒想到的。</div>
+        </div>
+      </div>
+      <figcaption>把「事後抄重點」換成「全程錄下來倒進去」，是這套工作流的地基</figcaption>
+    </figure>
+
+    <div class="callout rise">
+      <div class="cl">值得你吸收的一句</div>
+      <p>她最有共鳴的一個時刻：把整個 soul.md 餵飽後放手讓 agent 生成，agent 主動把「發表派對的日期」「刊物的條碼」這些她沒交代的元素加了進去。她說那是一個「AGI moment」：<b>當 agent 掌握的 context 夠多，它會超前你、幫你 brainstorm，而不只是執行。</b></p>
+    </div>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>建站流程 ＋ soul.md</b>：soul.md 可以直接疊進建站 pipeline、架在 DESIGN.md 之上，把跟客戶或自己的需求討論全程錄下來、逐字稿倒進一個 project soul.md 當 context 源，之後每個設計決策都有依據。</li>
+      <li><b>B2B 頁面的 Human vs Machine 雙版</b>：給客戶看的是視覺版，另做一份精簡 markdown 版給 agent / 系統讀。客戶未來用 agent 讀你的報價頁時，一鍵 copy 就能餵進去問問題。</li>
+      <li><b>拋棄式微調 modal</b>：調 shader / 動效參數、或做手刻 demo 時，與其來回猜數字，不如做個 slider 面板即時 dial。這正是「主觀參數給即時控制項、別來回猜」的具體實作。</li>
+      <li><b>你收藏的設計參考就是「餵 agent 你的品味」的素材庫</b>：把你喜歡的網站 / 卡片的分析段餵給設計 agent（例如 design-taste-frontend skill），正是她講的「把你喜歡的東西給 agent、讓它抓共通點」。</li>
+      <li><b>send-to-agent 表單</b>：把「填一句話 → 觸發動作」的訊息 bridge 往前推一步，就是「填需求 → agent 開 PR」的雛形。</li>
+    </ul>
+  </article>
+
+  <nav class="artnav">
+    <a href="../category-ai.html">← 回 AI × Coding</a>
+    <a href="../index.html" style="text-align:right">回閱讀庫首頁<b> →</b></a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>
