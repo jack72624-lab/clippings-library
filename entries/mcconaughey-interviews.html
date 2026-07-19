@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
 <!-- pwa / 加到主畫面 -->
 <link rel="manifest" href="../manifest.json">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
@@ -19,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="mcconaughey-interviews" data-hlver="1">
+<body data-entry="mcconaughey-interviews" data-hlver="1" data-video="qBRVM2vEPNg">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -35,6 +36,16 @@
     <h1 class="rise">麥康納：過程、阻力，與你自己的聲音</h1>
     <div class="src rise">Matthew McConaughey · Motiversity 合輯（剪自 Chris Williamson／DOAC／Tom Bilyeu 三場訪談＋詩集《Poems and Prayers》）· <a href="https://www.youtube.com/watch?v=qBRVM2vEPNg" target="_blank" rel="noopener">看原片 · 約 1 小時</a></div>
   </header>
+
+  <!-- 影片面板在 .readable 外面（不進畫重點快照）。此篇只做「看影片」自由播放、不做跟讀：
+       來源是 Chris Williamson／DOAC／Tom Bilyeu 三場訪談＋詩集的剪輯合輯、無官方章節，段落無法對位到單一遞增時間軸。 -->
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <span class="vnow" id="vnow">約 1 小時的勵志合輯（三場訪談＋詩集剪輯）· 自由播放，用播放器進度條找段落</span>
+      </div>
+    </div>
 
   <article class="readable">
     <p class="lede">這是一支一小時的勵志剪輯，素材來自麥康納近幾年的三場長訪談與他的新詩集。它的骨幹只有一句話：<b>留在過程裡</b>。而它真正的價值，是把《綠燈》那本書<b>沒寫進去</b>的幾個角度攤了出來——關於阻力、關於時間、關於在 AI 時代守住自己的聲音。</p>
@@ -198,12 +209,15 @@
     <p>所以讀完這篇，順手翻回<a class="term" href="../books/greenlights.html" data-def="庫裡『我的藏書』B02，麥康納《綠燈》讀書筆記。">《綠燈》的讀書筆記</a>對照著看：框架在書裡，書外的補丁在這裡，兩邊合起來，就是麥康納這個人最完整的一份使用說明。</p>
 
   </article>
+  </div><!-- /.vlayout -->
 
   <nav class="artnav">
     <a href="../category-selfgrowth.html">← 回 自我成長</a>
     <a href="discipline-dopamine-detox.html" style="text-align:right">上一篇<b>重新接線大腦，愛上紀律 →</b></a>
   </nav>
 </div>
+
+<button class="vtoggle" id="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
 
 <!-- 閱讀器元件 -->
 <div id="tip"></div>
@@ -235,5 +249,7 @@
 </aside>
 
 <script src="../assets/reader.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
 </body>
 </html>
