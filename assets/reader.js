@@ -9,6 +9,35 @@
     if(_rs&&!window.__authInjected){ window.__authInjected=1;
       var _as=document.createElement('script'); _as.src=_rs.replace(/reader\.js(\?.*)?$/,'auth.js'); document.head.appendChild(_as); } }catch(_e){}
 
+  /* 分享鈕（2026-07-19）：注入到 .art-hero .src（文章/書頁；.readable 外、不進畫重點快照）。全站零改檔。
+     行為：手機叫原生分享面板(navigator.share → LINE/訊息/AirDrop)；桌機無原生分享 → 複製連結＋提示。*/
+  try{
+    var _srcEl=document.querySelector('.art-hero .src');
+    if(_srcEl && !_srcEl.querySelector('.sharebtn')){
+      var _shToast=function(msg){
+        var t=document.getElementById('__cliptoast');
+        if(!t){ t=document.createElement('div'); t.id='__cliptoast'; t.className='toast'; document.body.appendChild(t); }
+        t.textContent=msg; t.classList.add('show'); clearTimeout(t.__h);
+        t.__h=setTimeout(function(){ t.classList.remove('show'); },1800);
+      };
+      var _shCopy=function(url){
+        if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(url).then(function(){ _shToast('已複製連結'); }).catch(function(){ _shToast('網址：'+url); });
+        }else{ _shToast('網址：'+url); }
+      };
+      var _shSep=document.createElement('span'); _shSep.className='sharesep'; _shSep.textContent='·';
+      var _shBtn=document.createElement('button'); _shBtn.type='button'; _shBtn.className='sharebtn'; _shBtn.setAttribute('aria-label','分享這篇');
+      _shBtn.innerHTML='分享<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v11"/><path d="M8 7l4-4 4 4"/><path d="M6 12v6a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-6"/></svg>';
+      _shBtn.addEventListener('click',function(){
+        var url=location.href, title=(document.title||'').replace(/\s*·\s*Clippings.*$/,'');
+        if(navigator.share){
+          navigator.share({title:title,url:url}).catch(function(err){ if(!(err&&err.name==='AbortError')) _shCopy(url); });
+        }else{ _shCopy(url); }
+      });
+      _srcEl.appendChild(_shSep); _srcEl.appendChild(_shBtn);
+    }
+  }catch(_e){}
+
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
 

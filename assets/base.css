@@ -368,3 +368,22 @@ a.rd:hover{background:var(--ink);color:var(--paper)}
   html{scroll-behavior:auto}.rise{opacity:1;transform:none;transition:none}.mask>span{transform:none;transition:none}
   #vf{display:none!important}
 }
+
+/* ── 分享鈕 + 內文交叉引用連結 + 複製提示（2026-07-19）─────────── */
+/* 分享鈕：reader.js 注入到 .art-hero .src（.readable 外、不進畫重點快照）；沿用 .src a 髮絲底線語彙 */
+.art-hero .src .sharesep{opacity:.5;margin:0 8px}
+.art-hero .src .sharebtn{display:inline-flex;align-items:center;gap:5px;vertical-align:baseline;
+  background:none;border:0;border-bottom:1px solid var(--line);color:var(--dim);
+  font:inherit;font-size:13px;cursor:pointer;padding:0 0 1px}
+.art-hero .src .sharebtn:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.art-hero .src .sharebtn svg{width:13px;height:13px;display:block}
+/* 內文指向庫內另一篇的交叉引用連結：底線＋↗。排除 .term（術語型已有虛線＋? tooltip 提示）；.artnav 導航在 .readable 外、不受影響 */
+.readable a[href$=".html"]:not(.term){border-bottom:1px solid var(--line);padding-bottom:1px}
+.readable a[href$=".html"]:not(.term):hover{border-bottom-color:var(--ink)}
+.readable a[href$=".html"]:not(.term)::after{content:" ↗";color:var(--dim);font-size:.85em}
+/* 複製連結提示（桌機無原生分享時） */
+.toast{position:fixed;left:50%;bottom:38px;transform:translateX(-50%) translateY(12px);
+  background:var(--ink);color:var(--paper);font-family:"Helvetica Neue",Arial,sans-serif;
+  font-size:12px;letter-spacing:.08em;padding:11px 20px;opacity:0;pointer-events:none;
+  transition:opacity .25s,transform .25s;z-index:200}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
