@@ -20,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="uni-l-limiter-system" data-video="B1Y8-Na7yAQ">
+<body data-entry="uni-l-limiter-system" data-video="B1Y8-Na7yAQ" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -98,7 +98,7 @@
       <figcaption>三段各司其職，Slow 管平均、Fast 管瞬間、Clipper 管最後那一點點</figcaption>
     </figure>
 
-    <h2 class="rise" data-follow data-t="370" data-label="03 · Lookahead 音色旋鈕"><span class="hn">03</span>Lookahead 不只是提前反應，是音色旋鈕<a class="tc" href="https://www.youtube.com/watch?v=B1Y8-Na7yAQ&amp;t=370s" data-t="370"><span class="pl">▶</span> 6:10</a></h2>
+    <h2 class="rise" data-t="370" data-label="03 · Lookahead 音色旋鈕"><span class="hn">03</span>Lookahead 不只是提前反應，是音色旋鈕<a class="tc" href="https://www.youtube.com/watch?v=B1Y8-Na7yAQ&amp;t=370s" data-t="370"><span class="pl">▶</span> 6:10</a></h2>
     <p><span class="term" data-def="lookahead：預看，limiter 提前一點聽到訊號、預留反應時間。">Lookahead</span> 一般被理解成「提前 N 毫秒好抓住 transient」，但更關鍵的是它會<b>改變音色</b>：<b>短 lookahead</b> 聲音更 harsh、更 upfront，但失真也更多；<b>長 lookahead</b> 更有 punch、更平滑。Uni-L 能分頻段設定不同 lookahead，最聰明的一點是：當 transient 打進來時，它會<b>暫時 override</b> 成你為 transient 另外設好的短 lookahead，等於一套「隨素材自動切換」的雙段 lookahead。</p>
 
     <h2 class="rise" data-follow data-t="1840" data-label="04 · 時域失真vs諧波失真"><span class="hn">04</span>時域失真 vs 諧波失真：什麼時候讓 clipper 動手<a class="tc" href="https://www.youtube.com/watch?v=B1Y8-Na7yAQ&amp;t=1840s" data-t="1840"><span class="pl">▶</span> 30:40</a></h2>
@@ -137,7 +137,7 @@
       <figcaption>兩種失真沒有絕對的好壞，取捨看素材與頻段</figcaption>
     </figure>
 
-    <h2 class="rise" data-follow data-t="1337" data-label="06 · 其他值得知道的機制"><span class="hn">06</span>其他值得知道的機制<a class="tc" href="https://www.youtube.com/watch?v=B1Y8-Na7yAQ&amp;t=1337s" data-t="1337"><span class="pl">▶</span> 22:17</a></h2>
+    <h2 class="rise" data-t="1337" data-label="06 · 其他值得知道的機制"><span class="hn">06</span>其他值得知道的機制<a class="tc" href="https://www.youtube.com/watch?v=B1Y8-Na7yAQ&amp;t=1337s" data-t="1337"><span class="pl">▶</span> 22:17</a></h2>
     <ul>
       <li><b>Auto-dynamics</b>：auto-release 加 auto-balance，讓 limiter 依素材自動在 slow／fast 之間移動、自動調 release。</li>
       <li><b>Oversampling 抗 aliasing</b>：clipper 用 <span class="term" data-def="oversampling：超取樣，暫時提高取樣率做運算以減少失真與混疊。">oversampling</span> 降低<span class="term" data-def="aliasing：混疊，高頻失真折返成不和諧的雜音。">aliasing</span>，<b>×4 是甜蜜點</b>，再往上差異極小；鏈尾的 true-peak 限制則是 oversample「偵測訊號」而非音訊本身，省掉額外的降頻濾波器。</li>
