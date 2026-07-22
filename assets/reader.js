@@ -98,6 +98,7 @@
     const nested=A.querySelectorAll('mark.hl mark.hl');          // 一次性：把舊資料裡疊加的巢狀標記攤平
     if(nested.length){ nested.forEach(inner=>{ while(inner.firstChild) inner.parentNode.insertBefore(inner.firstChild,inner); inner.remove(); }); if(A.normalize) A.normalize(); localStorage.setItem(KEY, A.innerHTML); }
     rebindTerms();                                               // 還原 innerHTML 摧毀舊 .term 監聽器，重綁一次（BUG-1 修）
+    A.querySelectorAll('.rise').forEach(el=>el.classList.add('in')); // BUG-2 修：還原快照＝已讀過的內容，直接全顯示。否則新節點沒被上面的 IntersectionObserver 觀察，未捲到過的 .rise（標題/圖/callout/pull）會永遠卡在 opacity:0＝載入時「標題跟圖跑不出來」
   }
 
   const hlbar=document.getElementById('hlbar');
@@ -269,7 +270,7 @@
     localTs:()=>+localStorage.getItem(KEY+':ts')||0,
     getHTML:()=>A.innerHTML,
     applyRemote:(html,ts)=>{ A.innerHTML=html; localStorage.setItem(KEY,html);
-      if(ts) localStorage.setItem(KEY+':ts',String(ts)); rebindTerms(); bindMarks(); renderPanel(); }
+      if(ts) localStorage.setItem(KEY+':ts',String(ts)); A.querySelectorAll('.rise').forEach(el=>el.classList.add('in')); rebindTerms(); bindMarks(); renderPanel(); }  // BUG-2 修：雲端還原同理，直接全顯示（見上）
   };
   window.__cliplibReader=_readerSync;
   if(window.CloudSync&&window.CloudSync.onEntryReady) window.CloudSync.onEntryReady(_readerSync);
