@@ -22,3 +22,6 @@ firestore.rules
 firebase.json
 .firebaserc
 .firebase/
+
+# 標點修正備份（本機留存、不進 repo）
+*.bak-punctfix-*
