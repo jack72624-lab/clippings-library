@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>把筆記做成自己的維基百科：STA 系統 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="sta-academic-note-system" data-video="S_-uD3GtFno">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-ai.html">← AI × Coding</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 07 · 27</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">09</div>
+    <div class="kick caps rise">AI × Coding · 知識管理</div>
+    <h1 class="rise">把筆記做成自己的維基百科：STA 系統</h1>
+    <div class="src rise">Ilya Shabanov（The Effortless Academic） · <a href="https://www.youtube.com/watch?v=S_-uD3GtFno" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
+  </header>
+
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">開跟讀後，讀到哪一段影片就跳到那一段；或點段落旁的 ▶ 時間碼手動跳</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=S_-uD3GtFno" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+  <article class="readable">
+    <p class="lede">大部分人做筆記的方式是：讀一篇東西，然後幫它寫一份摘要。這個習慣有一個安靜的代價——它讓你的筆記永遠無法規模化。這篇拆解一個生物學博士花四年建起來的系統，他靠它提早五個月交出博士論文、外加四篇第一作者論文。核心不是任何工具或外掛，是一個他稱為「心態轉換」的東西：<b>停止對「來源」做筆記，開始對「主題」做筆記</b>。以及一個很少被講清楚的分類：把「別人說的」「我理解的他說的」「我說的」實體分開存放。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>維基百科沒有摘要，也沒有資料夾</b>。它只靠兩件事組織：概念之間的<b>連結</b>，以及每個主張背後的<b>出處</b>。前者連起知識，後者分開事實與臆測。這就是可以照抄的藍圖。</p></li>
+        <li><span class="bn">02</span><p><b>摘要是行李箱，主題筆記是衣櫃</b>。行李箱壓縮得很漂亮、方便搬運，但要找特定一件就得整個攤開翻。你要的是能直接伸手拿一件出來的衣櫃。</p></li>
+        <li><span class="bn">03</span><p><b>只需要三種筆記：Source / Topic / Argument</b>。來源筆記＝別人說的（寫完就不動）；主題筆記＝你從來源抽出的主張（是你的詮釋，但不是臆測）；論證筆記＝純粹你自己的想法、問題、疑惑。分清楚誰在說話，是嚴謹的前提。</p></li>
+        <li><span class="bn">04</span><p><b>每條主張都要能追回原句</b>。他的慣例是每條主張掛<b>兩個</b>連結：一個直接指到原文那一段（用來查證），一個指到來源筆記（用來連上網絡）。理由很實際：論文引言裡的句子常常引用的是<b>別人的</b>研究，只連到論文層級就會錯誤歸因。</p></li>
+        <li><span class="bn">05</span><p><b>新想法是走圖走出來的副產品</b>，不是靠腦力激盪儀式。從一則筆記連到下一則，走著走著就會撞出一個沒人問過的問題——而那正是研究題目。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>別再幫每份資料寫摘要；把每份資料<b>拆成主張、掛回主題底下、標明出處</b>。累積幾年之後，你需要的不是回去重讀，而是伸手把幾塊拼圖拼起來。</p></div>
+    </aside>
+
+    <p class="first">Ilya Shabanov 三十六歲才開始念生物學博士，而他的生物學知識停在高中。這個落差把他推去研究「怎麼學得更快」：他讀了《Smart Notes》、讀了《第二大腦》、研究了<span class="term" data-def="Zettelkasten，卡片盒筆記法。德國社會學家 Luhmann 使用的紙本索引卡系統，強調原子化的短筆記與筆記之間的連結，是現代數位筆記法的祖先。">卡片盒筆記法</span>、試遍了能找到的所有工具，然後開始建自己的東西。四年後那是一個涵蓋他讀過每一篇論文、劃過每一條主張、每一個問題與想法的可搜尋知識庫。他說它「有點像維基百科，但是為我自己的研究而做的」。</p>
+    <p>他強調跟卡片盒或第二大腦最大的差別：<b>因為每一條主張都附有出處，它可以直接被拿來寫論文，而不只是用來學懂一個複雜主題。</b>這個差別聽起來小，實際上決定了系統能不能真的替你工作。</p>
+
+    <h2 class="rise" data-follow data-t="0" data-label="01 · 為什麼需要策略"><span class="hn">01</span>為什麼你需要一個資訊策略<a class="tc" href="https://www.youtube.com/watch?v=S_-uD3GtFno&amp;t=0s" data-t="0"><span class="pl">▶</span> 0:00</a></h2>
+    <p>他用下棋開場：西洋棋誰會贏？永遠是有策略的那個人。只要對手懂一丁點策略性的知識，你就完全沒有機會。</p>
+    <p>而多數人面對大量資訊的解法不是策略，是硬幹。他引了一份《Nature》的調查：約 78% 的研究生每週工作超過四十小時。換句話說，大家是靠磨的方式撐過博士的，那就像一次又一次跟大師下棋然後一直輸。他借孫子的話總結：沒有策略的戰術，是戰敗前的噪音。</p>
+    <p>既然這件事的本質是知識，你需要的就是一套<b>組織知識的策略</b>。而他建議不要自己憑空發明——先去看那個現成的、規模最大的成功案例。</p>
+
+    <h2 class="rise" data-follow data-t="135" data-label="02 · 維基百科藍圖"><span class="hn">02</span>維基百科的兩個設計決定<a class="tc" href="https://www.youtube.com/watch?v=S_-uD3GtFno&amp;t=135s" data-t="135"><span class="pl">▶</span> 2:15</a></h2>
+    <p>打開維基百科，先注意<b>它沒有的東西</b>：沒有任何資料夾，沒有任何東西告訴你一個頁面「屬於」哪裡。它完全靠概念之間的連結組織，滑鼠移到一個詞上就跳出解釋，讓你幾乎不必離開就取得資訊。而每一條主張都能追回某篇論文或某個來源，頁面底部列著構成這篇文章基礎的所有書籍、期刊與網站。</p>
+    <p>接著注意<b>另一個它沒有的東西</b>，這才是重點：<b>你在維基百科上永遠找不到底下那些論文的摘要。</b></p>
+    <p>而你自己讀一篇論文、要做筆記時，做的第一件事是什麼？多半是幫它寫摘要、劃重點、對這篇論文做些什麼。維基百科完全沒有這一層——這不是疏漏，是刻意的，<b>因為那是唯一能組織大量知識的方式</b>。</p>
+    <p>所以整套系統的設計就是：拿維基百科的組織方式，把內容換成你自己的研究。技術上維基百科的每個概念是一個網頁，你需要瀏覽器去走那些連結；那麼在個人版本裡，Obsidian 就是瀏覽器，而網頁換成硬碟上的純文字檔。這樣所有東西都留在你自己的電腦上，還可以順便把論文 PDF 也放進去。</p>
+    <div class="callout rise"><div class="cl">為什麼堅持純文字檔</div><p>他提到自己就是因為這個理由離開 Notion 和 Evernote：整個知識庫就是硬碟上一堆檔案，可以用任何別的程式打開。如果 Obsidian 明天開始收費，你的資訊還在你手上。</p></div>
+
+    <h2 class="rise" data-follow data-t="323" data-label="03 · 工具層"><span class="hn">03</span>工具層：真正要會的沒幾件<a class="tc" href="https://www.youtube.com/watch?v=S_-uD3GtFno&amp;t=323s" data-t="323"><span class="pl">▶</span> 5:23</a></h2>
+    <p>這一段是操作教學，可以快轉，但有三個東西值得知道，因為後面的系統要靠它們運作。</p>
+    <p><b>連結與嵌入。</b>用兩個方括號建立指向另一則筆記的連結；如果那則筆記還不存在，點下去它就被建出來。在連結前面加一個驚嘆號，就從「連過去」變成「把整份內容嵌進來」。這是所有結構的基礎。</p>
+    <p><b>屬性（properties）。</b>在檔案最上方用三個減號開啟屬性區，可以幫每則筆記加作者、期刊、標題、標籤等欄位。關鍵細節：<b>屬性的值本身也可以是連結</b>。把期刊填成連結，就等於自動建立了一則「這本期刊」的筆記，之後所有發表在該期刊的論文都會匯聚到那裡。</p>
+    <p><b>Bases。</b>他認為這是 Obsidian 最被低估的功能，很多人覺得它太技術而不用，他的看法完全相反——<b>Bases 是把 Obsidian 用得有結構的地基</b>。它其實就是 Excel：Excel 有列與欄，可以依欄位值篩選列；Bases 的列是筆記、欄是筆記的屬性。你可以建一個只顯示 sources 資料夾、依評分排序、附上你自己寫的摘要的表；也可以建「待讀清單」表，附上你想讀它的理由；或是一張列出全部論文、依年份分組的大表。他說一旦上手，這種表可以直接取代 Zotero 這類文獻管理軟體，而且比它快得多、可以立刻跳進論文、立刻跳進 PDF。</p>
+
+    <h2 class="rise" data-follow data-t="1261" data-label="04 · STA 三種筆記"><span class="hn">04</span>STA：分清楚是誰在說話<a class="tc" href="https://www.youtube.com/watch?v=S_-uD3GtFno&amp;t=1261s" data-t="1261"><span class="pl">▶</span> 21:01</a></h2>
+    <p>這是整套系統的核心，也是他說「多數人走錯的地方」。</p>
+    <p>錯在哪裡？<b>以為做筆記＝幫一篇論文寫摘要。</b>他給了兩個理由。第一個很直接：論文本來就有摘要，而且是比你更懂這篇論文的人花好幾個小時寫的，你重寫一份沒有增加任何東西。第二個理由才是關鍵——</p>
+    <div class="pull rise">摘要就是壓縮。它像行李箱，把衣服壓得很漂亮、方便搬運；但你要找特定一件時就得整個打開、翻找，等你翻完，早忘了自己在找什麼。你真正想要的是衣櫃。</div>
+    <p>從行李箱換成衣櫃，需要的正是那個心態轉換：<b>不要對來源做筆記，先看懂這個來源在談哪些主題，再把它對這些主題提出的主張，抽進各自對應的筆記裡。</b></p>
+    <p>他說實驗了很久之後，確認只需要三種筆記，系統就能運轉：</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 三種筆記，分清楚誰在說話</div>
+      <div class="dg">
+        <div class="dg-top">
+          <span class="k caps">原則</span>
+          <span class="t">把「他說的」「我理解的他說的」「我說的」實體分開</span>
+          <span class="a">這個分離是嚴謹研究的前提，不是潔癖</span>
+        </div>
+        <div class="dg-cols">
+          <div class="dg-col">
+            <div class="dg-n">01</div>
+            <div class="dg-k caps">Source · 來源筆記</div>
+            <div class="dg-cause">別人說的東西</div>
+            <div class="dg-sub">寫完基本上就不再動它</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">功能</div>
+            <div class="dg-sol">當<b>錨點與閘道</b>：裡面放 PDF 或原文本體，靠反向連結就能看出這份來源餵養了哪些主題</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">02</div>
+            <div class="dg-k caps">Topic · 主題筆記</div>
+            <div class="dg-cause">你從來源抽出的主張</div>
+            <div class="dg-sub">是你的詮釋，但不是你的臆測</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">功能</div>
+            <div class="dg-sol">長成該題目的<b>迷你文獻回顧</b>；每條主張都連回來源，日後可拼成段落</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">03</div>
+            <div class="dg-k caps">Argument · 論證筆記</div>
+            <div class="dg-cause">純粹你自己的東西</div>
+            <div class="dg-sub">想法、意見、疑問，也叫思考筆記</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">功能</div>
+            <div class="dg-sol">存放<b>臆測</b>。一則問題筆記會隨時間長大，最後變成研究方向</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>三者可以放在不同資料夾、用不同顏色顯示；重點不在美觀，在於你永遠知道一句話的責任歸誰</figcaption>
+    </figure>
+
+    <p>他舉了自己的兩個論證筆記做例子。一則是「養育行為對物種分布範圍的位移有沒有影響？」——他把跟學界某人往來的一整串 email 貼了進去，對方給了很好的觀點、指向了幾篇論文；靠著反向連結他能看到這個問題被用在哪裡，想繼續探索時已經知道從哪起步。另一則是他自己寫的東西：論文目標、章節大綱、加了引用的條列引言。那完全是他自己的產物，所以它是論證筆記。</p>
+
+    <h2 class="rise" data-follow data-t="2295" data-label="05 · 實際跑一遍"><span class="hn">05</span>實際跑一遍：一句話怎麼變成幾個節點<a class="tc" href="https://www.youtube.com/watch?v=S_-uD3GtFno&amp;t=2295s" data-t="2295"><span class="pl">▶</span> 38:15</a></h2>
+    <p>知道三種筆記還不夠，真正的手感在「讀到一句話的當下要做什麼」。他的姿勢固定：<b>左邊放要讀的東西，右邊放筆記</b>，一路往下讀，看到有價值的就往右邊放。</p>
+    <p>整個動作大致是這樣。讀到「氣候變遷對生物多樣性影響的證據正在累積，但也有文獻顯示這些反應的速率與方向差異極大」，這句話是關於「生物多樣性」這個概念的 → 打開那則主題筆記，把主張壓縮成一句「生物多樣性變化的速率差異極大」，然後<b>加上指向來源筆記的連結</b>，確保讀者（包括未來的你）知道這不是你說的、是那篇論文說的。</p>
+    <p>再讀到「這種複雜性來自生物過程不會以直接且線性的方式回應氣候」，這句話值得開一則新的主題筆記「生物過程」，寫下「對氣候的反應不是線性的」，一樣連回來源；同時回到原本那則「生物多樣性」筆記補一句「原因是生物過程有非線性反應」，並連到新開的那則。<b>兩個概念之間的關係就這樣長出來了。</b></p>
+    <p>接下來是這套系統裡最值得偷走的一個細節，也是它跟一般筆記法真正拉開差距的地方。</p>
+    <div class="callout rise">
+      <div class="cl">為什麼一條主張要掛兩個連結</div>
+      <p>他用 Obsidian 的「複製連結到選取範圍」功能，直接連到 PDF 裡的<b>那一句</b>。這樣滑鼠移過去，跳出來的不是來源筆記，而是原文中的那一句話。他解釋為什麼非這樣不可：某篇論文的引言寫著「在草本植物群落中，較暖或較濕的條件會提高生物量與高度」——但仔細看，<b>提出這個主張的不是這篇論文，是它的參考文獻第 24 和 25 篇</b>。如果你引用時說「這是 Vanwyck 2020 說的」，別人一查就會發現那篇論文跟你講的根本無關，那只是引言裡的一句話。這是一面<b>紅旗</b>。所以他的慣例是每條主張掛兩個連結：一個直接指到原文那一句（用來查證真偽），一個指到來源筆記（用來連上整個網絡）。手動做很煩，可以用 <span class="term" data-def="PDF++ 是一個 Obsidian 社群外掛，可以自動把 PDF 裡的劃線與筆記雙向連結起來，省掉手動建立兩個連結的步驟。">PDF++</span> 這個外掛自動化。</p>
+    </div>
+    <p>來源不是 PDF 的時候（例如一篇網頁文章），用 <span class="term" data-def="Obsidian Web Clipper，官方的瀏覽器擴充功能。可以把網頁整篇（含圖片與連結）依照你設定的範本存進 vault 指定資料夾。">Web Clipper</span> 把整頁抓進來，來源筆記就直接包含全部原文。連結方式一樣，只是改用 Obsidian 的區塊連結（游標打 <b>^</b> 就可以選中原文的任一個區塊）。<b>原則是不變的：來源筆記一定要能連到 PDF 或原文本體</b>，因為那是唯一能回頭查證你抽出的主張有沒有抽錯的方式。他說得很坦白：你一定會抽錯，而且過幾年回頭看會覺得自己當時在想什麼——因為你的思考在進步，同樣的字你會讀出不同的東西。</p>
+    <p>做久了之後有兩個效果會同時出現，而且方向相反：<b>主題筆記慢慢長成那個窄題目的迷你文獻回顧；來源筆記則變成通往它所涉及的所有主題的閘道。</b>打開一篇論文的來源筆記、展開反向連結，就能看到它在你的知識庫裡碰到了哪十個概念。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 一條主張從原文到知識網絡</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">左邊讀，看到有價值的句子</div>
+          <div class="dg-sub">先問：這句在講哪個「主題」？</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">壓成一句原子句</div>
+          <div class="dg-sub">短到不必再補充任何東西</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">掛上兩個連結</div>
+          <div class="dg-sub">一個指原文那一句（查證），一個指來源筆記（連網）</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">04</div>
+          <div class="dg-st">順手連到相關概念</div>
+          <div class="dg-sub">概念之間的關係就是這樣長出來的</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">兩個方向都通了</div>
+          <div class="dg-ot">主題筆記 → 這題所有相關論文；來源筆記 → 這份來源涉及的所有主題。查得到，也反查得到。</div>
+        </div>
+      </div>
+      <figcaption>整套動作的成本只比「劃重點」多一點，但換來的是幾年後還能用的結構</figcaption>
+    </figure>
+
+    <h2 class="rise" data-follow data-t="2946" data-label="06 · 為什麼能規模化"><span class="hn">06</span>為什麼這套規模化得起來<a class="tc" href="https://www.youtube.com/watch?v=S_-uD3GtFno&amp;t=2946s" data-t="2946"><span class="pl">▶</span> 49:06</a></h2>
+    <p>他打開一則自己最早期的主題筆記，指出一個容易被忽略的特徵：<b>所有筆記都很短。</b>他稱那些句子為<span class="term" data-def="atomic sentence，原子句。短到不能再拆、也不需要再補充任何前後文就能獨立成立的一句話。這是讓筆記日後可以被自由重組的關鍵。">原子句</span>——短到不必再加任何東西就能獨立成立。</p>
+    <p>短的好處在後面才顯現：它們變成一塊塊拼圖。你可以自己把二十五個條列想辦法組成一個段落，也可以請 AI 加一點提示去組。出來的東西不會完美，但已經是一段像樣的學術段落初稿，<b>而且自帶全部正確的引用</b>。</p>
+    <p>他把這件事講得更狠一點：這些原子句累積起來之後，<b>會替你把論文寫掉</b>。而且反過來查證也變簡單——主題筆記連到來源筆記，來源筆記連到 PDF，PDF 裡有你當初的劃線，隨時能往回追。</p>
+    <p>（他順帶提到這種寫作方式是否合乎學術倫理曾引起爭議：他寫過一篇描述這套系統的文章，差點讓他被學校退學，鬧得很大。他把那段經過另外做成一支影片，留給觀眾自己判斷。）</p>
+
+    <h2 class="rise" data-follow data-t="3018" data-label="07 · 想法怎麼長出來"><span class="hn">07</span>新想法是走出來的，不是想出來的<a class="tc" href="https://www.youtube.com/watch?v=S_-uD3GtFno&amp;t=3018s" data-t="3018"><span class="pl">▶</span> 50:18</a></h2>
+    <p>影片開頭他說「產生新想法是這套系統的副作用」，最後一段解釋這句話。</p>
+    <p>他示範怎麼在自己的知識庫裡散步。從一則關於化石燃料的筆記出發，它連到氣候變遷；讀著氣候變遷這則，看到氣候變遷的影響之一是冰層融化，那是另一則主題筆記；而冰層融化這則又連到企鵝，因為幾年前你純粹出於興趣讀過一篇關於南極企鵝族群下降的論文。</p>
+    <p>走到這裡，你已經在<b>最新的化石燃料排放推估</b>和<b>企鵝族群下降</b>之間建立了一個連結——而這件事並不平凡。你現在可以開一則新的問題筆記：「新的化石燃料排放推估會怎麼影響企鵝族群？」<b>這個想法不是靠任何腦力激盪儀式產生的，是走這張圖走出來的。</b></p>
+    <p>他最後用一組對照收尾，是整支影片最好記的一段：</p>
+    <div class="pull rise">多數人是資訊的獵人：餓了才出去打獵。我們是知識的農夫，幾年前就把知識種進土裡了。</div>
+    <p>獵人的模式是：要寫論文了，才開始去找論文、去找怎麼寫，得把所有東西重新找一遍、重新塞進腦袋，才進得了寫作那一步，非常耗力。農夫的模式是：筆記是植物，你播下它、給它土壤、把它連起來、按某種方式照料它，然後就只是等待，讓知識網絡自己長。等到真的要寫論文，你要做的只是摘幾則筆記下來拼成一篇。蘋果早就長在樹上了，你只要伸手摘下來咬一口。</p>
+    <p>他也提醒別想一次學會全部：Obsidian 第一次上手複雜得要命，他自己在「怎麼讓結構在幾百上千則筆記之後還撐得住」這件事上犯的錯最多。這些精緻化的部分（外掛、顏色、自動化）都是你玩久了自然會發現的，不用急著一次到位。</p>
+
+    <div class="callout rise">
+      <div class="cl">延伸 · 庫裡相關的幾篇</div>
+      <p>這篇補的是「知識庫的<b>內部結構</b>」，可以接 <a href="claude-tag-teammate.html">Claude Tag</a> 那類「AI 當常駐同事」的討論：一個結構清楚、每條主張都有出處的知識庫，正是讓 AI 能可靠地替你工作的前提。想法從走圖走出來這一段，也跟 <a href="first-principles-thinking.html">第一性原理思考</a> 的「答案藏在不同深度、多挖一兩層」是同一副骨架，只是這篇把它變成了一個可以每天執行的動作。</p>
+    </div>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <p>你已經在跑一套很接近的東西了：剪報進站、抽成主題筆記、寫進主題知識庫、靠索引與領域地圖導航，還有定期的健檢與產出回流。骨架這一層你的其實走得比他遠——他只有 graph view，而且他自己承認 graph view 「視覺上很壯觀，但不太能拿來導航」。所以下面只列他有、而你目前缺的三件事，加上一件不用學的。</p>
+    <ul>
+      <li><b>來源這一層是空的，而且缺的是「反查」。</b>你的流程是剪報抽完就進歸檔資料夾，那是一堆檔案、不是知識庫裡的節點——它不被連結、不進圖、不被反向連結接住。結果是單向通的：你能從一則主題筆記看到它的來源網址，但沒辦法反過來問「某集訪談的內容散落在我的知識庫哪幾篇」。要補的話，成本最低的做法是每則剪報建一個很薄的來源筆記（只有屬性＋原文連結），主題筆記引用時連它，反查方向就通了。</li>
+      <li><b>主張級的追溯。</b>你現在是「一篇一個來源、整篇一個連結」。他那個紅旗案例值得記住：論文引言裡的句子，提出者常常是它的參考文獻而不是它本身。你會踩到的等價情況是合輯型內容（一支影片裡六個不同專家）、以及已經標註「單一研究、數字要打折」的那些筆記——目前那些警語是人工寫在正文裡的，機器查不到。至少對這兩類，可以考慮讓每條主張自帶出處。</li>
+      <li><b>論證筆記完全沒有對應物，而這件事跟你現行的規則不衝突。</b>你目前的規則是反思產出預設不寫進筆記，理由是理解不能外包、反思是你自己內化的工具。那條擋的是「我幫你歸納成守則寫進正本」；他這條說的是另一件事——<b>你自己的問題要有個會被圖接住、會被反向連結反查的地方住</b>。你自己的想法現在散在日誌留言、對話裡、跨專案教訓檔中，知識庫本身接不住。這是三件裡最值得想一想的，但它會動到現行規則，所以留給你決定，我不自己加。</li>
+      <li><b>不用學的：Bases 取代 Zotero 那一段。</b>那是為了管理幾百篇 PDF 論文的文獻工作流，你的來源是網頁與影片剪報，用不上。</li>
+    </ul>
+  </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-ai.html">← 回 AI × Coding</a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>
