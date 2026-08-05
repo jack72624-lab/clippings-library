@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本期整理 · 2026-08-05 · MCP vs API：執行層與導入判準 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../timeline.html">← 時間軸</a>
+  <span class="c">本期整理</span>
+  <span class="r grot">2026 · 08 · 05</span>
+</div>
+
+<div class="wrap">
+  <header class="hub-hero">
+    <div class="kick caps rise">本期整理 · Digest</div>
+    <h1><span class="mask"><span>2026 · 08 · 05</span></span></h1>
+    <p class="sub rise">這天整理了 2 則，都是 AI 工具題。第一則是十三分鐘的 MCP 概念釐清，除了影片本體，另外<b>補了一整節官方規格查證</b>（執行層的三層拆法、影片沒提的安全攻擊面、Skill 與 MCP 的分工），標明哪些是影片講的、哪些是後補的。第二則刻意<b>不做成閱讀文章</b>：它講的工具本來就已經裝著，真正有價值的資訊只有版本落差，所以轉成一個升級動作而不是一則知識。</p>
+    <div class="stat rise caps">
+      <span><b>2</b> 則</span>
+      <span><b>1</b> 可讀文章</span>
+      <span><b>AI × Coding</b></span>
+    </div>
+  </header>
+
+  <div class="dbatch">
+
+    <!-- 01 · MCP vs API（Type A，AI×Coding，video-sync）-->
+    <section class="dclip rise">
+      <div class="dn grot">01</div>
+      <div class="dk"><span class="flag">Type A</span><span class="caps">協定 · 導入判斷</span></div>
+      <h2>MCP vs API：執行層，與該不該用的四個問題</h2>
+      <div class="src">可波 AI 白話（彙整 Google Cloud Tech ＋ IBM Technology）· <a href="https://www.youtube.com/watch?v=CfjwKdNi42Q" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>模型不會執行 API</b>：模型只是產生一個「請呼叫某某工具」的請求，真正拿著它去打 API 的是模型旁邊那層程式，那層叫執行層。它握著金鑰、負責重試、負責擋下不該做的動作。</p></li>
+          <li><span class="bn">02</span><p><b>MCP 是疊在 API 上面，不是取代</b>：你的後端一行都不用動。MCP 取代的是模型跟 API 之間那層翻譯程式。所以「MCP vs API」這題本身就問錯了，兩者不在同一層。</p></li>
+          <li><span class="bn">03</span><p><b>它做的實際上是三件事</b>：抽象化（把 API 轉成模型讀得懂的格式）、認證、限定權限。中間那個最常被跳過，卻是三個裡面最重要的。</p></li>
+          <li><span class="bn">04</span><p><b>價值是一道算術題</b>：把乘法變加法。兩個應用乘十個服務等於二十份整合程式碼；換成 MCP 是二加十。真正的差別在第三個應用進來時，它直接重用那十台 server。</p></li>
+          <li><span class="bn">05</span><p><b>三種情況不要用</b>：確定性流程、一次性任務或只有一個應用、沒有現成的 server。只有一個應用只接兩三個服務，那個乘法根本不會爆炸，MCP 對你就是純成本。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>MCP 沒有讓模型變強，它只是讓多個應用共用同一層執行層，而不是各蓋各的。</p></div>
+      </aside>
+
+      <div class="dact">
+        <a class="rd" href="../entries/mcp-vs-api-execution-layer.html">讀完整版 →</a>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>已寫入正本 <b>主題知識／AI／MCP 執行層與導入判準.md</b>（新開檔）。<b>不併稿</b>（規則 A 判定）：既有的 <b>MCP 機制與常用 server</b> 是操作手冊（怎麼裝、scope、認證、debug），這則是概念與決策層，兩者收件人與用途不同，併進去會讓操作手冊失去「快速查指令」的功能，因此兩篇互連而不合併。連帶處理：對照官方規格時發現既有那篇的 transport 表已過期（列了三種、把 SSE 當獨立 transport，現行規格只有 stdio 與 Streamable HTTP 兩種），<b>已一併更正並留更正紀錄</b>。文章另連 <b>Claude Token 效率策略</b>（互補，補上「每多一台 server，每次對話固定開銷就多一份工具清單」這個具體來源）、<b>Claude Code 當 orchestrator（Clay 實例）</b>（對照，同一種「值不值得導入」的判斷）、<b>Subagent 建立與使用</b>（互補，唯讀安全檢查分身正好是第四問的執行方式）。可點時間碼跳原片、開跟讀。</div>
+    </section>
+
+    <!-- 02 · Impeccable 4.0（Type B，AI×Coding，轉成動作不產文章）-->
+    <section class="dclip rise">
+      <div class="dn grot">02</div>
+      <div class="dk"><span class="flag hollow">Type B</span><span class="caps">前端設計 · 工具版本</span></div>
+      <h2>Impeccable 4.0：live mode 與 177 個風格方向</h2>
+      <div class="src">Chase AI · <a href="https://www.youtube.com/watch?v=RVeCbPg0liw" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">能力 · Pattern</span><span class="rd grot">要點 3 條</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>真正的資訊是版本落差</b>：這支 skill 本來就已經裝著，裝的是 3.9.1，影片講的是 4.0。所以這則的價值不是「認識一個新工具」，是「你落後了一版，而落後的那版新增的東西剛好會用到」。</p></li>
+          <li><span class="bn">02</span><p><b>4.0 新增兩塊</b>：live mode（在瀏覽器裡直接點選頁面元件、下指令產生多個變體、每個變體還能再微調，滿意才回寫）；以及一批現成的風格方向，讓第一步從「憑空描述」變成「看圖挑一個再往下走」。</p></li>
+          <li><span class="bn">03</span><p><b>兩個值得吸收的心法</b>：一是別再期待一次到位，設計本來就是迭代的；二是通用型工具與一招流工具的取捨，一招流每次都給你一個好看的結果但只會做那一種，通用型下限低、更吃你自己的判斷，天花板卻高很多。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>工具功能會改版、筆記會過期；這則的正確產出是一個升級動作，不是一則知識。</p></div>
+      </aside>
+
+      <div class="dact">
+        <span class="note-in">能力 · 已納入工具箱（Type B，非閱讀文章）</span>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div><b>判定不寫知識筆記</b>，原檔標「略過」。三個理由：① 工具功能會改版，寫一篇「4.0 有什麼」的筆記下個月就是錯的，而且官方文件永遠比轉述準；② 這支 skill 已經裝了，不是「發現新工具」的情境；③ 它踩到的其實是另一個問題，設計 skill 的主力路由該不該調整，那是決策不是知識。<b>改成動作</b>：升級 3.9.1 到 4.0，實際跑過之後再決定要不要調整主力設定。影片裡夾帶的兩個心法（迭代心態、通用型與一招流的取捨）已在上面的簡報盒留下，不另建筆記。</div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="foot">本期整理 · 2026-08-05 · 2 則剪報 · 文章為正本、本頁為當期 rollup · Clippings 閱讀庫</footer>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP vs API：執行層與導入判準 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/video-sync.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="mcp-vs-api-execution-layer" data-video="CfjwKdNi42Q">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-ai.html">← AI × Coding</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 08 · 05</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">10</div>
+    <div class="kick caps rise">AI × Coding · 協定 × 導入判斷</div>
+    <h1 class="rise">MCP vs API：執行層，與該不該用的四個問題</h1>
+    <div class="src rise">可波 AI 白話（彙整 Google Cloud Tech ＋ IBM Technology）· <a href="https://www.youtube.com/watch?v=CfjwKdNi42Q" target="_blank" rel="noopener">YouTube 原片 ↗</a></div>
+  </header>
+
+  <div class="vlayout">
+    <div class="vpanel">
+      <div class="vwrap"><div class="ytmount" id="ytPlayer"></div></div>
+      <div class="vbar">
+        <button id="followBtn" class="vfollow" type="button">跟讀：關</button>
+        <span class="vnow" id="vnow">點段落旁的 ▶ 時間碼跳到影片那一段</span>
+      </div>
+    </div>
+    <a class="mob-vlink" href="https://www.youtube.com/watch?v=CfjwKdNi42Q" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
+
+  <article class="readable">
+    <p class="lede">吵最兇的那兩邊其實比錯東西了。而且有一件事八成的人都搞反：你的模型，從頭到尾沒有自己執行過任何一次 API 呼叫，一次都沒有。只要搞懂「誰在執行」，MCP 是什麼、值不值得用，答案就會自己浮出來。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>模型不會執行 API</b>：模型只是產生一個「請呼叫某某工具」的請求，真正拿著它去打 API 的是模型旁邊那層程式，那層叫執行層。它握著金鑰、負責重試、負責擋下不該做的動作。</p></li>
+        <li><span class="bn">02</span><p><b>MCP 是疊在 API 上面，不是取代</b>：你的後端一行都不用動。MCP 取代的是模型跟 API 之間那層翻譯程式。所以「MCP vs API」這題本身就問錯了，兩者不在同一層。</p></li>
+        <li><span class="bn">03</span><p><b>它做的實際上是三件事</b>：抽象化（把 API 轉成模型讀得懂的格式）、認證、限定權限。中間那個最常被跳過，卻是三個裡面最重要的。</p></li>
+        <li><span class="bn">04</span><p><b>價值是一道算術題</b>：把乘法變加法。兩個應用乘十個服務等於二十份整合程式碼；換成 MCP 是二加十。真正的差別在第三個應用進來時，它直接重用那十台 server。</p></li>
+        <li><span class="bn">05</span><p><b>三種情況不要用</b>：確定性流程、一次性任務或只有一個應用、沒有現成的 server。只有一個應用只接兩三個服務，那個乘法根本不會爆炸，MCP 對你就是純成本。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>MCP 沒有讓模型變強，它只是讓多個應用共用同一層執行層，而不是各蓋各的。</p></div>
+    </aside>
+
+    <p class="first">先把這篇要回答的問題排好：MCP 到底是什麼、它會不會取代 API、以及最現實的那一個，我到底該不該用。前半段是大方向，後半段才是真正決定你會不會踩坑的那一層細節。我們從一個大家都熟的東西開始。</p>
+
+    <h2 class="rise" data-follow data-t="55" data-label="01 · API 為什麼撐不住"><span class="hn">01</span>API 為什麼撐不住模型<a class="tc" href="https://www.youtube.com/watch?v=CfjwKdNi42Q&amp;t=55s" data-t="55"><span class="pl">▶</span> 0:55</a></h2>
+    <p>過去幾十年，API 就是系統跟系統之間的握手：你定義一個 endpoint，送一個請求，拿回一個回應。乾淨、可預測，對傳統軟體來說完美到不行。</p>
+    <p>問題是大型語言模型進場之後遊戲變了。模型不會只呼叫一個 endpoint，它可能要串十個、把結果接起來，還要看懂一堆亂七八糟的非結構化資料，然後回頭再問你一句。</p>
+    <p>更麻煩的是這個假設：<b>API 假設呼叫它的是另一支程式</b>，而那支程式的作者早就翻過文件、知道每個欄位長什麼樣。但模型不是那樣進來的。它帶著一個模糊的目標進來，例如「把這張工單處理掉」，至於要打哪一支、參數怎麼填，得自己想辦法。</p>
+    <div class="pull rise">API 就像一個上鎖的櫃子，你得清楚知道要開哪個抽屜、鑰匙長什麼形狀。但模型是在沒有清楚標籤的情況下，試著搞懂櫃子裡面有什麼。</div>
+
+    <h2 class="rise" data-follow data-t="127" data-label="02 · MCP 翻轉了哪個假設"><span class="hn">02</span>MCP 翻轉了哪個假設<a class="tc" href="https://www.youtube.com/watch?v=CfjwKdNi42Q&amp;t=127s" data-t="127"><span class="pl">▶</span> 2:07</a></h2>
+    <p>所以在 MCP 出現以前，這個「不知道要開哪個抽屜」的問題是誰在解決？是你。是你在 prompt 裡面一條一條寫給它聽：要開工單就打這個網址、帶這幾個欄位；要回信就用這個格式。寫完還要祈禱它每次都照做。這件事我們做了兩年，做到麻痺，還以為這就是 prompt engineering 的日常。</p>
+    <p><span class="term" data-def="Model Context Protocol。一套讓 AI 應用用統一標準接外部工具與資料源的開放協定，常被形容成「AI 界的 USB-C」。">MCP</span> 想拆掉的就是這件事：與其讓你把工具的說明背進 prompt 裡，不如讓工具自己開口說明自己。模型不再需要被人工教會每一個 endpoint，而是有一個標準化的方式去發現一個工具能做什麼、要吃什麼輸入、會吐什麼輸出。你可以把它想成：<b>給模型一張活的、機器讀得懂的地圖，而不是一本靜態的說明書。</b></p>
+    <p>影片接了一個很好的例子把這件事講具體<a class="tc" href="https://www.youtube.com/watch?v=CfjwKdNi42Q&amp;t=192s" data-t="192"><span class="pl">▶</span> 3:12</a>：你要做一個處理客服工單的 AI 代理，它要能碰 Gmail、Notion、Jira 三個服務。如果是今天的做法，你要寫多少東西？三套認證、三套錯誤處理、分頁、速率限制，全部各寫一次；然後再寫一大段 prompt 教模型什麼時候該呼叫哪一個。</p>
+    <p>而最花時間的其實不是第一次接通，<b>是後面那兩年</b>：Gmail 改了授權流程、Jira 換了欄位名字，每一次都要有人回去改那三套程式碼。這才是真正的成本。</p>
+
+    <h2 class="rise" data-follow data-t="275" data-label="03 · 實際在做的三件事"><span class="hn">03</span>MCP 實際在做的三件事<a class="tc" href="https://www.youtube.com/watch?v=CfjwKdNi42Q&amp;t=275s" data-t="275"><span class="pl">▶</span> 4:35</a></h2>
+    <p>「讓服務自己說明自己」聽起來還是有點像行銷文案。它實際上到底做了什麼？IBM 那支白板課講得最務實，就三件：<b>抽象化</b>（把你的服務 API 抽象成模型讀得懂的格式）、<b>認證</b>（讓你的代理能夠去呼叫那個服務）、<b>限定權限</b>（給的是一個範圍限定的 token，讀寫權限你自己決定）。</p>
+    <p>中間那個「認證」值得特別拉出來講，因為它常常被跳過，但它其實是三個裡面最重要的。理由是這樣：如果只是要「讓模型知道有哪些工具」，那你把 API 文件貼進 prompt 也做得到。<b>真正做不到的是權限</b>：誰拿著金鑰、誰決定這個代理只能讀不能寫、誰負責在它想刪東西的時候擋下來。</p>
+    <div class="callout rise"><div class="cl caps">帶走一句</div><p>權限這件事不可能靠寫 prompt 解決，它必須有一層真的程式在那裡守著。記住這個「有一層程式在那裡」的感覺，後面整段都靠它。</p></div>
+
+    <h2 class="rise" data-follow data-t="386" data-label="04 · 疊在上面不是取代"><span class="hn">04</span>疊在上面，不是取代<a class="tc" href="https://www.youtube.com/watch?v=CfjwKdNi42Q&amp;t=386s" data-t="386"><span class="pl">▶</span> 6:26</a></h2>
+    <p>那 MCP 是要來取代 API 的嗎？Google 和 IBM 這兩支教學講的完全一致，而且都講得很清楚：不是。</p>
+    <p>MCP 不會取代你的後端。它取代的是模型跟 API 之間的那層 <span class="term" data-def="夾在兩個系統中間、負責翻譯與轉接的程式。這裡指把「開發者看得懂的 API」翻成「模型看得懂的動作」的那一層。">middleware</span>。MCP server 像一個翻譯，把你現有的 API 轉成模型能自動理解的格式。<b>你的 API 一行都不用動</b>，它還在原地做它本來就在做的事，MCP server 只是站在它前面。</p>
+    <p>所以「MCP vs API」這個題目本身就是錯的，它們根本不在同一層。到這裡，大方向的故事講完了，乾淨、漂亮、而且完全正確。接下來是這兩支教學沒有展開的那一半。</p>
+
+    <h2 class="rise" data-follow data-t="449" data-label="05 · 沒人告訴你的執行層"><span class="hn">05</span>最大的誤會：沒人告訴你的執行層<a class="tc" href="https://www.youtube.com/watch?v=CfjwKdNi42Q&amp;t=449s" data-t="449"><span class="pl">▶</span> 7:29</a></h2>
+    <p>回到開場那句話：模型從來沒有自己執行過任何一次 API 呼叫。這聽起來跟你剛剛看到的畫面有點衝突，教學影片裡會說「模型連上 server、直接呼叫這些功能」，那是在講架構，講得沒錯。但如果你照字面去想像，你腦中的圖會是：模型長出了手，自己伸出去打 API。不是這樣。</p>
+    <p>真正發生的事情是：你的應用程式先告訴模型「你現在可以做這些事」，模型讀完狀況之後，輸出一段請求，例如「請呼叫建立工單，標題是付款失敗，優先級高」。<b>到這一步為止，什麼事都還沒發生</b>，模型只是產生了一段輸出。真正拿著這段輸出去打 API 的，是模型外面那一層程式。這一層有個名字，叫<span class="term" data-def="execution layer。模型外面那層真正發出請求的程式。它握著金鑰、負責重試、負責處理失敗、負責把結果餵回模型面前。">執行層</span>。</p>
+    <p>而 IBM 那段畫面其實已經把答案講出來了：它說的是「告訴模型去<b>產生</b>一個特定的 JSON 請求」。產生，不是呼叫。翻成真正的 HTTP 請求去打的，是 MCP server。</p>
+    <div class="pull rise">下次誰再跟你吵 MCP vs API，你就拿這句出來：模型不會執行 API，執行的永遠是它旁邊那一層。</div>
+    <p>這件事為什麼重要？因為一旦你想通了，下一個問題的答案就會自己浮出來：那 MCP 到底給了模型什麼新能力？答案是，沒有。而這個「沒有」，恰恰就是它真正價值的起點。</p>
+
+    <h2 class="rise" data-follow data-t="556" data-label="06 · 乘法變加法"><span class="hn">06</span>價值是一道算術題：乘法變加法<a class="tc" href="https://www.youtube.com/watch?v=CfjwKdNi42Q&amp;t=556s" data-t="556"><span class="pl">▶</span> 9:16</a></h2>
+    <p>如果 MCP 沒有給模型新能力，那它憑什麼被講成革命？因為它給的不是能力，是<b>標準</b>。而標準的價值，是一道算術題。</p>
+    <p>假設你們公司有一個 AI 應用，要接十個服務：Slack、Gmail、Jira、Notion、自家資料庫，還有五個雜七雜八的。這樣是十份整合程式碼，每一份都要有人寫、有人維護。隔年老闆說要做第二個 AI 應用，客服機器人，要接的是同一批十個服務。你的團隊怎麼做？再寫十份。兩個應用乘十個服務，二十份。第三個應用進來，三十份。</p>
+    <p>換成 MCP：每個應用配一組接線，每個服務配一台 server。兩個應用<b>加</b>十個服務，十二個零件。而真正的差別在第三個應用，它不用再寫十份，直接重用那十台 server。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 乘法 vs 加法</div>
+      <div class="dg dg-compare">
+        <div class="dg-vs">
+          <div class="dg-side">
+            <div class="dg-vk caps">各自接 API</div>
+            <div class="dg-vt">M 個應用 × N 個服務</div>
+            <ul class="dg-vl">
+              <li>2 應用 × 10 服務 ＝ 20 份整合程式碼</li>
+              <li>第 3 個應用進來，再加 10 份</li>
+              <li>服務改版時，每一份都要有人回去改</li>
+            </ul>
+          </div>
+          <div class="dg-side">
+            <div class="dg-vk caps">走 MCP</div>
+            <div class="dg-vt">M 組接線 ＋ N 台 server</div>
+            <ul class="dg-vl">
+              <li>2 應用 ＋ 10 服務 ＝ 12 個零件</li>
+              <li>第 3 個應用直接重用那 10 台 server</li>
+              <li>服務改版只改那一台 server，全部應用受惠</li>
+            </ul>
+          </div>
+        </div>
+        <div class="dg-verdict"><span class="dg-k caps">結論</span><span class="dg-vv">反過來也成立：只有一個應用、只接兩三個服務，乘法根本不會爆炸，MCP 對你就是純成本。</span></div>
+      </div>
+      <figcaption>MCP 省的不是第一次接通的工，是後面兩年的維護工（依影片論述整理）</figcaption>
+    </figure>
+
+    <h2 class="rise" data-follow data-t="626" data-label="07 · 什麼時候不要用"><span class="hn">07</span>三種情況，不要用 MCP<a class="tc" href="https://www.youtube.com/watch?v=CfjwKdNi42Q&amp;t=626s" data-t="626"><span class="pl">▶</span> 10:26</a></h2>
+    <p>講到這裡你可能以為要開始推坑了，剛好相反。</p>
+    <p><b>第一種，確定性流程。</b>收到款項就寫一筆進資料庫，這件事每次都走同一條路，永遠呼叫同一個 endpoint。你放一個 AI 進去決定要做什麼，只是多引入一個它偶爾會選錯的機會。這種流程直接接 API 就好。</p>
+    <p><b>第二種，一次性任務，或你只有一個應用。</b>你已經知道要打哪幾支 API，直接接完全合理。很多團隊到今天都跑得又穩又安全，一台 MCP server 都沒有。</p>
+    <p><b>第三種，沒有現成的 server，或現成那台沒有你要的動作。</b>那你等於是為了一個標準，自己去蓋一台伺服器。</p>
+    <p>影片也很誠實地講了 MCP 自己還沒解完的問題：<b>採用度</b>（要整個生態系的 server、client、工具都同意用同一套標準）、<b>安全與控制權</b>（你不會希望模型不小心寄出一封信、刪掉一個檔案，或動了不該動的資料庫），以及<b>context 成本</b>（如果你把每一台 server 的每一個動作全部載進去，光是那份清單就先把 context 吃掉一半）。還有金鑰：API key 絕對不能讓模型看到，它應該只存在執行層裡。</p>
+
+    <h2 class="rise" data-follow data-t="723" data-label="08 · 決策三問"><span class="hn">08</span>決策三問：你該不該用<a class="tc" href="https://www.youtube.com/watch?v=CfjwKdNi42Q&amp;t=723s" data-t="723"><span class="pl">▶</span> 12:03</a></h2>
+    <p>影片把它濃縮成三個問題，你自己回答就會有答案。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 決策三問</div>
+      <div class="dg">
+        <div class="dg-top">
+          <span class="k caps">起點</span>
+          <span class="t">我該不該用 MCP</span>
+          <span class="a">三問，答完就有答案</span>
+        </div>
+        <div class="dg-cols">
+          <div class="dg-col">
+            <div class="dg-n">01</div>
+            <div class="dg-k caps">問</div>
+            <div class="dg-cause">你是一個應用，還是很多個？</div>
+            <div class="dg-sub">乘法會不會爆炸</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">答</div>
+            <div class="dg-sol">只有一個，<b>直接接 API</b>；很多個碰同一批系統，那正是 MCP 存在的理由。</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">02</div>
+            <div class="dg-k caps">問</div>
+            <div class="dg-cause">流程每次都一樣，還是每次都不一樣？</div>
+            <div class="dg-sub">需不需要一顆會判斷的腦袋</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">答</div>
+            <div class="dg-sol">每次都一樣是 <b>API 的主場</b>，別放 AI 進去攪局；沒辦法窮舉才需要判斷。</div>
+          </div>
+          <div class="dg-col">
+            <div class="dg-n">03</div>
+            <div class="dg-k caps">問</div>
+            <div class="dg-cause">有沒有現成的 server？</div>
+            <div class="dg-sub">你要不要自己蓋一台</div>
+            <div class="dg-mid"><span>↓</span></div>
+            <div class="dg-k caps">答</div>
+            <div class="dg-sol">有，<b>成本幾乎是零</b>，試一下沒損失；沒有就要自己蓋，先想清楚值不值得。</div>
+          </div>
+        </div>
+      </div>
+      <figcaption>三問答完就有答案。但第三問還缺一半，見下一節（依影片整理）</figcaption>
+    </figure>
+
+    <h2 class="rise"><span class="hn">09</span>補充：執行層其實是三層</h2>
+    <div class="callout rise"><div class="cl caps">以下是我加的，不是影片講的</div><p>這一節以下的內容對照 <b>modelcontextprotocol.io</b> 官方規格（協定版本 2026-07-28）查證過，用來補影片講得不夠精確或不夠深的地方。</p></div>
+    <p>影片說「MCP server 把模型的輸出翻譯成 POST 或 GET 請求」。方向是對的，但中間跳掉了兩步，而那兩步剛好是你日常會碰到的。官方規格把角色分成三個：</p>
+    <ul>
+      <li><b>Host</b>：AI 應用本體，例如 Claude Code、Claude Desktop、VS Code。它跑主迴圈，決定要不要派工。</li>
+      <li><b>Client</b>：Host 為<b>每一台</b> server 各開一個，一對一維持連線。你不用自己寫，SDK 幫你開。</li>
+      <li><b>Server</b>：真正提供能力的程式。可以跑在你本機，也可以是遠端服務。</li>
+    </ul>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 一次工具呼叫的完整鏈路</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">模型</div>
+          <div class="dg-sub">產生請求，還沒發生任何事</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">Host 應用</div>
+          <div class="dg-sub">攔截，決定派給誰</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">MCP Client</div>
+          <div class="dg-sub">用 JSON-RPC 送出</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">04</div>
+          <div class="dg-st">MCP Server</div>
+          <div class="dg-sub">帶金鑰打真正的 API</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">05</div>
+          <div class="dg-st">結果回填</div>
+          <div class="dg-sub">沿原路回來，塞回對話</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">重點</div>
+          <div class="dg-ot">金鑰只存在 04 那一格。模型從頭到尾看不到它。</div>
+        </div>
+      </div>
+      <figcaption>影片把 02 到 04 壓成一格。分開看，你才問得出「金鑰在誰手上、誰能擋下不該做的動作」</figcaption>
+    </figure>
+
+    <p>還有一件比影片更根本的事：<b>執行層不是 MCP 帶來的。</b>任何工具呼叫都是這個結構，模型產生請求、外面的程式執行。MCP 只是把「Client 到 Server 那一段」標準化成 <span class="term" data-def="JSON-RPC 2.0。一種用 JSON 格式互相呼叫方法的輕量協定。MCP 用它當底層的訊息格式，所以不管走哪種連線方式，訊息長相都一樣。">JSON-RPC</span>。所以影片那句「下次誰跟你吵就拿這句出來」，其實講的是工具呼叫的通則，不是 MCP 獨有的洞見。知道這一點的好處是：你看任何 AI 工具都能問對同一組問題，金鑰在誰手上、誰負責重試、誰能擋下不該做的動作。</p>
+
+    <h2 class="rise"><span class="hn">10</span>補充：三個影片沒講的</h2>
+    <p><b>第一，「一個新能力都沒給」這句話太滿。</b>「給的是標準不是能力」框架是對的，但講成一個都沒有會漏掉一件實質的東西：<b>執行期發現</b>。模型可以在對話中途知道有哪些工具可用、每個吃什麼參數，而不用在系統提示詞裡預先寫死。在「工具會變」的情境下，這是靠 prompt 做不到的。另外，MCP server 能提供的也不只是工具，官方定義了三種：<b>Tools</b>（可執行的動作）、<b>Resources</b>（唯讀的資料來源，例如資料庫 schema）、<b>Prompts</b>（可重用的互動範本）。影片從頭到尾只講了 Tools。</p>
+
+    <p><b>第二，決策三問漏了第四問：這台 server 是誰寫的，你信不信。</b>這一問在「有現成的 server，成本幾乎是零，試一下沒損失」後面特別重要，因為那句話只有在你信任那台 server 的前提下才成立。官方的安全文件把這件事列成一個獨立的攻擊類別，叫 <b>Local MCP Server Compromise</b>：本機 MCP server 是下載到你電腦上執行的二進位檔，它跟你的 client 用同樣的權限跑，可以讀你的檔案。規格文件裡舉的例子直白到有點嚇人，一行藏在啟動指令裡的指令就能把你的 SSH 私鑰送出去。</p>
+    <div class="callout rise"><div class="cl caps">把它當第三方套件看，不是當設定看</div><p>裝一台 MCP server 的信任等級，應該跟裝一個第三方套件一樣，而不是跟改一個設定一樣。官方文件另外還列了幾種攻擊：<span class="term" data-def="confused deputy。攻擊者利用你先前授權留下的同意 cookie，跳過同意畫面拿到授權碼。">混淆代理人</span>、token 被轉手到下游、惡意 server 給一個指向內網的網址騙 client 去打。這些是寫給 server 開發者看的，你當使用者不用細究，但知道有這些事在發生，比較好判斷該不該信一台 server。</p></div>
+
+    <p><b>第三，MCP 跟 Skill 不是二選一。</b>影片引用了 IBM 那支〈MCP vs Skills〉但完全沒展開，而這題其實很實用。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · Skill 還是 MCP</div>
+      <div class="dg dg-compare">
+        <div class="dg-vs">
+          <div class="dg-side">
+            <div class="dg-vk caps">Skill</div>
+            <div class="dg-vt">一份寫給模型讀的文字指示</div>
+            <ul class="dg-vl">
+              <li>給的是「怎麼做」的知識與判斷</li>
+              <li>不用跑任何東西，讀進去就生效</li>
+              <li>成本是 context，可以漸進載入</li>
+            </ul>
+          </div>
+          <div class="dg-side">
+            <div class="dg-vk caps">MCP</div>
+            <div class="dg-vt">一個接上會跑的程式的協定</div>
+            <ul class="dg-vl">
+              <li>給的是「能做什麼」的可呼叫介面</li>
+              <li>要有一台 server 真的在跑</li>
+              <li>成本是 context 加上維護一台服務</li>
+            </ul>
+          </div>
+        </div>
+        <div class="dg-verdict"><span class="dg-k caps">怎麼選</span><span class="dg-vv">要教模型判斷、品味、流程，寫 Skill；要讓它碰到外面的系統，才需要 MCP。兩者不衝突，Skill 裡完全可以寫「這一步去呼叫某個 MCP 工具」。</span></div>
+      </div>
+      <figcaption>這條界線常被講成競爭關係，實際上是分工關係</figcaption>
+    </figure>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>你現在裝了八台 MCP server，context 成本是真的</b>：影片提了一句「工具清單先吃掉一半 context」卻沒接回那道算術。加法省的是維護成本，但每多一台 server，每次對話的固定開銷就多一份工具清單。這是「開場就覺得慢、額度掉得快」的一個具體來源，值得回頭盤一次哪幾台其實很少用。</li>
+      <li><b>第四問接上你既有的安裝流程</b>：你裝第三方 skill 前會先跑重複檢查加安全審核。<b>MCP server 應該套同一道關卡，而不是更鬆</b>，因為 server 是真的在你機器上跑的程式，skill 只是文字。</li>
+      <li><b>Skill vs MCP 那條界線你其實已經走對了</b>：管判斷與流程的東西寫成 skill，要碰外部世界的（瀏覽器自動化、網頁抓取、檔案讀寫、查文件）走 MCP。這篇只是給了你一句話講清楚為什麼，之後遇到「這個能力該做成哪一種」就不用每次重想。</li>
+      <li><b>下次評估任何 AI 工具都能用同一組問題</b>：金鑰在誰手上、誰負責重試、誰能在它想做危險動作時擋下來。這組問題跟 MCP 無關，是工具呼叫的通則，套在任何自動化上都成立。</li>
+    </ul>
+  </article>
+  </div><!-- /.vlayout -->
+
+  <nav class="artnav">
+    <a href="../category-ai.html">← 回 AI × Coding</a>
+    <a href="../digests/2026-08-05.html" style="text-align:right">回本期整理<b>2026 · 08 · 05 →</b></a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="vtoggle" class="vtoggle" type="button"><span class="pl">▶</span> 看影片</button>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+<!-- 影片同步（有 data-video 才啟用）-->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="../assets/video-sync.js"></script>
+</body>
+</html>
