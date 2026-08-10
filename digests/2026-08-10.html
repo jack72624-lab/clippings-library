@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>本期整理 · 2026-08-10 · 母帶輸出鏈：true peak 與雙 limiter · Clippings 閱讀庫</title>
+<title>本期整理 · 2026-08-10 · Ryan Schwabe 三篇：母帶輸出鏈與 clipper · Clippings 閱讀庫</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -32,10 +32,10 @@
   <header class="hub-hero">
     <div class="kick caps rise">本期整理 · Digest</div>
     <h1><span class="mask"><span>2026 · 08 · 10</span></span></h1>
-    <p class="sub rise">兩則剪報同一位作者、同一套母帶輸出鏈，因此<b>合成一則</b>整理。主體是「你真的需要 true peak limiting 嗎」——用兩顆 limiter 夾出一段可以拿來用的 headroom，取代讓演算法去猜播放端會發生什麼。第二篇的產品操作段只留在 Obsidian 正本，但其中「為什麼響度會讓混音變亮」的機制解釋了那段窗要處理什麼，所以收進了文章。</p>
+    <p class="sub rise">這天整理的三則來源都出自同一位工程師 Ryan Schwabe，剛好串成一條完整的訊號鏈。第一則是<b>母帶輸出鏈的架構</b>——用兩顆 limiter 夾出一段可以拿來用的 headroom，取代讓演算法去猜播放端會發生什麼；兩篇來源合成一則，HiFAL 的產品操作段只留 Obsidian 正本。第二則往前推到 <b>mix bus 那一段</b>：clipper 到底在做什麼、怎麼練、以及一個更根本的答案——混音推不大聲通常不是處理器的問題，是編曲太擠或 80 到 100 Hz 太多。</p>
     <div class="stat rise caps">
-      <span><b>2</b> 則來源</span>
-      <span><b>1</b> 可讀文章</span>
+      <span><b>3</b> 則來源</span>
+      <span><b>2</b> 可讀文章</span>
       <span><b>混音</b></span>
     </div>
   </header>
@@ -67,10 +67,35 @@
       <div class="audit"><div class="al">去向 · Audit</div>已寫入正本 <b>主題知識／混音／母帶輸出鏈：true peak 取捨與雙 limiter 窗（Ryan Schwabe）.md</b>（新開檔，兩篇來源合成一篇）。<b>不併稿</b>（規則 A 判定）：既有的 <b>Uni-L 母帶限制器解析</b> 拆的是一顆 limiter 的內部機制，這則講的是整條輸出鏈的架構取捨，層級不同、內容零重疊，因此互連而不合併，文章內用對照盒指過去。另連 <b>混音在小喇叭與手機上的 translation</b>（互補，社群平台編碼與播放端那一段直接接得上）。<b>公開文章只收機制</b>：HiFAL 的具體 threshold 設定與 mix bus 擺位屬特定 plugin 操作，只留在 Obsidian 正本；影片<b>不接跟讀</b>，因為原文不是該片的文字版、段落無法對位到遞增時間軸，硬做會捏造秒數。</div>
     </section>
 
+    <!-- 02 · clipper 與混音工作流（Type A，混音，video-sync）-->
+    <section class="dclip rise">
+      <div class="dn grot">02</div>
+      <div class="dk"><span class="flag">Type A</span><span class="caps">Clipper · 混音工作流</span></div>
+      <h2>混音裡該不該用 clipper，以及推不大聲的真正原因</h2>
+      <div class="src">Ryan Schwabe × Agartha Podcast · <a href="https://www.youtube.com/watch?v=y9inmkz0NcA" target="_blank" rel="noopener">YouTube 原片（約 55 分鐘訪談）↗</a></div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>它的原理是替換不是壓縮</b>：clipper 削掉峰值，那一瞬間的 transient 被換成一小段失真，而人耳會把那段失真聽成 transient。峰值降了，後面的 limiter 就少做工。</p></li>
+          <li><span class="bn">02</span><p><b>學法很具體</b>：放在 limiter 前面、確保它不加增益，把 gain reduction 從 limiter 一點一點搬給它。從 0.5 dB 開始，1 dB 是常用量，2 dB 已經算多。開關時音量必須不變。</p></li>
+          <li><span class="bn">03</span><p><b>推不大聲通常不是處理器的問題</b>：limiter 只會對最大聲的東西反應，而多數混音能量集中在 90 Hz 附近。推不上去，八成是 80 到 100 Hz 太多，或本來就太亮。</p></li>
+          <li><span class="bn">04</span><p><b>第一順位其實是編曲</b>：五個樂器擠在同一個音域很難推大聲，一個樂器加鼓和貝斯就容易。歌比混音更決定響度上限。</p></li>
+          <li><span class="bn">05</span><p><b>他第一個自動化的是 master fader</b>：最後一段副歌加 0.5 dB、前奏減 1 dB，替整首歌做一條起伏的弧線。1 dB 大約等於 10% 的感知能量變化。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>大聲不起來是一個診斷訊號，它在告訴你平衡或編曲有問題，不是在告訴你該換 limiter。</p></div>
+      </aside>
+
+      <div class="dact">
+        <a class="rd" href="../entries/schwabe-clipper-mixing.html">讀完整版 →</a>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>Obsidian <b>拆成兩篇正本</b>（Jack 在分流閘定）：<b>Clipper 在混音裡怎麼用（Ryan Schwabe）.md</b> 收 clipper 的機制與用法，<b>混音工作流與響度判斷（Ryan Schwabe）.md</b> 收 gain staging、mix bus、平行失真、自動化、響度與工作心法。拆的理由是檢索時機不同（查「clipper 怎麼用」跟查「怎麼把混音做大聲」是兩件事）。<b>閱讀庫維持一篇</b>：來源是同一場訪談，閱讀單位就是一次讀完，拆兩篇會把同一支影片的跟讀切成兩半、分類頁也會出現兩張卡指同一場訪談。<b>接跟讀、保持原序</b>：無官方章節（<code>yt-dlp</code> 回 NA）→ 用逐字稿時間戳對段，14 段全部遞增、已跑遞增檢查。訪談本身已是塊狀（技術→心法→技術→Q&amp;A），沒有走按 type 重組，只在轉折處補一句承上。另連 <b>靜態混音與平衡優先流程</b>（互補，「大聲不起來是診斷訊號」是「在正確位置上不夠好是診斷訊號」的響度版）與 <b>混音在小喇叭與手機上的 translation</b>（說明了那篇用 master EQ 減低頻換 headroom 為什麼有效）。</div>
+    </section>
+
   </div>
 </div>
 
-<footer class="foot">本期整理 · 2026-08-10 · 2 則來源合成 1 篇 · 文章為正本、本頁為當期 rollup · Clippings 閱讀庫</footer>
+<footer class="foot">本期整理 · 2026-08-10 · 3 則來源 · 2 篇文章 · 文章為正本、本頁為當期 rollup · Clippings 閱讀庫</footer>
 
 <script src="../assets/reader.js"></script>
 </body>
