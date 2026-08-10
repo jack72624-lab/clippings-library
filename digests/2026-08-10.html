@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本期整理 · 2026-08-10 · 母帶輸出鏈：true peak 與雙 limiter · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../timeline.html">← 時間軸</a>
+  <span class="c">本期整理</span>
+  <span class="r grot">2026 · 08 · 10</span>
+</div>
+
+<div class="wrap">
+  <header class="hub-hero">
+    <div class="kick caps rise">本期整理 · Digest</div>
+    <h1><span class="mask"><span>2026 · 08 · 10</span></span></h1>
+    <p class="sub rise">兩則剪報同一位作者、同一套母帶輸出鏈，因此<b>合成一則</b>整理。主體是「你真的需要 true peak limiting 嗎」——用兩顆 limiter 夾出一段可以拿來用的 headroom，取代讓演算法去猜播放端會發生什麼。第二篇的產品操作段只留在 Obsidian 正本，但其中「為什麼響度會讓混音變亮」的機制解釋了那段窗要處理什麼，所以收進了文章。</p>
+    <div class="stat rise caps">
+      <span><b>2</b> 則來源</span>
+      <span><b>1</b> 可讀文章</span>
+      <span><b>混音</b></span>
+    </div>
+  </header>
+
+  <div class="dbatch">
+
+    <!-- 01 · true peak 與雙 limiter（Type A，混音，兩篇合成）-->
+    <section class="dclip rise">
+      <div class="dn grot">01</div>
+      <div class="dk"><span class="flag">Type A</span><span class="caps">母帶 · 輸出鏈架構</span></div>
+      <h2>你真的需要 true peak limiting 嗎</h2>
+      <div class="src">Ryan Schwabe · Schwabe Digital · <a href="https://www.schwabedigital.com/sdu/tplim" target="_blank" rel="noopener">原文 ↗</a>　＋　<a href="https://www.schwabedigital.com/sdu/hifalmixbus" target="_blank" rel="noopener">HiFAL 擺位篇 ↗</a></div>
+
+      <aside class="brief">
+        <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+        <ol class="brief-pts">
+          <li><span class="bn">01</span><p><b>它是估計、不是量測</b>：true peak limiter 用超取樣去推算 D/A 轉換時可能冒出的峰值，但每一台轉換器的重建濾波器都不同，等於為單一估計模型改變真實的聲音。</p></li>
+          <li><span class="bn">02</span><p><b>問題是真的，元凶常搞錯</b>：社群平台上的刺耳失真，主因是有損編碼在解碼時產生了原檔沒有的新峰值。作者做社群專用母帶會留將近 2 dB 餘裕。</p></li>
+          <li><span class="bn">03</span><p><b>替代做法＝兩顆 limiter</b>：第一顆做響度、ceiling 約 −0.4 到 −0.3；第二顆純保護、ceiling −0.1、完全不加增益。對照 Apple Digital Masters 建議的 −1.0，作者認為那過頭了。</p></li>
+          <li><span class="bn">04</span><p><b>中間那段不是留白</b>：0.3 到 0.4 dB 是一個 transient window，可以放輕微 EQ、加寬、動態處理，重新做出波形頂端的起伏，溢出的由保護 limiter 接住。</p></li>
+          <li><span class="bn">05</span><p><b>響度讓混音變亮不是失真</b>：低頻打擊主宰 limiter、釋放後中高頻整批浮上來，反覆發生造成亮度感浮動與聽覺疲勞。誤判成失真去砍 limiting，會白讓響度卻沒解決問題。</p></li>
+        </ol>
+        <div class="brief-tl"><span class="lb caps">一句話</span><p>與其讓演算法去猜播放端會發生什麼，不如自己留一段餘裕、並且把它用掉。</p></div>
+      </aside>
+
+      <div class="dact">
+        <a class="rd" href="../entries/true-peak-dual-limiter.html">讀完整版 →</a>
+      </div>
+      <div class="audit"><div class="al">去向 · Audit</div>已寫入正本 <b>主題知識／混音／母帶輸出鏈：true peak 取捨與雙 limiter 窗（Ryan Schwabe）.md</b>（新開檔，兩篇來源合成一篇）。<b>不併稿</b>（規則 A 判定）：既有的 <b>Uni-L 母帶限制器解析</b> 拆的是一顆 limiter 的內部機制，這則講的是整條輸出鏈的架構取捨，層級不同、內容零重疊，因此互連而不合併，文章內用對照盒指過去。另連 <b>混音在小喇叭與手機上的 translation</b>（互補，社群平台編碼與播放端那一段直接接得上）。<b>公開文章只收機制</b>：HiFAL 的具體 threshold 設定與 mix bus 擺位屬特定 plugin 操作，只留在 Obsidian 正本；影片<b>不接跟讀</b>，因為原文不是該片的文字版、段落無法對位到遞增時間軸，硬做會捏造秒數。</div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="foot">本期整理 · 2026-08-10 · 2 則來源合成 1 篇 · 文章為正本、本頁為當期 rollup · Clippings 閱讀庫</footer>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>

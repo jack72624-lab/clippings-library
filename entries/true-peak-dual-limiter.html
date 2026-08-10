@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>你真的需要 true peak limiting 嗎 · Clippings 閱讀庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/base.css">
+<!-- pwa / 加到主畫面 -->
+<link rel="manifest" href="../manifest.json">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="閱讀庫">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body data-entry="true-peak-dual-limiter">
+<div class="progress"><div class="bar"></div></div>
+
+<div class="topbar caps">
+  <a class="back" href="../category-mixing.html">← 混音</a>
+  <span class="c">閱讀庫</span>
+  <span class="r grot">2026 · 08 · 10</span>
+</div>
+
+<div class="reader">
+  <header class="art-hero">
+    <div class="pnum grot">08</div>
+    <div class="kick caps rise">混音 · 母帶輸出鏈</div>
+    <h1 class="rise">你真的需要 true peak limiting 嗎</h1>
+    <div class="src rise">Ryan Schwabe · Schwabe Digital · <a href="https://www.schwabedigital.com/sdu/tplim" target="_blank" rel="noopener">原文 ↗</a></div>
+  </header>
+
+  <article class="readable">
+    <p class="lede">true peak limiter 在解決一個「估計出來的」問題，代價是改變你母帶真實的聲音。作者的替代方案是：別把所有東西都撞在天花板上，留 0.3 到 0.4 dB，然後把那段空間拿來用。</p>
+
+    <aside class="brief rise">
+      <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
+      <ol class="brief-pts">
+        <li><span class="bn">01</span><p><b>它是估計、不是量測</b>：true peak limiter 用超取樣去「推算」D/A 轉換時可能冒出的峰值，但每一台轉換器的重建濾波器都不同，等於為單一估計模型改變聲音。</p></li>
+        <li><span class="bn">02</span><p><b>問題是真的，元凶常搞錯</b>：社群平台的刺耳失真主因是有損編碼在解碼時產生新峰值，作者做社群專用母帶會留近 2 dB 餘裕。</p></li>
+        <li><span class="bn">03</span><p><b>替代做法＝兩顆 limiter</b>：第一顆做響度、ceiling 約 −0.4 到 −0.3；第二顆純保護、ceiling −0.1、完全不加增益。</p></li>
+        <li><span class="bn">04</span><p><b>中間那段不是留白</b>：0.3 到 0.4 dB 是一個 transient window，可以放輕微 EQ、加寬、動態處理，重新做出波形頂端的起伏。</p></li>
+        <li><span class="bn">05</span><p><b>響度讓混音變亮不是失真</b>：低頻打擊主宰 limiter、釋放後中高頻整批浮上來，反覆發生就造成亮度感浮動與聽覺疲勞。</p></li>
+      </ol>
+      <div class="brief-tl"><span class="lb caps">一句話</span><p>與其讓演算法去猜播放端會發生什麼，不如自己留一段餘裕、並且把它用掉。</p></div>
+    </aside>
+
+    <div class="callout rise"><div class="cl">先說清楚這篇的立場來源</div><p>作者 Ryan Schwabe 是葛萊美入圍的混音與母帶工程師、Schwabe Digital 創辦人。文章出自他自家的教學站，結尾明說這套哲學正是他們正在開發的新 limiter 的基礎——<b>機制的解釋可以獨立成立，但數值與「哪種比較好聽」是他的個人偏好，不是產業標準。</b>本文最後一段有可以自己驗證的方法。</p></div>
+
+    <p class="first">先把名詞弄清楚，後面才讀得下去。數位音檔存的是一個一個離散的取樣點，而 <span class="term" data-def="D/A converter：數位轉類比轉換器，播放時把數位訊號還原成類比波形的晶片，手機、耳擴、audio interface 裡都有一顆。">D/A converter</span> 播放時要把這些點還原成一條連續的類比波形。還原的時候，那條曲線<b>可能短暫地高過任何一個取樣點的電平</b>——這個從取樣點縫隙裡冒出來的峰值，就叫 <span class="term" data-def="inter-sample peak：取樣間峰值，波形還原後出現在取樣點之間、高於任何取樣點的瞬間電平。">inter-sample peak</span>。</p>
+
+    <p>它會冒多高，取決於三件事：那顆轉換器、它的<span class="term" data-def="reconstruction filter：重建濾波器，D/A 用來把離散取樣點連成平滑波形的濾波器。">重建濾波器</span>、以及它的類比輸出級。關鍵在於——<b>每一台裝置的答案都不一樣。</b></p>
+
+    <h2 class="rise"><span class="hn">01</span>true peak limiter 在做的是估計，不是量測</h2>
+    <p>true peak limiter 的運作方式是：把訊號<span class="term" data-def="oversampling：超取樣，暫時提高取樣率來做運算，用以看見取樣點之間的細節。">超取樣</span>，套一個「類似 D/A 可能會用的」重建濾波器，去推算取樣點之間會發生什麼，再依那個推算值決定要壓多少。量測方法多半照 ITU-R BS.1770 這份國際規範。</p>
+
+    <p>作者的反對點就在這裡。世界上有無數種 D/A 設計，每一種的重建濾波器與輸出級都不同，卻要為了「單一一個估計模型」去改變母帶真實的聲音。而且他實測下來，多數 limiter <b>把 true peak 關掉反而更好聽</b>：true peak 演算法對那些估出來的峰值反應更兇，會微妙地把 transient 磨鈍、重新塑形。</p>
+
+    <div class="callout rise"><div class="cl">這句要自己驗</div><p>「關掉 true peak 更好聽」是他的聽感實測，文章沒有給對照資料。把它當成一個值得自己 A/B 一次的假設，不是已經確立的事實。</p></div>
+
+    <h2 class="rise"><span class="hn">02</span>問題是真的，但元凶常常被搞錯</h2>
+    <p>你一定聽過：有人在限時動態分享自己的作品，聲音卻刺耳、糊掉、明顯失真。直覺會怪母帶做太滿，但作者指出主因在另一條路徑上。</p>
+
+    <p>你的 WAV 母帶上傳後，會被平台編碼成<span class="term" data-def="lossy：有損格式，為壓縮體積而丟棄部分資訊的編碼方式，如 AAC、MP3。">有損格式</span>。有損編碼會改變波形，<b>解碼時產生原本檔案裡沒有的新峰值</b>；這些新峰值再經過手機或筆電的 D/A 與類比輸出級，如果那條播放路徑的餘裕不夠，就會聽到失真。</p>
+
+    <p>所以他做<b>社群平台專用的母帶時，會留將近 2 dB 的 headroom</b>。這聽起來很誇張，但社群平台的編碼器品質確實不好，在那個情境下多留餘裕的差別是聽得出來的。</p>
+
+    <div class="pull rise">inter-sample peak 造成的問題是真的。但這不代表 true peak limiting 是解決它最好的方法。</div>
+
+    <h2 class="rise"><span class="hn">03</span>替代做法：兩顆 limiter 夾出一個窗</h2>
+    <p>既然 inter-sample peak 的成因是「太多取樣點被推到接近滿刻度、transient 被壓平貼在數位天花板上」，那就從源頭降低這個條件，而不是事後再加一層演算法去猜播放端會怎樣。做法是把責任拆給兩顆 limiter。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 雙 limiter 輸出鏈</div>
+      <div class="dg dg-flow">
+        <div class="dg-step">
+          <div class="dg-n">01</div>
+          <div class="dg-st">第一顆 limiter · 做響度</div>
+          <div class="dg-sub">ceiling −0.4 ~ −0.3 dBFS，母帶的音量幾乎都在這裡完成</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">02</div>
+          <div class="dg-st">transient window</div>
+          <div class="dg-sub">中間空出的 0.3~0.4 dB，放輕微 EQ / 加寬 / 動態處理</div>
+        </div>
+        <div class="dg-join">→</div>
+        <div class="dg-step">
+          <div class="dg-n">03</div>
+          <div class="dg-st">第二顆 limiter · 純保護</div>
+          <div class="dg-sub">ceiling −0.1 dBFS，完全不加增益，只接住溢出的峰值</div>
+        </div>
+        <div class="dg-out">
+          <div class="dg-k caps">結果</div>
+          <div class="dg-ot">響度仍有競爭力，但 transient 保有形狀，沒有被壓平在天花板上。代價是讓出 0.3 dB 的響度。</div>
+        </div>
+      </div>
+      <figcaption>責任拆開：一顆負責大聲，一顆只負責不要爆，中間留一段可以用的空間</figcaption>
+    </figure>
+
+    <p>對照參考值：Apple Digital Masters 建議留滿 1 dB（ceiling −1.0 dBFS）。作者認為那對一般發行過頭了，實務上 0.3 到 0.4 dB 就足以大幅降低重建峰值在 D/A 端出問題的機率。</p>
+
+    <h2 class="rise"><span class="hn">04</span>那個窗不是留白，是拿來用的</h2>
+    <p>這是整篇最有意思的轉折。兩顆 limiter 之間那 0.3 到 0.4 dB，如果只是空著，你就只是單純少了 0.3 dB 的響度而已。但你可以在那個空間裡做<b>輕微的 EQ、立體聲加寬、或動態處理</b>，讓波形頂端重新產生起伏、長回一點 transient 的動態。萬一某個處理偶爾把峰值推過頭，最後那顆保護 limiter 會接住。</p>
+
+    <p>作者的取捨很明確：用 0.3 dB 的響度換這個窗帶來的聲音改善是划算的。與其去追最後那零點幾 dB，不如把它換成母帶裡的呼吸空間。</p>
+
+    <div class="callout rise"><div class="cl">跟庫裡另一篇對照</div><p>這篇講的是<b>整條鏈的架構</b>——要幾顆、ceiling 各設多少、中間留不留空間。想知道<b>一顆 limiter 內部</b>到底怎麼運作（三段式拓撲、lookahead 怎麼影響音色、哪些頻率能 clip 哪些不能），看 <a href="uni-l-limiter-system.html">Uni-L：把「限制」變成可塑形的系統</a>。兩篇立場一致，都反對把選擇權整包交給黑箱演算法。</p></div>
+
+    <h2 class="rise"><span class="hn">05</span>為什麼響度一推高，混音就變亮</h2>
+    <p>最後這一段來自同作者的另一篇文章，講的是「窗裡到底要處理什麼」的關鍵機制，也是很多人長期誤判的一件事。</p>
+
+    <p><b>把全頻段 limiter 想成一個自動音量推桿</b>：kick 和 bass 打下去的時候，低頻能量主宰了 limiter，於是<b>整個訊號</b>——包含中頻與高頻——被一起壓了下來；低頻音符結束、limiter 釋放，中高頻就整批浮上來。這個壓下去、放回來的循環反覆發生，久了就改變你聽到的平衡。</p>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 兩種「刺耳」不要搞混</div>
+      <div class="dg dg-compare">
+        <div class="dg-vs">
+          <div class="dg-side">
+            <div class="dg-vk caps">失真</div>
+            <div class="dg-vt">波形本身被削壞了</div>
+            <ul class="dg-vl">
+              <li>limiting 或 clipping 量過大產生的諧波</li>
+              <li>解法：降低處理量、換處理方式、分頻處理</li>
+            </ul>
+          </div>
+          <div class="dg-side">
+            <div class="dg-vk caps">亮度浮動</div>
+            <div class="dg-vt">沒有加任何高頻，卻越聽越亮、越疲勞</div>
+            <ul class="dg-vl">
+              <li>低頻打擊壓下全頻，釋放後中高頻整批浮出</li>
+              <li>解法：控制高頻的動態，或退一點響度</li>
+            </ul>
+          </div>
+        </div>
+        <div class="dg-verdict"><span class="dg-k caps">結論</span><span class="dg-vv">聽到刺耳先分辨是哪一種，兩者的解法完全不同。誤判成失真去砍 limiting，會白白讓掉響度卻沒解決問題。</span></div>
+      </div>
+      <figcaption>響度處理造成的刺耳，很多時候根本不是失真</figcaption>
+    </figure>
+
+    <p>這就是那個 transient window 最常見的用途之一：在第一顆 limiter 做完響度之後、進最後保護關卡之前，補一層專門收拾高頻動態的處理，把 limiting 製造出來的亮度感壓回去。</p>
+
+    <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
+    <ul>
+      <li><b>今天就能跑的一個實驗</b>：拿一首你已經做完的曲子，用你常用的 limiter 開 true peak 與關 true peak 各 bounce 一次，A/B 聽 transient 有沒有變鈍。這是整篇唯一一個你在自己系統上就驗得出來的主張，不用相信任何人的說法。</li>
+      <li><b>把 ceiling 從單一數字改成一組架構</b>：如果你現在是一顆 limiter 直接推到 −0.1 或 −0.3，可以試試拆成兩顆——第一顆 −0.4 做響度、第二顆 −0.1 純保護。就算中間先什麼都不放，你也已經拿到了「transient 不被壓平在天花板」的好處。</li>
+      <li><b>要發社群平台就另做一版</b>：多留 1 到 2 dB 餘裕。你發到限時動態的那些片段，走的是跟串流平台完全不同的編碼路徑。</li>
+      <li><b>下次覺得母帶太刺</b>：先問自己是失真還是亮度浮動。如果是後者，答案不在降低響度，而在控制高頻的動態。</li>
+      <li><b>留意這篇的動機</b>：作者正在開發自家 limiter，這篇也是在鋪陳那個產品的設計哲學。機制的部分可以照收，數值當參考、不當標準。</li>
+    </ul>
+  </article>
+
+  <nav class="artnav">
+    <a href="../category-mixing.html">← 回 混音</a>
+    <a href="mic-preamp-tone-myths.html" style="text-align:right">上一篇<b>← 麥克風前級沒有音色，只是放大器</b></a>
+  </nav>
+</div>
+
+<!-- 閱讀器元件 -->
+<div id="tip"></div>
+<div id="hlbar">
+  <button class="sw sw-y" data-color="y" title="黃"></button>
+  <button class="sw sw-g" data-color="g" title="綠"></button>
+  <button class="sw sw-b" data-color="b" title="藍"></button>
+  <button class="sw sw-r" data-color="r" title="粉"></button>
+  <button class="tb" data-act="under">底線</button>
+  <button class="tb" data-act="note">✎ 註</button>
+  <button class="tb rmv" data-act="remove">移除</button>
+  <button class="tb cls" data-act="cancel">✕</button>
+</div>
+<div id="noteBox">
+  <textarea placeholder="寫下你對這段的想法…"></textarea>
+  <div class="nb-act">
+    <button data-nb="save" class="solid">存筆記</button>
+    <button data-nb="cancel">取消</button>
+  </div>
+</div>
+<button id="panelBtn">重點 0</button>
+<aside id="panel">
+  <div class="ph"><h3>我的重點</h3><span class="x">✕</span></div>
+  <div class="plist"></div>
+  <div class="pf">
+    <button data-pf="export">匯出 Markdown</button>
+    <button data-pf="clear">清除</button>
+  </div>
+</aside>
+
+<script src="../assets/reader.js"></script>
+</body>
+</html>
