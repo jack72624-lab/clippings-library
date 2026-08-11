@@ -395,3 +395,9 @@ a.rd:hover{background:var(--ink);color:var(--paper)}
 .readable .dgimg img{width:100%;display:block}
 .readable .dgimg .lbl{position:absolute;color:var(--ink);white-space:nowrap;
   font-size:clamp(10px,2.2vw,15px);letter-spacing:.06em;line-height:1.5}
+/* 窄螢幕疊不下：標籤改排成圖下圖例列（由左至右對應圖中位置） */
+@media (max-width:560px){
+  .readable .dgimg .lbl{position:static;display:inline-block;white-space:normal;
+    margin:10px 14px 0 0;font-size:12px;padding-left:12px;text-indent:-12px}
+  .readable .dgimg .lbl::before{content:"·";margin-right:6px}
+}
