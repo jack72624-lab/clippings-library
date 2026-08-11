@@ -20,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="basslane-pro-3d-bass" data-hlver="2" data-video="-D7PLh3THZ4">
+<body data-entry="basslane-pro-3d-bass" data-hlver="3" data-video="-D7PLh3THZ4">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -71,6 +71,16 @@
     <p>拿一個訊號（可選 mid / stereo / side），生成<span class="term" data-def="基頻的整數倍頻率成分，疊加在原始訊號上會讓聲音更飽滿、多層次，也是音色厚度的來源之一。">諧波（harmonics）</span>，再把這些諧波丟到 side 聲道。所以就算你的低頻本來是純 mono，它也能做兩件事：<b>(1)</b> 加諧波讓 bass 更厚更豐富，<b>(2)</b> 把這些諧波鋪在立體聲場裡讓 bass 變寬。而且因為原始的 sub 低頻仍然是 mono，mono 相容完全不會被破壞。</p>
 
     <div class="pull rise">「低頻，像在環抱你的耳朵。」</div>
+
+    <figure class="figure rise">
+      <div class="fl caps">圖解 · 地基鎖死，寬度往上疊</div>
+      <div class="dgimg">
+        <img src="../assets/img/diagram-basslane-embrace.jpg" alt="中央一根堅硬石柱扎進地面，柱頂湧出柔軟聲波向兩側環抱" loading="lazy">
+        <span class="lbl" style="left:3%;top:6%">原始 sub 低頻：鎖死的 mono 地基</span>
+        <span class="lbl" style="right:2%;top:6%">生成的諧波鋪到 side：環抱耳朵的寬度</span>
+      </div>
+      <figcaption>地基是硬的、不動的；寬度是軟的、疊在上面的——兩層分開，mono 相容才不會被破壞</figcaption>
+    </figure>
 
     <h2 class="rise" data-follow data-t="192" data-label="03 · 打開介面:控制項怎麼用"><span class="hn">03</span>打開介面：控制項怎麼用<a class="tc" href="https://www.youtube.com/watch?v=-D7PLh3THZ4&amp;t=192s" data-t="192"><span class="pl">▶</span> 3:12</a></h2>
     <p>用 <b>Mono-below 頻率</b>設一個界線（如 90 Hz），以下全部保持 mono，地基先鎖死。諧波可以從 mid / stereo / side 生成，種類分二次、三次諧波，音色再分 even（較柔）、odd（較亮）、crunchy（較粗），各不同調性。<b>Mid–Side 旋鈕</b>把諧波從 mid 往 side 鋪；但全轉到 side 時，這些諧波在<span class="term" data-def="把左右兩聲道加總成單一聲道時的狀態，用來檢查母帶在 mono 播放裝置上聽起來會不會有內容消失。">加總成 mono</span>時會直接消失，因為它們是純反相內容，plugin 會用紅色警告你。旁邊有內建<span class="term" data-def="又稱相位計，顯示左右聲道相位關係是否同相的儀表，數值越接近 +1 越安全，接近 -1 代表反相，加總會互相抵銷。">相關性表</span>可以看寬度與相位，Dom 還用 Cubase 的 multi-correlation meter 交叉驗證：bass 很寬，但低頻仍然同相，沒問題。</p>
