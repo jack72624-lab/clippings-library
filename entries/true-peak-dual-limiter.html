@@ -19,7 +19,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="true-peak-dual-limiter">
+<body data-entry="true-peak-dual-limiter" data-hlver="2">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -106,7 +106,9 @@
 
     <p>對照參考值：Apple Digital Masters 建議留滿 1 dB（ceiling −1.0 dBFS）。作者認為那對一般發行過頭了，實務上 0.3 到 0.4 dB 就足以大幅降低重建峰值在 D/A 端出問題的機率。</p>
 
-    <h2 class="rise"><span class="hn">04</span>那個窗不是留白，是拿來用的</h2>
+    <figure class="figure rise"><div class="fl caps">圖解 · 兩顆 limiter 夾出一個窗</div><div class="dgimg"><img src="../assets/img/diagram-truepeak-window.jpg" alt="一條起伏劇烈的波形從左流入，右半段被上下兩條水平橫桿夾出的窄通道整齊限制住、仍有小幅起伏" loading="lazy"><span class="lbl" style="left:3%;top:6%;max-width:22%">全部撞在天花板上</span><span class="lbl" style="right:2%;top:6%;max-width:26%">兩顆 limiter 夾出的窗</span></div><figcaption>他的替代方案：與其讓每個峰都撞天花板再交給 true peak limiter 去猜，不如用兩顆 limiter 夾出 0.3–0.4 dB 的窗，把那段空間拿來塑形</figcaption></figure>
+
+<h2 class="rise"><span class="hn">04</span>那個窗不是留白，是拿來用的</h2>
     <p>這是整篇最有意思的轉折。兩顆 limiter 之間那 0.3 到 0.4 dB，如果只是空著，你就只是單純少了 0.3 dB 的響度而已。但你可以在那個空間裡做<b>輕微的 EQ、立體聲加寬、或動態處理</b>，讓波形頂端重新產生起伏、長回一點 transient 的動態。萬一某個處理偶爾把峰值推過頭，最後那顆保護 limiter 會接住。</p>
 
     <p>作者的取捨很明確：用 0.3 dB 的響度換這個窗帶來的聲音改善是划算的。與其去追最後那零點幾 dB，不如把它換成母帶裡的呼吸空間。</p>
