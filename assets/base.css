@@ -387,3 +387,11 @@ a.rd:hover{background:var(--ink);color:var(--paper)}
   font-size:12px;letter-spacing:.08em;padding:11px 20px;opacity:0;pointer-events:none;
   transition:opacity .25s,transform .25s;z-index:200}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* 圖解元件 5 · Gemini 意象圖＋HTML 疊字（2026-08-11 加）
+   圖片本身無字（生圖文字必亂碼），標籤用絕對定位疊在留白處；
+   位置用百分比、字級用 clamp，隨圖等比縮放，別讓標籤壓到墨線主體 */
+.readable .dgimg{position:relative}
+.readable .dgimg img{width:100%;display:block}
+.readable .dgimg .lbl{position:absolute;color:var(--ink);white-space:nowrap;
+  font-size:clamp(10px,2.2vw,15px);letter-spacing:.06em;line-height:1.5}
