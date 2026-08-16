@@ -98,7 +98,8 @@ b{font-weight:600}
 .card.todo::after{content:"待建";position:absolute;top:18px;right:18px;font-family:"Helvetica Neue",Arial,sans-serif;
   font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);padding:2px 7px}
 .card .arrow{position:absolute;right:20px;bottom:22px;font-family:"Helvetica Neue",Arial,sans-serif;opacity:0;transition:opacity .3s,transform .3s;transform:translateX(-4px)}
-.card:hover .arrow{opacity:1;transform:none}
+/* hover 效果只給真滑鼠：觸控點一下會觸發假 hover 卡住不退（2026-08-16） */
+@media (hover:hover) and (pointer:fine){.card:hover .arrow{opacity:1;transform:none}}
 
 footer.foot{color:var(--dim);font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:11px;padding:8vh 34px;text-align:center}
 
@@ -249,7 +250,7 @@ mark.hl.hl-note[data-note]::after{font-size:.72em;margin-left:2px;color:var(--in
   padding:7px 9px;box-shadow:0 6px 24px rgba(0,0,0,.3)}
 #hlbar .sw{width:20px;height:20px;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:50%;
   cursor:pointer;transition:transform .15s}
-#hlbar .sw:hover{transform:scale(1.18)}
+@media (hover:hover) and (pointer:fine){#hlbar .sw:hover{transform:scale(1.18)}}
 #hlbar .sw-y{background:var(--hl-y)} #hlbar .sw-g{background:var(--hl-g)}
 #hlbar .sw-b{background:var(--hl-b)} #hlbar .sw-r{background:var(--hl-r)}
 #hlbar .tb{font-family:"Helvetica Neue",Arial,sans-serif;font-size:11.5px;letter-spacing:.04em;
@@ -314,8 +315,8 @@ mark.hl.hl-note[data-note]::after{font-size:.72em;margin-left:2px;color:var(--in
   letter-spacing:.16em;text-transform:uppercase;color:#8a8a8a}
 /* 封面當連結（首頁封面牆）*/
 a.gcover{display:block;color:inherit}
-a.gcover .cimg{transition:transform 1.1s cubic-bezier(.16,1,.3,1)}
-a.gcover:hover .cimg{transform:scale(1.045)}
+a.gcover .cimg{transition:transform .45s cubic-bezier(.16,1,.3,1)}
+@media (hover:hover) and (pointer:fine){a.gcover:hover .cimg{transform:scale(1.045)}}
 /* 首頁：封面一張接一張連在一起 */
 .cover-stack .gcover{margin-bottom:0}
 .cover-stack .gcover + .gcover{border-top:1px solid var(--ink)}
@@ -367,6 +368,7 @@ a.rd:hover{background:var(--ink);color:var(--paper)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}.rise{opacity:1;transform:none;transition:none}.mask>span{transform:none;transition:none}
   #vf{display:none!important}
+  a.gcover .cimg,a.gcover:hover .cimg{transform:none;transition:none}
 }
 
 /* ── 分享鈕 + 內文交叉引用連結 + 複製提示（2026-07-19）─────────── */
