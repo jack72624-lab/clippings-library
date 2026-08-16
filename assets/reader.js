@@ -112,8 +112,18 @@
     el.style.display = (el.id==='hlbar') ? 'flex' : 'block';
     const w=el.offsetWidth,h=el.offsetHeight;
     let x=rect.left+rect.width/2-w/2; x=Math.max(10,Math.min(innerWidth-w-10,x));
-    let y=rect.top-h-10; if(y<10) y=rect.bottom+10;
+    let y=rect.top-h-10; const below=(y<10); if(below) y=rect.bottom+10;
     el.style.left=x+'px'; el.style.top=y+'px';
+    // 工具列從「你選的那段字」長出來，不憑空出現（空間一致性）。
+    // 只有 hlbar 做；120ms 是因為劃重點一天做幾十次，動畫只能快到不礙事。
+    // 用 WAAPI 不用 CSS class：class 會被畫重點的 innerHTML 快照吃進去（同雷區③）。
+    if(el.id==='hlbar' && !reduce && el.animate){
+      // origin 對準選取範圍中心；工具列被左右夾邊時 x 會被 clamp，所以用相對座標算
+      const ox=Math.max(0,Math.min(w,rect.left+rect.width/2-x));
+      el.style.transformOrigin=ox+'px '+(below?'0':h+'px');
+      el.animate([{opacity:0,transform:'scale(.96)'},{opacity:1,transform:'none'}],
+                 {duration:120,easing:'cubic-bezier(.16,1,.3,1)'});
+    }
   }
 
   // 新選取一段字 → 跳工具列
