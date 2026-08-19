@@ -141,18 +141,55 @@
   document.addEventListener('mouseup',onSelect);
   document.addEventListener('touchend',onSelect);
 
-  // 產生標記（防疊加：攤平內含的舊標記 ＋ 拆掉外層舊標記，保證單層、絕不巢狀）
+  /* 產生標記（2026-08-19 重寫，修「跨段落畫線 → 段落被切碎、線畫不出來」）
+     舊做法：curRange.extractContents() 把整段剪下來包進一個 <mark> 再塞回去。
+     只要選取跨過 <p>/<li> 之類的區塊邊界，剪下的內容就含區塊元素 →
+     ① 原段落被拆成好幾塊（畫面上多出斷行與空白）
+     ② mark 是行內元素，裡面裝區塊時背景畫不出來（base.css:236）→ 看起來「沒上色」。
+     新做法：完全不動結構，只把「範圍內的每個文字節點」各自包一個 <mark>，
+     同一次動作的所有 mark 共用 data-hlg（group id），對外仍當成一條重點。*/
+  let _gidSeq=0;
+  function newGid(){ return 'g'+Date.now().toString(36)+(_gidSeq++).toString(36); }
+
+  // 同一條重點的所有 mark（舊資料沒有 data-hlg → 自己一條）
+  function groupOf(m){
+    if(!m) return [];
+    const g=m.dataset&&m.dataset.hlg;
+    if(!g) return [m];
+    return [...A.querySelectorAll('mark.hl[data-hlg="'+g+'"]')];
+  }
+  function noteHost(m){ const g=groupOf(m); return g[0]||m; }
+
+  // 取範圍內完整涵蓋的文字節點；邊界先 splitText 對齊，之後就不必再切結構
+  function rangeTextNodes(range){
+    const ec=range.endContainer, eo=range.endOffset;
+    if(ec.nodeType===3 && eo>0 && eo<ec.data.length) ec.splitText(eo);   // 先切尾，才不會影響頭的 offset
+    const sc=range.startContainer, so=range.startOffset;
+    if(sc.nodeType===3 && so>0 && so<sc.data.length){ range.setStart(sc.splitText(so),0); }
+    const out=[], w=document.createTreeWalker(A, NodeFilter.SHOW_TEXT, null);
+    let n;
+    while((n=w.nextNode())){
+      if(!n.data || !n.data.trim()) continue;
+      const r=document.createRange(); r.selectNodeContents(n);
+      if(range.compareBoundaryPoints(Range.START_TO_START,r)<=0 &&
+         range.compareBoundaryPoints(Range.END_TO_END,r)>=0) out.push(n);
+    }
+    return out;
+  }
+
   function makeMark(kind){
-    const m=document.createElement('mark'); m.className='hl hl-'+kind;
-    m.appendChild(curRange.extractContents());
-    m.querySelectorAll('mark.hl').forEach(inner=>{ while(inner.firstChild) inner.parentNode.insertBefore(inner.firstChild,inner); inner.remove(); });
-    curRange.insertNode(m);
-    let anc=m.parentNode;                         // 若新標記落在舊標記「內部」→ 拆外層，最後動作優先
-    while(anc&&anc!==A){ const up=anc.parentNode;
-      if(anc.matches&&anc.matches('mark.hl')){ while(anc.firstChild) up.insertBefore(anc.firstChild,anc); up.removeChild(anc); }
-      anc=up; }
-    if(A.normalize) A.normalize();
-    return m;
+    const nodes=rangeTextNodes(curRange);
+    if(!nodes.length) return null;
+    const gid=newGid(); let first=null;
+    nodes.forEach(n=>{
+      const old=n.parentNode&&n.parentNode.closest&&n.parentNode.closest('mark.hl');
+      if(old) unwrap(old,true);                   // 落在舊標記內 → 先拆外層，最後動作優先（保證單層不巢狀）
+      const m=document.createElement('mark');
+      m.className='hl hl-'+kind; m.dataset.hlg=gid;
+      n.parentNode.insertBefore(m,n); m.appendChild(n);
+      if(!first) first=m;
+    });
+    return first;
   }
   function markKind(m){ const x=m.className.match(/\bhl-(y|g|b|r|under|note)\b/); return x?x[1]:'y'; }
 
@@ -160,21 +197,25 @@
   function applyKind(kind){
     if(mode==='edit'&&curMark){
       if(markKind(curMark)===kind){ removeMark(curMark); return; }   // 再選一次同一種 → 刪除
-      const note=curMark.dataset.note; curMark.className='hl hl-'+kind; if(note) curMark.dataset.note=note;
+      groupOf(curMark).forEach(x=>{ const note=x.dataset.note, g=x.dataset.hlg;
+        x.className='hl hl-'+kind; if(g) x.dataset.hlg=g; if(note) x.dataset.note=note; });
       getSelection().removeAllRanges(); save(); bindMarks(); hideBar();
     } else if(curRange){
       try{ curMark=makeMark(kind); }catch(err){ curMark=null; }
       getSelection().removeAllRanges(); save(); bindMarks(); hideBar();
     }
   }
-  function unwrap(m){                          // 拆掉標記外殼、保留內文（不含存檔/重綁副作用）
+  // 拆掉標記外殼、保留內文（不含存檔/重綁副作用）
+  // skipNorm：makeMark 逐節點包標記的過程中不能 normalize——合併相鄰文字節點會讓待處理的節點被吃掉。
+  function unwrap(m,skipNorm){
     if(!m) return;
     while(m.firstChild) m.parentNode.insertBefore(m.firstChild,m); m.remove();
-    if(A.normalize) A.normalize();
+    if(!skipNorm && A.normalize) A.normalize();
   }
   function removeMark(m){
     if(!m) return;
-    unwrap(m);
+    groupOf(m).forEach(x=>unwrap(x,true));      // 整條重點一起拆（同 data-hlg 的所有 mark）
+    if(A.normalize) A.normalize();
     getSelection().removeAllRanges(); save(); bindMarks(); hideBar();
   }
   // 備註：新選取→開輸入框、按「存筆記」才建「純備註」標記（不上螢光、只留小圖示）；點既有標記→編輯（清空即刪備註）
@@ -200,8 +241,8 @@
   }
   bindMarks();
 
-  function openNote(m){                        // 編輯既有標記的備註
-    curMark=m; pendingNoteRange=null;
+  function openNote(m){                        // 編輯既有標記的備註（備註掛在整條重點的第一個 mark 上）
+    curMark=noteHost(m); pendingNoteRange=null; m=curMark;
     if(hlbar) hlbar.style.display='none';
     const ta=noteBox.querySelector('textarea'); ta.value=m.dataset.note||'';
     noteBox.style.display='block'; posFloat(noteBox, m.getBoundingClientRect()); ta.focus();
@@ -221,8 +262,10 @@
         noteBox.style.display='none'; save(); bindMarks(); return;
       }
       // 編輯既有標記：清空即刪備註；若是純備註標記（無底色）清空就整個移除
-      if(v) curMark.dataset.note=v;
-      else { curMark.removeAttribute('data-note'); if(curMark.classList.contains('hl-note')) unwrap(curMark); }
+      const host=noteHost(curMark);
+      if(v) host.dataset.note=v;
+      else { host.removeAttribute('data-note');
+        if(host.classList.contains('hl-note')){ groupOf(host).forEach(x=>unwrap(x,true)); if(A.normalize) A.normalize(); } }
       noteBox.style.display='none'; save(); bindMarks();
     };
     noteBox.querySelector('[data-nb="cancel"]').onclick=()=>{ pendingNoteRange=null; noteBox.style.display='none'; };
@@ -240,8 +283,17 @@
   function save(){ localStorage.setItem(KEY, A.innerHTML); localStorage.setItem(KEY+':ts', String(Date.now())); renderPanel();
     if(window.CloudSync&&window.CloudSync.push) window.CloudSync.push(A.innerHTML); }
 
+  // 一條重點可能由多個 mark 組成（跨段落時逐節點包），用 data-hlg 合回一條再進面板
   function collect(){
-    return [...A.querySelectorAll('mark.hl')].map(m=>({el:m,text:m.textContent.trim(),note:m.dataset.note||''}));
+    const out=[], seen=new Set();
+    [...A.querySelectorAll('mark.hl')].forEach(m=>{
+      const g=m.dataset.hlg;
+      if(!g){ out.push({el:m,text:m.textContent.trim(),note:m.dataset.note||''}); return; }
+      if(seen.has(g)) return; seen.add(g);
+      const gm=groupOf(m);
+      out.push({el:gm[0],text:gm.map(x=>x.textContent).join('').trim(),note:gm[0].dataset.note||''});
+    });
+    return out;
   }
   function renderPanel(){
     if(!plist) return;
@@ -271,6 +323,58 @@
     };
   }
   renderPanel();
+
+  /* ---------- 一次性修復：?fixhl=1 ----------
+     舊版 makeMark 用 extractContents，跨區塊選取會把 <p> 切碎、線也畫不出來。
+     這支修復做法：抓伺服器上的原始文章結構重建 .readable，再用「重點文字」比對貼回去。
+     只在網址帶 ?fixhl=1 時執行；跑之前會把現有快照備份到 localStorage KEY+':bak'。*/
+  if(/[?&]fixhl=1\b/.test(location.search)){
+    (function(){
+      const recs=collect().map(it=>({text:it.text,note:it.note,kind:markKind(it.el)}));
+      if(!recs.length){ alert('這篇沒有重點，不需要修復。'); return; }
+      if(!confirm('要重建這篇的畫重點結構嗎？\n共 '+recs.length+' 條重點會重貼一次。\n（原快照會備份，可還原）')) return;
+      localStorage.setItem(KEY+':bak', A.innerHTML);
+      fetch(location.pathname+'?_='+Date.now(),{cache:'no-store'})
+        .then(r=>r.text())
+        .then(html=>{
+          const doc=new DOMParser().parseFromString(html,'text/html');
+          const src=doc.querySelector('.readable');
+          if(!src) throw new Error('抓不到原始 .readable');
+          A.innerHTML=src.innerHTML;                       // 回到乾淨結構
+          const failed=[];
+          recs.forEach(rec=>{
+            const r=locateText(rec.text);
+            if(!r){ failed.push(rec.text); return; }
+            curRange=r; const m=makeMark(rec.kind);
+            if(m && rec.note) m.dataset.note=rec.note;
+          });
+          if(A.normalize) A.normalize();
+          A.querySelectorAll('.rise').forEach(el=>el.classList.add('in'));
+          rebindTerms(); bindMarks(); save();
+          alert('修復完成。\n貼回 '+(recs.length-failed.length)+'/'+recs.length+' 條。'
+                +(failed.length?'\n\n對不上的（要手動重畫）：\n・'+failed.map(t=>t.slice(0,20)).join('\n・'):'')
+                +'\n\n把網址的 ?fixhl=1 拿掉重新整理即可。');
+        })
+        .catch(e=>{ alert('修復失敗：'+e.message+'\n快照沒有被改動。'); });
+
+      // 在乾淨的 A 裡把一段文字找出來，回傳對應 Range（可跨節點、跨段落）
+      function locateText(needle){
+        if(!needle) return null;
+        const nodes=[], w=document.createTreeWalker(A,NodeFilter.SHOW_TEXT,null);
+        let n, flat='';
+        while((n=w.nextNode())){ nodes.push({node:n,start:flat.length}); flat+=n.data; }
+        const i=flat.indexOf(needle);
+        if(i<0) return null;
+        const j=i+needle.length;
+        const at=(pos)=>{ for(let k=nodes.length-1;k>=0;k--) if(nodes[k].start<=pos) return {node:nodes[k].node,off:pos-nodes[k].start}; return null; };
+        const s=at(i), e=at(j===0?0:j-1);
+        if(!s||!e) return null;
+        const r=document.createRange();
+        r.setStart(s.node,s.off); r.setEnd(e.node,e.off+1);
+        return r;
+      }
+    })();
+  }
 
   /* ---------- 雲端同步：把這篇註冊給 auth.js（登入後拉/推 Firestore）---------- */
   const _entryId=(document.body.dataset.entry||location.pathname).replace(/[\/#?]+/g,'_');
