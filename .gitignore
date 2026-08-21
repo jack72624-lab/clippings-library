@@ -25,3 +25,8 @@ firebase.json
 
 # 標點修正備份（本機留存、不進 repo）
 *.bak-punctfix-*
+
+# 2026-08-21 文字殘留清理的產物：含使用者劃線內容與 Firestore UID，絕不上公開 repo
+_hl-payload/
+_patch-highlights.py
+_fix-report.json

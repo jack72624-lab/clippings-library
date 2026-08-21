@@ -19,7 +19,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="true-peak-dual-limiter" data-hlver="2">
+<body data-entry="true-peak-dual-limiter" data-hlver="3">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -51,11 +51,11 @@
       <div class="brief-tl"><span class="lb caps">一句話</span><p>與其讓演算法去猜播放端會發生什麼，不如自己留一段餘裕、並且把它用掉。</p></div>
     </aside>
 
-    <div class="callout rise"><div class="cl">先說清楚這篇的立場來源</div><p>作者 Ryan Schwabe 是葛萊美入圍的混音與母帶工程師、Schwabe Digital 創辦人。文章出自他自家的教學站，結尾明說這套哲學正是他們正在開發的新 limiter 的基礎——<b>機制的解釋可以獨立成立，但數值與「哪種比較好聽」是他的個人偏好，不是產業標準。</b>本文最後一段有可以自己驗證的方法。</p></div>
+    <div class="callout rise"><div class="cl">先說清楚這篇的立場來源</div><p>作者 Ryan Schwabe 是葛萊美入圍的混音與母帶工程師、Schwabe Digital 創辦人。文章出自他自家的教學站，結尾明說這套哲學正是他們正在開發的新 limiter 的基礎，<b>機制的解釋可以獨立成立，但數值與「哪種比較好聽」是他的個人偏好，不是產業標準。</b>本文最後一段有可以自己驗證的方法。</p></div>
 
-    <p class="first">先把名詞弄清楚，後面才讀得下去。數位音檔存的是一個一個離散的取樣點，而 <span class="term" data-def="D/A converter：數位轉類比轉換器，播放時把數位訊號還原成類比波形的晶片，手機、耳擴、audio interface 裡都有一顆。">D/A converter</span> 播放時要把這些點還原成一條連續的類比波形。還原的時候，那條曲線<b>可能短暫地高過任何一個取樣點的電平</b>——這個從取樣點縫隙裡冒出來的峰值，就叫 <span class="term" data-def="inter-sample peak：取樣間峰值，波形還原後出現在取樣點之間、高於任何取樣點的瞬間電平。">inter-sample peak</span>。</p>
+    <p class="first">先把名詞弄清楚，後面才讀得下去。數位音檔存的是一個一個離散的取樣點，而 <span class="term" data-def="D/A converter：數位轉類比轉換器，播放時把數位訊號還原成類比波形的晶片，手機、耳擴、audio interface 裡都有一顆。">D/A converter</span> 播放時要把這些點還原成一條連續的類比波形。還原的時候，那條曲線<b>可能短暫地高過任何一個取樣點的電平</b>，這個從取樣點縫隙裡冒出來的峰值，就叫 <span class="term" data-def="inter-sample peak：取樣間峰值，波形還原後出現在取樣點之間、高於任何取樣點的瞬間電平。">inter-sample peak</span>。</p>
 
-    <p>它會冒多高，取決於三件事：那顆轉換器、它的<span class="term" data-def="reconstruction filter：重建濾波器，D/A 用來把離散取樣點連成平滑波形的濾波器。">重建濾波器</span>、以及它的類比輸出級。關鍵在於——<b>每一台裝置的答案都不一樣。</b></p>
+    <p>它會冒多高，取決於三件事：那顆轉換器、它的<span class="term" data-def="reconstruction filter：重建濾波器，D/A 用來把離散取樣點連成平滑波形的濾波器。">重建濾波器</span>、以及它的類比輸出級。關鍵在於，<b>每一台裝置的答案都不一樣。</b></p>
 
     <h2 class="rise"><span class="hn">01</span>true peak limiter 在做的是估計，不是量測</h2>
     <p>true peak limiter 的運作方式是：把訊號<span class="term" data-def="oversampling：超取樣，暫時提高取樣率來做運算，用以看見取樣點之間的細節。">超取樣</span>，套一個「類似 D/A 可能會用的」重建濾波器，去推算取樣點之間會發生什麼，再依那個推算值決定要壓多少。量測方法多半照 ITU-R BS.1770 這份國際規範。</p>
@@ -113,12 +113,12 @@
 
     <p>作者的取捨很明確：用 0.3 dB 的響度換這個窗帶來的聲音改善是划算的。與其去追最後那零點幾 dB，不如把它換成母帶裡的呼吸空間。</p>
 
-    <div class="callout rise"><div class="cl">跟庫裡另一篇對照</div><p>這篇講的是<b>整條鏈的架構</b>——要幾顆、ceiling 各設多少、中間留不留空間。想知道<b>一顆 limiter 內部</b>到底怎麼運作（三段式拓撲、lookahead 怎麼影響音色、哪些頻率能 clip 哪些不能），看 <a href="uni-l-limiter-system.html">Uni-L：把「限制」變成可塑形的系統</a>。兩篇立場一致，都反對把選擇權整包交給黑箱演算法。</p></div>
+    <div class="callout rise"><div class="cl">跟庫裡另一篇對照</div><p>這篇講的是<b>整條鏈的架構</b>，要幾顆、ceiling 各設多少、中間留不留空間。想知道<b>一顆 limiter 內部</b>到底怎麼運作（三段式拓撲、lookahead 怎麼影響音色、哪些頻率能 clip 哪些不能），看 <a href="uni-l-limiter-system.html">Uni-L：把「限制」變成可塑形的系統</a>。兩篇立場一致，都反對把選擇權整包交給黑箱演算法。</p></div>
 
     <h2 class="rise"><span class="hn">05</span>為什麼響度一推高，混音就變亮</h2>
     <p>最後這一段來自同作者的另一篇文章，講的是「窗裡到底要處理什麼」的關鍵機制，也是很多人長期誤判的一件事。</p>
 
-    <p><b>把全頻段 limiter 想成一個自動音量推桿</b>：kick 和 bass 打下去的時候，低頻能量主宰了 limiter，於是<b>整個訊號</b>——包含中頻與高頻——被一起壓了下來；低頻音符結束、limiter 釋放，中高頻就整批浮上來。這個壓下去、放回來的循環反覆發生，久了就改變你聽到的平衡。</p>
+    <p><b>把全頻段 limiter 想成一個自動音量推桿</b>：kick 和 bass 打下去的時候，低頻能量主宰了 limiter，於是<b>整個訊號</b>，包含中頻與高頻，被一起壓了下來；低頻音符結束、limiter 釋放，中高頻就整批浮上來。這個壓下去、放回來的循環反覆發生，久了就改變你聽到的平衡。</p>
 
     <figure class="figure rise">
       <div class="fl caps">圖解 · 兩種「刺耳」不要搞混</div>
@@ -151,7 +151,7 @@
     <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
     <ul>
       <li><b>今天就能跑的一個實驗</b>：拿一首你已經做完的曲子，用你常用的 limiter 開 true peak 與關 true peak 各 bounce 一次，A/B 聽 transient 有沒有變鈍。這是整篇唯一一個你在自己系統上就驗得出來的主張，不用相信任何人的說法。</li>
-      <li><b>把 ceiling 從單一數字改成一組架構</b>：如果你現在是一顆 limiter 直接推到 −0.1 或 −0.3，可以試試拆成兩顆——第一顆 −0.4 做響度、第二顆 −0.1 純保護。就算中間先什麼都不放，你也已經拿到了「transient 不被壓平在天花板」的好處。</li>
+      <li><b>把 ceiling 從單一數字改成一組架構</b>：如果你現在是一顆 limiter 直接推到 −0.1 或 −0.3，可以試試拆成兩顆，第一顆 −0.4 做響度、第二顆 −0.1 純保護。就算中間先什麼都不放，你也已經拿到了「transient 不被壓平在天花板」的好處。</li>
       <li><b>要發社群平台就另做一版</b>：多留 1 到 2 dB 餘裕。你發到限時動態的那些片段，走的是跟串流平台完全不同的編碼路徑。</li>
       <li><b>下次覺得母帶太刺</b>：先問自己是失真還是亮度浮動。如果是後者，答案不在降低響度，而在控制高頻的動態。</li>
       <li><b>留意這篇的動機</b>：作者正在開發自家 limiter，這篇也是在鋪陳那個產品的設計哲學。機制的部分可以照收，數值當參考、不當標準。</li>

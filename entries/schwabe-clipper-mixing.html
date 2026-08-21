@@ -20,7 +20,7 @@
 <meta name="apple-mobile-web-app-title" content="閱讀庫">
 <meta name="robots" content="noindex, nofollow">
 </head>
-<body data-entry="schwabe-clipper-mixing" data-video="y9inmkz0NcA" data-hlver="2">
+<body data-entry="schwabe-clipper-mixing" data-video="y9inmkz0NcA" data-hlver="3">
 <div class="progress"><div class="bar"></div></div>
 
 <div class="topbar caps">
@@ -48,7 +48,7 @@
     <a class="mob-vlink" href="https://www.youtube.com/watch?v=y9inmkz0NcA" target="_blank" rel="noopener"><span class="pl">▶</span> 在 YouTube 看原片</a>
 
   <article class="readable">
-    <p class="lede">clipper 不是「讓聲音變大的東西」，它是拿一小段失真去頂替 transient——你的耳朵會把那段失真聽成原本的打擊。理解這件事之後，正確用法就變得很明確：把 limiter 身上的工作一點一點搬過來，而不是加一顆上去推。</p>
+    <p class="lede">clipper 不是「讓聲音變大的東西」，它是拿一小段失真去頂替 transient，你的耳朵會把那段失真聽成原本的打擊。理解這件事之後，正確用法就變得很明確：把 limiter 身上的工作一點一點搬過來，而不是加一顆上去推。</p>
 
     <aside class="brief rise">
       <div class="brief-h"><span class="caps">簡報 · In Brief</span><span class="rd grot">核心 5 點</span></div>
@@ -62,18 +62,18 @@
       <div class="brief-tl"><span class="lb caps">一句話</span><p>大聲不起來是一個診斷訊號，它在告訴你平衡或編曲有問題，不是在告訴你該換 limiter。</p></div>
     </aside>
 
-    <div class="callout rise"><div class="cl">關於這場訪談</div><p>受訪者 Ryan Schwabe 是混音與母帶工程師，也是 Gold Clip、Orange Clip、HiFAL 這幾顆 plugin 的開發者——<b>他在賣自己做的 clipper，訪談有產品動機</b>。分辨方式很簡單：講機制與方法的部分（怎麼運作、怎麼練、怎麼判斷素材）跟品牌無關，換任何工具都成立；講到特定型號與錶頭設計時，那是在講他自家產品的設計理由。</p></div>
+    <div class="callout rise"><div class="cl">關於這場訪談</div><p>受訪者 Ryan Schwabe 是混音與母帶工程師，也是 Gold Clip、Orange Clip、HiFAL 這幾顆 plugin 的開發者，<b>他在賣自己做的 clipper，訪談有產品動機</b>。分辨方式很簡單：講機制與方法的部分（怎麼運作、怎麼練、怎麼判斷素材）跟品牌無關，換任何工具都成立；講到特定型號與錶頭設計時，那是在講他自家產品的設計理由。</p></div>
 
-    <p class="first">先把最容易誤解的一件事說清楚。很多人把 clipper 當成「另一種讓聲音變大的工具」，於是掛上去、推一推、覺得變大聲了就是有效。但它的作用機制跟壓縮器、limiter 完全不同——後兩者改的是<b>音量包絡</b>，clipper 改的是<b>波形本身的形狀</b>。它是一個 <span class="term" data-def="wave shaper：波形塑形器，直接改變波形的形狀，而不是像壓縮器那樣改變音量的起伏。">wave shaper</span>。</p>
+    <p class="first">先把最容易誤解的一件事說清楚。很多人把 clipper 當成「另一種讓聲音變大的工具」，於是掛上去、推一推、覺得變大聲了就是有效。但它的作用機制跟壓縮器、limiter 完全不同，後兩者改的是<b>音量包絡</b>，clipper 改的是<b>波形本身的形狀</b>。它是一個 <span class="term" data-def="wave shaper：波形塑形器，直接改變波形的形狀，而不是像壓縮器那樣改變音量的起伏。">wave shaper</span>。</p>
 
     <h2 class="rise" data-follow data-t="59" data-label="01 · clipper 在做什麼"><span class="hn">01</span>它在做的事：拿失真頂替 transient<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=59s" data-t="59"><span class="pl">▶</span> 0:59</a></h2>
-    <p>clipper 把超過某個電平的峰值直接削掉。被削掉的那一瞬間，原本的 <span class="term" data-def="transient：瞬態，聲音起始的那一下衝擊，決定了打擊感與清晰度。">transient</span> 就被換成了一小段失真。關鍵在於——<b>人耳會把那一小段失真聽成原本的 transient</b>。結果是峰值降了下來，但聽感上打擊還在。</p>
+    <p>clipper 把超過某個電平的峰值直接削掉。被削掉的那一瞬間，原本的 <span class="term" data-def="transient：瞬態，聲音起始的那一下衝擊，決定了打擊感與清晰度。">transient</span> 就被換成了一小段失真。關鍵在於，<b>人耳會把那一小段失真聽成原本的 transient</b>。結果是峰值降了下來，但聽感上打擊還在。</p>
 
     <p>峰值降下來之後，接在後面的 limiter 就不必做那麼多壓縮工作。<b>這才是 clipper 真正的用途：幫 limiter 挪出 headroom。</b></p>
 
-    <div class="callout rise"><div class="cl">最常見的錯：削太多</div><p>刻意做到誇張、爆掉、明顯失真是一種創作選擇，那沒問題。但如果目標是乾淨，削過頭之後再用 limiter 推上去，<b>limiter 會把 clipper 加進去的失真整個放大</b>。受訪者的說法大意是：很多人上去就削 6 dB，然後問為什麼聽起來失真——因為你削了 6 dB。</p></div>
+    <div class="callout rise"><div class="cl">最常見的錯：削太多</div><p>刻意做到誇張、爆掉、明顯失真是一種創作選擇，那沒問題。但如果目標是乾淨，削過頭之後再用 limiter 推上去，<b>limiter 會把 clipper 加進去的失真整個放大</b>。受訪者的說法大意是：很多人上去就削 6 dB，然後問為什麼聽起來失真，因為你削了 6 dB。</p></div>
 
-    <figure class="figure rise"><div class="fl caps">圖解 · 削掉的尖，耳朵自己補回來</div><div class="dgimg"><img src="../assets/img/diagram-clipper-peak.jpg" alt="左右兩座相同的尖山：左邊尖峰完整，右邊山頂被水平削平、被削掉的尖峰用虛線畫在原位" loading="lazy"><span class="lbl" style="left:3%;top:6%;max-width:22%">原始 transient</span><span class="lbl" style="right:2%;top:6%;max-width:28%">削掉之後，耳朵自己補回尖峰</span></div><figcaption>clipper 做的就是這件事：拿一小段失真頂替被削掉的峰頂，你的聽覺會把它腦補成原本的打擊——所以聲音沒變小聲，卻多出好幾 dB 的空間</figcaption></figure>
+    <figure class="figure rise"><div class="fl caps">圖解 · 削掉的尖，耳朵自己補回來</div><div class="dgimg"><img src="../assets/img/diagram-clipper-peak.jpg" alt="左右兩座相同的尖山：左邊尖峰完整，右邊山頂被水平削平、被削掉的尖峰用虛線畫在原位" loading="lazy"><span class="lbl" style="left:3%;top:6%;max-width:22%">原始 transient</span><span class="lbl" style="right:2%;top:6%;max-width:28%">削掉之後，耳朵自己補回尖峰</span></div><figcaption>clipper 做的就是這件事：拿一小段失真頂替被削掉的峰頂，你的聽覺會把它腦補成原本的打擊，所以聲音沒變小聲，卻多出好幾 dB 的空間</figcaption></figure>
 
 <h2 class="rise" data-follow data-t="151" data-label="02 · hard knee 與 soft knee"><span class="hn">02</span>hard knee 與 soft knee：跟壓縮器同一個概念<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=151s" data-t="151"><span class="pl">▶</span> 2:31</a></h2>
     <p>如果你對壓縮器的 <span class="term" data-def="knee：拐點，指處理開始介入時是突然的（hard）還是漸進的（soft）。">knee</span> 有概念，這裡可以直接類比。</p>
@@ -137,19 +137,19 @@
         </div>
         <div class="dg-out">
           <div class="dg-k caps">你會聽到</div>
-          <div class="dg-ot">limiter 變得比較不干擾——過勞的 limiter 會讓低頻把中高頻壓下去，把一部分工作移給 clipper 之後，limiter 聽起來更乾淨。</div>
+          <div class="dg-ot">limiter 變得比較不干擾，過勞的 limiter 會讓低頻把中高頻壓下去，把一部分工作移給 clipper 之後，limiter 聽起來更乾淨。</div>
         </div>
       </div>
       <figcaption>他自己多數母帶工作從 1 dB 起跳，因為目標是盡量透明</figcaption>
     </figure>
 
-    <div class="callout rise"><div class="cl">這一步不能省：確認 clipper 沒在加增益</div><p>如果 clipper 在加增益，你開關 bypass 時當然覺得「開著比較好聽」——<b>那是變大聲的錯覺，你會因此聽不出它加了多少失真</b>。開關 clipper 時音量必須不變，你才是真的在比較「這些 gain reduction 由誰承擔」的差異。</p></div>
+    <div class="callout rise"><div class="cl">這一步不能省：確認 clipper 沒在加增益</div><p>如果 clipper 在加增益，你開關 bypass 時當然覺得「開著比較好聽」，<b>那是變大聲的錯覺，你會因此聽不出它加了多少失真</b>。開關 clipper 時音量必須不變，你才是真的在比較「這些 gain reduction 由誰承擔」的差異。</p></div>
 
     <h2 class="rise" data-follow data-t="492" data-label="04 · 哪些素材別放"><span class="hn">04</span>哪些素材別放<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=492s" data-t="492"><span class="pl">▶</span> 8:12</a></h2>
     <p>判斷標準可以簡化成一句話：<b>clipper 就是一個失真裝置，問自己「我現在想不想給這東西加失真」。</b></p>
     <ul>
       <li><b>別放</b>：已經處理好的人聲。母帶階段拿到分軌時，人聲上通常已經有 reverb 和 delay，這時再插 clipper 只是往裡面塞失真碎片，沒人要那個。</li>
-      <li><b>適合放</b>：很尖的東西——鼓、打擊樂，那些 transient 跳動很大、你希望心理上仍聽起來有動態、但實際要約束一點的素材。</li>
+      <li><b>適合放</b>：很尖的東西，鼓、打擊樂，那些 transient 跳動很大、你希望心理上仍聽起來有動態、但實際要約束一點的素材。</li>
       <li><b>灰色地帶</b>：人聲如果只是想加一點諧波，可以用 soft clipping 讓它<b>不真的越過削點</b>，只把頂端慢慢修圓，這樣安全得多。想只對中頻加失真，可以用多頻段的 clipper 只處理那一段。</li>
     </ul>
     <p>整體來說，clipper 主要用在<b>鼓與整個 mix bus</b> 上。</p>
@@ -157,49 +157,49 @@
     <div class="callout rise"><div class="cl">跟庫裡另外兩篇的關係</div><p>這篇問的是「<b>哪些素材</b>該不該 clip」。<a href="uni-l-limiter-system.html">Uni-L：把「限制」變成可塑形的系統</a> 問的是「<b>哪些頻率</b>能 clip」（低頻絕不進 clipper、高頻小量 clip 換 presence），兩篇是素材維度與頻率維度的互補切法。而 <a href="true-peak-dual-limiter.html">你真的需要 true peak limiting 嗎</a> 是同一位作者講<b>更後面那一段</b>：母帶輸出鏈要幾顆 limiter、ceiling 怎麼配。三篇串起來是同一條訊號鏈的前中後。</p></div>
 
     <h2 class="rise" data-follow data-t="598" data-label="05 · 怎麼比較兩顆clipper"><span class="hn">05</span>怎麼比較兩顆 clipper<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=598s" data-t="598"><span class="pl">▶</span> 9:58</a></h2>
-    <p>第一條是<b>等增益</b>，也就是輸入與輸出音量一致。這是比較任何東西的前提，不只是 clipper——上一節那個「音量不能變」的紀律在這裡再次出現。</p>
-    <p>第二條是看它的<b>錶頭與讀數</b>做不做得到精準：你要能知道削點在哪、削了多少。受訪者做自家 clipper 時在計量上花了很多工，例如記錄整首歌最大的削減量，以及一個時鐘告訴你「1 分 30 秒處削得最多」——你可以直接跳到那一段去聽，判斷是太多還是可以。</p>
+    <p>第一條是<b>等增益</b>，也就是輸入與輸出音量一致。這是比較任何東西的前提，不只是 clipper，上一節那個「音量不能變」的紀律在這裡再次出現。</p>
+    <p>第二條是看它的<b>錶頭與讀數</b>做不做得到精準：你要能知道削點在哪、削了多少。受訪者做自家 clipper 時在計量上花了很多工，例如記錄整首歌最大的削減量，以及一個時鐘告訴你「1 分 30 秒處削得最多」，你可以直接跳到那一段去聽，判斷是太多還是可以。</p>
     <p>背後的邏輯是：<b>clipping 是會造成傷害的</b>，所以你需要資訊才能做出質性判斷，而不是靠感覺推旋鈕。</p>
 
     <h2 class="rise" data-follow data-t="890" data-label="06 · 擺位與效果器return怪招"><span class="hn">06</span>擺位，以及一個不直覺的用法<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=890s" data-t="890"><span class="pl">▶</span> 14:50</a></h2>
     <p><b>位置</b>：他一律把 clipper 放在 limiter <b>之前</b>。limiter 的本意是盡量乾淨，clipper 的角色是在最終 limiter 決定輸出電平之前先把峰值壓下來。他也提到有人把 clipper 當鏈路最後一顆用，那樣也行得通。</p>
     <p>他自己混音時，<b>mix bus 上第一個就是 clipper</b>，用它決定整個 session 的 gain staging，後面所有東西的 threshold 都跟著它走。</p>
-    <p><b>不直覺的用法——放在效果器 return 上。</b>把 clipper 放在 delay 或 reverb 的 return，ceiling 開到最大、再大量 wave shape。效果有兩個：給效果加上很細微的失真，同時給它一個絕對不會超過的峰值上限；更有趣的是用<b>加法式的波形塑形會把尾巴拉起來</b>——峰值往尾音衰減時反而被增強，等於延長了 reverb 或 delay 的 sustain 並加上一點諧波。他形容這給效果 return 一種優雅的抬升，是一般人不會想到要 clip 的地方。</p>
+    <p><b>不直覺的用法，放在效果器 return 上。</b>把 clipper 放在 delay 或 reverb 的 return，ceiling 開到最大、再大量 wave shape。效果有兩個：給效果加上很細微的失真，同時給它一個絕對不會超過的峰值上限；更有趣的是用<b>加法式的波形塑形會把尾巴拉起來</b>，峰值往尾音衰減時反而被增強，等於延長了 reverb 或 delay 的 sustain 並加上一點諧波。他形容這給效果 return 一種優雅的抬升，是一般人不會想到要 clip 的地方。</p>
 
     <div class="pull rise">這裡開始，話題從 clipper 轉向他整體怎麼工作。前面談的是一顆工具，接下來談的是判斷。</div>
 
     <h2 class="rise" data-follow data-t="1048" data-label="07 · 創意在上千個決定裡"><span class="hn">07</span>創意不會被藝人的 vision 綁架<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=1048s" data-t="1048"><span class="pl">▶</span> 17:28</a></h2>
     <p>主持人問他怎麼在維持藝人願景的同時不限縮自己的創意。他的回答是這個問題預設錯了。</p>
-    <p>混一首歌會做上千個決定——自動化、用哪顆 plugin、mix bus 怎麼處理、取樣率選什麼、哪裡要平行處理。<b>每一個都是創意決定</b>，都來自過去的累積：哪些做法藝人反應很好、哪些不好、哪些他自己不喜歡所以藝人根本沒聽過。所以「實現他們的藝術」本身就是他創意的執行方式，不是犧牲。</p>
+    <p>混一首歌會做上千個決定，自動化、用哪顆 plugin、mix bus 怎麼處理、取樣率選什麼、哪裡要平行處理。<b>每一個都是創意決定</b>，都來自過去的累積：哪些做法藝人反應很好、哪些不好、哪些他自己不喜歡所以藝人根本沒聽過。所以「實現他們的藝術」本身就是他創意的執行方式，不是犧牲。</p>
     <p>他的目標講得很直白：<b>做完可以跟人擊掌</b>，而不是做完證明自己是對的、然後一週後對方還是不喜歡。</p>
 
     <h2 class="rise" data-follow data-t="1229" data-label="08 · 刻意加快·工具不用多"><span class="hn">08</span>刻意加快，工具不用多<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=1229s" data-t="1229"><span class="pl">▶</span> 20:29</a></h2>
-    <p>他以前一個混音可以耗 10 到 12 小時才敢送第一版。有一次趕死線只能兩三小時交件，他設了兩小時計時器，不停下來思考、全憑直覺一路做到底——<b>結果是他自己覺得做過最好的混音之一</b>。之後他刻意保持那個節奏：不要拖、不要每一軌都掛 plugin、不要過度雕琢。</p>
-    <p>工具也一樣少。他常用的就是一顆乾淨的參數 EQ、幾顆壓縮器、幾顆飽和器，除非真的需要某個特殊工具。他特別提到自己是很技術取向的人，但做唱片時會刻意把那些資訊丟掉、甚至打破自己的規則——這是藝術，不該被太多知識困住。</p>
+    <p>他以前一個混音可以耗 10 到 12 小時才敢送第一版。有一次趕死線只能兩三小時交件，他設了兩小時計時器，不停下來思考、全憑直覺一路做到底，<b>結果是他自己覺得做過最好的混音之一</b>。之後他刻意保持那個節奏：不要拖、不要每一軌都掛 plugin、不要過度雕琢。</p>
+    <p>工具也一樣少。他常用的就是一顆乾淨的參數 EQ、幾顆壓縮器、幾顆飽和器，除非真的需要某個特殊工具。他特別提到自己是很技術取向的人，但做唱片時會刻意把那些資訊丟掉、甚至打破自己的規則，這是藝術，不該被太多知識困住。</p>
 
     <div class="callout rise"><div class="cl">這句話值得單獨留著</div><p>一個靠做 plugin 維生的人說「工具不用多」，比其他人說更有說服力。他的原話大意是：市面上一堆做同樣事情的工具，他對「同一件事的新介面」沒興趣，寧可用舊的介面繼續做事。</p></div>
 
     <h2 class="rise" data-follow data-t="1450" data-label="09 · gain staging留5-6dB"><span class="hn">09</span>Gain staging：一開始就留 5 到 6 dB<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=1450s" data-t="1450"><span class="pl">▶</span> 24:10</a></h2>
     <p>做法很簡單，而且是一次設定、整首混音都吃這個設定：拿到分軌之後做 session import，全部送進一個<b>什麼都沒掛的 master fader</b>，看總和之後還剩多少 headroom，然後<b>用 clip gain 把所有軌一起拉下來</b>、fader 保持在 unity，直到 master fader 上有 5 到 6 dB 的餘裕。</p>
-    <p>留這 5 到 6 dB 的理由是<b>要有空間做自動化與增益調整</b>——例如想把 kick 拉高 2 dB 時，上面還有位置可以動。他 mix bus 上的第一顆 clipper 就是用來定這個 gain staging 的，後面所有東西的 threshold 都跟著它走。</p>
+    <p>留這 5 到 6 dB 的理由是<b>要有空間做自動化與增益調整</b>，例如想把 kick 拉高 2 dB 時，上面還有位置可以動。他 mix bus 上的第一顆 clipper 就是用來定這個 gain staging 的，後面所有東西的 threshold 都跟著它走。</p>
 
     <h2 class="rise" data-follow data-t="1579" data-label="10 · mix bus上有什麼·分兩條bus"><span class="hn">10</span>mix bus 上實際有什麼，以及為什麼分兩條 bus<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=1579s" data-t="1579"><span class="pl">▶</span> 26:19</a></h2>
     <p>這一段是他的個人設定，<b>參考用、不是配方</b>。真正可移植的是每一顆的角色，不是廠牌型號：先是 clipper 定 gain staging 並削峰，接著是設定整張唱片頻寬上下限的濾波器、一顆多頻段平行壓縮、一顆高頻動態控制，有時候兩顆 limiter，再加少量 EQ 與飽和。值得注意的是他明說 <b>mix bus 上不太做寬頻壓縮</b>，壓縮以分頻段為主。</p>
-    <p>他預設把音樂與人聲分成兩條 bus，理由跟一般想像的不太一樣。<b>聲音上</b>：有時想對音樂做比較兇的處理，但不想影響人聲——特別是處理很動態時，低頻會不斷觸發它、連帶把人聲也調變掉。<b>但更主要的理由其實是交件</b>：現在常常要交 Atmos 混音用的 stems，或唱片公司要求存檔，效果如果沒分乾淨，印 stems 時會很醜。他補一句：分開不代表每次都真的分別處理，只是先分好、需要時才有得用。</p>
+    <p>他預設把音樂與人聲分成兩條 bus，理由跟一般想像的不太一樣。<b>聲音上</b>：有時想對音樂做比較兇的處理，但不想影響人聲，特別是處理很動態時，低頻會不斷觸發它、連帶把人聲也調變掉。<b>但更主要的理由其實是交件</b>：現在常常要交 Atmos 混音用的 stems，或唱片公司要求存檔，效果如果沒分乾淨，印 stems 時會很醜。他補一句：分開不代表每次都真的分別處理，只是先分好、需要時才有得用。</p>
 
     <h2 class="rise" data-follow data-t="2003" data-label="11 · 平行失真"><span class="hn">11</span>平行失真：讓乾訊號保持純淨<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=2003s" data-t="2003"><span class="pl">▶</span> 33:23</a></h2>
-    <p>他喜歡在 mix bus 上做平行的磁帶失真。理由直接回到第一節那個原理：<b>加失真等於把 transient 拿掉</b>。所以把失真放在<span class="term" data-def="parallel：平行處理，乾訊號與處理過的訊號分兩路走、最後混合，原始訊號完整保留。">平行</span>路徑上，可以同時得到兩件事——</p>
+    <p>他喜歡在 mix bus 上做平行的磁帶失真。理由直接回到第一節那個原理：<b>加失真等於把 transient 拿掉</b>。所以把失真放在<span class="term" data-def="parallel：平行處理，乾訊號與處理過的訊號分兩路走、最後混合，原始訊號完整保留。">平行</span>路徑上，可以同時得到兩件事，</p>
     <ul>
       <li><b>可以對失真本身做濾波</b>：因為它跟乾訊號分開，你可以把難聽的高頻整個切掉，只留中頻的失真</li>
       <li><b>原始樂器保持純淨</b>：transient 細節與咬字完整，失真只是疊在上面的一層殘留</li>
     </ul>
-    <p>他形容結果像是「一捲燒過頭的老卡帶」和「一個乾淨純粹的乾訊號」兩個世界疊在一起——訊號衰減時會沉進那層失真的床墊裡。</p>
+    <p>他形容結果像是「一捲燒過頭的老卡帶」和「一個乾淨純粹的乾訊號」兩個世界疊在一起，訊號衰減時會沉進那層失真的床墊裡。</p>
 
     <h2 class="rise" data-follow data-t="2107" data-label="12 · 自動化master fader"><span class="hn">12</span>他第一個自動化的是 master fader<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=2107s" data-t="2107"><span class="pl">▶</span> 35:07</a></h2>
-    <p>不是人聲，是 master fader。做法：最後一次副歌拉高 0.5 dB、前奏降 1 dB，替整首歌做出一條起伏的弧線。有時候做得很硬——直接在重拍畫成方波，讓那個下拍突然大 1 dB。</p>
+    <p>不是人聲，是 master fader。做法：最後一次副歌拉高 0.5 dB、前奏降 1 dB，替整首歌做出一條起伏的弧線。有時候做得很硬，直接在重拍畫成方波，讓那個下拍突然大 1 dB。</p>
     <p><b>為什麼有效</b>：現代音樂很多完全在電腦裡做，動態非常靜態，小鼓從頭到尾都是同一個力度。在這種素材上刻意製造能量變化，<b>1 dB 大約等於 10% 的感知能量變化</b>，聽的人會「感覺到每一段」。這正是讓人聽了 hype 的東西。</p>
 
-    <div class="callout rise"><div class="cl">這裡有一個 gain staging 陷阱</div><p>這個自動化在 clipper 與 limiter <b>之前</b>，所以拉高 1 dB 不只是變大聲，它會多撞進 clipper。如果你要保持乾淨，<b>最大聲的那個自動化點仍然必須落在硬削點以下</b>——這就是為什麼第九節那 5 到 6 dB 的餘裕要先留好。</p></div>
+    <div class="callout rise"><div class="cl">這裡有一個 gain staging 陷阱</div><p>這個自動化在 clipper 與 limiter <b>之前</b>，所以拉高 1 dB 不只是變大聲，它會多撞進 clipper。如果你要保持乾淨，<b>最大聲的那個自動化點仍然必須落在硬削點以下</b>，這就是為什麼第九節那 5 到 6 dB 的餘裕要先留好。</p></div>
 
     <h2 class="rise" data-follow data-t="2314" data-label="13 · 推不大聲的真正原因"><span class="hn">13</span>推不大聲的真正原因<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=2314s" data-t="2314"><span class="pl">▶</span> 38:34</a></h2>
     <p>這是整場訪談我認為最有價值的一段，因為它把「推不大聲」從器材問題翻譯成了診斷。</p>
@@ -235,12 +235,12 @@
 
     <h2 class="rise" data-follow data-t="2870" data-label="14 · 響度目標·自己母帶自己混"><span class="hn">14</span>響度目標，以及自己的混音要不要自己做母帶<a class="tc" href="https://www.youtube.com/watch?v=y9inmkz0NcA&amp;t=2870s" data-t="2870"><span class="pl">▶</span> 47:50</a></h2>
     <p><b>沒有固定的響度目標</b>，完全看曲風、製作方式與整張專輯的脈絡。大致的錨點是 <span class="term" data-def="program loudness：整首歌平均的響度值，單位 LUFS，數字越接近 0 越大聲。">program loudness</span> 約 −9 LUFS，算是相當常見也還不錯的目標。搖滾會再大聲一點；afrobeats 與饒舌通常比較小聲，因為那類音樂重點在 transient 與律動，不在於站得很高、聽起來很兇。曲風越兇往上、越 chill 往下。</p>
-    <p><b>自己的混音要不要自己做母帶，他的偏好是不要</b>——理由不是技術，是流程會打結：藝人永遠不會給你母帶的意見，只會給你混音的意見。所以你自己母帶自己的混音時，會一直被拖回混音去改，改完要重印、可能連所有 alternate 版本都要重印，再放回母帶 session 重做。很容易變成無限迴圈。單曲、或藝人本來就把兩件事當成同一件事在想時，才一起做。</p>
+    <p><b>自己的混音要不要自己做母帶，他的偏好是不要</b>，理由不是技術，是流程會打結：藝人永遠不會給你母帶的意見，只會給你混音的意見。所以你自己母帶自己的混音時，會一直被拖回混音去改，改完要重印、可能連所有 alternate 版本都要重印，再放回母帶 session 重做。很容易變成無限迴圈。單曲、或藝人本來就把兩件事當成同一件事在想時，才一起做。</p>
 
     <h2 class="rise"><span class="hn">—</span>怎麼用在你身上</h2>
     <ul>
-      <li><b>先做第三節那個練習</b>：拿一首你已經做完的曲子，在最終 limiter 前面加一顆 clipper，把 ceiling 拉到讓它<b>不加增益</b>，然後把 0.5 dB 的 gain reduction 從 limiter 搬過去。開關 clipper 時音量必須不變——這個條件本身就是防自欺的設計，值得養成習慣。</li>
-      <li><b>下次推不大聲，先別換工具</b>：照第十三節的順序問三個問題——編曲是不是擠？80 到 100 Hz 是不是太多？才輪到處理器怎麼配。這個診斷順序可以直接省掉你很多在 plugin 之間亂試的時間。</li>
+      <li><b>先做第三節那個練習</b>：拿一首你已經做完的曲子，在最終 limiter 前面加一顆 clipper，把 ceiling 拉到讓它<b>不加增益</b>，然後把 0.5 dB 的 gain reduction 從 limiter 搬過去。開關 clipper 時音量必須不變，這個條件本身就是防自欺的設計，值得養成習慣。</li>
+      <li><b>下次推不大聲，先別換工具</b>：照第十三節的順序問三個問題，編曲是不是擠？80 到 100 Hz 是不是太多？才輪到處理器怎麼配。這個診斷順序可以直接省掉你很多在 plugin 之間亂試的時間。</li>
       <li><b>master fader 自動化是低成本高回報的一招</b>：前奏降 1 dB、最後一次副歌升 0.5 dB。但記得它在 clipper 之前，所以要先留好餘裕。</li>
       <li><b>gain staging 從第一步就設好</b>：所有軌用 clip gain 一起拉下來、fader 保持 unity，master 上留 5 到 6 dB。這件事只做一次，卻決定了後面每一個決定的空間。</li>
       <li><b>「刻意加快」值得試一次</b>：設一個計時器，逼自己在時限內從頭做到尾、不停下來想。他的說法是單一經驗、不是方法論證據，但作為打破過度雕琢的實驗成本很低。</li>
