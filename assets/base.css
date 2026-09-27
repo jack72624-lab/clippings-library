@@ -128,6 +128,17 @@ footer.foot{color:var(--dim);font-family:"Helvetica Neue",Arial,sans-serif;text-
 .callout{border-left:3px solid var(--ink);background:var(--fill);padding:18px 22px;margin:28px 0}
 .callout .cl{font-family:"Helvetica Neue",Arial,sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:10.5px;font-weight:700;color:var(--dim);margin-bottom:8px}
 .callout p{margin:6px 0}
+/* 訪談型新格式（2026-09-27，先用在 Rubin）：
+   .asked＝每段開頭「主持人問」一行灰字；.pq＝段內金句（英文原話＋中文＋時間碼），比 .pull 輕，一段放兩句也不壓正文；
+   .where＝上層「回頭看」每條底下的「在第幾段」。前面加 .readable 是為了蓋過 .readable p 的字級與間距 */
+.readable .asked{color:var(--dim);font-size:15.5px;line-height:1.75;border-bottom:1px solid var(--hair);padding-bottom:14px;margin:18px 0 22px}
+.readable .asked .caps{color:var(--ink);margin-right:8px}
+.pq{border-left:1px solid var(--ink);padding:2px 0 2px 18px;margin:22px 0}
+.pq .en{font-weight:300;font-size:clamp(17px,2vw,19px);line-height:1.5;color:var(--ink)}
+.pq .zh{color:var(--dim);margin-top:6px;font-size:.95em;line-height:1.7}
+.brief-pts li > div > p{margin:0 0 6px}
+.brief-pts li > div > p.where{font-size:12.5px;color:var(--dim);margin-top:4px}
+.where a{border-bottom:1px solid var(--line)}
 
 /* 簡報盒：每篇頂部的核心重點＋一句話結論，供快速回顧 */
 .brief{border:1px solid var(--ink);background:var(--fill);padding:clamp(22px,3.2vw,34px);margin:0 0 clamp(30px,5vh,50px)}

@@ -14,7 +14,9 @@
        data-v / data-t，播到 data-end 就停；往下滑到下一段 → 換播它的片段（跨影片自動換）。
        data-end 省略時，自動取「同一影片的下一段 data-t」為訖（＝該章節長度）——
        所以舊單片 entry（只有 data-follow data-t）零改檔就自動 retrofit。
-     · 跟讀「關」＝自由播放：不限片段、不隨捲動跳；多片可用切換列、段落 ▶ 手動跳。
+       跟讀開時點內文的 ▶ 時間碼：跳到那一句，照樣播到「那一句所在段」的訖點就停；
+      捲動仍只跟大標題（h2 data-follow），內文時間碼不參與捲動判斷。
+    · 跟讀「關」＝自由播放：不限片段、不隨捲動跳；多片可用切換列、段落 ▶ 手動跳。
      · 手機（無嵌入播放器）：段落 ▶ 直接開 YouTube 到該秒。
 
    對齊 reader.js 畫重點雷區：影片與控制列都在 .readable 外；跟讀只用 class ＋
@@ -133,14 +135,27 @@
     if(player.getCurrentTime()>=clipEnd-0.15) player.pauseVideo();
   },250);
 
-  /* 點段落 ▶：手動跳到該段起點自由播（不鎖訖點）；手機讓 <a> 原生開 YouTube */
+  /* 點 ▶ 時間碼：跳到那一秒。
+     跟讀開 → 找出「這一秒落在哪個跟讀段」，照樣播到那段的訖點就停（內文時間碼不打斷跟讀，2026-09-27 Jack 要的）；
+              落在段與段之間（廣告空檔、開場 0:00）找不到段 → 不設訖點、自由播。
+              activeEl 不動：捲動仍只認大標題，同一段內繼續往下讀不會被拉回段首。
+     跟讀關 → 自由播（不鎖訖點）。手機讓 <a> 原生開 YouTube */
   if(A){
     A.addEventListener('click',function(e){
       var c=e.target.closest('.tc'); if(!c||!A.contains(c)) return;
       if(window.matchMedia('(max-width:880px)').matches) return;
       e.preventDefault();
-      playClip(+c.dataset.v||0, parseInt(c.dataset.t,10)||0, null);
-      setNow('▶ 已跳到 <b>'+fmt(parseInt(c.dataset.t,10)||0)+'</b>（自由播）');
+      clearTimeout(seekTimer);                       // 剛捲動排定的換段跳轉作廢，免得點完又被拉走
+      var v=+c.dataset.v||0, t=parseInt(c.dataset.t,10)||0, end=null;
+      if(followOn){
+        var arr=follows();
+        for(var i=0;i<arr.length;i++){
+          var el=arr[i], s=parseInt(arr[i].dataset.t,10)||0, en=endOf(el,arr,i);
+          if((+el.dataset.v||0)===v && t>=s && (en==null || t<en)){ end=en; break; }
+        }
+      }
+      playClip(v,t,end);
+      setNow('▶ 已跳到 <b>'+fmt(t)+'</b>'+(followOn?(end!=null?'，播到 <b>'+fmt(end)+'</b> 停（跟讀照舊）':'（跟讀照舊）'):'（自由播）'));
     });
   }
 
