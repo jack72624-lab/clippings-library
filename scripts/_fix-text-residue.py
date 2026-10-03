@@ -2,8 +2,8 @@
 """一次性：清掉全庫文字殘留（em-dash / 中文後接半形標點）。
 
 用法：
-    python3 _fix-text-residue.py --dry      只看會改什麼
-    python3 _fix-text-residue.py --apply    真的改 entries/*.html 並 bump data-hlver
+    python3 scripts/_fix-text-residue.py --dry      只看會改什麼
+    python3 scripts/_fix-text-residue.py --apply    真的改 entries/*.html 並 bump data-hlver
 
 設計上的三個約束（別改掉）：
 1. **只改標籤之外的文字**（外加 data-label 屬性值，那也是給人看的文案）。
@@ -16,6 +16,11 @@
 改完的檔要跟 Firestore 快照同步（見 _patch-highlights.py），否則劃線會因版本不符而不顯示。
 """
 import re, sys, glob, os, json
+
+# 2026-10-03 從閱讀庫根目錄搬進 scripts/。路徑改成照這支檔案自己的位置算，從哪個資料夾跑都一樣：
+# 文章在上一層的 entries/，對照表寫在這支旁邊（_patch-highlights.py 也是照自己的位置讀它）
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
 
 HALF = {',': '，', ';': '；', ':': '：', '!': '！', '?': '？'}
 VOID = {'br', 'img', 'hr', 'meta', 'link', 'input', 'source'}
@@ -80,7 +85,7 @@ def bump(html):
 def main():
     apply = '--apply' in sys.argv
     report = {}
-    for f in sorted(glob.glob('entries/*.html')):
+    for f in sorted(glob.glob(os.path.join(ROOT, 'entries', '*.html'))):
         if os.path.basename(f).startswith('_'):
             continue
         html = open(f, encoding='utf-8').read()
@@ -103,7 +108,7 @@ def main():
     for k, v in sorted(report.items(), key=lambda x: -x[1]['改了'])[:10]:
         print(f"  {k:45} {v['改了']:>3} 處  hlver→{v['新 hlver']}")
     if apply:
-        json.dump(report, open('_fix-report.json', 'w', encoding='utf-8'),
+        json.dump(report, open(os.path.join(HERE, '_fix-report.json'), 'w', encoding='utf-8'),
                   ensure_ascii=False, indent=1)
         print('\n對照表寫到 _fix-report.json（下一步給 _patch-highlights.py 用）')
 

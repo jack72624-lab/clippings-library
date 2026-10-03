@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """文字殘留掃描 — 收尾時對「這批新增/改動的檔」跑，不是掃全庫（全庫既有殘留見 CLAUDE.md 待辦）。
 
-用法：python3 _scan-text-residue.py entries/foo.html digests/2026-08-21.html
+用法（在閱讀庫根目錄跑）：python3 scripts/_scan-text-residue.py entries/foo.html digests/2026-08-21.html
 
 只看**文字節點**，不看標籤與屬性——2026-08-21 第一版用 regex 直接掃原始 HTML，
 把 `data-label="02 · 核心原理:諧波"` 這種屬性裡的半形冒號也算成違規（86 處裡多數是這種）。
